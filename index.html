@@ -318,6 +318,11 @@ input, select { font-family: var(--font-primary); }
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
 }
+.product-card-img .product-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.product-card:hover .product-img { transform: scale(1.08); }
 .product-card-img .product-emoji {
     font-size: 5rem; transition: var(--transition);
 }
@@ -434,6 +439,7 @@ input, select { font-family: var(--font-primary); }
     animation: fadeInUp 0.3s ease;
 }
 .cart-item-emoji { font-size: 2.5rem; flex-shrink: 0; }
+.cart-item-img { width: 55px; height: 55px; border-radius: var(--radius-sm); object-fit: cover; flex-shrink: 0; }
 .cart-item-details { flex: 1; }
 .cart-item-name { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.2rem; }
 .cart-item-unit { font-size: 0.75rem; color: var(--text-light); margin-bottom: 0.4rem; }
@@ -853,7 +859,7 @@ input, select { font-family: var(--font-primary); }
     <!-- Announcement Bar -->
     <div class="announcement-bar">
         <div class="marquee">
-            🎆 DIWALI 2026 MEGA SALE — Up to 40% OFF on Family Gift Boxes! | 📍 Visit us at High School Ground, Sullurpeta | 🎁 Use code DIWALI2026 for 10% OFF | 🚀 Free Delivery on orders above ₹2000 within Sullurpeta | ☎️ Call us: +91 XXXXX XXXXX
+            🎆 DIWALI 2026 MEGA SALE — Up to 40% OFF on Family Gift Boxes! | 📍 Visit us at High School Ground, Sullurpeta | 🎁 Contact us on WhatsApp for Exclusive Festival Discount Coupons! | 🚀 Free Delivery on orders above ₹2000 within Sullurpeta | ☎️ Call / WhatsApp: +91 9490042905
         </div>
     </div>
 
@@ -983,37 +989,41 @@ input, select { font-family: var(--font-primary); }
     <section class="offers-section" id="offers-section">
         <div class="section-header">
             <div class="section-badge"><i class="fas fa-tags"></i> Special Offers</div>
-            <h2 class="section-title">Diwali Discount Coupons</h2>
-            <p class="section-subtitle">Use these exclusive coupon codes at checkout for amazing discounts!</p>
+            <h2 class="section-title">Exclusive Festival Discounts</h2>
+            <p class="section-subtitle">We offer special discounts for early birds, bulk purchases, and family hampers! Contact us on WhatsApp to unlock your discount coupon before checkout.</p>
         </div>
         <div class="offers-grid">
             <div class="offer-card animate-on-scroll">
-                <div class="offer-code">DIWALI2026</div>
                 <div class="offer-discount">10% OFF</div>
-                <h3>Diwali Special</h3>
-                <p>Flat 10% off on all orders. No minimum purchase required!</p>
-                <button class="offer-copy-btn" onclick="copyCoupon('DIWALI2026')"><i class="fas fa-copy"></i> Copy Code</button>
+                <h3>Diwali Festival Special</h3>
+                <p>Flat 10% off on all festival orders. Reach out to our team on WhatsApp to get this coupon code!</p>
+                <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20the%20Diwali%20Special%2010%25%20Discount%20Coupon%20Code" target="_blank" class="btn btn-whatsapp btn-sm" style="margin-top:0.75rem; width:100%;">
+                    <i class="fab fa-whatsapp"></i> Get Coupon on WhatsApp
+                </a>
             </div>
             <div class="offer-card animate-on-scroll">
-                <div class="offer-code">FIRE20</div>
                 <div class="offer-discount">20% OFF</div>
                 <h3>Firestorm Mega Deal</h3>
-                <p>Get 20% off on orders above ₹2000. Maximum savings!</p>
-                <button class="offer-copy-btn" onclick="copyCoupon('FIRE20')"><i class="fas fa-copy"></i> Copy Code</button>
+                <p>Enjoy 20% off on festive orders above ₹2000. Message us on WhatsApp to receive the promo code.</p>
+                <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20the%20Firestorm%20Mega%20Deal%2020%25%20Discount%20Coupon%20Code" target="_blank" class="btn btn-whatsapp btn-sm" style="margin-top:0.75rem; width:100%;">
+                    <i class="fab fa-whatsapp"></i> Get Coupon on WhatsApp
+                </a>
             </div>
             <div class="offer-card animate-on-scroll">
-                <div class="offer-code">FAMILY15</div>
                 <div class="offer-discount">15% OFF</div>
-                <h3>Family Box Special</h3>
-                <p>15% off on all Family Gift Boxes. Celebrate with family!</p>
-                <button class="offer-copy-btn" onclick="copyCoupon('FAMILY15')"><i class="fas fa-copy"></i> Copy Code</button>
+                <h3>Family Gift Box Offer</h3>
+                <p>Get 15% off on all curated Family Gift Boxes (21 to 70 items). WhatsApp us to claim your discount.</p>
+                <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20the%20Family%20Box%2015%25%20Discount%20Coupon%20Code" target="_blank" class="btn btn-whatsapp btn-sm" style="margin-top:0.75rem; width:100%;">
+                    <i class="fab fa-whatsapp"></i> Get Coupon on WhatsApp
+                </a>
             </div>
             <div class="offer-card animate-on-scroll">
-                <div class="offer-code">FIRST100</div>
-                <div class="offer-discount">₹100 OFF</div>
-                <h3>First Order Bonus</h3>
-                <p>Flat ₹100 off on your first order. Min. order ₹500.</p>
-                <button class="offer-copy-btn" onclick="copyCoupon('FIRST100')"><i class="fas fa-copy"></i> Copy Code</button>
+                <div class="offer-discount">BULK</div>
+                <h3>Bulk & Wholesale Deals</h3>
+                <p>Planning for housing societies, offices, or large gatherings? Chat with us for customized bulk pricing!</p>
+                <a href="https://wa.me/919490042905?text=Hi!%20I%20want%20to%20enquire%20about%20Bulk%20Order%20discounts%20for%20crackers" target="_blank" class="btn btn-whatsapp btn-sm" style="margin-top:0.75rem; width:100%;">
+                    <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -1088,7 +1098,7 @@ input, select { font-family: var(--font-primary); }
                     <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                     <div>
                         <h3>Phone / WhatsApp</h3>
-                        <p>+91 XXXXX XXXXX<br>+91 XXXXX XXXXX</p>
+                        <p><a href="tel:+919490042905" style="color:inherit; font-weight:600;">+91 9490042905</a><br><a href="https://wa.me/919490042905" target="_blank" style="color:var(--primary); font-weight:600;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a></p>
                     </div>
                 </div>
                 <div class="contact-item animate-on-scroll">
@@ -1129,9 +1139,9 @@ input, select { font-family: var(--font-primary); }
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Sivakasi Firestorm Crackers. All rights reserved.</p>
+            <p>© 2026 Sivakasi Firestorm Crackers. All rights reserved. | Contact: +91 9490042905</p>
             <div class="footer-social">
-                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/919490042905" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
                 <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
             </div>
@@ -1152,6 +1162,9 @@ input, select { font-family: var(--font-primary); }
             <div class="coupon-input-row">
                 <input type="text" class="coupon-input" id="coupon-input" placeholder="Enter coupon code" maxlength="20">
                 <button class="coupon-apply-btn" onclick="applyCoupon()">Apply</button>
+            </div>
+            <div style="font-size:0.75rem; color:var(--text-mid); margin-top:0.4rem;">
+                💬 Need a coupon? <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20a%20discount%20coupon%20code%20for%20my%20order" target="_blank" style="color:var(--primary); font-weight:600; text-decoration:underline;">Ask us on WhatsApp (9490042905)</a>
             </div>
             <div class="coupon-msg" id="coupon-msg"></div>
             <div class="coupon-applied" id="coupon-applied" style="display:none">
@@ -1196,7 +1209,7 @@ input, select { font-family: var(--font-primary); }
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Phone Number <span class="required">*</span></label>
-                            <input type="tel" class="form-input" id="cust-phone" required placeholder="+91 XXXXX XXXXX" pattern="[0-9+\s\-]{10,15}">
+                            <input type="tel" class="form-input" id="cust-phone" required placeholder="+91 9490042905" pattern="[0-9+\s\-]{10,15}">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email (Optional)</label>
@@ -1219,7 +1232,7 @@ input, select { font-family: var(--font-primary); }
                         <div class="payment-qr" id="payment-qr">
                             <span>QR Code will appear here<br><small>Admin: Place your QR image as qr-code.png</small></span>
                         </div>
-                        <div class="payment-upi">UPI ID: your-upi-id@bank</div>
+                        <div class="payment-upi">UPI ID: 9490042905@ybl (or 9490042905@upi)</div>
                         <div class="payment-note">
                             <i class="fas fa-info-circle"></i> Please pay the total amount shown in your cart. We will manually verify your payment and confirm your order.
                         </div>
@@ -1259,7 +1272,7 @@ input, select { font-family: var(--font-primary); }
     <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="fas fa-arrow-up"></i>
     </button>
-    <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%20want%20to%20buy%20crackers%20from%20Sivakasi%20Firestorm%20Crackers" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <a href="https://wa.me/919490042905?text=Hi!%20I%20want%20to%20buy%20crackers%20from%20Sivakasi%20Firestorm%20Crackers" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1429,7 +1442,12 @@ function renderProducts() {
         return `
             <div class="product-card animate-on-scroll">
                 <div class="product-card-img">
-                    <span class="product-emoji">${emoji}</span>
+                    ${p.image ? `
+                        <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="product-emoji" style="display:none;">${emoji}</span>
+                    ` : `
+                        <span class="product-emoji">${emoji}</span>
+                    `}
                     ${p.badge ? `<span class="product-badge ${badgeClass}">${p.badge}</span>` : ''}
                 </div>
                 <div class="product-card-body">
@@ -1526,7 +1544,12 @@ function renderCartDrawer() {
         const emoji = CATEGORY_EMOJIS[p.category] || '🎆';
         return `
             <div class="cart-item">
-                <span class="cart-item-emoji">${emoji}</span>
+                ${p.image ? `
+                    <img src="${p.image}" alt="${p.name}" class="cart-item-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="cart-item-emoji" style="display:none;">${emoji}</span>
+                ` : `
+                    <span class="cart-item-emoji">${emoji}</span>
+                `}
                 <div class="cart-item-details">
                     <div class="cart-item-name">${p.name}</div>
                     <div class="cart-item-unit">${p.unit}</div>
@@ -1734,8 +1757,7 @@ function sendWhatsApp() {
     msg += `🏪 Sivakasi Firestorm Crackers\n📍 High School Ground, Sullurpeta`;
 
     const encoded = encodeURIComponent(msg);
-    // Replace with your WhatsApp number
-    window.open(`https://wa.me/91XXXXXXXXXX?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/919490042905?text=${encoded}`, '_blank');
 
     showOrderSuccess();
 }
@@ -1866,7 +1888,7 @@ function generatePDF() {
     doc.rect(0, 275, 210, 22, 'F');
     doc.setTextColor(200, 200, 200);
     doc.setFontSize(8);
-    doc.text('Sivakasi Firestorm Crackers | High School Ground, Sullurpeta | Phone: +91 XXXXX XXXXX', 105, 283, { align: 'center' });
+    doc.text('Sivakasi Firestorm Crackers | High School Ground, Sullurpeta | Phone / WhatsApp: +91 9490042905', 105, 283, { align: 'center' });
     doc.text('Thank you for your purchase! Celebrate safe, celebrate grand!', 105, 289, { align: 'center' });
 
     // Save
@@ -1911,7 +1933,12 @@ function handleSearchModal(query) {
 
     results.innerHTML = matches.map(p => `
         <div class="search-result-item" onclick="searchGoToProduct('${p.category}')">
-            <span class="search-result-emoji">${CATEGORY_EMOJIS[p.category] || '🎆'}</span>
+            ${p.image ? `
+                <img src="${p.image}" alt="${p.name}" style="width:36px;height:36px;border-radius:6px;object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span class="search-result-emoji" style="display:none;">${CATEGORY_EMOJIS[p.category] || '🎆'}</span>
+            ` : `
+                <span class="search-result-emoji">${CATEGORY_EMOJIS[p.category] || '🎆'}</span>
+            `}
             <div class="search-result-info">
                 <h4>${p.name}</h4>
                 <p>${p.category} — ₹${p.price}</p>
