@@ -323,10 +323,29 @@ input, select { font-family: var(--font-primary); }
     transition: transform 0.5s ease;
 }
 .product-card:hover .product-img { transform: scale(1.08); }
-.product-card-img .product-emoji {
-    font-size: 5rem; transition: var(--transition);
+.not-available-box {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; width: 100%; height: 100%;
+    background: linear-gradient(135deg, #FFF8F0, #F3F4F6);
+    color: #94a3b8; text-align: center; padding: 1rem;
+    transition: var(--transition);
 }
-.product-card:hover .product-emoji { transform: scale(1.15) rotate(-5deg); }
+.not-available-box i { font-size: 2.4rem; color: #cbd5e1; transition: var(--transition); }
+.not-available-box span {
+    font-size: 0.75rem; font-weight: 700; color: #64748b;
+    letter-spacing: 0.5px; text-transform: uppercase;
+}
+.product-card:hover .not-available-box i { color: var(--primary); transform: translateY(-2px); }
+.not-avail-thumb {
+    display: flex; align-items: center; justify-content: center;
+    background: #f1f5f9; color: #94a3b8; font-size: 1.1rem;
+}
+.search-not-avail {
+    width: 36px; height: 36px; border-radius: 6px;
+    background: #f1f5f9; color: #94a3b8;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; flex-shrink: 0;
+}
 .product-badge {
     position: absolute; top: 0.75rem; left: 0.75rem;
     padding: 0.25rem 0.75rem; border-radius: 50px;
@@ -1454,10 +1473,16 @@ function renderProducts() {
             <div class="product-card animate-on-scroll">
                 <div class="product-card-img">
                     ${p.image ? `
-                        <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <span class="product-emoji" style="display:none;">${emoji}</span>
+                        <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="not-available-box" style="display:none;">
+                            <i class="fas fa-box-open"></i>
+                            <span>Image Not Available</span>
+                        </div>
                     ` : `
-                        <span class="product-emoji">${emoji}</span>
+                        <div class="not-available-box">
+                            <i class="fas fa-box-open"></i>
+                            <span>Image Not Available</span>
+                        </div>
                     `}
                     ${p.badge ? `<span class="product-badge ${badgeClass}">${p.badge}</span>` : ''}
                 </div>
@@ -1562,10 +1587,10 @@ function renderCartDrawer() {
         return `
             <div class="cart-item">
                 ${p.image ? `
-                    <img src="${p.image}" alt="${p.name}" class="cart-item-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <span class="cart-item-emoji" style="display:none;">${emoji}</span>
+                    <img src="${p.image}" alt="${p.name}" class="cart-item-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="cart-item-img not-avail-thumb" style="display:none;"><i class="fas fa-box-open"></i></div>
                 ` : `
-                    <span class="cart-item-emoji">${emoji}</span>
+                    <div class="cart-item-img not-avail-thumb"><i class="fas fa-box-open"></i></div>
                 `}
                 <div class="cart-item-details">
                     <div class="cart-item-name">${p.name}</div>
@@ -1956,10 +1981,10 @@ function handleSearchModal(query) {
     results.innerHTML = matches.map(p => `
         <div class="search-result-item" onclick="searchGoToProduct('${p.category}')">
             ${p.image ? `
-                <img src="${p.image}" alt="${p.name}" style="width:36px;height:36px;border-radius:6px;object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-                <span class="search-result-emoji" style="display:none;">${CATEGORY_EMOJIS[p.category] || '🎆'}</span>
+                <img src="${p.image}" alt="${p.name}" style="width:36px;height:36px;border-radius:6px;object-fit:cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+                <span class="search-not-avail" style="display:none;"><i class="fas fa-box-open"></i></span>
             ` : `
-                <span class="search-result-emoji">${CATEGORY_EMOJIS[p.category] || '🎆'}</span>
+                <span class="search-not-avail"><i class="fas fa-box-open"></i></span>
             `}
             <div class="search-result-info">
                 <h4>${p.name}</h4>
