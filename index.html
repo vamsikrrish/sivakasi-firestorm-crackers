@@ -356,10 +356,18 @@ input, select { font-family: var(--font-primary); }
 .product-unit { font-size: 0.75rem; color: var(--text-light); margin-bottom: 0.5rem; }
 .product-price-row {
     display: flex; align-items: center; justify-content: space-between;
-    margin-top: 0.5rem;
+    margin-top: 0.5rem; gap: 0.5rem; flex-wrap: wrap;
 }
-.product-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
-.product-price span { font-size: 0.9rem; }
+.product-pricing { display: flex; flex-direction: column; gap: 2px; }
+.product-prices-wrap { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.product-price { font-size: 1.35rem; font-weight: 800; color: #00C853; display: inline-flex; align-items: baseline; }
+.product-price span { font-size: 0.85rem; font-weight: 700; margin-right: 1px; }
+.price-actual { font-size: 0.85rem; color: #888888; text-decoration: line-through; font-weight: 500; }
+.price-discount-tag {
+    font-size: 0.75rem; font-weight: 800; color: #FF1744;
+    background: rgba(255, 23, 68, 0.12); padding: 2px 6px;
+    border-radius: 4px; display: inline-block; letter-spacing: 0.3px;
+}
 
 .add-to-cart-btn {
     display: flex; align-items: center; gap: 0.4rem;
@@ -1439,6 +1447,9 @@ function renderProducts() {
         const inCart = cart.find(c => c.id === p.id);
         const badgeClass = p.badge ? `badge-${p.badge.toLowerCase()}` : '';
 
+        const origPrice = p.originalPrice || Math.round(p.price * 1.3);
+        const discountPct = Math.round(((origPrice - p.price) / origPrice) * 100);
+
         return `
             <div class="product-card animate-on-scroll">
                 <div class="product-card-img">
@@ -1456,7 +1467,13 @@ function renderProducts() {
                     <div class="product-desc">${p.description}</div>
                     <div class="product-unit"><i class="fas fa-box"></i> ${p.unit}</div>
                     <div class="product-price-row">
-                        <div class="product-price"><span>₹</span>${p.price}</div>
+                        <div class="product-pricing">
+                            <div class="product-prices-wrap">
+                                <span class="product-price"><span>₹</span>${p.price}</span>
+                                <span class="price-actual">₹${origPrice}</span>
+                                <span class="price-discount-tag">-${discountPct}%</span>
+                            </div>
+                        </div>
                         ${inCart ? `
                             <div class="qty-control">
                                 <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
@@ -1553,7 +1570,12 @@ function renderCartDrawer() {
                 <div class="cart-item-details">
                     <div class="cart-item-name">${p.name}</div>
                     <div class="cart-item-unit">${p.unit}</div>
-                    <div class="cart-item-price">₹${p.price} × ${c.qty} = ₹${p.price * c.qty}</div>
+                    <div class="cart-item-price">
+                        <span style="color:#00C853; font-weight:800;">₹${p.price}</span>
+                        <span style="color:#888; text-decoration:line-through; font-size:0.8rem; margin:0 4px;">₹${p.originalPrice || Math.round(p.price * 1.3)}</span>
+                        <span style="color:#FF1744; font-size:0.75rem; font-weight:700;">-${Math.round((((p.originalPrice || Math.round(p.price * 1.3)) - p.price) / (p.originalPrice || Math.round(p.price * 1.3))) * 100)}%</span>
+                        <span style="font-size:0.85rem; color:var(--text-mid); margin-left:4px;">× ${c.qty} = ₹${p.price * c.qty}</span>
+                    </div>
                     <div class="cart-item-actions">
                         <div class="qty-control">
                             <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
@@ -1941,7 +1963,12 @@ function handleSearchModal(query) {
             `}
             <div class="search-result-info">
                 <h4>${p.name}</h4>
-                <p>${p.category} — ₹${p.price}</p>
+                <p>
+                    <span style="color:#00C853; font-weight:700;">₹${p.price}</span>
+                    <span style="color:#888; text-decoration:line-through; font-size:0.8rem; margin:0 4px;">₹${p.originalPrice || Math.round(p.price * 1.3)}</span>
+                    <span style="color:#FF1744; font-size:0.75rem; font-weight:700;">-${Math.round((((p.originalPrice || Math.round(p.price * 1.3)) - p.price) / (p.originalPrice || Math.round(p.price * 1.3))) * 100)}%</span>
+                    <span style="color:var(--text-light); margin-left:6px;">• ${p.category}</span>
+                </p>
             </div>
         </div>
     `).join('') || '<p style="padding:1rem;color:var(--text-light)">No results found</p>';
