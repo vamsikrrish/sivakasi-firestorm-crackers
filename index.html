@@ -1481,7 +1481,9 @@ input, select, textarea { font-family: var(--font-sans); }
     <div id="diwali-welcome-loader">
         <canvas id="loader-firework-canvas"></canvas>
         <div class="loader-content-box">
-            <div class="loader-diya-anim">🪔</div>
+            <div style="max-width:260px; margin:0 auto 1.2rem; border-radius:12px; overflow:hidden; border:2px solid rgba(255, 215, 64, 0.45); box-shadow:0 8px 30px rgba(220, 38, 38, 0.45); background:#000;">
+                <img src="assets/brand/firestorm-brand-card.jpg" alt="Sivakasi Firestorm Crackers" style="width:100%; height:auto; display:block;">
+            </div>
             <div class="loader-tag">Diwali 2026 Greetings</div>
             <h1 class="loader-greeting-title">
                 Wishing You & Your Family<br>
@@ -1490,8 +1492,9 @@ input, select, textarea { font-family: var(--font-sans); }
             <p class="loader-greeting-desc">
                 May the festival of lights bring boundless happiness, health, and sparkling celebrations to your home.
             </p>
-            <div class="loader-brand-badge">
-                <i class="fas fa-fire"></i> Sivakasi Firestorm Crackers • Sullurpeta
+            <div class="loader-brand-badge" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.35rem 1rem; background:rgba(0,0,0,0.6); border:1px solid rgba(239,68,68,0.5);">
+                <img src="assets/brand/firestorm-logo-text.png" alt="Firestorm" style="height:20px; width:auto; vertical-align:middle;">
+                <span>• Sullurpeta 94900 42905</span>
             </div>
             <div class="loader-progress-track">
                 <div class="loader-progress-bar"></div>
@@ -1512,9 +1515,9 @@ input, select, textarea { font-family: var(--font-sans); }
         <div class="marquee">
             <span class="marquee-item"><i class="fas fa-fire gold-star"></i> 100% Authentic Sivakasi Crackers Direct from Licensed Factories</span>
             <span class="marquee-item"><i class="fas fa-map-marker-alt gold-star"></i> Flagship Stall: High School Ground, Sullurpeta</span>
-            <span class="marquee-item"><i class="fab fa-whatsapp gold-star"></i> WhatsApp / Call: +91 9490042905 for Instant Orders</span>
+            <span class="marquee-item"><i class="fab fa-whatsapp gold-star"></i> WhatsApp / Call: +91 94900 42905 | +91 79816 59594</span>
             <span class="marquee-item"><i class="fas fa-percent gold-star"></i> Up to 25% Festival Discounts on All Crackers</span>
-            <span class="marquee-item"><i class="fas fa-file-invoice gold-star"></i> Instant Order Estimate PDF & WhatsApp Billing Available</span>
+            <span class="marquee-item"><i class="fas fa-qrcode gold-star"></i> Instant UPI / QR Code Payment Available</span>
         </div>
     </div>
 
@@ -1522,9 +1525,11 @@ input, select, textarea { font-family: var(--font-sans); }
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-brand">
-                <div class="brand-seal">🪔</div>
+                <div class="brand-seal" style="background:#000000; border:1.5px solid var(--fire-red); display:flex; align-items:center; justify-content:center; overflow:hidden; padding:2px; box-shadow:0 0 10px rgba(220,38,38,0.35);">
+                    <img src="assets/brand/firestorm-logo-text.png" alt="Firestorm Crackers" style="width:100%; height:auto; object-fit:contain;">
+                </div>
                 <div class="nav-brand-text">
-                    <h1>Sivakasi <span>Firestorm</span></h1>
+                    <h1>Sivakasi <span style="color:var(--fire-red);">Firestorm</span></h1>
                     <p>High School Ground • Sullurpeta</p>
                 </div>
             </a>
@@ -1554,8 +1559,8 @@ input, select, textarea { font-family: var(--font-sans); }
     <!-- Mobile Drawer -->
     <div class="modal-overlay" id="mobile-menu" onclick="closeMobileMenu(event)">
         <div class="modal-box-lux" style="max-width: 320px; height: 100vh; position: fixed; right:0; top:0; border-radius:0;" onclick="event.stopPropagation()">
-            <div class="modal-header-lux">
-                <div style="font-size:1.4rem;">🪔</div>
+            <div class="modal-header-lux" style="background:#000000; padding:1.2rem 1.5rem; border-bottom:2px solid var(--fire-red);">
+                <img src="assets/brand/firestorm-logo-text.png" alt="Firestorm" style="height:28px; width:auto; display:block;">
                 <button class="cart-close-btn" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
             </div>
             <div style="padding: 2rem;">
@@ -1618,9 +1623,14 @@ input, select, textarea { font-family: var(--font-sans); }
 
             <!-- Hero Visual Showcase -->
             <div class="hero-visual-card" onclick="window.launchCelebrationVolley(3); showToast('success', '🎆 Happy Diwali Celebration!');" style="cursor:pointer;" title="Tap here to burst colorful fireworks!">
-                <div class="hero-diya-art">🪔</div>
-                <h3 class="visual-title">Sivakasi Firestorm Stall</h3>
-                <p class="visual-desc">High School Ground, Sullurpeta • Tirupati District, AP</p>
+                <div style="position:relative; border-radius:14px; overflow:hidden; margin-bottom:1.2rem; border:2px solid #FECACA; box-shadow:0 10px 25px rgba(220,38,38,0.18); background:#000000;">
+                    <img src="assets/brand/firestorm-brand-card.jpg" alt="Sivakasi Firestorm Crackers Sullurpeta" style="width:100%; height:auto; display:block;">
+                    <div style="position:absolute; bottom:6px; right:8px; background:rgba(0,0,0,0.8); color:#FDE047; font-size:0.7rem; font-weight:800; padding:3px 8px; border-radius:4px; backdrop-filter:blur(4px); border:1px solid rgba(254,224,71,0.3);">
+                        <i class="fas fa-sparkles"></i> Tap to Burst Crackers
+                    </div>
+                </div>
+                <h3 class="visual-title">Official Factory Stall</h3>
+                <p class="visual-desc">High School Ground, Sullurpeta • Direct Wholesale Rates</p>
 
                 <!-- Live Countdown -->
                 <div class="countdown-box">
@@ -1794,6 +1804,9 @@ input, select, textarea { font-family: var(--font-sans); }
         </div>
         <div class="venue-grid">
             <div class="venue-card">
+                <div style="border-radius:12px; overflow:hidden; margin-bottom:1.5rem; border:1px solid #FECACA; box-shadow:0 6px 18px rgba(0,0,0,0.06); background:#000;">
+                    <img src="assets/brand/firestorm-brand-card.jpg" alt="Sivakasi Firestorm Stall Sullurpeta" style="width:100%; height:auto; display:block;">
+                </div>
                 <div class="venue-item">
                     <div class="venue-icon-box"><i class="fas fa-map-marker-alt"></i></div>
                     <div>
@@ -1811,8 +1824,12 @@ input, select, textarea { font-family: var(--font-sans); }
                 <div class="venue-item">
                     <div class="venue-icon-box"><i class="fas fa-phone-alt"></i></div>
                     <div>
-                        <h4>Direct Hotline & WhatsApp</h4>
-                        <p><a href="tel:+919490042905" style="color:var(--gold-2); font-weight:700;">+91 9490042905</a><br><a href="https://wa.me/919490042905" target="_blank" style="color:#25D366; font-weight:600;"><i class="fab fa-whatsapp"></i> Instant WhatsApp Chat</a></p>
+                        <h4>Direct Hotlines & WhatsApp</h4>
+                        <p>
+                            <a href="tel:+919490042905" style="color:var(--fire-red); font-weight:700;">+91 94900 42905</a> &bull;
+                            <a href="tel:+917981659594" style="color:var(--fire-red); font-weight:700;">+91 79816 59594</a><br>
+                            <a href="https://wa.me/919490042905" target="_blank" style="color:#25D366; font-weight:600;"><i class="fab fa-whatsapp"></i> Instant WhatsApp Chat</a>
+                        </p>
                     </div>
                 </div>
                 <div class="venue-item">
@@ -1833,20 +1850,18 @@ input, select, textarea { font-family: var(--font-sans); }
     <footer class="footer-lux">
         <div class="footer-container">
             <div class="footer-col-about">
-                <div class="nav-brand" style="margin-bottom:1rem;">
-                    <div class="brand-seal">🪔</div>
-                    <div class="nav-brand-text">
-                        <h1>SIVAKASI FIRESTORM</h1>
-                        <p>High School Ground • Sullurpeta</p>
-                    </div>
+                <div style="max-width:220px; margin-bottom:1.2rem; border-radius:10px; overflow:hidden; border:1px solid rgba(220,38,38,0.5); background:#000; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+                    <img src="assets/brand/firestorm-brand-card.jpg" alt="Sivakasi Firestorm Crackers" style="width:100%; height:auto; display:block;">
                 </div>
                 <p class="footer-text">
-                    Sivakasi Firestorm Crackers brings you 100% genuine factory-direct fireworks at honest wholesale rates. Celebrate safely with family and loved ones this Diwali!
+                    Sivakasi Firestorm Crackers brings you 100% genuine factory-direct fireworks at honest wholesale rates. Stall at High School Ground, Sullurpeta.
                 </p>
+                <div style="margin-top:0.9rem; font-size:0.85rem; color:#CBD5E1;">
+                    📞 <a href="tel:+919490042905" style="color:#FDE047; font-weight:700;">94900 42905</a> | <a href="tel:+917981659594" style="color:#FDE047; font-weight:700;">79816 59594</a>
+                </div>
                 <div style="margin-top:1.2rem; display:flex; gap:1rem;">
-                    <a href="https://wa.me/919490042905" target="_blank" style="color:#25D366; font-size:1.4rem;"><i class="fab fa-whatsapp"></i></a>
-                    <a href="tel:+919490042905" style="color:var(--gold-2); font-size:1.4rem;"><i class="fas fa-phone-alt"></i></a>
-                    
+                    <a href="https://wa.me/919490042905" target="_blank" style="color:#25D366; font-size:1.4rem;" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="tel:+919490042905" style="color:#FDE047; font-size:1.4rem;" title="Call Us"><i class="fas fa-phone-alt"></i></a>
                 </div>
             </div>
             <div>
@@ -1874,7 +1889,8 @@ input, select, textarea { font-family: var(--font-sans); }
                 <p style="font-size:0.88rem; line-height:1.7; color:var(--text-muted); margin-bottom:0.8rem;">
                     📍 High School Ground, Sullurpeta<br>
                     Tirupati District, Andhra Pradesh - 524121<br>
-                    📞 Phone: <a href="tel:+919490042905" style="color:var(--gold-2);">+91 9490042905</a>
+                    📞 Phone: <a href="tel:+919490042905" style="color:#FDE047; font-weight:700;">+91 94900 42905</a><br>
+                    📞 Alt: <a href="tel:+917981659594" style="color:#FDE047; font-weight:700;">+91 79816 59594</a>
                 </p>
                 <button type="button" class="btn-whatsapp-lux" style="padding:0.6rem 1.2rem; font-size:0.82rem;" onclick="window.open('https://wa.me/919490042905', '_blank')">
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
@@ -1978,18 +1994,18 @@ input, select, textarea { font-family: var(--font-sans); }
                     <!-- Payment via UPI -->
                     <div class="payment-seal-box">
                         <h3>💳 UPI / QR Code Payment</h3>
-                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">Pay via GooglePay, PhonePe, Paytm, or BHIM</p>
-                        <div style="width:160px; height:160px; margin:0 auto; background:white; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:700; border:2px dashed #FCA5A5; padding:1rem; text-align:center; font-size:0.85rem;">
-                            <span>UPI QR CODE<br><small style="color:#666; font-size:0.75rem;">(Scan & Pay)</small></span>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">Scan & Pay via GooglePay, PhonePe, Paytm, or BHIM</p>
+                        <div style="width:190px; height:190px; margin:0 auto 0.8rem; background:#FFFFFF; border-radius:16px; padding:8px; box-shadow:0 8px 25px rgba(0,0,0,0.08); border:2px solid #FEE2E2; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                            <img src="assets/brand/upi-qr-code.jpg" alt="Sivakasi Firestorm Official UPI Payment QR Code" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
                         </div>
-                        <div style="display:flex; align-items:center; justify-content:center; gap:0.6rem; margin-top:0.8rem; flex-wrap:wrap;">
+                        <div style="display:flex; align-items:center; justify-content:center; gap:0.6rem; margin-top:0.6rem; flex-wrap:wrap;">
                             <span style="font-size:0.95rem; font-weight:800; color:var(--fire-red-dark);">UPI ID: 9490042905@ybl</span>
                             <button type="button" onclick="navigator.clipboard.writeText('9490042905@ybl'); showToast('success', 'UPI ID copied to clipboard!');" style="background:#FEE2E2; color:var(--fire-red-dark); border:1px solid #FECACA; padding:3px 10px; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                         </div>
-                        <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.5rem;">
-                            * Manual verification: Once transferred, click "Send Order on WhatsApp". Our counter confirms receipt immediately.
+                        <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.6rem;">
+                            * Scan with any UPI app. Once transferred, click "Send Order on WhatsApp" below. Helplines: <strong>94900 42905</strong> / <strong>79816 59594</strong>.
                         </p>
                     </div>
 
@@ -3249,7 +3265,7 @@ function generatePDF() {
     doc.setFontSize(9.5);
     doc.setTextColor(225, 230, 240);
     doc.setFont('helvetica', 'normal');
-    doc.text('High School Ground, Sullurpeta • Phone / WhatsApp: +91 9490042905', 105, 26, { align: 'center' });
+    doc.text('High School Ground, Sullurpeta • Hotlines: +91 9490042905 | +91 7981659594', 105, 26, { align: 'center' });
 
     doc.setFontSize(12);
     doc.setTextColor(255, 235, 160);
@@ -3352,14 +3368,14 @@ function generatePDF() {
     doc.text('Payment Instructions: UPI / QR Code', 16, finalY + 7);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(50, 50, 50);
-    doc.text('UPI ID: 9490042905@ybl (or 9490042905@upi)  |  WhatsApp Payment Screenshot to: +91 9490042905', 16, finalY + 14);
+    doc.text('UPI ID: 9490042905@ybl  |  WhatsApp Payment Screenshot: 94900 42905 / 79816 59594', 16, finalY + 14);
 
     // Footer
     doc.setFillColor(10, 15, 30);
     doc.rect(0, 276, 210, 21, 'F');
     doc.setTextColor(210, 215, 230);
     doc.setFontSize(8);
-    doc.text('Sivakasi Firestorm Crackers • High School Ground, Sullurpeta • Contact: +91 9490042905', 105, 284, { align: 'center' });
+    doc.text('Sivakasi Firestorm Crackers • High School Ground, Sullurpeta • Hotlines: +91 9490042905 | +91 7981659594', 105, 284, { align: 'center' });
     doc.text('Wishing you and your family a safe, prosperous, and joyful Diwali celebration!', 105, 290, { align: 'center' });
 
     doc.save(`Sivakasi_Firestorm_Quotation_${order.orderId}.pdf`);
