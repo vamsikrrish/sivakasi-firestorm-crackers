@@ -249,10 +249,63 @@ input, select, textarea { font-family: var(--font-sans); }
     background: var(--text-primary); border-radius: 2px;
 }
 
-/* ==================== HERO SECTION (FIRESTORM SHOPPING PORTAL) ==================== */
+/* ==================== STICKY CATEGORY QUICK-NAV BAR ==================== */
+.category-quicknav {
+    position: sticky; top: 64px; z-index: 999;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 0;
+    transition: top 0.3s ease;
+}
+.quicknav-inner {
+    max-width: 1440px; margin: 0 auto;
+    display: flex; align-items: center; gap: 0;
+    padding: 0 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+.quicknav-inner::-webkit-scrollbar { display: none; }
+.quicknav-chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem; font-weight: 700;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    border-bottom: 2.5px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: none; border-top: none; border-left: none; border-right: none;
+    font-family: var(--font-sans);
+}
+.quicknav-chip:hover {
+    color: var(--fire-red);
+    background: var(--bg-fire-subtle);
+}
+.quicknav-chip.active {
+    color: var(--fire-red-dark);
+    border-bottom-color: var(--fire-red);
+    font-weight: 800;
+}
+.quicknav-chip i { font-size: 0.88rem; }
+.quicknav-chip .qn-count {
+    font-size: 0.68rem; font-weight: 800;
+    background: var(--bg-fire-100); color: var(--fire-red);
+    padding: 1px 5px; border-radius: 8px;
+    min-width: 18px; text-align: center;
+}
+.quicknav-chip.active .qn-count {
+    background: var(--fire-red); color: #FFF;
+}
+
+/* ==================== HERO SECTION (COMPACT FIRESTORM) ==================== */
 .hero {
     position: relative; overflow: hidden;
-    padding: 4.5rem 2rem 4rem;
+    padding: 2.2rem 2rem 1.8rem;
     background: 
         radial-gradient(circle at 60% 30%, rgba(239, 68, 68, 0.08) 0%, transparent 55%),
         linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
@@ -260,8 +313,8 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 .hero-wrapper {
     max-width: 1400px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.15fr 0.85fr;
-    gap: 3.5rem; align-items: center;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 2rem; align-items: center;
 }
 .hero-content { position: relative; z-index: 2; }
 
@@ -285,9 +338,9 @@ input, select, textarea { font-family: var(--font-sans); }
 
 .hero-heading {
     font-family: var(--font-heading);
-    font-size: 3.4rem; font-weight: 900;
+    font-size: 2.6rem; font-weight: 900;
     color: var(--text-primary);
-    line-height: 1.15; margin-bottom: 1.2rem;
+    line-height: 1.15; margin-bottom: 0.8rem;
     letter-spacing: -0.5px;
 }
 .fire-text {
@@ -297,13 +350,13 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 
 .hero-description {
-    font-size: 1.08rem; color: var(--text-muted);
-    line-height: 1.75; margin-bottom: 2rem; max-width: 640px;
+    font-size: 0.95rem; color: var(--text-muted);
+    line-height: 1.65; margin-bottom: 1.2rem; max-width: 580px;
 }
 
 /* E-Commerce Trust Badges */
 .hero-trust-bar {
-    display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+    display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.2rem;
 }
 .trust-chip {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -406,37 +459,41 @@ input, select, textarea { font-family: var(--font-sans); }
 .hero-badge-item { display: flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); }
 .hero-badge-item i { color: var(--fire-red); font-size: 0.95rem; }
 
-/* ==================== STATS BANNER ==================== */
+/* ==================== STATS BANNER (COMPACT INLINE) ==================== */
 .stats-banner {
     background: #FFFFFF;
     border-bottom: 1px solid var(--border-subtle);
-    padding: 2rem 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    padding: 0.65rem 1.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 .stats-grid {
     max-width: 1300px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 2rem; text-align: center;
+    display: flex; justify-content: center; gap: 0;
+    flex-wrap: wrap;
 }
-.stat-card { position: relative; }
+.stat-card {
+    position: relative;
+    display: flex; align-items: center; gap: 0.45rem;
+    padding: 0.3rem 1.2rem;
+}
 .stat-card:not(:last-child)::after {
-    content: ''; position: absolute; right: 0; top: 20%; height: 60%;
-    width: 1px; background: var(--border-subtle);
+    content: '·'; position: relative; right: -0.6rem;
+    color: var(--text-light); font-size: 1.2rem; font-weight: 900;
 }
 .stat-number {
     font-family: var(--font-heading);
-    font-size: 2.3rem; font-weight: 900;
+    font-size: 1.05rem; font-weight: 900;
     color: var(--fire-red);
-    line-height: 1.1; margin-bottom: 0.2rem;
+    line-height: 1;
 }
 .stat-label {
-    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px;
-    color: var(--text-muted); text-transform: uppercase;
+    font-size: 0.76rem; font-weight: 700; letter-spacing: 0.3px;
+    color: var(--text-muted);
 }
 
 /* ==================== SECTION LAYOUT & HEADERS ==================== */
-.section { padding: 4.5rem 2rem; max-width: 1440px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 2.8rem; }
+.section { padding: 3rem 2rem; max-width: 1440px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 1.5rem; }
 .section-tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
     font-size: 0.78rem; font-weight: 800; letter-spacing: 1.5px;
@@ -457,28 +514,64 @@ input, select, textarea { font-family: var(--font-sans); }
     max-width: 680px; margin: 0 auto; line-height: 1.6;
 }
 
-/* ==================== CUSTOMER ADVISORY & DISCLAIMERS ==================== */
+/* ==================== CUSTOMER ADVISORY (COMPACT EXPANDABLE) ==================== */
 .browsing-advisory-banner {
     background: #FFFFFF;
     border: 1px solid #FECACA;
     border-left: 4px solid var(--fire-red);
-    border-radius: var(--radius-lg);
-    padding: 1.1rem 1.4rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 15px -2px rgba(220, 38, 38, 0.06);
+    border-radius: var(--radius-md);
+    padding: 0;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px -2px rgba(220, 38, 38, 0.06);
+    overflow: hidden;
 }
 .advisory-header {
     display: flex;
     align-items: center;
     gap: 0.55rem;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: var(--fire-red-dark);
-    margin-bottom: 0.75rem;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+.advisory-header:hover { background: var(--bg-fire-subtle); }
+.advisory-header .advisory-toggle-icon {
+    margin-left: auto;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+.advisory-header .advisory-inline-summary {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.browsing-advisory-banner.expanded .advisory-toggle-icon {
+    transform: rotate(180deg);
+}
+.browsing-advisory-banner.expanded .advisory-inline-summary {
+    display: none;
 }
 .advisory-chips-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 0.75rem;
+    gap: 0.55rem;
+    padding: 0 1rem 0.85rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+}
+.browsing-advisory-banner.expanded .advisory-chips-grid {
+    max-height: 500px;
+    opacity: 1;
+    padding: 0.5rem 1rem 0.85rem;
 }
 .advisory-chip {
     display: flex;
@@ -509,12 +602,11 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 @media (max-width: 640px) {
     .browsing-advisory-banner {
-        padding: 0.85rem 0.85rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
     .advisory-chips-grid {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
     .advisory-chip {
         font-size: 0.76rem;
@@ -522,8 +614,8 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 
 /* ==================== SHOPPING FILTER BAR ==================== */
-#products-section { padding: 2.2rem 2rem 4rem; scroll-margin-top: 85px; }
-#products-section .section-header { margin-bottom: 1.4rem; }
+#products-section { padding: 1.2rem 2rem 4rem; scroll-margin-top: 110px; }
+#products-section .section-header { margin-bottom: 0.8rem; }
 .filter-console {
     background: #FFFFFF;
     border: 1px solid var(--border-subtle);
@@ -1107,7 +1199,7 @@ input, select, textarea { font-family: var(--font-sans); }
 
 /* Responsive Rules */
 @media (max-width: 1024px) {
-    .hero-wrapper { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .hero-wrapper { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
     .hero-description { margin-left: auto; margin-right: auto; }
     .hero-actions { justify-content: center; }
     .hero-trust-bar { justify-content: center; }
@@ -1131,66 +1223,55 @@ input, select, textarea { font-family: var(--font-sans); }
     .cart-nav-btn span:not(.cart-badge) { display: none; }
 
     /* Hero */
-    .hero { padding: 2rem 1rem 2.8rem; overflow: hidden; }
+    .hero { padding: 1.2rem 1rem 1.4rem; overflow: hidden; }
     .hero-pill {
         font-size: 0.72rem;
-        padding: 0.35rem 0.85rem;
+        padding: 0.3rem 0.75rem;
         white-space: normal;
         text-align: center;
         max-width: 100%;
         line-height: 1.4;
-        margin-bottom: 1rem;
+        margin-bottom: 0.7rem;
     }
     .hero-heading {
-        font-size: 2.1rem;
+        font-size: 1.8rem;
         line-height: 1.2;
         word-break: break-word;
+        margin-bottom: 0.5rem;
     }
     .hero-description {
-        font-size: 0.92rem;
-        line-height: 1.6;
-        margin-bottom: 1.4rem;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
     }
     .hero-trust-bar {
-        gap: 0.5rem;
+        gap: 0.4rem;
         justify-content: center;
-        margin-bottom: 1.4rem;
+        margin-bottom: 0.8rem;
     }
     .trust-chip {
-        font-size: 0.76rem;
-        padding: 0.3rem 0.65rem;
+        font-size: 0.72rem;
+        padding: 0.25rem 0.55rem;
     }
     .hero-actions {
-        gap: 0.65rem;
+        gap: 0.5rem;
         justify-content: center;
     }
     .hero-visual-card {
-        padding: 1.4rem 0.85rem;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
+        display: none; /* Hide showcase card on mobile — brand visible in navbar */
     }
-    .hero-diya-art { font-size: 4rem; }
-    .countdown-box {
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-        padding: 0.85rem 0.6rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .countdown-title { text-align: center; }
-    .countdown-grid { justify-content: center; gap: 0.5rem; }
-    .countdown-unit { min-width: 38px; }
-    .countdown-val { font-size: 1.35rem; }
-    .hero-badges-row { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
 
     /* Stats */
-    .stats-banner { padding: 1.5rem 1rem; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-    .stat-card:nth-child(2)::after { display: none; }
-    .stat-number { font-size: 1.85rem; }
-    .stat-label { font-size: 0.72rem; }
+    .stats-banner { padding: 0.5rem 0.75rem; }
+    .stats-grid { gap: 0; flex-wrap: wrap; justify-content: center; }
+    .stat-card { padding: 0.25rem 0.6rem; }
+    .stat-number { font-size: 0.88rem; }
+    .stat-label { font-size: 0.65rem; }
+
+    /* Category Quick Nav */
+    .category-quicknav { top: 52px; }
+    .quicknav-inner { padding: 0 0.5rem; }
+    .quicknav-chip { padding: 0.55rem 0.7rem; font-size: 0.76rem; }
 
     /* Section & Product Catalog */
     .section { padding: 2.5rem 1rem; max-width: 100%; }
@@ -1621,6 +1702,13 @@ input, select, textarea { font-family: var(--font-sans); }
         </div>
     </nav>
 
+    <!-- Sticky Category Quick-Nav Bar -->
+    <div class="category-quicknav" id="category-quicknav">
+        <div class="quicknav-inner" id="quicknav-inner">
+            <!-- Dynamically populated by JS -->
+        </div>
+    </div>
+
     <!-- Mobile Drawer -->
     <div class="modal-overlay" id="mobile-menu" onclick="closeMobileMenu(event)">
         <div class="modal-box-lux" style="max-width: 320px; height: 100vh; position: fixed; right:0; top:0; border-radius:0;" onclick="event.stopPropagation()">
@@ -1677,7 +1765,7 @@ input, select, textarea { font-family: var(--font-sans); }
 
                 <div class="hero-actions">
                     <a href="#products-section" class="btn-fire">
-                        <i class="fas fa-shopping-cart"></i> Shop All Crackers (107 Items)
+                        <i class="fas fa-shopping-cart"></i> Shop All Crackers (108 Items)
                     </a>
                     
                     <button type="button" onclick="window.launchCelebrationVolley(4); showToast('success', '🎆 Bursting Diwali Fireworks!');" class="btn-outline-fire" style="border-color:#FCD34D; color:#B45309;">
@@ -1739,15 +1827,15 @@ input, select, textarea { font-family: var(--font-sans); }
     <div class="stats-banner">
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number">107+</div>
+                <div class="stat-number">108+</div>
                 <div class="stat-label">Fresh 2026 Varieties</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">9</div>
+                <div class="stat-number">10</div>
                 <div class="stat-label">Product Categories</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">₹15</div>
+                <div class="stat-number">₹7</div>
                 <div class="stat-label">Starting Price</div>
             </div>
             <div class="stat-card">
@@ -1760,16 +1848,18 @@ input, select, textarea { font-family: var(--font-sans); }
     <!-- Crackers Catalog Section -->
     <section class="section" id="products-section">
         <div class="section-header">
-            <div class="section-tag"><i class="fas fa-fire"></i> Fresh 2026 Inventory • 107 Varieties</div>
+            <div class="section-tag"><i class="fas fa-fire"></i> Fresh 2026 Inventory • 108 Varieties</div>
             <h2 class="section-title">Our Crackers Catalog</h2>
-            <p class="section-subtitle">Browse all 107 fresh Sivakasi crackers with wholesale discounts. Compare actual MRP vs offer price and add to your cart.</p>
+            <p class="section-subtitle">Browse all 108 fresh Sivakasi crackers with wholesale discounts. Compare actual MRP vs offer price and add to your cart.</p>
         </div>
 
-        <!-- Customer Advisory & Disclaimers Strip -->
-        <div class="browsing-advisory-banner">
-            <div class="advisory-header">
+        <!-- Customer Advisory & Disclaimers Strip (Click to Expand / Collapse) -->
+        <div class="browsing-advisory-banner" id="browsing-advisory">
+            <div class="advisory-header" onclick="toggleAdvisoryBanner()">
                 <i class="fas fa-bullhorn"></i>
-                <span><strong>Customer Advisory &amp; Order Guidelines:</strong></span>
+                <span><strong>Customer Advisory &amp; Order Guidelines</strong></span>
+                <span class="advisory-inline-summary">• Sullurpeta Delivery from Nov 6 | Govt High School Stall Pickup | UTR on WhatsApp</span>
+                <i class="fas fa-chevron-down advisory-toggle-icon"></i>
             </div>
             <div class="advisory-chips-grid">
                 <div class="advisory-chip">
@@ -2199,7 +2289,7 @@ input, select, textarea { font-family: var(--font-sans); }
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
     <script>
 // ==================== PRE-BUNDLED CATALOG (INSTANT 0ms RENDER) ====================
-const DEFAULT_PRODUCTS = [{"id": 1, "name": "7cm Electrical Sparkler", "category": "Sparklers", "price": 22, "unit": "1 Pkt", "description": "Classic 7cm electrical sparkler for safe fun. Perfect for kids and beginners.", "image": "assets/products/prod-1-7cm-electrical-sparkler.jpg", "stock": 70, "badge": "", "originalPrice": 29}, {"id": 2, "name": "7cm Color Sparkler", "category": "Sparklers", "price": 27, "unit": "1 Pkt", "description": "Vibrant 7cm color sparkler that glows in multiple colors. A kids' favorite!", "image": "assets/products/prod-2-7cm-color-sparkler.jpg", "stock": 70, "badge": "", "originalPrice": 35}, {"id": 3, "name": "10cm Electrical Sparkler", "category": "Sparklers", "price": 57, "unit": "1 Pkt", "description": "Medium-length 10cm electrical sparkler with bright white sparks.", "image": "assets/products/prod-3-10cm-electrical-sparkler.jpg", "stock": 50, "badge": "", "originalPrice": 74}, {"id": 4, "name": "10cm Color Sparkler", "category": "Sparklers", "price": 60, "unit": "1 Pkt", "description": "10cm multicolor sparkler with dazzling rainbow sparks.", "image": "assets/products/prod-4-10cm-color-sparkler.jpg", "stock": 50, "badge": "", "originalPrice": 78}, {"id": 5, "name": "15cm Electrical Sparkler", "category": "Sparklers", "price": 93, "unit": "1 Pkt", "description": "Long-lasting 15cm electrical sparkler with brilliant white sparks.", "image": "assets/products/prod-5-15cm-electrical-sparkler.jpg", "stock": 200, "badge": "Popular", "originalPrice": 121}, {"id": 6, "name": "15cm Color Sparkler", "category": "Sparklers", "price": 102, "unit": "1 Pkt", "description": "Colorful 15cm sparkler that produces stunning multicolor sparks.", "image": "assets/products/prod-6-15cm-color-sparkler.jpg", "stock": 200, "badge": "", "originalPrice": 133}, {"id": 7, "name": "15cm Red Sparkler", "category": "Sparklers", "price": 120, "unit": "1 Pkt", "description": "Beautiful 15cm red sparkler emitting brilliant red-tinted sparks.", "image": "assets/products/prod-7-15cm-red-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 156}, {"id": 8, "name": "15cm Green Sparkler", "category": "Sparklers", "price": 112, "unit": "1 Pkt", "description": "Unique 15cm green sparkler with vivid emerald green sparks.", "image": "assets/products/prod-8-15cm-green-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 146}, {"id": 9, "name": "30cm Electrical Sparkler", "category": "Sparklers", "price": 93, "unit": "1 Pkt", "description": "Long 30cm electrical sparkler with extended burn time.", "image": "assets/products/prod-9-30cm-electrical-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 121}, {"id": 10, "name": "30cm Green Sparkler", "category": "Sparklers", "price": 112, "unit": "1 Pkt", "description": "30cm green sparkler with dazzling emerald glow and long burn.", "image": "assets/products/prod-10-30cm-green-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 146}, {"id": 11, "name": "30cm Red Sparkler", "category": "Sparklers", "price": 120, "unit": "1 Pkt", "description": "30cm red sparkler with brilliant crimson sparks effect.", "image": "assets/products/prod-11-30cm-red-sparkler.jpg", "stock": 200, "badge": "", "originalPrice": 156}, {"id": 12, "name": "50cm Sparkler (Electric)", "category": "Sparklers", "price": 300, "unit": "1 Pkt", "description": "Premium 50cm electrical sparkler with intense bright sparks and long burn.", "image": "assets/products/prod-12-50cm-sparkler-electric.jpg", "stock": 25, "badge": "Premium", "originalPrice": 390}, {"id": 13, "name": "50cm Sparkler (Color)", "category": "Sparklers", "price": 338, "unit": "1 Pkt", "description": "Premium 50cm multicolor sparkler with vibrant rainbow effects.", "image": "assets/products/prod-13-50cm-sparkler-color.jpg", "stock": 25, "badge": "Premium", "originalPrice": 439}, {"id": 14, "name": "75cm Electrical Sparkler", "category": "Sparklers", "price": 712, "unit": "1 Pkt", "description": "Extra-long 75cm sparkler for grand celebrations. Maximum sparkle time!", "image": "", "stock": 10, "badge": "Premium", "originalPrice": 926}, {"id": 15, "name": "Chilaka Tapas (Kuruvi)", "category": "Sound Crackers", "price": 27, "unit": "1 Pkt (10 Ply)", "description": "Classic Kuruvi / Chilaka Tapas with crisp popping sound. Traditional favorite!", "image": "assets/products/prod-15-chilaka-tapas-kuruvi.jpg", "stock": 150, "badge": "", "originalPrice": 35}, {"id": 16, "name": "3.5\" Lakshmi (8 Ply)", "category": "Sound Crackers", "price": 33, "unit": "1 Pc", "description": "Compact 3.5 inch Lakshmi cracker with 8 ply for a solid loud burst.", "image": "assets/products/prod-16-3-5-lakshmi-8-ply.jpg", "stock": 100, "badge": "", "originalPrice": 43}, {"id": 17, "name": "4\" Lakshmi (7 Ply)", "category": "Sound Crackers", "price": 48, "unit": "1 Pc", "description": "Standard 4 inch Lakshmi cracker with a satisfying loud bang.", "image": "assets/products/prod-17-4-lakshmi-7-ply.jpg", "stock": 200, "badge": "Popular", "originalPrice": 62}, {"id": 18, "name": "4\" Gold Lakshmi (10 Ply)", "category": "Sound Crackers", "price": 93, "unit": "1 Pc", "description": "Premium 4 inch gold Lakshmi with 10 ply for extra powerful blast.", "image": "assets/products/prod-18-4-gold-lakshmi-10-ply.jpg", "stock": 200, "badge": "", "originalPrice": 121}, {"id": 19, "name": "4\" Roster / Ganesh Cracker", "category": "Sound Crackers", "price": 158, "unit": "1 Pc", "description": "Festive 4 inch Ganesh-shaped cracker with thunderous sound.", "image": "assets/products/prod-19-4-roster-ganesh-cracker.jpg", "stock": 50, "badge": "New", "originalPrice": 205}, {"id": 20, "name": "5\" Elephant Cracker", "category": "Sound Crackers", "price": 105, "unit": "1 Pc", "description": "5 inch elephant-shaped cracker with deep booming sound.", "image": "assets/products/prod-20-5-elephant-cracker.jpg", "stock": 50, "badge": "", "originalPrice": 136}, {"id": 21, "name": "5\" HULK Cracker (20 Ply)", "category": "Sound Crackers", "price": 232, "unit": "1 Pc", "description": "Massive 5 inch HULK with 20 ply. Earth-shattering power!", "image": "", "stock": 50, "badge": "Premium", "originalPrice": 302}, {"id": 22, "name": "6\" Lakshmi / Superman", "category": "Sound Crackers", "price": 128, "unit": "1 Pc", "description": "Large 6 inch Lakshmi / Superman cracker for maximum impact.", "image": "", "stock": 50, "badge": "", "originalPrice": 166}, {"id": 23, "name": "6\" Lakshmi (12 Ply)", "category": "Sound Crackers", "price": 128, "unit": "1 Pc", "description": "Heavy-duty 6 inch Lakshmi with 12 ply. Extremely loud!", "image": "assets/products/prod-23-6-lakshmi-12-ply.jpg", "stock": 100, "badge": "", "originalPrice": 166}, {"id": 24, "name": "5\" Gold Lakshmi (10 Ply)", "category": "Sound Crackers", "price": 150, "unit": "1 Pc", "description": "Premium 5 inch gold Lakshmi with 10 ply for extra bass.", "image": "assets/products/prod-24-5-gold-lakshmi-10-ply.jpg", "stock": 30, "badge": "", "originalPrice": 195}, {"id": 25, "name": "2 Sound Bomb", "category": "Sound Crackers", "price": 93, "unit": "1 Pc", "description": "Double-blast bomb with two sequential loud explosions.", "image": "assets/products/prod-25-2-sound-bomb.jpg", "stock": 100, "badge": "", "originalPrice": 121}, {"id": 26, "name": "3 Sound Bomb", "category": "Sound Crackers", "price": 132, "unit": "1 Pc", "description": "Triple-blast bomb with three powerful sequential explosions.", "image": "", "stock": 50, "badge": "", "originalPrice": 172}, {"id": 27, "name": "28 Wala / 28 Chorsa", "category": "Sound Crackers", "price": 33, "unit": "1 Pkt", "description": "Pack of 28 crackers strung together for continuous bursting.", "image": "assets/products/prod-27-28-wala-28-chorsa.jpg", "stock": 300, "badge": "Bestseller", "originalPrice": 43}, {"id": 28, "name": "24 Deluxe", "category": "Sound Crackers", "price": 120, "unit": "1 Pkt", "description": "Premium 24-piece deluxe chain cracker with louder bursts.", "image": "assets/products/prod-28-24-deluxe.jpg", "stock": 150, "badge": "", "originalPrice": 156}, {"id": 29, "name": "50 Deluxe", "category": "Sound Crackers", "price": 225, "unit": "1 Pkt", "description": "Premium 50-piece deluxe chain cracker. Extended celebration!", "image": "assets/products/prod-29-50-deluxe.jpg", "stock": 30, "badge": "", "originalPrice": 292}, {"id": 30, "name": "100 Deluxe", "category": "Sound Crackers", "price": 450, "unit": "1 Pkt", "description": "100-piece deluxe chain cracker for non-stop crackling celebration.", "image": "assets/products/prod-30-100-deluxe.jpg", "stock": 5, "badge": "", "originalPrice": 585}, {"id": 31, "name": "200 Wala", "category": "Sound Crackers", "price": 225, "unit": "1 Pkt", "description": "200 cracker garland. Long-lasting chain of booming bursts!", "image": "assets/products/prod-31-200-wala.jpg", "stock": 30, "badge": "", "originalPrice": 292}, {"id": 32, "name": "100 Wala", "category": "Sound Crackers", "price": 112, "unit": "1 Pkt", "description": "100 cracker garland for a festive celebration.", "image": "assets/products/prod-32-100-wala.jpg", "stock": 30, "badge": "", "originalPrice": 146}, {"id": 33, "name": "8 Wala Chorsa", "category": "Sound Crackers", "price": 1125, "unit": "1 Box", "description": "Premium large 8 Wala Chorsa box. Extra loud and powerful!", "image": "", "stock": 5, "badge": "Premium", "originalPrice": 1462}, {"id": 34, "name": "50 Deluxe Crackers", "category": "Sound Crackers", "price": 338, "unit": "1 Pkt", "description": "50-piece premium deluxe crackers for extended bursting.", "image": "assets/products/prod-34-50-deluxe-crackers.jpg", "stock": 20, "badge": "", "originalPrice": 439}, {"id": 35, "name": "Bijili (Red Bijili 50 pcs)", "category": "Sound Crackers", "price": 33, "unit": "1 Pkt (50 pcs)", "description": "Classic red Bijili pack of 50. Rapid-fire popping fun!", "image": "assets/products/prod-35-bijili-red-bijili-50-pcs.jpg", "stock": 150, "badge": "", "originalPrice": 43}, {"id": 36, "name": "Bijili (Red Bijili 100 pcs)", "category": "Sound Crackers", "price": 68, "unit": "1 Pkt (100 pcs)", "description": "Red Bijili mega pack of 100 for non-stop crackling celebration.", "image": "assets/products/prod-36-bijili-red-bijili-100-pcs.jpg", "stock": 150, "badge": "", "originalPrice": 88}, {"id": 37, "name": "28 Giant", "category": "Sound Crackers", "price": 60, "unit": "1 Pkt", "description": "Giant 28 cracker chain with extra powerful bursts.", "image": "assets/products/prod-37-28-giant.jpg", "stock": 150, "badge": "", "originalPrice": 78}, {"id": 38, "name": "Flower Pot Small", "category": "Ground Chakkars & Pots", "price": 112, "unit": "1 Pc", "description": "Small flower pot that sprays colorful sparks upward like a fountain.", "image": "assets/products/prod-38-flower-pot-small.jpg", "stock": 40, "badge": "", "originalPrice": 146}, {"id": 39, "name": "Flower Pot Special", "category": "Ground Chakkars & Pots", "price": 207, "unit": "1 Pc", "description": "Special flower pot with multicolor fountain and crackling effect.", "image": "assets/products/prod-39-flower-pot-special.jpg", "stock": 75, "badge": "Popular", "originalPrice": 269}, {"id": 40, "name": "Flower Pot Ashoka (5 Pcs)", "category": "Ground Chakkars & Pots", "price": 300, "unit": "1 Box (5 Pcs)", "description": "Premium 5-pack Ashoka flower pots with multi-stage colour effects.", "image": "assets/products/prod-40-flower-pot-ashoka-5-pcs.jpg", "stock": 30, "badge": "New", "originalPrice": 390}, {"id": 41, "name": "Colour Koti (Standard)", "category": "Ground Chakkars & Pots", "price": 562, "unit": "1 Box", "description": "Standard Colour Koti that produces a beautiful multicolour fountain display.", "image": "assets/products/prod-41-colour-koti-standard.jpg", "stock": 100, "badge": "", "originalPrice": 731}, {"id": 42, "name": "Colour Koti (Deluxe)", "category": "Ground Chakkars & Pots", "price": 938, "unit": "1 Box", "description": "Deluxe Colour Koti with enhanced colour effects and longer duration.", "image": "assets/products/prod-42-colour-koti-deluxe.jpg", "stock": 80, "badge": "Premium", "originalPrice": 1219}, {"id": 43, "name": "Ground Chakkar Big (10 pcs)", "category": "Ground Chakkars & Pots", "price": 93, "unit": "1 Pkt (10 pcs)", "description": "Pack of 10 ground chakkars that spin on the ground with colorful sparks.", "image": "assets/products/prod-43-ground-chakkar-big-10-pcs.jpg", "stock": 50, "badge": "", "originalPrice": 121}, {"id": 44, "name": "Ground Chakkar Special", "category": "Ground Chakkars & Pots", "price": 168, "unit": "1 Pc", "description": "Special large ground chakkar with colour-changing spin effect.", "image": "assets/products/prod-44-ground-chakkar-special.jpg", "stock": 50, "badge": "", "originalPrice": 218}, {"id": 45, "name": "Musical Chakkar", "category": "Ground Chakkars & Pots", "price": 488, "unit": "1 Pc", "description": "Premium musical ground chakkar with whistle and spin effect.", "image": "", "stock": 10, "badge": "Premium", "originalPrice": 634}, {"id": 46, "name": "Spinner Deluxe", "category": "Ground Chakkars & Pots", "price": 675, "unit": "1 Pc", "description": "Deluxe spinner with extended colour effects and high spin speed.", "image": "assets/products/prod-46-spinner-deluxe.jpg", "stock": 50, "badge": "", "originalPrice": 878}, {"id": 47, "name": "Spinner Special", "category": "Ground Chakkars & Pots", "price": 488, "unit": "1 Pc", "description": "Special spinner with multicolour effects and loud whistle sound.", "image": "assets/products/prod-47-spinner-special.jpg", "stock": 30, "badge": "", "originalPrice": 634}, {"id": 48, "name": "Ground Chakkar Deluxe", "category": "Ground Chakkars & Pots", "price": 338, "unit": "1 Pc", "description": "Large deluxe ground chakkar with multiple colour stages.", "image": "assets/products/prod-48-ground-chakkar-deluxe.jpg", "stock": 100, "badge": "", "originalPrice": 439}, {"id": 49, "name": "Hydro Bomb (BS)", "category": "Bombs & Rockets", "price": 188, "unit": "1 Pc", "description": "Standard Hydro Bomb with powerful water-effect explosion.", "image": "assets/products/prod-49-hydro-bomb-bs.jpg", "stock": 50, "badge": "", "originalPrice": 244}, {"id": 50, "name": "Hydro Bomb (GS)", "category": "Bombs & Rockets", "price": 207, "unit": "1 Pc", "description": "Premium Hydro Bomb with enhanced sound and smoke effect.", "image": "assets/products/prod-50-hydro-bomb-gs.jpg", "stock": 100, "badge": "", "originalPrice": 269}, {"id": 51, "name": "Classic Green Bomb", "category": "Bombs & Rockets", "price": 338, "unit": "1 Pc", "description": "Classic green bomb with thunderous explosion and green smoke.", "image": "assets/products/prod-51-classic-green-bomb.jpg", "stock": 140, "badge": "Popular", "originalPrice": 439}, {"id": 52, "name": "Jumbo Bomb", "category": "Bombs & Rockets", "price": 675, "unit": "1 Pc", "description": "Jumbo-sized bomb with massive explosion. Handle with care!", "image": "assets/products/prod-52-jumbo-bomb.jpg", "stock": 75, "badge": "Premium", "originalPrice": 878}, {"id": 53, "name": "Jurassic Bomb", "category": "Bombs & Rockets", "price": 562, "unit": "1 Pc", "description": "Uniquely shaped Jurassic bomb with earth-shaking impact.", "image": "assets/products/prod-53-jurassic-bomb.jpg", "stock": 20, "badge": "New", "originalPrice": 731}, {"id": 54, "name": "Whistle Rocket", "category": "Bombs & Rockets", "price": 450, "unit": "1 Pc", "description": "Rocket with whistling sound that soars into the sky.", "image": "assets/products/prod-54-whistle-rocket.jpg", "stock": 20, "badge": "", "originalPrice": 585}, {"id": 55, "name": "Purukose Bomb", "category": "Bombs & Rockets", "price": 57, "unit": "1 Pc", "description": "Small yet powerful Purukose bomb for quick celebration.", "image": "", "stock": 500, "badge": "", "originalPrice": 74}, {"id": 56, "name": "Nellore Guns", "category": "Bombs & Rockets", "price": 15, "unit": "1 Pc", "description": "Small toy gun-style cracker. Fun and safe for celebrations.", "image": "", "stock": 500, "badge": "", "originalPrice": 20}, {"id": 57, "name": "3 Sound Rocket", "category": "Bombs & Rockets", "price": 338, "unit": "1 Pc", "description": "Rocket that produces 3 sequential loud blasts in the sky.", "image": "assets/products/prod-57-3-sound-rocket.jpg", "stock": 20, "badge": "", "originalPrice": 439}, {"id": 58, "name": "Rocket Bomb Small / Baby Rocket", "category": "Bombs & Rockets", "price": 112, "unit": "1 Pc", "description": "Small rocket bomb that launches with a bang. Entry-level rocket fun!", "image": "assets/products/prod-58-rocket-bomb-small-baby-rocket.jpg", "stock": 20, "badge": "", "originalPrice": 146}, {"id": 59, "name": "Rocket Bomb Big", "category": "Bombs & Rockets", "price": 150, "unit": "1 Pc", "description": "Large rocket bomb that launches high with a powerful explosion.", "image": "assets/products/prod-59-rocket-bomb-big.jpg", "stock": 50, "badge": "", "originalPrice": 195}, {"id": 60, "name": "1/4 kg Paper Bomb", "category": "Bombs & Rockets", "price": 112, "unit": "1 Pc", "description": "Quarter kilo paper bomb with thunderous ground-shaking blast.", "image": "assets/products/prod-60-1-4-kg-paper-bomb.jpg", "stock": 10, "badge": "", "originalPrice": 146}, {"id": 61, "name": "1 kg Paper Bomb", "category": "Bombs & Rockets", "price": 450, "unit": "1 Pc", "description": "Massive 1 kg paper bomb for the ultimate ground blast experience.", "image": "assets/products/prod-61-1-kg-paper-bomb.jpg", "stock": 5, "badge": "Premium", "originalPrice": 585}, {"id": 62, "name": "Lunik / Lunik Express", "category": "Bombs & Rockets", "price": 300, "unit": "1 Pc", "description": "Lunik rocket that zooms upward with bright trail and aerial blast.", "image": "", "stock": 30, "badge": "", "originalPrice": 390}, {"id": 63, "name": "1K Wala Garland", "category": "Garlands / Walas", "price": 488, "unit": "1 Pkt", "description": "1000-cracker garland for grand celebrations. Non-stop 2+ minutes of bursting!", "image": "assets/products/prod-63-1k-wala-garland.jpg", "stock": 72, "badge": "Popular", "originalPrice": 634}, {"id": 64, "name": "2K Wala Garland", "category": "Garlands / Walas", "price": 1050, "unit": "1 Pkt", "description": "2000-cracker garland. Extended celebration with 5+ minutes of crackling!", "image": "assets/products/prod-64-2k-wala-garland.jpg", "stock": 20, "badge": "", "originalPrice": 1365}, {"id": 65, "name": "5K Wala Garland", "category": "Garlands / Walas", "price": 2250, "unit": "1 Pkt", "description": "Massive 5000-cracker garland. The ultimate grand celebration item!", "image": "assets/products/prod-65-5k-wala-garland.jpg", "stock": 8, "badge": "Premium", "originalPrice": 2925}, {"id": 66, "name": "7 Shots", "category": "Aerial Shots & Fancy", "price": 450, "unit": "1 Box", "description": "7-shot aerial display with colorful sky bursts.", "image": "", "stock": 10, "badge": "", "originalPrice": 585}, {"id": 67, "name": "12 Shot Blaster", "category": "Aerial Shots & Fancy", "price": 412, "unit": "1 Box", "description": "12-shot multi-colour aerial blaster for stunning sky display.", "image": "assets/products/prod-67-12-shot-blaster.jpg", "stock": 20, "badge": "", "originalPrice": 536}, {"id": 68, "name": "12 Shot Blaster (GS)", "category": "Aerial Shots & Fancy", "price": 488, "unit": "1 Box", "description": "Premium 12-shot blaster with enhanced colour effects and louder bursts.", "image": "assets/products/prod-68-12-shot-blaster-gs.jpg", "stock": 20, "badge": "", "originalPrice": 634}, {"id": 69, "name": "30 Shot Multi Colour (GS)", "category": "Aerial Shots & Fancy", "price": 1500, "unit": "1 Box", "description": "Premium 30-shot multicolour aerial show. Spectacular sky display!", "image": "assets/products/prod-69-30-shot-multi-colour-gs.jpg", "stock": 10, "badge": "Premium", "originalPrice": 1950}, {"id": 70, "name": "30 Shot Multi Colour (BS)", "category": "Aerial Shots & Fancy", "price": 1312, "unit": "1 Box", "description": "30-shot multicolour aerial display with vivid sky patterns.", "image": "assets/products/prod-70-30-shot-multi-colour-bs.jpg", "stock": 10, "badge": "", "originalPrice": 1706}, {"id": 71, "name": "60 Shot Multi Colour (GS)", "category": "Aerial Shots & Fancy", "price": 3000, "unit": "1 Box", "description": "Premium 60-shot grand aerial display. A mini firework show!", "image": "assets/products/prod-71-60-shot-multi-colour-gs.jpg", "stock": 5, "badge": "Premium", "originalPrice": 3900}, {"id": 72, "name": "60 Shot Multi Colour (BS)", "category": "Aerial Shots & Fancy", "price": 2625, "unit": "1 Box", "description": "60-shot multicolour aerial display for a grand celebration.", "image": "assets/products/prod-72-60-shot-multi-colour-bs.jpg", "stock": 5, "badge": "", "originalPrice": 3412}, {"id": 73, "name": "120 Shot Multi Colour", "category": "Aerial Shots & Fancy", "price": 4125, "unit": "1 Box", "description": "Grand 120-shot aerial display. The ultimate firework show experience!", "image": "assets/products/prod-73-120-shot-multi-colour.jpg", "stock": 6, "badge": "Premium", "originalPrice": 5362}, {"id": 74, "name": "Butterfly (Colour Changing)", "category": "Fancy Items", "price": 412, "unit": "1 Pc", "description": "Beautiful colour-changing butterfly that spins and flies upward.", "image": "assets/products/prod-74-butterfly-colour-changing.jpg", "stock": 20, "badge": "", "originalPrice": 536}, {"id": 75, "name": "Drone (10 Pcs)", "category": "Fancy Items", "price": 375, "unit": "1 Pkt (10 Pcs)", "description": "Pack of 10 drone-style spinners that whirl into the sky with sparks.", "image": "assets/products/prod-75-drone-10-pcs.jpg", "stock": 10, "badge": "New", "originalPrice": 488}, {"id": 76, "name": "Helicopter (10 Pcs)", "category": "Fancy Items", "price": 262, "unit": "1 Pkt (10 Pcs)", "description": "Pack of 10 helicopter spinners that fly up with colorful trail.", "image": "assets/products/prod-76-helicopter-10-pcs.jpg", "stock": 10, "badge": "", "originalPrice": 341}, {"id": 77, "name": "Photo Flash", "category": "Fancy Items", "price": 225, "unit": "1 Pc", "description": "Bright photo flash cracker that illuminates the night sky.", "image": "assets/products/prod-77-photo-flash.jpg", "stock": 10, "badge": "", "originalPrice": 292}, {"id": 78, "name": "Disco Wheel", "category": "Fancy Items", "price": 150, "unit": "1 Pc", "description": "Spinning disco wheel with mesmerizing multi-colour light effects.", "image": "", "stock": 10, "badge": "", "originalPrice": 195}, {"id": 79, "name": "Magic Boom", "category": "Fancy Items", "price": 338, "unit": "1 Pc", "description": "Magical surprise cracker with multi-stage visual and sound effects.", "image": "", "stock": 5, "badge": "New", "originalPrice": 439}, {"id": 80, "name": "Tri Color Fountain", "category": "Fancy Items", "price": 1032, "unit": "1 Pc", "description": "Grand tri-colour fountain with Indian flag colors. Perfect for patriotic celebrations!", "image": "assets/products/prod-80-tri-color-fountain.jpg", "stock": 5, "badge": "Premium", "originalPrice": 1342}, {"id": 81, "name": "5 Color Fountain", "category": "Fancy Items", "price": 562, "unit": "1 Pc", "description": "Stunning 5-colour fountain with sequential colour-changing effects.", "image": "assets/products/prod-81-5-color-fountain.jpg", "stock": 5, "badge": "", "originalPrice": 731}, {"id": 82, "name": "Peacock Small / Colour", "category": "Fancy Items", "price": 488, "unit": "1 Pc", "description": "Peacock-shaped fancy item that fans out with beautiful sparks.", "image": "assets/products/prod-82-peacock-small-colour.jpg", "stock": 10, "badge": "", "originalPrice": 634}, {"id": 83, "name": "Peacock Big / Dragon Peacock", "category": "Fancy Items", "price": 1312, "unit": "1 Pc", "description": "Large dragon peacock with magnificent multi-stage display effect.", "image": "assets/products/prod-83-peacock-big-dragon-peacock.jpg", "stock": 5, "badge": "Premium", "originalPrice": 1706}, {"id": 84, "name": "Kit Kat / Chitput", "category": "Fancy Items", "price": 75, "unit": "1 Pc", "description": "Fun Kit Kat / Chitput cracker with small crackle and colour.", "image": "", "stock": 100, "badge": "", "originalPrice": 98}, {"id": 85, "name": "Twinkling Star 1.5\"", "category": "Fancy Items", "price": 68, "unit": "1 Pc", "description": "Small twinkling star that glows with beautiful sparkle effect.", "image": "assets/products/prod-85-twinkling-star-1-5.jpg", "stock": 50, "badge": "", "originalPrice": 88}, {"id": 86, "name": "4\" Twinkling Star", "category": "Fancy Items", "price": 225, "unit": "1 Pc", "description": "Large 4-inch twinkling star with extended bright sparkle.", "image": "assets/products/prod-86-4-twinkling-star.jpg", "stock": 20, "badge": "", "originalPrice": 292}, {"id": 87, "name": "Anaconda", "category": "Fancy Items", "price": 168, "unit": "1 Pc", "description": "Ground snake firework that slithers along the ground with sparks.", "image": "assets/products/prod-87-anaconda.jpg", "stock": 10, "badge": "", "originalPrice": 218}, {"id": 88, "name": "Snake Eggs", "category": "Fancy Items", "price": 675, "unit": "1 Unit", "description": "Fun snake egg tablets that expand into ash snakes when lit.", "image": "assets/products/prod-88-snake-eggs.jpg", "stock": 2, "badge": "", "originalPrice": 878}, {"id": 89, "name": "Gadha (Mace)", "category": "Fancy Items", "price": 938, "unit": "1 Pc", "description": "Large mace-shaped novelty firework with multi-stage display.", "image": "", "stock": 2, "badge": "Premium", "originalPrice": 1219}, {"id": 90, "name": "Sword", "category": "Fancy Items", "price": 638, "unit": "1 Pc", "description": "Sword-shaped novelty firework with sparkling blade effect.", "image": "", "stock": 2, "badge": "Premium", "originalPrice": 829}, {"id": 91, "name": "Gas Cylinder", "category": "Fancy Items", "price": 638, "unit": "1 Pc", "description": "Novelty gas cylinder shaped firework with multi-stage effects.", "image": "", "stock": 5, "badge": "", "originalPrice": 829}, {"id": 92, "name": "Little Star (Small Fountain)", "category": "Fancy Items", "price": 120, "unit": "1 Pc", "description": "Small fountain star with sparkling jets of colour.", "image": "assets/products/prod-92-little-star-small-fountain.jpg", "stock": 20, "badge": "", "originalPrice": 156}, {"id": 93, "name": "Bada Star (Big Fountain)", "category": "Fancy Items", "price": 468, "unit": "1 Pc", "description": "Large fountain star with extended multi-colour display.", "image": "assets/products/prod-93-bada-star-big-fountain.jpg", "stock": 5, "badge": "", "originalPrice": 608}, {"id": 94, "name": "Electric Stones", "category": "Fancy Items", "price": 38, "unit": "1 Pkt", "description": "Fun electric stones that spark on impact. Safe for all ages!", "image": "", "stock": 50, "badge": "", "originalPrice": 49}, {"id": 95, "name": "18\" Pencil", "category": "Fancy Items", "price": 262, "unit": "1 Pc", "description": "Large 18-inch pencil sparkler with beautiful fountain effect.", "image": "assets/products/prod-95-18-pencil.jpg", "stock": 50, "badge": "", "originalPrice": 341}, {"id": 96, "name": "15\" Pencil", "category": "Fancy Items", "price": 225, "unit": "1 Pc", "description": "15-inch pencil sparkler with colourful fountain display.", "image": "assets/products/prod-96-15-pencil.jpg", "stock": 10, "badge": "", "originalPrice": 292}, {"id": 97, "name": "Golden Star Pencil (3 Pcs)", "category": "Fancy Items", "price": 450, "unit": "1 Box (3 Pcs)", "description": "Premium golden star pencil set with golden shower effect.", "image": "assets/products/prod-97-golden-star-pencil-3-pcs.jpg", "stock": 30, "badge": "", "originalPrice": 585}, {"id": 98, "name": "21 Item Family Box", "category": "Family Gift Boxes", "price": 938, "unit": "1 Box", "description": "Starter family gift box with 21 assorted crackers. Perfect for small families!", "image": "assets/products/prod-98-21-item-family-box.jpg", "stock": 20, "badge": "", "originalPrice": 1219}, {"id": 99, "name": "30 Item Family Box", "category": "Family Gift Boxes", "price": 1500, "unit": "1 Box", "description": "Medium family gift box with 30 assorted crackers for complete celebration.", "image": "assets/products/prod-99-30-item-family-box.jpg", "stock": 50, "badge": "Popular", "originalPrice": 1950}, {"id": 100, "name": "50 Item Family Box (GS)", "category": "Family Gift Boxes", "price": 3375, "unit": "1 Box", "description": "Premium 50-item gift box with top-grade crackers. Ideal for gifting!", "image": "assets/products/prod-100-50-item-family-box-gs.jpg", "stock": 5, "badge": "Premium", "originalPrice": 4388}, {"id": 101, "name": "50 Item Family Box (BS)", "category": "Family Gift Boxes", "price": 2625, "unit": "1 Box", "description": "Value 50-item family box with great assortment of crackers.", "image": "assets/products/prod-101-50-item-family-box-bs.jpg", "stock": 22, "badge": "Bestseller", "originalPrice": 3412}, {"id": 102, "name": "60 Item Family Box (GS)", "category": "Family Gift Boxes", "price": 3750, "unit": "1 Box", "description": "Grand 60-item premium family box for a complete Diwali celebration.", "image": "assets/products/prod-102-60-item-family-box-gs.jpg", "stock": 3, "badge": "Premium", "originalPrice": 4875}, {"id": 103, "name": "70 Item Family Box", "category": "Family Gift Boxes", "price": 3750, "unit": "1 Box", "description": "The ultimate 70-item family box. Everything you need for a grand Diwali!", "image": "assets/products/prod-103-70-item-family-box.jpg", "stock": 2, "badge": "Premium", "originalPrice": 4875}, {"id": 104, "name": "Wonder Throw", "category": "Fun Items", "price": 188, "unit": "1 Pkt", "description": "Fun throw crackers that pop on impact. Safe and entertaining!", "image": "assets/products/prod-104-wonder-throw.jpg", "stock": 80, "badge": "", "originalPrice": 244}, {"id": 105, "name": "Beedi Pataaku (Corsair)", "category": "Fun Items", "price": 262, "unit": "1 Pkt", "description": "Classic beedi-style crackers with sharp cracking sound.", "image": "", "stock": 48, "badge": "", "originalPrice": 341}, {"id": 106, "name": "Pop Pop", "category": "Fun Items", "price": 938, "unit": "1 Box", "description": "Large box of Pop Pop crackers - just throw and they pop! Kids love it!", "image": "", "stock": 48, "badge": "", "originalPrice": 1219}, {"id": 107, "name": "Color Matches (Full Box)", "category": "Fun Items", "price": 11250, "unit": "1 Full Box", "description": "Complete box of colour matches for safe and fun sparkling celebrations.", "image": "", "stock": 1, "badge": "", "originalPrice": 14625}];
+const DEFAULT_PRODUCTS = [{"id": 1, "name": "7cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 30, "originalPrice": 40, "unit": "1 Pkt (10 Pcs)", "description": "Classic 7cm electrical sparklers with dazzling white sparks. Safe & fun for children and family celebrations.", "image": "assets/products/prod-1-7cm-electrical-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 2, "name": "7cm Color Sparkler", "category": "Sparklers (Kakarothulu)", "price": 30, "originalPrice": 40, "unit": "1 Pkt (10 Pcs)", "description": "Vibrant 7cm color sparklers radiating vivid multi-hued sparks. Perfect starter sparkler for kids.", "image": "assets/products/prod-2-7cm-color-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 3, "name": "10cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 53, "originalPrice": 70, "unit": "1 Pkt (10 Pcs)", "description": "Popular 10cm electrical sparklers offering bright silver-white crackling sparks with steady burn.", "image": "assets/products/prod-3-10cm-electrical-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 4, "name": "10cm Color Sparkler", "category": "Sparklers (Kakarothulu)", "price": 53, "originalPrice": 70, "unit": "1 Pkt (10 Pcs)", "description": "Bright 10cm multi-color sparklers creating sparkling rainbow rays for festive evenings.", "image": "assets/products/prod-4-10cm-color-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 5, "name": "15cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 90, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "15cm long electrical sparklers with extended burning duration and crisp radiant sparks.", "image": "assets/products/prod-5-15cm-electrical-sparkler.jpg", "stock": 50, "badge": "Popular"}, {"id": 6, "name": "15cm Color Sparkler", "category": "Sparklers (Kakarothulu)", "price": 90, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "15cm brilliant color sparklers showering vibrant festive sparkles across the night sky.", "image": "assets/products/prod-6-15cm-color-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 7, "name": "15cm Red Sparkler", "category": "Sparklers (Kakarothulu)", "price": 90, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "Special 15cm crimson red sparklers with intense ruby-red glow and crackling glitter.", "image": "assets/products/prod-7-15cm-red-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 8, "name": "15cm Green Sparkler", "category": "Sparklers (Kakarothulu)", "price": 90, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "Rich 15cm emerald green sparklers illuminating celebrations with glowing green lights.", "image": "assets/products/prod-8-15cm-green-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 9, "name": "30cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 105, "originalPrice": 140, "unit": "1 Pkt (5 Pcs)", "description": "Mega 30cm electrical sparklers with massive long-lasting silver spark showers. Great crowd pleaser!", "image": "assets/products/prod-9-30cm-electrical-sparkler.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 10, "name": "30cm Green Sparkler", "category": "Sparklers (Kakarothulu)", "price": 105, "originalPrice": 140, "unit": "1 Pkt (5 Pcs)", "description": "30cm deep green sparklers offering an extended duration of intense vibrant emerald sparks.", "image": "assets/products/prod-10-30cm-green-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 11, "name": "30cm Red Sparkler", "category": "Sparklers (Kakarothulu)", "price": 105, "originalPrice": 140, "unit": "1 Pkt (5 Pcs)", "description": "30cm fiery red sparklers creating a majestic crimson glow with sustained burn time.", "image": "assets/products/prod-11-30cm-red-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 12, "name": "50cm Sparkler (Electric)", "category": "Sparklers (Kakarothulu)", "price": 210, "originalPrice": 280, "unit": "1 Pkt (5 Pcs)", "description": "Super-long 50cm electrical sparklers. Massive burning time with spectacular golden-silver showers.", "image": "assets/products/prod-12-50cm-sparkler-electric.jpg", "stock": 50, "badge": "Special"}, {"id": 13, "name": "50cm Sparkler (Color)", "category": "Sparklers (Kakarothulu)", "price": 210, "originalPrice": 280, "unit": "1 Pkt (5 Pcs)", "description": "Giant 50cm multicolor sparklers with changing colored sparks. A grand visual feast for festivals.", "image": "assets/products/prod-13-50cm-sparkler-color.jpg", "stock": 50, "badge": "Special"}, {"id": 14, "name": "75cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 525, "originalPrice": 700, "unit": "1 Pkt (5 Pcs)", "description": "The giant 75cm mega sparkler! Longest burning sparkler in Sivakasi with continuous crackling fireworks.", "image": "", "stock": 50, "badge": "Special"}, {"id": 15, "name": "Chilaka Tapas", "category": "Bombs", "price": 30, "originalPrice": 40, "unit": "1 Pkt (10 Pcs)", "description": "Traditional Sivakasi Chilaka Tapas / Kuruvi crackers with sharp, crisp cracking sound.", "image": "assets/products/prod-15-chilaka-tapas-kuruvi.jpg", "stock": 50, "badge": ""}, {"id": 16, "name": "3.5\" Inches Lakshmi", "category": "Bombs", "price": 45, "originalPrice": 60, "unit": "1 Pkt (8 Ply)", "description": "Compact 3.5 inch Lakshmi sound crackers with 8-ply paper wrap delivering a solid loud blast.", "image": "assets/products/prod-16-3-5-lakshmi-8-ply.jpg", "stock": 50, "badge": ""}, {"id": 17, "name": "4\" Inches Lakshmi", "category": "Bombs", "price": 60, "originalPrice": 80, "unit": "1 Pkt (7 Ply)", "description": "Classic 4-inch Lakshmi bomb with traditional 7-ply wrapping for an authentic festive bang.", "image": "assets/products/prod-17-4-lakshmi-7-ply.jpg", "stock": 50, "badge": ""}, {"id": 18, "name": "4\" Inches Gold Lakshmi", "category": "Bombs", "price": 90, "originalPrice": 120, "unit": "1 Pkt (10 Ply)", "description": "Premium Gold Lakshmi cracker with heavy 10-ply layering for an extra powerful loud blast.", "image": "assets/products/prod-18-4-gold-lakshmi-10-ply.jpg", "stock": 50, "badge": "Popular"}, {"id": 19, "name": "4\" Inches Roster/Ganesh", "category": "Bombs", "price": 150, "originalPrice": 200, "unit": "1 Pkt", "description": "High-decibel Roster / Ganesh branded heavy sound crackers with intense acoustic impact.", "image": "assets/products/prod-19-4-roster-ganesh-cracker.jpg", "stock": 50, "badge": ""}, {"id": 20, "name": "5\" Inches Elephant", "category": "Bombs", "price": 120, "originalPrice": 160, "unit": "1 Pkt", "description": "Mighty 5-inch Elephant brand cracker producing an echoing thunderous roar across the street.", "image": "assets/products/prod-20-5-elephant-cracker.jpg", "stock": 50, "badge": "Popular"}, {"id": 21, "name": "5\" Inches HULK", "category": "Bombs", "price": 195, "originalPrice": 260, "unit": "1 Pkt (20 Ply)", "description": "Ultra heavy-duty 5-inch HULK mega cracker with 20-ply reinforcement for maximum explosive sound.", "image": "", "stock": 50, "badge": "Hot"}, {"id": 22, "name": "6\" Inches Lakshmi/ Superman/figher", "category": "Bombs", "price": 165, "originalPrice": 220, "unit": "1 Pkt", "description": "Big 6-inch Lakshmi / Superman / Fighter crackers delivering a deep, booming festival blast.", "image": "", "stock": 50, "badge": ""}, {"id": 23, "name": "6\" Inches Lakshmi (12 Ply)", "category": "Bombs", "price": 180, "originalPrice": 240, "unit": "1 Pkt (12 Ply)", "description": "Grand 6-inch Lakshmi bomb crafted with thick 12-ply paper casing for resounding ground explosion.", "image": "assets/products/prod-23-6-lakshmi-12-ply.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 24, "name": "5\" Inches Gold Lakshmi (10 Ply)", "category": "Bombs", "price": 150, "originalPrice": 200, "unit": "1 Pkt (10 Ply)", "description": "Gold edition 5-inch Lakshmi crackers with 10-ply shell providing a clean, thunderous sound.", "image": "assets/products/prod-24-5-gold-lakshmi-10-ply.jpg", "stock": 50, "badge": ""}, {"id": 25, "name": "2 Sound Bomb", "category": "Bombs", "price": 90, "originalPrice": 120, "unit": "1 Box (5 Pcs)", "description": "Exciting double-blast sound bomb that explodes with two consecutive loud bangs.", "image": "assets/products/prod-25-2-sound-bomb.jpg", "stock": 50, "badge": "Popular"}, {"id": 26, "name": "3 Sound Bomb", "category": "Bombs", "price": 120, "originalPrice": 160, "unit": "1 Box (5 Pcs)", "description": "Thrilling triple-blast sound bomb producing three rhythmic, powerful explosions.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 27, "name": "Hydro Bomb", "category": "Bombs", "price": 165, "originalPrice": 220, "unit": "1 Box (10 Pcs)", "description": "High-intensity Sivakasi Hydro Bomb renowned for supreme decibel output and shocking blast power.", "image": "assets/products/prod-49-hydro-bomb-bs.jpg", "stock": 50, "badge": "Hot"}, {"id": 28, "name": "Classic Green Bomb", "category": "Bombs", "price": 255, "originalPrice": 340, "unit": "1 Box (10 Pcs)", "description": "Legendary Classic Green Bomb with intense green casing and earth-shaking blast report.", "image": "assets/products/prod-51-classic-green-bomb.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 29, "name": "Jumbo Bomb", "category": "Bombs", "price": 480, "originalPrice": 640, "unit": "1 Box (10 Pcs)", "description": "Colossal Jumbo Bomb built for crackers enthusiasts craving the loudest thunder in Sullurpeta.", "image": "assets/products/prod-52-jumbo-bomb.jpg", "stock": 50, "badge": "Special"}, {"id": 30, "name": "Jussaric Bomb", "category": "Bombs", "price": 450, "originalPrice": 600, "unit": "1 Box (10 Pcs)", "description": "Prehistoric roar! Jurassic Bomb packed with heavy pyro-charge for maximum shockwave sound.", "image": "assets/products/prod-53-jurassic-bomb.jpg", "stock": 50, "badge": "Hot"}, {"id": 31, "name": "Purukose Bomb", "category": "Bombs", "price": 38, "originalPrice": 50, "unit": "1 Pkt", "description": "Traditional Sivakasi Purukose string bomb with crisp snapping burst sound.", "image": "", "stock": 50, "badge": ""}, {"id": 32, "name": "Nellore Guns", "category": "Bombs", "price": 15, "originalPrice": 20, "unit": "1 Pkt", "description": "Pocket-friendly Nellore Guns producing quick, fun explosive pops for young celebrations.", "image": "", "stock": 50, "badge": ""}, {"id": 33, "name": "1/4 kg Premium Paper Bomb", "category": "Bombs", "price": 120, "originalPrice": 160, "unit": "1 Pc (250g)", "description": "Premium quarter-kilogram paper bomb with densely packed craft paper for a deep resonant blast.", "image": "assets/products/prod-60-1-4-kg-paper-bomb.jpg", "stock": 50, "badge": "Premium"}, {"id": 34, "name": "1 kg Paper Bomb", "category": "Bombs", "price": 450, "originalPrice": 550, "unit": "1 Pc (1kg)", "description": "Massive 1 kg mega paper bomb. Heavyweight festive explosion that shakes the ground!", "image": "assets/products/prod-61-1-kg-paper-bomb.jpg", "stock": 50, "badge": "Special"}, {"id": 35, "name": "Mirapakay Tapas (Red Bijili 50 pcs)", "category": "Bombs", "price": 45, "originalPrice": 60, "unit": "1 Pkt (50 Pcs)", "description": "Fiery red Mirapakay Tapas / Bijili crackers with rapid-fire sharp cracking pops (50 pieces).", "image": "assets/products/prod-35-bijili-red-bijili-50-pcs.jpg", "stock": 50, "badge": ""}, {"id": 36, "name": "Mirapakay Tapas (Red Bijili 100 pcs)", "category": "Bombs", "price": 75, "originalPrice": 100, "unit": "1 Pkt (100 Pcs)", "description": "Jumbo pack of 100 Mirapakay Tapas / Red Bijili crackers for continuous festive crackle.", "image": "assets/products/prod-36-bijili-red-bijili-100-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 37, "name": "28 Wala", "category": "Walas / Ladis / Saralu", "price": 38, "originalPrice": 50, "unit": "1 Piece", "description": "Traditional 28 Wala cracker garland. Quick burst of continuous festive crackles.", "image": "assets/products/prod-27-28-wala-28-chorsa.jpg", "stock": 50, "badge": ""}, {"id": 38, "name": "24 Deluxe", "category": "Walas / Ladis / Saralu", "price": 75, "originalPrice": 100, "unit": "1 Piece", "description": "24 Deluxe cracker garland with louder, punchier bursts than standard mini walas.", "image": "assets/products/prod-28-24-deluxe.jpg", "stock": 50, "badge": ""}, {"id": 39, "name": "50 Deluxe", "category": "Walas / Ladis / Saralu", "price": 160, "originalPrice": 240, "unit": "1 Piece", "description": "50 Deluxe cracker garland providing prolonged, rhythmic celebration bursts.", "image": "assets/products/prod-29-50-deluxe.jpg", "stock": 50, "badge": ""}, {"id": 40, "name": "100 Deluxe", "category": "Walas / Ladis / Saralu", "price": 330, "originalPrice": 440, "unit": "1 Piece", "description": "100 Deluxe cracker garland with superior explosive power and continuous celebration noise.", "image": "assets/products/prod-30-100-deluxe.jpg", "stock": 50, "badge": "Popular"}, {"id": 41, "name": "200 Wala", "category": "Walas / Ladis / Saralu", "price": 150, "originalPrice": 220, "unit": "1 Piece", "description": "Popular 200 Wala cracker garland. Great balance of length, continuous pops, and festive value.", "image": "assets/products/prod-31-200-wala.jpg", "stock": 50, "badge": ""}, {"id": 42, "name": "100 Wala", "category": "Walas / Ladis / Saralu", "price": 75, "originalPrice": 100, "unit": "1 Piece", "description": "Standard 100 Wala garland delivering non-stop rhythmic cracking sounds.", "image": "assets/products/prod-32-100-wala.jpg", "stock": 50, "badge": ""}, {"id": 43, "name": "8 Wala Chorsa", "category": "Walas / Ladis / Saralu", "price": 7, "originalPrice": 10, "unit": "1 Piece", "description": "Pocket-friendly 8 Wala Chorsa mini garland for quick festive bursts.", "image": "", "stock": 50, "badge": ""}, {"id": 44, "name": "50 Deluxe Crackers", "category": "Walas / Ladis / Saralu", "price": 160, "originalPrice": 240, "unit": "1 Piece", "description": "Premium 50 Deluxe cracker ladi with thick craft fuses for seamless firing.", "image": "assets/products/prod-34-50-deluxe-crackers.jpg", "stock": 50, "badge": ""}, {"id": 45, "name": "28 Giant", "category": "Walas / Ladis / Saralu", "price": 60, "originalPrice": 80, "unit": "1 Piece", "description": "28 Giant heavy wala with bigger cracker shells for louder reverberating sounds.", "image": "assets/products/prod-37-28-giant.jpg", "stock": 50, "badge": ""}, {"id": 46, "name": "1K Wala", "category": "Walas / Ladis / Saralu", "price": 300, "originalPrice": 400, "unit": "1 Box (1000 Pcs)", "description": "Grand 1,000 Wala festive garland! Creates a spectacular non-stop red carpet sound spectacle.", "image": "assets/products/prod-63-1k-wala-garland.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 47, "name": "2K Wala", "category": "Walas / Ladis / Saralu", "price": 600, "originalPrice": 800, "unit": "1 Box (2000 Pcs)", "description": "Massive 2,000 Wala continuous cracker garland. Fills the neighborhood with celebration energy.", "image": "assets/products/prod-64-2k-wala-garland.jpg", "stock": 50, "badge": "Special"}, {"id": 48, "name": "5K Wala", "category": "Walas / Ladis / Saralu", "price": 1350, "originalPrice": 1800, "unit": "1 Box (5000 Pcs)", "description": "The ultimate 5,000 Wala mega garland! Spectacular non-stop high-energy Diwali celebration.", "image": "assets/products/prod-65-5k-wala-garland.jpg", "stock": 50, "badge": "Special"}, {"id": 49, "name": "Flower Pot Small (10 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 90, "originalPrice": 120, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 classic small flower pots with bright golden fountain sprays. Safe for family enjoyment.", "image": "assets/products/prod-38-flower-pot-small.jpg", "stock": 50, "badge": ""}, {"id": 50, "name": "Flower Pot Special (10 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 165, "originalPrice": 220, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 special flower pots generating taller, richer golden and silver fountain showers.", "image": "assets/products/prod-39-flower-pot-special.jpg", "stock": 50, "badge": "Popular"}, {"id": 51, "name": "Flower Pot Ashoka (5 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 240, "originalPrice": 320, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 giant Ashoka flower pots shooting majestic multi-colored sparks up to 15 feet high.", "image": "assets/products/prod-40-flower-pot-ashoka-5-pcs.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 52, "name": "Colour Koti (Standard) (10 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 390, "originalPrice": 520, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 standard Colour Koti pots bursting with vivid multi-colored fountain sprays.", "image": "assets/products/prod-41-colour-koti-standard.jpg", "stock": 50, "badge": ""}, {"id": 53, "name": "Colour Koti (Deluxe) (10 pcs)", "category": "Flower Pots (Chichubuddi)", "price": 599, "originalPrice": 800, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 deluxe Colour Koti pots with extra dense sparkling effects and long burning time.", "image": "assets/products/prod-42-colour-koti-deluxe.jpg", "stock": 50, "badge": "Special"}, {"id": 54, "name": "Tri Color Fountain (5 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 599, "originalPrice": 900, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 spectacular tri-color fountains with triple layer transitions (Red, Green, Gold).", "image": "assets/products/prod-80-tri-color-fountain.jpg", "stock": 50, "badge": "Special"}, {"id": 55, "name": "5 Color Fountain (5 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 399, "originalPrice": 600, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 five-color shifting fountains offering vibrant dancing colors in sequence.", "image": "assets/products/prod-81-5-color-fountain.jpg", "stock": 50, "badge": "Popular"}, {"id": 56, "name": "Little Star (Small Fountain) (1 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 120, "originalPrice": 160, "unit": "1 Piece", "description": "Compact Little Star novelty fountain with bright starry crackles and colorful flame sparks.", "image": "assets/products/prod-92-little-star-small-fountain.jpg", "stock": 50, "badge": ""}, {"id": 57, "name": "Bada Star (Big Fountain) (1 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 330, "originalPrice": 440, "unit": "1 Piece", "description": "Giant Bada Star fountain cone producing a massive volcano fountain of golden crackles.", "image": "assets/products/prod-93-bada-star-big-fountain.jpg", "stock": 50, "badge": "Popular"}, {"id": 58, "name": "Ground Chakkar Big (10 pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 90, "originalPrice": 120, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 big ground chakkars spinning with steady fiery circles of golden sparks.", "image": "assets/products/prod-43-ground-chakkar-big-10-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 59, "name": "Ground Chakkar Special (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 180, "originalPrice": 240, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 special ground chakkars with faster rotational speed and wider radiant spark rings.", "image": "assets/products/prod-44-ground-chakkar-special.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 60, "name": "Musical Chakkar (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 375, "originalPrice": 500, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 musical ground chakkars that whistle and sing melodiously while spinning rapidly.", "image": "", "stock": 50, "badge": "Special"}, {"id": 61, "name": "Spinner Deluxe - XL (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 449, "originalPrice": 640, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 XL Spinner Deluxe wheels with prolonged spin time and giant brilliant spark circumference.", "image": "assets/products/prod-46-spinner-deluxe.jpg", "stock": 50, "badge": "Special"}, {"id": 62, "name": "Spinner Special (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 349, "originalPrice": 500, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 special spinner wheels throwing glittering sparks with smooth, stable spins.", "image": "assets/products/prod-47-spinner-special.jpg", "stock": 50, "badge": ""}, {"id": 63, "name": "Ground Chakkar Deluxe - XL (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 299, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 XL Deluxe ground chakkars with extra heavy pyro filling for dazzling golden rings.", "image": "assets/products/prod-48-ground-chakkar-deluxe.jpg", "stock": 50, "badge": "Popular"}, {"id": 64, "name": "Disco Wheel (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 149, "originalPrice": 200, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 Disco Wheels spinning with dynamic multicolor strobe flash and glitter effects.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 65, "name": "3 Sound Rocket (10 Pcs)", "category": "Rockets", "price": 300, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 high-flying 3-Sound Rockets that screech into the night sky and burst with 3 loud bangs.", "image": "assets/products/prod-57-3-sound-rocket.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 66, "name": "Rocket Bomb Small (10 Pcs)", "category": "Rockets", "price": 90, "originalPrice": 120, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 baby rocket bombs with rapid liftoff and sharp celebratory aerial report.", "image": "assets/products/prod-58-rocket-bomb-small-baby-rocket.jpg", "stock": 50, "badge": ""}, {"id": 67, "name": "Rocket Bomb Big (10 Pcs)", "category": "Rockets", "price": 150, "originalPrice": 200, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 big rocket bombs soaring high above treetops before exploding with a booming blast.", "image": "assets/products/prod-59-rocket-bomb-big.jpg", "stock": 50, "badge": "Popular"}, {"id": 68, "name": "Whistle Rocket (10 Pcs)", "category": "Rockets", "price": 349, "originalPrice": 480, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 whistle rockets emitting a piercing acoustic whistle followed by a glittering sky burst.", "image": "assets/products/prod-54-whistle-rocket.jpg", "stock": 50, "badge": "Hot"}, {"id": 69, "name": "Lunik Express (10 Pcs)", "category": "Rockets", "price": 329, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 supersonic Lunik Express rockets with ultra-high altitude trajectory and brilliant flash.", "image": "", "stock": 50, "badge": "Special"}, {"id": 70, "name": "7 Shots (5 Pcs)", "category": "Sky Shots", "price": 349, "originalPrice": 500, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 multi-shot tubes firing 7 sequential aerial bursts of colorful stars into the sky.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 71, "name": "12 Shot Blaster", "category": "Sky Shots", "price": 300, "originalPrice": 400, "unit": "1 Box (12 Shots)", "description": "High-action 12-shot aerial repeater cake launching 12 consecutive multicolor bursts with crackling tails.", "image": "assets/products/prod-67-12-shot-blaster.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 72, "name": "12 Shot Blaster (Premium)", "category": "Sky Shots", "price": 450, "originalPrice": 520, "unit": "1 Box (12 Shots)", "description": "Premium 12-shot cake with extra-large aerial breaks, palm brocade effects, and intense strobe glitter.", "image": "assets/products/prod-68-12-shot-blaster-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 73, "name": "30 Shot Multi Colour", "category": "Sky Shots", "price": 825, "originalPrice": 1100, "unit": "1 Box (30 Shots)", "description": "Spectacular 30-shot aerial cake painting the night sky with vibrant red, green, gold, and blue bouquets.", "image": "assets/products/prod-70-30-shot-multi-colour-bs.jpg", "stock": 50, "badge": "Popular"}, {"id": 74, "name": "30 Shot Multi Colour (Premium)", "category": "Sky Shots", "price": 950, "originalPrice": 1300, "unit": "1 Box (30 Shots)", "description": "Premium 30-shot grand sky cake featuring golden willow cascades, crackling chrysanthemums, and loud reports.", "image": "assets/products/prod-69-30-shot-multi-colour-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 75, "name": "60 Shot Multi Colour", "category": "Sky Shots", "price": 1399, "originalPrice": 1900, "unit": "1 Box (60 Shots)", "description": "Epic 60-shot professional celebration cake firing continuous barrages of dazzling multi-hued aerial shells.", "image": "assets/products/prod-72-60-shot-multi-colour-bs.jpg", "stock": 50, "badge": "Special"}, {"id": 76, "name": "60 Shot Multi Colour (Premium)", "category": "Sky Shots", "price": 1499, "originalPrice": 2200, "unit": "1 Box (60 Shots)", "description": "Premium 60-shot deluxe fireworks cake with intense tempo, shimmering brocade crowns, and finale salvo.", "image": "assets/products/prod-71-60-shot-multi-colour-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 77, "name": "120 Shot Multi Colour", "category": "Sky Shots", "price": 2400, "originalPrice": 3200, "unit": "1 Box (120 Shots)", "description": "The pinnacle of Diwali celebrations! 120 rapid-fire aerial shots illuminating the whole sky in grand style.", "image": "assets/products/prod-73-120-shot-multi-colour.jpg", "stock": 50, "badge": "Special"}, {"id": 78, "name": "Butterfly (10 Pcs)", "category": "Fancy Items", "price": 290, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 color-changing butterfly novelties that flutter upwards into the air with radiant wings.", "image": "assets/products/prod-74-butterfly-colour-changing.jpg", "stock": 50, "badge": "Popular"}, {"id": 79, "name": "Drone (10 Pcs)", "category": "Fancy Items", "price": 285, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 drone fireworks with dual propellers spinning straight up into the air with bright LEDs.", "image": "assets/products/prod-75-drone-10-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 80, "name": "Helicopter (10 Pcs)", "category": "Fancy Items", "price": 280, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 helicopter fireworks whirring up into the night with high-speed rotation and spark ring.", "image": "assets/products/prod-76-helicopter-10-pcs.jpg", "stock": 50, "badge": ""}, {"id": 81, "name": "Photo Flash (10 Pcs)", "category": "Fancy Items", "price": 270, "originalPrice": 360, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 photo flash novelties producing blinding stadium-bright white flashes like camera strobes.", "image": "assets/products/prod-77-photo-flash.jpg", "stock": 50, "badge": ""}, {"id": 82, "name": "Magic Boom (10 Pcs)", "category": "Fancy Items", "price": 300, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 Magic Boom novelty items with sudden surprising sparkles and crackling bursts.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 83, "name": "Peacock Small", "category": "Fancy Items", "price": 330, "originalPrice": 440, "unit": "1 Piece", "description": "Graceful Peacock firework spreading its radiant glowing plumage in vibrant colored fountain feathers.", "image": "assets/products/prod-82-peacock-small-colour.jpg", "stock": 50, "badge": "Popular"}, {"id": 84, "name": "Peacock Big", "category": "Fancy Items", "price": 750, "originalPrice": 1000, "unit": "1 Piece", "description": "Giant Dragon Peacock firework delivering a magnificent 5-color fanned plumage fountain spectacle.", "image": "assets/products/prod-83-peacock-big-dragon-peacock.jpg", "stock": 50, "badge": "Special"}, {"id": 85, "name": "Kit Kat (Venna Muddalu)", "category": "Fancy Items", "price": 70, "originalPrice": 100, "unit": "1 Box", "description": "Classic Kit Kat / Venna Muddalu novelty crackers with fun crackling and popping sounds.", "image": "", "stock": 50, "badge": ""}, {"id": 86, "name": "Twinkling Star 1.5\" Inches (10 Pcs)", "category": "Fancy Items", "price": 65, "originalPrice": 100, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 mini 1.5 inch twinkling star sticks with dancing rhythmic glitter sparks.", "image": "assets/products/prod-85-twinkling-star-1-5.jpg", "stock": 50, "badge": ""}, {"id": 87, "name": "4\" Inches Twinkling Star (10 Pcs)", "category": "Fancy Items", "price": 170, "originalPrice": 240, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 large 4 inch twinkling stars with intense strobing silver flashes and crackles.", "image": "assets/products/prod-86-4-twinkling-star.jpg", "stock": 50, "badge": "Popular"}, {"id": 88, "name": "Anaconda (Paamu Billalu - Big) - (10 Tblts)", "category": "Fancy Items", "price": 140, "originalPrice": 200, "unit": "1 Box (10 Tablets)", "description": "Pack of 10 giant Anaconda snake tablets expanding into massive twisting black serpents with sparks.", "image": "assets/products/prod-87-anaconda.jpg", "stock": 50, "badge": "Popular"}, {"id": 89, "name": "Snake Eggs (Paamu Billalu - Small) - (10 Tblts)", "category": "Fancy Items", "price": 15, "originalPrice": 20, "unit": "1 Box (10 Tablets)", "description": "Pack of 10 small snake egg tablets. Classic traditional favorite loved by children for generations.", "image": "assets/products/prod-88-snake-eggs.jpg", "stock": 50, "badge": ""}, {"id": 90, "name": "Gadha", "category": "Fancy Items", "price": 510, "originalPrice": 800, "unit": "1 Piece", "description": "Lord Hanuman Gadha novelty firework with multi-stage fountain sprays, whizzing whistles, and crackles.", "image": "", "stock": 50, "badge": "Special"}, {"id": 91, "name": "Sword", "category": "Fancy Items", "price": 400, "originalPrice": 600, "unit": "1 Piece", "description": "Warrior Sword novelty firework emitting sparkling blade fountains with glorious glowing showers.", "image": "", "stock": 50, "badge": "Special"}, {"id": 92, "name": "Gas Cylinder", "category": "Fancy Items", "price": 400, "originalPrice": 600, "unit": "1 Piece", "description": "Novelty LPG Cylinder replica bursting into roaring multi-stage fountain flames and crackling sparks.", "image": "", "stock": 50, "badge": ""}, {"id": 93, "name": "Electric Stones (Venna Muddalu)", "category": "Fancy Items", "price": 45, "originalPrice": 60, "unit": "1 Pkt", "description": "Snapping electric stones that spark upon impact when rubbed together. Safe tactile fun for all ages.", "image": "", "stock": 50, "badge": ""}, {"id": 94, "name": "18\" Inches Pencil (5 Pcs)", "category": "Fancy Items", "price": 225, "originalPrice": 300, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 giant 18-inch handheld fountain pencils shooting elegant multi-color sparkling plumes.", "image": "assets/products/prod-95-18-pencil.jpg", "stock": 50, "badge": "Popular"}, {"id": 95, "name": "15\" Inches Pencil (5 Pcs)", "category": "Fancy Items", "price": 180, "originalPrice": 240, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 long 15-inch fountain pencils displaying steady, vibrant colored sparks.", "image": "assets/products/prod-96-15-pencil.jpg", "stock": 50, "badge": ""}, {"id": 96, "name": "Sky Lantern", "category": "Fancy Items", "price": 70, "originalPrice": 100, "unit": "1 Piece", "description": "Traditional eco-friendly Hot Air Sky Lantern soaring peacefully into the night sky with warm diya light.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 97, "name": "Water LED Diya", "category": "Fancy Items", "price": 70, "originalPrice": 100, "unit": "1 Piece", "description": "Magical flameless Water Sensor LED Diya. Lights up instantly upon pouring water for safe home decor.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 98, "name": "Golden Star Pencil (3 Pcs)", "category": "Fancy Items", "price": 330, "originalPrice": 440, "unit": "1 Box (3 Pcs)", "description": "Pack of 3 premium Golden Star fountain pencils casting radiant showers of pure gold sparks.", "image": "assets/products/prod-97-golden-star-pencil-3-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 99, "name": "21 Item Family Box", "category": "Family Gift Boxes", "price": 600, "originalPrice": 800, "unit": "1 Box (21 Items)", "description": "Comprehensive starter family gift box containing 21 assorted crackers, sparklers, chakkars, and flower pots.", "image": "assets/products/prod-98-21-item-family-box.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 100, "name": "30 Item Family Box", "category": "Family Gift Boxes", "price": 825, "originalPrice": 1100, "unit": "1 Box (30 Items)", "description": "Standard festive family box loaded with 30 assorted items offering complete variety for family celebrations.", "image": "assets/products/prod-99-30-item-family-box.jpg", "stock": 50, "badge": "Popular"}, {"id": 101, "name": "50 Item Family Box", "category": "Family Gift Boxes", "price": 1490, "originalPrice": 1900, "unit": "1 Box (50 Items)", "description": "Super value 50-item grand family assortment packed with sparklers, pots, bombs, chakkars, and novelties.", "image": "assets/products/prod-101-50-item-family-box-bs.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 102, "name": "50 Item Family Box (Premium)", "category": "Family Gift Boxes", "price": 1800, "originalPrice": 2400, "unit": "1 Box (50 Items)", "description": "Premium edition 50-item VIP gift box featuring top-tier Sivakasi factories, bigger pots, and aerial shots.", "image": "assets/products/prod-100-50-item-family-box-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 103, "name": "60 Item Family Box", "category": "Family Gift Boxes", "price": 1950, "originalPrice": 2800, "unit": "1 Box (60 Items)", "description": "Royal 60-item mega celebration box designed for grand family gatherings and neighborhood celebrations.", "image": "assets/products/prod-102-60-item-family-box-gs.jpg", "stock": 50, "badge": "Special"}, {"id": 104, "name": "70 Item Family Box", "category": "Family Gift Boxes", "price": 2250, "originalPrice": 3000, "unit": "1 Box (70 Items)", "description": "The ultimate 70-item festival hamper! Massive collection of premium fireworks for complete Diwali joy.", "image": "assets/products/prod-103-70-item-family-box.jpg", "stock": 50, "badge": "Special"}, {"id": 105, "name": "Wonder Throw - (10 Pkts)", "category": "Kids Items", "price": 200, "originalPrice": 240, "unit": "1 Box (10 Pkts)", "description": "Pack of 10 packets of Wonder Throw snap crackers. Simply throw against hard surface for harmless pops!", "image": "assets/products/prod-104-wonder-throw.jpg", "stock": 50, "badge": "Popular"}, {"id": 106, "name": "Beedi Pataaka - (10 Pkts)", "category": "Kids Items", "price": 200, "originalPrice": 300, "unit": "1 Box (10 Pkts)", "description": "Pack of 10 packets of classic Beedi Pataaka / Corsair crackers with sharp, fun snaps.", "image": "", "stock": 50, "badge": ""}, {"id": 107, "name": "Pop Pop - (50 Pkts)", "category": "Kids Items", "price": 500, "originalPrice": 800, "unit": "1 Box (50 Pkts)", "description": "Mega value box containing 50 packets of Pop Pop crackers. Safe, zero-burn fun that kids adore!", "image": "", "stock": 50, "badge": "Bestseller"}, {"id": 108, "name": "Color Matches - (10 Pkts - Assorted)", "category": "Kids Items", "price": 150, "originalPrice": 200, "unit": "1 Bundle (10 Pkts)", "description": "Bundle of 10 assorted packets of sparkling Color Matches glowing with colorful flames upon lighting.", "image": "", "stock": 50, "badge": "Popular"}];
 
 // ==================== GLOBAL APP STATE ====================
 let products = [...DEFAULT_PRODUCTS];
@@ -2216,15 +2306,18 @@ const COUPONS = {
 };
 
 const CATEGORY_EMOJIS = {
-    'Sparklers': '✨',
-    'Sound Crackers': '💥',
-    'Ground Chakkars & Pots': '🌀',
-    'Bombs & Rockets': '💣',
-    'Garlands / Walas': '🧨',
-    'Aerial Shots & Fancy': '🎯',
+    'Sparklers (Kakarothulu)': '✨',
+    'Bombs': '💥',
+    'Walas / Ladis / Saralu': '🧨',
+    'Flower Pots (Chichubuddi)': '🌸',
+    'Ground Chakkars (Bhu Chakaram)': '🌀',
+    'Rockets': '🚀',
+    'Sky Shots': '🎆',
     'Fancy Items': '🦚',
     'Family Gift Boxes': '🎁',
-    'Fun Items': '🎈',
+    'Kids Items': '🎈',
+    'Sparklers': '✨',
+    'Sound Crackers': '💥',
 };
 
 // ==================== ROBUST APP INITIALIZATION ====================
@@ -2867,6 +2960,13 @@ async function loadProducts() {
     }
 }
 
+function toggleAdvisoryBanner() {
+    const banner = document.getElementById('browsing-advisory');
+    if (banner) {
+        banner.classList.toggle('expanded');
+    }
+}
+
 function populateCategoryFilter() {
     const cats = [...new Set(products.map(p => p.category))];
     const select = document.getElementById('category-filter');
@@ -2888,6 +2988,26 @@ function populateCategoryFilter() {
             tagsContainer.innerHTML += `<button class="category-pill" onclick="setCategory('${cat}')">${CATEGORY_EMOJIS[cat] || '✨'} ${cat} (${catCount})</button>`;
         });
     }
+
+    // Populate Top Sticky Category Quick-Nav
+    const quicknavInner = document.getElementById('quicknav-inner');
+    if (quicknavInner) {
+        quicknavInner.innerHTML = `<button type="button" class="quicknav-chip active" onclick="setCategoryQuick('')"><span>✨ All</span> <span class="qn-count">${products.length}</span></button>`;
+        cats.forEach(cat => {
+            const catCount = products.filter(p => p.category === cat).length;
+            const shortName = cat.split('(')[0].trim();
+            quicknavInner.innerHTML += `<button type="button" class="quicknav-chip" data-cat="${cat}" onclick="setCategoryQuick('${cat}')"><span>${CATEGORY_EMOJIS[cat] || '✨'} ${shortName}</span> <span class="qn-count">${catCount}</span></button>`;
+        });
+    }
+}
+
+function setCategoryQuick(cat) {
+    setCategory(cat);
+    // Smoothly scroll directly into the product catalog
+    const sec = document.getElementById('products-section');
+    if (sec) {
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 function setCategory(cat) {
@@ -2903,7 +3023,18 @@ function setCategory(cat) {
             t.classList.remove('active');
         }
     });
-    // In-place instant filtering without jarring scroll jumps
+
+    // Sync Sticky Quick-Nav chips
+    document.querySelectorAll('.quicknav-chip').forEach(qn => {
+        const qnCat = qn.getAttribute('data-cat') || '';
+        if ((!cat && !qnCat) || (cat && qnCat === cat)) {
+            qn.classList.add('active');
+            qn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+            qn.classList.remove('active');
+        }
+    });
+
     filterProducts();
 }
 
@@ -3595,7 +3726,7 @@ function downloadFullPriceListPDF() {
     doc.setFontSize(13);
     doc.setTextColor(255, 235, 160);
     doc.setFont('helvetica', 'bold');
-    doc.text('OFFICIAL DIWALI 2026 PRICE LIST (ALL 107 ITEMS)', 105, 40, { align: 'center' });
+    doc.text(`OFFICIAL DIWALI 2026 PRICE LIST (ALL ${products.length} ITEMS)`, 105, 40, { align: 'center' });
 
     // Table of all 107 products categorized
     const sorted = [...products].sort((a, b) => a.category.localeCompare(b.category) || a.price - b.price);
