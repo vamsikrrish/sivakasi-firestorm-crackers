@@ -457,6 +457,70 @@ input, select, textarea { font-family: var(--font-sans); }
     max-width: 680px; margin: 0 auto; line-height: 1.6;
 }
 
+/* ==================== CUSTOMER ADVISORY & DISCLAIMERS ==================== */
+.browsing-advisory-banner {
+    background: #FFFFFF;
+    border: 1px solid #FECACA;
+    border-left: 4px solid var(--fire-red);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.4rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px -2px rgba(220, 38, 38, 0.06);
+}
+.advisory-header {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.95rem;
+    color: var(--fire-red-dark);
+    margin-bottom: 0.75rem;
+}
+.advisory-chips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+}
+.advisory-chip {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    background: var(--bg-subtle);
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+}
+.advisory-chip i {
+    color: var(--fire-red);
+    margin-top: 2px;
+    font-size: 0.88rem;
+    flex-shrink: 0;
+}
+.advisory-chip.security-chip {
+    background: #FFFBEB;
+    border-color: #FDE68A;
+    color: #92400E;
+    grid-column: 1 / -1;
+}
+.advisory-chip.security-chip i {
+    color: #D97706;
+}
+@media (max-width: 640px) {
+    .browsing-advisory-banner {
+        padding: 0.85rem 0.85rem;
+        margin-bottom: 1rem;
+    }
+    .advisory-chips-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+    .advisory-chip {
+        font-size: 0.76rem;
+    }
+}
+
 /* ==================== SHOPPING FILTER BAR ==================== */
 #products-section { padding: 2.2rem 2rem 4rem; scroll-margin-top: 85px; }
 #products-section .section-header { margin-bottom: 1.4rem; }
@@ -1514,10 +1578,11 @@ input, select, textarea { font-family: var(--font-sans); }
     <div class="announcement-bar">
         <div class="marquee">
             <span class="marquee-item"><i class="fas fa-fire gold-star"></i> 100% Authentic Sivakasi Crackers Direct from Licensed Factories</span>
-            <span class="marquee-item"><i class="fas fa-map-marker-alt gold-star"></i> Flagship Stall: High School Ground, Sullurpeta</span>
-            <span class="marquee-item"><i class="fab fa-whatsapp gold-star"></i> WhatsApp / Call: +91 94900 42905 | +91 79816 59594</span>
-            <span class="marquee-item"><i class="fas fa-percent gold-star"></i> Up to 25% Festival Discounts on All Crackers</span>
-            <span class="marquee-item"><i class="fas fa-qrcode gold-star"></i> Instant UPI / QR Code Payment Available</span>
+            <span class="marquee-item"><i class="fas fa-truck gold-star"></i> Delivery exclusively in Sullurpeta, AP (Commences 6th Nov 2026)</span>
+            <span class="marquee-item"><i class="fas fa-store gold-star"></i> Stall Pickup: Govt High School Ground, Sullurpeta (Shop No. Coming Soon!)</span>
+            <span class="marquee-item"><i class="fab fa-whatsapp gold-star"></i> Official Helplines: +91 94900 42905 | +91 79816 59594</span>
+            <span class="marquee-item"><i class="fas fa-receipt gold-star"></i> Save &amp; Share Payment Screenshot on WhatsApp along with UTR &amp; Order ID</span>
+            <span class="marquee-item"><i class="fas fa-shield-alt gold-star"></i> Beware of Online Fraud: Official UPI is 9490042905@ybl • Stay Safe &amp; Happy Diwali!</span>
         </div>
     </div>
 
@@ -1698,6 +1763,36 @@ input, select, textarea { font-family: var(--font-sans); }
             <div class="section-tag"><i class="fas fa-fire"></i> Fresh 2026 Inventory • 107 Varieties</div>
             <h2 class="section-title">Our Crackers Catalog</h2>
             <p class="section-subtitle">Browse all 107 fresh Sivakasi crackers with wholesale discounts. Compare actual MRP vs offer price and add to your cart.</p>
+        </div>
+
+        <!-- Customer Advisory & Disclaimers Strip -->
+        <div class="browsing-advisory-banner">
+            <div class="advisory-header">
+                <i class="fas fa-bullhorn"></i>
+                <span><strong>Customer Advisory &amp; Order Guidelines:</strong></span>
+            </div>
+            <div class="advisory-chips-grid">
+                <div class="advisory-chip">
+                    <i class="fas fa-images"></i>
+                    <span><strong>Product Images:</strong> Shown for reference; actual packaging &amp; brand wrappers may vary based on fresh factory batch stock.</span>
+                </div>
+                <div class="advisory-chip">
+                    <i class="fas fa-truck"></i>
+                    <span><strong>Delivery Zone:</strong> Home delivery available <strong>strictly in Sullurpeta, AP</strong>, starting from <strong>6th November 2026</strong>.</span>
+                </div>
+                <div class="advisory-chip">
+                    <i class="fas fa-store"></i>
+                    <span><strong>Stall Pickup:</strong> Pick up directly from our stall at <strong>Govt High School Ground</strong> <em>(Shop No. coming soon!)</em>.</span>
+                </div>
+                <div class="advisory-chip">
+                    <i class="fas fa-receipt"></i>
+                    <span><strong>Payment Proof:</strong> Save your payment screenshot and share it on WhatsApp along with your <strong>Transaction/UTR No.</strong> &amp; Order ID.</span>
+                </div>
+                <div class="advisory-chip security-chip">
+                    <i class="fas fa-shield-alt"></i>
+                    <span><strong>Beware of Online Fraud:</strong> Official payments are accepted <strong>strictly to UPI ID 9490042905@ybl</strong>. Never pay unverified accounts or share OTPs. Stay safe, alert, and wish you a Happy Diwali! 🪔</span>
+                </div>
+            </div>
         </div>
 
         <!-- Sticky Floating Console -->
@@ -1913,8 +2008,15 @@ input, select, textarea { font-family: var(--font-sans); }
             <h2><i class="fas fa-shopping-cart" style="color:var(--fire-red);"></i> <span id="cart-drawer-title">Shopping Cart</span></h2>
             <button class="cart-close-btn" onclick="closeCart()"><i class="fas fa-times"></i></button>
         </div>
-        <div style="padding:0.75rem 1.8rem 0; background:#FFF5F5; border-bottom:1px solid #FEE2E2; display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; font-weight:700; color:#B91C1C;">
-            <i class="fas fa-store"></i> <span>Stall Pickup: High School Ground, Sullurpeta</span>
+        <div style="padding:0.75rem 1.4rem; background:#FEF2F2; border-bottom:1px solid #FEE2E2; font-size:0.78rem; line-height:1.45; color:#991B1B;">
+            <div style="display:flex; align-items:flex-start; gap:0.45rem; margin-bottom:0.3rem;">
+                <i class="fas fa-truck" style="margin-top:2px; color:var(--fire-red);"></i>
+                <span><strong>Delivery:</strong> Available only in <strong>Sullurpeta, AP</strong> (Starts <strong>6th Nov</strong>).</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:0.45rem;">
+                <i class="fas fa-store" style="margin-top:2px; color:var(--fire-red);"></i>
+                <span><strong>Stall Pickup:</strong> Collect at <strong>Govt High School Ground</strong> <em>(Shop No. coming soon!)</em>.</span>
+            </div>
         </div>
         <div class="cart-body-lux" id="cart-body"></div>
         <div class="coupon-console">
@@ -1983,18 +2085,33 @@ input, select, textarea { font-family: var(--font-sans); }
                         </div>
                     </div>
                     <div class="lux-form-group">
-                        <label class="lux-label">Delivery Destination / Pickup Note</label>
-                        <textarea class="lux-textarea" id="cust-address" placeholder="Enter delivery address or mention 'Store Pickup at High School Ground'"></textarea>
+                        <label class="lux-label">Fulfillment Preference *</label>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:0.6rem;">
+                            <label style="display:flex; align-items:center; gap:0.5rem; padding:0.65rem 0.85rem; border:1.5px solid #FECACA; border-radius:8px; cursor:pointer; background:#FFF; font-size:0.82rem; font-weight:700; color:#991B1B;">
+                                <input type="radio" name="fulfillment_type" value="Delivery" checked onchange="handleFulfillmentChange(this.value)"> 🚚 Home Delivery
+                            </label>
+                            <label style="display:flex; align-items:center; gap:0.5rem; padding:0.65rem 0.85rem; border:1.5px solid #FECACA; border-radius:8px; cursor:pointer; background:#FFF; font-size:0.82rem; font-weight:700; color:#991B1B;">
+                                <input type="radio" name="fulfillment_type" value="Pickup" onchange="handleFulfillmentChange(this.value)"> 🏬 Store Pickup
+                            </label>
+                        </div>
+                        <div id="fulfillment-delivery-note" style="font-size:0.76rem; color:#B91C1C; font-weight:600; margin-bottom:0.5rem; background:#FEF2F2; padding:0.5rem 0.75rem; border-radius:6px; border:1px solid #FECACA; line-height:1.4;">
+                            <i class="fas fa-truck"></i> <strong>Delivery Notice:</strong> Available <strong>only in Sullurpeta, AP</strong>. Deliveries commence from <strong>6th November 2026</strong>.
+                        </div>
+                        <div id="fulfillment-pickup-note" style="display:none; font-size:0.76rem; color:#15803D; font-weight:600; margin-bottom:0.5rem; background:#DCFCE7; padding:0.5rem 0.75rem; border-radius:6px; border:1px solid #86EFAC; line-height:1.4;">
+                            <i class="fas fa-store"></i> <strong>Pickup Location:</strong> Sivakasi Firestorm Stall at <strong>Govt High School Ground, Sullurpeta</strong> <em>(Shop No. coming soon!)</em>.
+                        </div>
+                        <label class="lux-label" id="cust-address-lbl">Delivery Address in Sullurpeta *</label>
+                        <textarea class="lux-textarea" id="cust-address" placeholder="Enter complete door no., street & landmark in Sullurpeta..."></textarea>
                     </div>
                     <div class="lux-form-group">
-                        <label class="lux-label">Special Packing Requests</label>
-                        <textarea class="lux-textarea" id="cust-notes" placeholder="Any specific requirements..." style="min-height:55px;"></textarea>
+                        <label class="lux-label">Special Requests / Packing Instructions</label>
+                        <textarea class="lux-textarea" id="cust-notes" placeholder="Any specific requirements (e.g. gift wrap, safe delivery time)..." style="min-height:55px;"></textarea>
                     </div>
 
                     <!-- Payment via UPI -->
                     <div class="payment-seal-box">
                         <h3>💳 UPI / QR Code Payment</h3>
-                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">Scan & Pay via GooglePay, PhonePe, Paytm, or BHIM</p>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">Scan &amp; Pay via GooglePay, PhonePe, Paytm, or BHIM</p>
                         <div style="width:190px; height:190px; margin:0 auto 0.8rem; background:#FFFFFF; border-radius:16px; padding:8px; box-shadow:0 8px 25px rgba(0,0,0,0.08); border:2px solid #FEE2E2; display:flex; align-items:center; justify-content:center; overflow:hidden;">
                             <img src="assets/brand/upi-qr-code.jpg" alt="Sivakasi Firestorm Official UPI Payment QR Code" style="width:100%; height:100%; object-fit:contain; border-radius:10px;">
                         </div>
@@ -2004,9 +2121,26 @@ input, select, textarea { font-family: var(--font-sans); }
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                         </div>
-                        <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.6rem;">
-                            * Scan with any UPI app. Once transferred, click "Send Order on WhatsApp" below. Helplines: <strong>94900 42905</strong> / <strong>79816 59594</strong>.
-                        </p>
+
+                        <!-- Verification Checklist -->
+                        <div style="margin-top:0.9rem; text-align:left; background:#FFFFFF; border:1px solid #FEE2E2; border-radius:10px; padding:0.85rem; font-size:0.79rem; line-height:1.5;">
+                            <div style="font-weight:800; color:#B91C1C; margin-bottom:0.3rem; display:flex; align-items:center; gap:0.4rem;">
+                                <i class="fas fa-receipt"></i> Step 2: Payment Verification via WhatsApp
+                            </div>
+                            <ul style="margin-left:1.1rem; color:var(--text-secondary); display:flex; flex-direction:column; gap:0.25rem;">
+                                <li><strong>Save your payment screenshot</strong> after completing the UPI transfer.</li>
+                                <li>Share the screenshot on WhatsApp along with your <strong>Transaction/UTR No.</strong> &amp; <strong>Order ID</strong>.</li>
+                                <li>Our counter desk will instantly verify and dispatch your confirmation receipt.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Anti-Fraud Advisory -->
+                        <div style="margin-top:0.8rem; text-align:left; background:#FFFBEB; border:1px solid #FCD34D; border-radius:10px; padding:0.8rem; font-size:0.77rem; line-height:1.5; color:#92400E;">
+                            <div style="font-weight:800; color:#B45309; margin-bottom:0.25rem; display:flex; align-items:center; gap:0.4rem;">
+                                <i class="fas fa-shield-alt"></i> ⚠️ Beware of Online Fraud &amp; Fake Callers
+                            </div>
+                            <span>Sivakasi Firestorm only accepts payments to official UPI ID <strong>9490042905@ybl</strong> and official contacts <strong>94900 42905</strong> &amp; <strong>79816 59594</strong>. Never pay unverified accounts. Stay safe, stay vigilant, and Happy Diwali! 🪔</span>
+                        </div>
                     </div>
 
                     <!-- Action Buttons -->
@@ -2025,12 +2159,26 @@ input, select, textarea { font-family: var(--font-sans); }
 
     <!-- Order Success Modal -->
     <div class="modal-overlay" id="success-modal">
-        <div class="modal-box-lux" style="max-width:480px; text-align:center; padding:3rem 2rem;" onclick="event.stopPropagation()">
-            <div style="font-size:4rem; margin-bottom:1rem; animation:festivePulse 2s infinite;">🎉</div>
-            <h2 style="font-family:var(--font-heading); font-size:1.6rem; color:var(--fire-red-dark); margin-bottom:0.5rem;">Quotation Generated!</h2>
-            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6; margin-bottom:2rem;">Your order breakdown has been formatted. Our desk at High School Ground, Sullurpeta will connect with you to confirm fulfillment.</p>
+        <div class="modal-box-lux" style="max-width:500px; text-align:center; padding:2.5rem 1.8rem;" onclick="event.stopPropagation()">
+            <div style="font-size:3.5rem; margin-bottom:0.8rem; animation:festivePulse 2s infinite;">🎉</div>
+            <h2 style="font-family:var(--font-heading); font-size:1.6rem; color:var(--fire-red-dark); margin-bottom:0.4rem;">Order Request Submitted!</h2>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6; margin-bottom:1.2rem;">Your order breakdown has been formatted and opened in WhatsApp.</p>
+            
+            <div style="background:#FFFBEB; border:1.5px solid #FCD34D; border-radius:10px; padding:1rem; text-align:left; font-size:0.82rem; line-height:1.5; color:#92400E; margin-bottom:1.5rem;">
+                <div style="font-weight:800; color:#B45309; margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem;">
+                    <i class="fas fa-exclamation-triangle"></i> Important Next Steps &amp; Policy Reminders:
+                </div>
+                <ul style="margin-left:1.1rem; display:flex; flex-direction:column; gap:0.35rem;">
+                    <li><strong>Share Screenshot:</strong> Save your payment screenshot and send it on WhatsApp along with your <strong>Transaction/UTR No.</strong> and Order ID.</li>
+                    <li><strong>Delivery Schedule:</strong> Deliveries are available <em>exclusively in Sullurpeta, AP</em>, starting from <strong>6th November 2026</strong>.</li>
+                    <li><strong>Store Pickup:</strong> Or pick up directly from our stall at <strong>Govt High School Ground, Sullurpeta</strong> <em>(Shop No. coming soon!)</em>.</li>
+                    <li><strong>Product Packaging:</strong> Note that product images are for representation; actual packaging and wrapper designs vary based on fresh factory batch stock.</li>
+                    <li><strong>Security Notice:</strong> Beware of online fraud. Official payments are accepted only via <strong>9490042905@ybl</strong>. Stay safe &amp; Happy Diwali!</li>
+                </ul>
+            </div>
+
             <button class="btn-fire" style="width:100%; justify-content:center;" onclick="closeSuccessModal()">
-                Continue Exploring Catalog
+                Continue Browsing Catalog
             </button>
         </div>
     </div>
@@ -2855,6 +3003,7 @@ function renderProducts() {
                         </div>
                     `}
                     ${p.badge ? `<span class="luxury-badge ${badgeClass}">${p.badge}</span>` : ''}
+                    <span style="position:absolute; bottom:4px; left:4px; background:rgba(0,0,0,0.68); color:#F8FAFC; font-size:0.55rem; font-weight:700; padding:1px 5px; border-radius:3px; z-index:2; backdrop-filter:blur(2px); letter-spacing:0.3px;">Ref. Image</span>
                 </div>
                 <div class="product-info-wrap">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
@@ -3136,11 +3285,34 @@ function closeSuccessModal() {
     document.body.style.overflow = '';
 }
 
+function handleFulfillmentChange(val) {
+    const delNote = document.getElementById('fulfillment-delivery-note');
+    const pickNote = document.getElementById('fulfillment-pickup-note');
+    const addrLbl = document.getElementById('cust-address-lbl');
+    const addr = document.getElementById('cust-address');
+    if (val === 'Pickup') {
+        if (delNote) delNote.style.display = 'none';
+        if (pickNote) pickNote.style.display = 'block';
+        if (addrLbl) addrLbl.textContent = 'Store Pickup Person / Contact Name (Govt High School)';
+        if (addr) addr.placeholder = 'Mention name / phone of person who will collect at Govt High School Ground...';
+    } else {
+        if (delNote) delNote.style.display = 'block';
+        if (pickNote) pickNote.style.display = 'none';
+        if (addrLbl) addrLbl.textContent = 'Delivery Address in Sullurpeta *';
+        if (addr) addr.placeholder = 'Enter complete door no., street & landmark in Sullurpeta...';
+    }
+}
+
 function getOrderData() {
     const name = document.getElementById('cust-name').value.trim() || 'Valued Customer';
     const phone = document.getElementById('cust-phone').value.trim() || '';
     const email = document.getElementById('cust-email').value.trim() || '';
-    const address = document.getElementById('cust-address').value.trim() || '';
+    const fulfillRadio = document.querySelector('input[name="fulfillment_type"]:checked');
+    const fulfillment = fulfillRadio ? fulfillRadio.value : 'Delivery';
+    const rawAddress = document.getElementById('cust-address').value.trim();
+    const address = (fulfillment === 'Pickup')
+        ? `[STORE PICKUP - Govt High School Ground (Shop No. Coming Soon)] ${rawAddress || 'Self-Pickup'}`
+        : `[HOME DELIVERY - Sullurpeta Only (Starts 6th Nov)] ${rawAddress || 'Address in Sullurpeta'}`;
     const notes = document.getElementById('cust-notes').value.trim() || '';
 
     const subtotal = cart.reduce((s, c) => {
@@ -3166,7 +3338,7 @@ function getOrderData() {
     const orderTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
     const orderId = 'SFC-' + Date.now().toString(36).toUpperCase();
 
-    return { name, phone, email, address, notes, items, subtotal, discount, couponCode, total, orderDate, orderTime, orderId };
+    return { name, phone, email, address, notes, items, subtotal, discount, couponCode, total, orderDate, orderTime, orderId, fulfillment };
 }
 
 // ==================== WHATSAPP DISPATCH ====================
@@ -3198,7 +3370,7 @@ function sendWhatsApp() {
 `;
     if (order.email) msg += `Email: ${order.email}
 `;
-    if (order.address) msg += `Delivery / Pickup: ${order.address}
+    msg += `Fulfillment: ${order.address}
 `;
     msg += `
 📦 *Ordered Items:*
@@ -3221,14 +3393,24 @@ function sendWhatsApp() {
         msg += `🏷️ Discount Applied (${order.couponCode}): -₹${order.discount.toLocaleString('en-IN')}
 `;
     }
-    msg += `✅ *TOTAL AMOUNT: ₹${order.total.toLocaleString('en-IN')}*
+    msg += `✅ *TOTAL PAYABLE: ₹${order.total.toLocaleString('en-IN')}*
 
 `;
-    if (order.notes) msg += `📝 Notes: ${order.notes}
+    if (order.notes) msg += `📝 Special Requests: ${order.notes}
 
 `;
-    msg += `📍 Stall: High School Ground, Sullurpeta
-📞 Phone / WhatsApp: +91 9490042905`;
+
+    msg += `📸 *PAYMENT VERIFICATION:*
+Please send your UPI Payment Screenshot + UTR / Transaction No. to this WhatsApp chat to confirm dispatch.
+
+🚚 *DELIVERY / PICKUP POLICY:*
+• Home delivery is available strictly in Sullurpeta, AP (Commences 6th Nov 2026).
+• Store pickup available at Govt High School Ground stall (Shop No. coming soon!).
+• Product images are for reference; actual packaging & brand wrappers vary by fresh batch stock.
+
+⚠️ *SAFETY ADVISORY:*
+Beware of online fraud. Official payments accepted strictly to UPI ID: 9490042905@ybl. Helplines: 94900 42905 / 79816 59594.
+Wishing you & your family a Safe & Happy Diwali! 🪔✨`;
 
     const encoded = encodeURIComponent(msg);
     window.open(`https://wa.me/919490042905?text=${encoded}`, '_blank');
