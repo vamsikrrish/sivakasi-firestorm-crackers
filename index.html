@@ -7,67 +7,77 @@
     <meta name="description" content="Sivakasi Firestorm Crackers at High School Ground, Sullurpeta. 100% authentic Sivakasi fireworks, sparklers, chakkars, rockets, aerial shots, and gift boxes at wholesale festival prices. Instant PDF quotation and WhatsApp ordering.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
     
-    <!-- Ultra-Lux Google Fonts -->
+        <!-- Google Fonts: Outfit (Fiery Headlines) & Plus Jakarta Sans (E-Commerce Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-/* ==================== LUXURY THEME TOKENS ==================== */
+/* ==================== FIRESTORM WHITE & RED THEME TOKENS ==================== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-    --bg-deep: #05070D;
-    --bg-surface: #0B0F1D;
-    --bg-surface-elevated: #11172B;
-    --bg-card: rgba(16, 22, 38, 0.85);
-    --bg-card-hover: rgba(23, 31, 54, 0.95);
+    --bg-main: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #FFFFFF;
+    --bg-subtle: #F1F5F9;
+    --bg-fire-subtle: #FEF2F2;
+    --bg-fire-100: #FEE2E2;
     
-    --gold-1: #FFF3C4;
-    --gold-2: #FFDF70;
-    --gold-3: #D4AF37;
-    --gold-4: #AA7C11;
-    --gold-gradient: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 48%, #8C6514 100%);
-    --gold-gradient-subtle: linear-gradient(135deg, rgba(255,223,112,0.15) 0%, rgba(212,175,55,0.05) 100%);
-    --gold-glow: 0 0 35px rgba(212, 175, 55, 0.35);
-    --gold-glow-sm: 0 0 15px rgba(212, 175, 55, 0.25);
+    /* Firestorm Red & Flame Palette (OG Movie / High Adrenaline Diwali) */
+    --fire-red: #DC2626;
+    --fire-red-dark: #B91C1C;
+    --fire-red-deep: #991B1B;
+    --fire-crimson: #E11D48;
+    --fire-orange: #EA580C;
+    --fire-flame: #F97316;
     
-    --ruby: #FF2A55;
-    --ruby-gradient: linear-gradient(135deg, #FF3366 0%, #B80028 100%);
-    --emerald: #00E676;
-    --emerald-gradient: linear-gradient(135deg, #00E676 0%, #00A854 100%);
+    --fire-gradient: linear-gradient(135deg, #FF1744 0%, #DC2626 50%, #990000 100%);
+    --fire-gradient-hover: linear-gradient(135deg, #FF5252 0%, #EF4444 50%, #B91C1C 100%);
+    --fire-gradient-subtle: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(249, 115, 22, 0.04) 100%);
+    --fire-glow: 0 10px 25px -5px rgba(220, 38, 38, 0.35);
+    --fire-glow-sm: 0 4px 15px rgba(220, 38, 38, 0.25);
     
-    --text-primary: #FFFFFF;
-    --text-secondary: #E2E8F0;
-    --text-muted: #8E9BAE;
-    --text-dim: #546076;
+    /* Festive Gold / Amber Accents */
+    --gold-festive: #D97706;
+    --gold-light: #FEF3C7;
+    --gold-border: #FCD34D;
     
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-gold: rgba(212, 175, 55, 0.25);
-    --border-gold-bright: rgba(212, 175, 55, 0.65);
+    /* Indian E-Commerce Pricing Colors (Amazon / Flipkart Style) */
+    --emerald-price: #15803D;
+    --emerald-bg: #DCFCE7;
+    --discount-red: #DC2626;
+    --discount-bg: #FEE2E2;
+    
+    /* High-Legibility Typography */
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --text-light: #94A3B8;
+    
+    /* Clean Borders & Shadows */
+    --border-subtle: #E2E8F0;
+    --border-fire: rgba(220, 38, 38, 0.25);
+    --border-fire-bright: rgba(220, 38, 38, 0.6);
     
     --radius-sm: 8px;
-    --radius-md: 14px;
-    --radius-lg: 20px;
-    --radius-xl: 30px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
     --radius-pill: 9999px;
     
-    --shadow-luxury: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(212, 175, 55, 0.15);
-    --shadow-card: 0 12px 35px -8px rgba(0, 0, 0, 0.6);
-    --shadow-card-hover: 0 24px 60px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.25);
+    --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-card-hover: 0 16px 32px -4px rgba(220, 38, 38, 0.14), 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+    --shadow-header: 0 4px 20px rgba(15, 23, 42, 0.06);
     
-    --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    --font-serif: 'Cinzel', serif;
-    --font-accent: 'Playfair Display', serif;
+    --font-heading: 'Outfit', -apple-system, sans-serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
     font-family: var(--font-sans);
-    background-color: var(--bg-deep);
+    background-color: var(--bg-main);
     color: var(--text-secondary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -75,22 +85,22 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Background Atmosphere */
+/* Background Atmosphere (Warm, Clean Festive Radiance) */
 body::before {
     content: '';
     position: fixed; inset: 0; z-index: -2;
     background: 
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 55%),
-        radial-gradient(circle at 85% 30%, rgba(255, 42, 85, 0.06) 0%, transparent 40%),
-        radial-gradient(circle at 15% 70%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-        var(--bg-deep);
+        radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.07) 0%, transparent 60%),
+        radial-gradient(circle at 90% 20%, rgba(249, 115, 22, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 10% 60%, rgba(217, 119, 6, 0.05) 0%, transparent 50%),
+        var(--bg-main);
     pointer-events: none;
 }
 
-/* Canvas for Interactive Sparks & Golden Embers */
+/* Interactive Fireworks Canvas */
 #festive-canvas {
     position: fixed; inset: 0;
-    z-index: -1;
+    z-index: 10;
     pointer-events: none;
 }
 
@@ -101,342 +111,298 @@ input, select, textarea { font-family: var(--font-sans); }
 
 /* ==================== SCROLLBAR ==================== */
 ::-webkit-scrollbar { width: 7px; }
-::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--gold-3), var(--gold-4));
+    background: linear-gradient(180deg, #EF4444, #B91C1C);
     border-radius: var(--radius-pill);
 }
-::-webkit-scrollbar-thumb:hover { background: var(--gold-2); }
-
-/* ==================== LOADING SCREEN ==================== */
-#loader {
-    position: fixed; inset: 0; z-index: 99999;
-    background: radial-gradient(circle at center, #151A2E 0%, #06080F 100%);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    transition: opacity 0.8s var(--ease-luxury), visibility 0.8s var(--ease-luxury);
-}
-#loader.hidden { opacity: 0; visibility: hidden; }
-.loader-emblem {
-    font-size: 4rem; margin-bottom: 1.5rem;
-    animation: festivePulse 2s infinite ease-in-out;
-    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.6));
-}
-.loader-brand {
-    font-family: var(--font-serif);
-    font-size: 1.35rem; font-weight: 800;
-    letter-spacing: 4px; text-transform: uppercase;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem; text-align: center;
-}
-.loader-subtitle {
-    font-size: 0.75rem; letter-spacing: 2px;
-    color: var(--text-muted); text-transform: uppercase;
-}
-.loader-track {
-    width: 240px; height: 3px; background: rgba(255, 255, 255, 0.08);
-    border-radius: 3px; margin-top: 2rem; overflow: hidden; position: relative;
-}
-.loader-progress {
-    position: absolute; left: 0; top: 0; height: 100%; width: 0;
-    background: var(--gold-gradient); box-shadow: 0 0 15px var(--gold-2);
-    animation: loadBar 1.4s var(--ease-luxury) forwards;
-}
-@keyframes loadBar { to { width: 100%; } }
-@keyframes festivePulse {
-    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5)); }
-    50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.85)); }
-}
+::-webkit-scrollbar-thumb:hover { background: #DC2626; }
 
 /* ==================== ANNOUNCEMENT STRIP ==================== */
 .announcement-bar {
-    background: linear-gradient(90deg, #1C0A00 0%, #2B1605 30%, #401018 70%, #1C0A00 100%);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
-    color: var(--gold-2); padding: 8px 1.5rem;
-    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.8px;
+    background: linear-gradient(90deg, #991B1B 0%, #DC2626 50%, #B91C1C 100%);
+    color: #FFFFFF; padding: 9px 1.5rem;
+    font-size: 0.84rem; font-weight: 700; letter-spacing: 0.5px;
     position: relative; overflow: hidden;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
 }
 .announcement-bar .marquee {
     display: inline-block; white-space: nowrap;
-    animation: marqueeScroll 35s linear infinite;
+    animation: marqueeScroll 32s linear infinite;
 }
-.marquee-item { margin: 0 2rem; display: inline-flex; align-items: center; gap: 0.5rem; }
-.marquee-item .gold-star { color: var(--gold-2); text-shadow: 0 0 10px var(--gold-3); }
+.marquee-item { margin: 0 2rem; display: inline-flex; align-items: center; gap: 0.6rem; }
+.marquee-item .gold-star { color: #FEF08A; text-shadow: 0 0 8px rgba(254, 240, 138, 0.8); }
 @keyframes marqueeScroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-/* ==================== LUXURY NAVBAR ==================== */
+/* ==================== FIRESTORM E-COMMERCE NAVBAR ==================== */
 .navbar {
     position: sticky; top: 0; z-index: 1000;
-    background: rgba(8, 11, 20, 0.82);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-bottom: 1px solid var(--border-gold);
-    transition: all 0.4s var(--ease-luxury);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 2px solid #FEE2E2;
+    box-shadow: var(--shadow-header);
+    transition: all 0.3s ease;
 }
 .navbar.scrolled {
-    background: rgba(6, 8, 15, 0.96);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(212, 175, 55, 0.25);
-    padding: 0.3rem 0;
+    padding: 0.2rem 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 .nav-container {
     max-width: 1440px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 2.5rem;
+    padding: 0.85rem 2rem;
 }
 .nav-brand {
-    display: flex; align-items: center; gap: 1rem;
+    display: flex; align-items: center; gap: 0.9rem;
     position: relative;
 }
 .brand-seal {
-    width: 46px; height: 46px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #FFEBA3 0%, #D4AF37 55%, #7D5508 100%);
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--fire-gradient);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    transition: transform 0.5s var(--ease-spring);
+    font-size: 1.45rem; color: #FFF;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.nav-brand:hover .brand-seal { transform: rotate(15deg) scale(1.08); }
+.nav-brand:hover .brand-seal { transform: rotate(10deg) scale(1.08); }
 .nav-brand-text h1 {
-    font-family: var(--font-serif);
-    font-size: 1.25rem; font-weight: 800; letter-spacing: 1.5px;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    line-height: 1.2;
+    font-family: var(--font-heading);
+    font-size: 1.35rem; font-weight: 900; letter-spacing: 0.5px;
+    color: #0F172A; line-height: 1.15;
 }
+.nav-brand-text h1 span { color: var(--fire-red); }
 .nav-brand-text p {
-    font-size: 0.68rem; color: var(--text-muted);
-    font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    font-size: 0.72rem; color: var(--text-muted);
+    font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
 }
 
-.nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
 .nav-links a {
-    font-size: 0.92rem; font-weight: 600; color: var(--text-secondary);
-    letter-spacing: 0.5px; position: relative; padding: 0.4rem 0;
-    transition: color 0.3s ease;
+    font-size: 0.92rem; font-weight: 700; color: var(--text-secondary);
+    letter-spacing: 0.3px; position: relative; padding: 0.4rem 0;
+    transition: color 0.2s ease;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--gold-2); }
+.nav-links a:hover, .nav-links a.active { color: var(--fire-red); }
 .nav-links a::after {
     content: ''; position: absolute; bottom: 0; left: 0;
-    width: 0; height: 2px;
-    background: var(--gold-gradient);
-    box-shadow: 0 0 10px var(--gold-2);
-    transition: width 0.35s var(--ease-luxury);
+    width: 0; height: 2.5px;
+    background: var(--fire-gradient);
+    border-radius: 2px;
+    transition: width 0.3s ease;
 }
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-.nav-actions { display: flex; align-items: center; gap: 1rem; }
+.nav-actions { display: flex; align-items: center; gap: 0.85rem; }
 .nav-btn {
-    width: 44px; height: 44px; border-radius: 50%;
+    width: 42px; height: 42px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-gold);
-    color: var(--text-secondary); font-size: 1.05rem;
-    transition: all 0.3s var(--ease-luxury);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary); font-size: 1.05rem;
+    transition: all 0.25s ease;
     position: relative;
 }
 .nav-btn:hover {
-    background: rgba(212, 175, 55, 0.15);
-    border-color: var(--gold-2);
-    color: var(--gold-1);
+    background: var(--bg-fire-100);
+    border-color: var(--fire-red);
+    color: var(--fire-red);
     transform: translateY(-2px);
-    box-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
+}
+.cart-nav-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.65rem 1.2rem; border-radius: var(--radius-pill);
+    background: var(--fire-gradient);
+    color: #FFFFFF; font-weight: 800; font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    transition: all 0.25s ease;
+    position: relative;
+}
+.cart-nav-btn:hover {
+    background: var(--fire-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(220, 38, 38, 0.45);
 }
 .cart-badge {
-    position: absolute; top: -3px; right: -3px;
-    background: var(--ruby-gradient);
-    color: white; width: 20px; height: 20px; border-radius: 50%;
+    background: #FFFFFF; color: var(--fire-red-dark);
+    min-width: 20px; height: 20px; padding: 0 6px;
+    border-radius: 10px; font-size: 0.72rem; font-weight: 900;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.68rem; font-weight: 800;
-    box-shadow: 0 0 10px rgba(255, 42, 85, 0.6);
-    animation: popSpring 0.3s var(--ease-spring);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-@keyframes popSpring { 0% { transform: scale(0); } 100% { transform: scale(1); } }
 
 .nav-hamburger {
-    display: none; flex-direction: column; gap: 6px;
+    display: none; flex-direction: column; gap: 5px;
     background: none; padding: 6px;
 }
 .nav-hamburger span {
-    display: block; width: 26px; height: 2px;
-    background: var(--gold-2); border-radius: 2px;
-    transition: var(--ease-luxury) 0.3s;
+    display: block; width: 24px; height: 2.5px;
+    background: var(--text-primary); border-radius: 2px;
 }
 
-/* ==================== HERO SECTION (HIGH CLASS LUXURY) ==================== */
+/* ==================== HERO SECTION (FIRESTORM SHOPPING PORTAL) ==================== */
 .hero {
     position: relative; overflow: hidden;
-    padding: 6rem 2rem 5rem;
+    padding: 4.5rem 2rem 4rem;
     background: 
-        radial-gradient(circle at 50% 25%, rgba(212, 175, 55, 0.14) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(8, 11, 20, 0.6) 0%, rgba(5, 7, 13, 0.95) 100%);
-    border-bottom: 1px solid var(--border-gold);
+        radial-gradient(circle at 60% 30%, rgba(239, 68, 68, 0.08) 0%, transparent 55%),
+        linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+    border-bottom: 1px solid var(--border-subtle);
 }
 .hero-wrapper {
     max-width: 1400px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem; align-items: center;
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem; align-items: center;
 }
 .hero-content { position: relative; z-index: 2; }
 
 .hero-pill {
     display: inline-flex; align-items: center; gap: 0.6rem;
-    background: rgba(212, 175, 55, 0.08);
-    border: 1px solid var(--border-gold);
-    padding: 0.45rem 1.2rem; border-radius: var(--radius-pill);
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
-    color: var(--gold-2); text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
-    margin-bottom: 1.8rem;
-    animation: fadeInDown 0.8s var(--ease-luxury);
+    background: var(--bg-fire-100);
+    border: 1px solid #FECACA;
+    padding: 0.45rem 1.1rem; border-radius: var(--radius-pill);
+    font-size: 0.8rem; font-weight: 800; letter-spacing: 0.8px;
+    color: var(--fire-red-dark); text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+    margin-bottom: 1.4rem;
 }
 .pulse-dot {
     width: 8px; height: 8px; border-radius: 50%;
-    background: var(--gold-2);
-    box-shadow: 0 0 10px var(--gold-1);
+    background: var(--fire-red);
+    box-shadow: 0 0 10px #DC2626;
     animation: blinkGlow 1.8s infinite;
 }
 @keyframes blinkGlow { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
 
 .hero-heading {
-    font-family: var(--font-serif);
-    font-size: 3.8rem; font-weight: 900;
-    line-height: 1.12; margin-bottom: 1.4rem;
-    letter-spacing: 0.5px;
-    animation: fadeInUp 0.9s 0.15s both;
+    font-family: var(--font-heading);
+    font-size: 3.4rem; font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1.15; margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
 }
-.text-shimmer {
-    background: linear-gradient(90deg, #FFFFFF 0%, #FFEBA3 25%, #D4AF37 50%, #FFEBA3 75%, #FFFFFF 100%);
-    background-size: 200% auto;
+.fire-text {
+    background: linear-gradient(135deg, #DC2626 0%, #EA580C 50%, #D97706 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    animation: textShine 6s linear infinite;
+    display: inline-block;
 }
-@keyframes textShine { to { background-position: 200% center; } }
 
 .hero-description {
-    font-size: 1.12rem; color: var(--text-muted);
-    line-height: 1.8; margin-bottom: 2.2rem; max-width: 620px;
-    animation: fadeInUp 0.9s 0.3s both;
+    font-size: 1.08rem; color: var(--text-muted);
+    line-height: 1.75; margin-bottom: 2rem; max-width: 640px;
 }
 
-/* Festival Countdown */
-.countdown-box {
-    background: rgba(16, 22, 38, 0.7);
-    border: 1px solid var(--border-gold);
-    border-radius: var(--radius-lg);
-    padding: 1.2rem 1.6rem; margin-bottom: 2.5rem;
-    display: inline-flex; align-items: center; gap: 1.8rem;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 0.9s 0.45s both;
+/* E-Commerce Trust Badges */
+.hero-trust-bar {
+    display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;
 }
-.countdown-title {
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
-    color: var(--gold-2); text-transform: uppercase;
+.trust-chip {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);
+    background: #FFFFFF; padding: 0.4rem 0.85rem; border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle); box-shadow: var(--shadow-card);
 }
-.countdown-grid { display: flex; gap: 1rem; align-items: center; }
-.countdown-unit { text-align: center; min-width: 52px; }
-.countdown-val {
-    font-family: var(--font-serif);
-    font-size: 1.7rem; font-weight: 800; color: #FFFFFF;
-    line-height: 1; text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
-}
-.countdown-lbl {
-    font-size: 0.62rem; color: var(--text-muted);
-    letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px;
-}
-.countdown-sep { color: var(--gold-3); font-size: 1.4rem; font-weight: 300; }
-
-.hero-actions {
-    display: flex; gap: 1.2rem; flex-wrap: wrap;
-    animation: fadeInUp 0.9s 0.6s both;
-}
+.trust-chip i { color: var(--fire-red); font-size: 0.95rem; }
 
 /* Buttons */
-.btn-gold {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    padding: 1rem 2.2rem; border-radius: var(--radius-pill);
-    background: var(--gold-gradient);
-    color: #0B0E17; font-weight: 800; font-size: 0.95rem;
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn-fire {
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    padding: 0.95rem 2rem; border-radius: var(--radius-pill);
+    background: var(--fire-gradient);
+    color: #FFFFFF; font-weight: 800; font-size: 0.95rem;
     letter-spacing: 0.5px; text-transform: uppercase;
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.35);
-    transition: all 0.35s var(--ease-luxury);
+    box-shadow: var(--fire-glow);
+    transition: all 0.3s ease;
     position: relative; overflow: hidden;
 }
-.btn-gold::before {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transform: translateX(-100%); transition: transform 0.6s ease;
-}
-.btn-gold:hover::before { transform: translateX(100%); }
-.btn-gold:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.55);
-    color: #000;
+.btn-fire:hover {
+    background: var(--fire-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(220, 38, 38, 0.45);
+    color: #FFF;
 }
 
-.btn-glass {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    padding: 1rem 2rem; border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-gold);
-    color: var(--text-primary); font-weight: 700; font-size: 0.95rem;
-    backdrop-filter: blur(10px);
-    transition: all 0.35s var(--ease-luxury);
+.btn-outline-fire {
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    padding: 0.95rem 1.8rem; border-radius: var(--radius-pill);
+    background: #FFFFFF;
+    border: 2px solid var(--fire-red);
+    color: var(--fire-red-dark); font-weight: 800; font-size: 0.95rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
 }
-.btn-glass:hover {
-    background: rgba(212, 175, 55, 0.12);
-    border-color: var(--gold-2);
-    color: var(--gold-1);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+.btn-outline-fire:hover {
+    background: var(--bg-fire-100);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
 }
 
-/* Hero Visual Showcase */
+/* Hero Showcase Card */
 .hero-visual-card {
     position: relative;
     border-radius: var(--radius-xl);
-    padding: 2.5rem;
-    background: radial-gradient(circle at center, rgba(30, 38, 62, 0.7) 0%, rgba(12, 16, 28, 0.95) 100%);
-    border: 1px solid var(--border-gold-bright);
-    box-shadow: var(--shadow-luxury);
+    padding: 2.2rem;
+    background: #FFFFFF;
+    border: 2px solid #FECACA;
+    box-shadow: 0 20px 45px -10px rgba(220, 38, 38, 0.15), 0 4px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
-    backdrop-filter: blur(20px);
-    animation: fadeInRight 1s 0.3s both;
 }
 .hero-diya-art {
-    font-size: 7.5rem;
-    filter: drop-shadow(0 0 40px rgba(255, 180, 0, 0.7));
-    margin-bottom: 1.5rem;
+    font-size: 5.5rem;
+    margin-bottom: 1rem;
     display: inline-block;
-    animation: floatDiya 5s ease-in-out infinite;
+    filter: drop-shadow(0 8px 25px rgba(249, 115, 22, 0.4));
+    transition: transform 0.3s ease;
 }
-@keyframes floatDiya {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(2deg); }
-}
+.hero-visual-card:hover .hero-diya-art { transform: scale(1.08); }
 .visual-title {
-    font-family: var(--font-serif);
-    font-size: 1.4rem; font-weight: 800; color: var(--gold-2);
-    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem; font-weight: 900; color: var(--text-primary);
+    margin-bottom: 0.3rem;
 }
-.visual-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
-.hero-badges-row {
-    display: flex; justify-content: center; gap: 1.5rem;
-    margin-top: 2rem; padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-.hero-badge-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); }
-.hero-badge-item i { color: var(--gold-2); font-size: 1rem; }
+.visual-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; }
 
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+/* Festival Countdown in Card */
+.countdown-box {
+    background: var(--bg-fire-subtle);
+    border: 1px solid #FECACA;
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.2rem; margin: 1.5rem 0 1.2rem;
+    display: inline-flex; align-items: center; gap: 1.2rem;
+}
+.countdown-title {
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;
+    color: var(--fire-red-dark); text-transform: uppercase; text-align: left;
+}
+.countdown-grid { display: flex; gap: 0.8rem; align-items: center; }
+.countdown-unit { text-align: center; min-width: 44px; }
+.countdown-val {
+    font-family: var(--font-heading);
+    font-size: 1.55rem; font-weight: 900; color: var(--fire-red);
+    line-height: 1;
+}
+.countdown-lbl {
+    font-size: 0.62rem; color: var(--text-muted);
+    font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px;
+}
+.countdown-sep { color: #FCA5A5; font-size: 1.2rem; font-weight: 700; }
+
+.hero-badges-row {
+    display: flex; justify-content: center; gap: 1.2rem;
+    margin-top: 1.2rem; padding-top: 1.2rem;
+    border-top: 1px solid var(--border-subtle);
+}
+.hero-badge-item { display: flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); }
+.hero-badge-item i { color: var(--fire-red); font-size: 0.95rem; }
 
 /* ==================== STATS BANNER ==================== */
 .stats-banner {
-    background: rgba(11, 15, 29, 0.7);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    padding: 2.2rem 2rem;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 2rem 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 .stats-grid {
     max-width: 1300px; margin: 0 auto;
@@ -446,690 +412,776 @@ input, select, textarea { font-family: var(--font-sans); }
 .stat-card { position: relative; }
 .stat-card:not(:last-child)::after {
     content: ''; position: absolute; right: 0; top: 20%; height: 60%;
-    width: 1px; background: rgba(255, 255, 255, 0.08);
+    width: 1px; background: var(--border-subtle);
 }
 .stat-number {
-    font-family: var(--font-serif);
-    font-size: 2.4rem; font-weight: 800;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    line-height: 1.1; margin-bottom: 0.3rem;
+    font-family: var(--font-heading);
+    font-size: 2.3rem; font-weight: 900;
+    color: var(--fire-red);
+    line-height: 1.1; margin-bottom: 0.2rem;
 }
 .stat-label {
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 1.5px;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.5px;
     color: var(--text-muted); text-transform: uppercase;
 }
 
-/* ==================== SECTION WRAPPER & HEADERS ==================== */
-.section { padding: 6rem 2rem; max-width: 1440px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 3.5rem; }
+/* ==================== SECTION LAYOUT & HEADERS ==================== */
+.section { padding: 4.5rem 2rem; max-width: 1440px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 2.8rem; }
 .section-tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.78rem; font-weight: 700; letter-spacing: 2.5px;
-    text-transform: uppercase; color: var(--gold-2);
-    background: var(--gold-gradient-subtle);
-    padding: 0.4rem 1.2rem; border-radius: var(--radius-pill);
-    border: 1px solid var(--border-gold);
-    margin-bottom: 1rem;
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--fire-red-dark);
+    background: var(--bg-fire-100);
+    padding: 0.35rem 1rem; border-radius: var(--radius-pill);
+    border: 1px solid #FECACA;
+    margin-bottom: 0.8rem;
 }
 .section-title {
-    font-family: var(--font-serif);
-    font-size: 2.8rem; font-weight: 800;
-    color: var(--text-primary); letter-spacing: 0.5px;
-    line-height: 1.2; margin-bottom: 0.8rem;
+    font-family: var(--font-heading);
+    font-size: 2.5rem; font-weight: 900;
+    color: var(--text-primary); letter-spacing: -0.5px;
+    line-height: 1.2; margin-bottom: 0.6rem;
 }
 .section-subtitle {
     font-size: 1.05rem; color: var(--text-muted);
-    max-width: 650px; margin: 0 auto; line-height: 1.7;
+    max-width: 680px; margin: 0 auto; line-height: 1.6;
 }
 
-/* ==================== LUXURY FILTER BAR (STICKY) ==================== */
-#products-section { scroll-margin-top: 90px; }
+/* ==================== SHOPPING FILTER BAR ==================== */
+#products-section { padding: 2.2rem 2rem 4rem; scroll-margin-top: 85px; }
+#products-section .section-header { margin-bottom: 1.4rem; }
 .filter-console {
-    background: rgba(14, 18, 32, 0.88);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid var(--border-gold);
-    border-radius: var(--radius-xl);
-    padding: 1.6rem 2rem;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-    margin-bottom: 3rem;
-    position: sticky; top: 85px; z-index: 50;
-    transition: all 0.3s var(--ease-luxury);
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 0.85rem 1.2rem;
+    box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.04);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 10;
 }
 .filter-top-row {
-    display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 0.65rem; align-items: center;
 }
 .search-input-wrapper {
-    flex: 1; min-width: 280px; position: relative;
-}
-.search-input-wrapper input {
-    width: 100%; padding: 0.85rem 1.2rem 0.85rem 3.2rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    color: var(--text-primary); font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-.search-input-wrapper input:focus {
-    border-color: var(--gold-2);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
-    outline: none;
+    position: relative; display: flex; align-items: center;
 }
 .search-input-wrapper i {
-    position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%);
-    color: var(--gold-3); font-size: 1.05rem;
+    position: absolute; left: 0.9rem; color: var(--fire-red); font-size: 0.9rem;
+}
+.search-input-wrapper input {
+    width: 100%; padding: 0.6rem 2.8rem 0.6rem 2.3rem;
+    background: var(--bg-subtle);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: var(--text-primary); font-size: 0.88rem; font-weight: 600;
+    transition: all 0.2s ease;
+}
+.search-input-wrapper input:focus {
+    background: #FFFFFF;
+    border-color: var(--fire-red);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+    outline: none;
 }
 .kbd-shortcut {
-    position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 4px; padding: 2px 7px;
-    font-size: 0.7rem; color: var(--text-muted);
+    position: absolute; right: 0.75rem;
+    background: #FFFFFF; border: 1px solid var(--border-subtle);
+    color: var(--text-muted); padding: 1px 5px; border-radius: 4px;
+    font-size: 0.68rem; font-weight: 700;
 }
 
 .luxury-select {
-    padding: 0.85rem 2.8rem 0.85rem 1.2rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-subtle);
+    padding: 0.6rem 2.2rem 0.6rem 0.85rem;
+    background: var(--bg-subtle);
+    border: 1.5px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;
-    cursor: pointer; transition: all 0.3s ease;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 1.1rem center;
+    color: var(--text-primary); font-size: 0.84rem; font-weight: 700;
+    appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23DC2626'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2.5' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.85rem center;
+    background-size: 13px;
+    transition: all 0.2s ease;
 }
-.luxury-select:focus { border-color: var(--gold-2); outline: none; }
-.luxury-select option { background: var(--bg-surface-elevated); color: #FFF; }
+.luxury-select:focus {
+    background-color: #FFFFFF;
+    border-color: var(--fire-red);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+    outline: none;
+}
 
+/* Category Pills Row */
 .category-tags-row {
-    display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.2rem;
-    padding-top: 1.2rem; border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex; gap: 0.45rem; overflow-x: auto;
+    padding: 0.65rem 0 0.2rem; margin-top: 0.6rem;
+    border-top: 1px solid var(--border-subtle);
+    scrollbar-width: thin;
 }
 .category-pill {
-    padding: 0.45rem 1.2rem; border-radius: var(--radius-pill);
-    font-size: 0.82rem; font-weight: 600; cursor: pointer;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 0.4rem 0.85rem; border-radius: var(--radius-pill);
+    background: var(--bg-subtle);
     border: 1px solid var(--border-subtle);
-    color: var(--text-muted);
-    transition: all 0.3s var(--ease-luxury);
+    color: var(--text-secondary); font-size: 0.8rem; font-weight: 700;
+    white-space: nowrap; transition: all 0.2s ease;
 }
 .category-pill:hover {
-    border-color: var(--border-gold);
-    color: var(--gold-1);
-    transform: translateY(-2px);
+    background: var(--bg-fire-100);
+    border-color: #FECACA;
+    color: var(--fire-red-dark);
 }
 .category-pill.active {
-    background: var(--gold-gradient);
-    color: #060911; font-weight: 800;
-    border-color: transparent;
-    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-}
-.results-meta {
-    font-size: 0.82rem; color: var(--text-muted);
-    margin-top: 0.8rem; font-weight: 500;
+    background: var(--fire-gradient);
+    border-color: var(--fire-red);
+    color: #FFFFFF;
+    box-shadow: 0 3px 8px rgba(220, 38, 38, 0.25);
 }
 
-/* ==================== PRODUCT GRID ==================== */
+.results-meta {
+    font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+    margin-top: 0.45rem; text-align: right;
+}
+
+/* ==================== PRODUCT CARDS (E-COMMERCE HIGH CONVERTING) ==================== */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    gap: 1.8rem;
 }
 .product-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-gold);
+    border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     overflow: hidden;
     position: relative;
-    transition: all 0.45s var(--ease-luxury);
     display: flex; flex-direction: column;
     box-shadow: var(--shadow-card);
-}
-.product-card::before {
-    content: ''; position: absolute; inset: 0;
-    border-radius: var(--radius-lg); padding: 1px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), transparent 60%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude;
-    pointer-events: none; opacity: 0.6; transition: opacity 0.4s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .product-card:hover {
-    transform: translateY(-8px) scale(1.01);
-    border-color: var(--gold-2);
+    transform: translateY(-6px);
+    border-color: #FECACA;
     box-shadow: var(--shadow-card-hover);
-    background: var(--bg-card-hover);
 }
-.product-card:hover::before { opacity: 1; }
 
 .product-img-wrapper {
-    position: relative; height: 215px;
-    background: radial-gradient(circle at center, #192036 0%, #090D18 100%);
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative; width: 100%; height: 210px;
+    background: #F8FAFC;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--border-subtle);
 }
 .product-img-wrapper .product-img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s var(--ease-luxury);
+    width: 100%; height: 100%; object-fit: contain; padding: 0.8rem;
+    transition: transform 0.4s ease;
 }
-.product-card:hover .product-img { transform: scale(1.08); }
+.product-card:hover .product-img { transform: scale(1.06); }
 
-/* Not Available Luxury Card */
+/* Not Available Box */
 .not-available-box {
     width: 100%; height: 100%;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 10px; padding: 1.5rem; text-align: center;
-    background: radial-gradient(circle at center, #141A2D 0%, #0A0D17 100%);
-    border: 1px dashed rgba(212, 175, 55, 0.2);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    color: var(--text-muted); text-align: center; padding: 1.5rem;
 }
 .not-available-icon {
-    font-size: 2.2rem; color: var(--gold-3);
-    opacity: 0.7; transition: transform 0.4s ease;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: #FFFFFF; border: 1.5px dashed #CBD5E1;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--fire-red); font-size: 1.3rem; margin-bottom: 0.6rem;
 }
-.product-card:hover .not-available-icon { transform: scale(1.15); opacity: 1; }
-.not-available-text {
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
-    color: var(--gold-2); text-transform: uppercase;
-}
-.not-available-sub {
-    font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.5px;
-}
+.not-available-text { font-size: 0.82rem; font-weight: 700; color: var(--text-primary); }
+.not-available-sub { font-size: 0.72rem; color: var(--text-light); }
 
+/* Product Badges */
 .luxury-badge {
-    position: absolute; top: 0.85rem; left: 0.85rem;
-    padding: 0.28rem 0.85rem; border-radius: var(--radius-pill);
-    font-size: 0.68rem; font-weight: 800; letter-spacing: 1px;
+    position: absolute; top: 0.75rem; left: 0.75rem;
+    padding: 0.3rem 0.7rem; border-radius: var(--radius-pill);
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.8px;
     text-transform: uppercase; z-index: 2;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.badge-popular { background: var(--ruby-gradient); color: white; }
-.badge-premium { background: var(--gold-gradient); color: #000; font-weight: 900; }
-.badge-new { background: var(--emerald-gradient); color: #000; font-weight: 800; }
-.badge-bestseller { background: linear-gradient(135deg, #FF6B00, #E05500); color: white; }
+.badge-bestseller, .badge-hot { background: var(--fire-gradient); color: #FFF; }
+.badge-special, .badge-combo { background: linear-gradient(135deg, #D97706, #EA580C); color: #FFF; }
+.badge-new { background: linear-gradient(135deg, #16A34A, #15803D); color: #FFF; }
 
 .product-info-wrap {
-    padding: 1.4rem; display: flex; flex-direction: column; flex: 1;
+    padding: 1.25rem 1.4rem;
+    display: flex; flex-direction: column; flex: 1;
 }
 .product-category-lbl {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
-    color: var(--gold-2); text-transform: uppercase; margin-bottom: 0.4rem;
+    font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+    color: var(--fire-red); letter-spacing: 1px; margin-bottom: 0.3rem;
 }
 .product-name-title {
-    font-family: var(--font-serif);
-    font-size: 1.05rem; font-weight: 700; color: var(--text-primary);
-    line-height: 1.35; margin-bottom: 0.4rem;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    font-family: var(--font-heading);
+    font-size: 1.15rem; font-weight: 800;
+    color: var(--text-primary); line-height: 1.3; margin-bottom: 0.4rem;
 }
 .product-desc-snippet {
-    font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;
-    margin-bottom: 0.9rem; flex: 1;
+    font-size: 0.82rem; color: var(--text-muted);
+    line-height: 1.5; margin-bottom: 0.8rem; flex: 1;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 .product-packaging-unit {
-    font-size: 0.75rem; color: var(--text-dim); margin-bottom: 0.8rem;
-    display: flex; align-items: center; gap: 0.4rem; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-size: 0.76rem; font-weight: 700; color: var(--text-secondary);
+    background: var(--bg-subtle); padding: 0.3rem 0.65rem; border-radius: 6px;
+    margin-bottom: 1rem; width: fit-content;
 }
-.product-packaging-unit i { color: var(--gold-3); }
 
-/* Price Presentation */
+/* Pricing Row */
 .product-footer-row {
     display: flex; align-items: center; justify-content: space-between;
-    margin-top: auto; padding-top: 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    gap: 0.8rem;
+    padding-top: 0.9rem; border-top: 1px solid var(--border-subtle);
+    gap: 0.6rem;
 }
-.price-stack { display: flex; flex-direction: column; gap: 2px; }
+.price-stack { display: flex; flex-direction: column; }
 .price-comparison-line {
-    display: flex; align-items: center; gap: 6px;
+    display: flex; align-items: center; gap: 0.45rem; line-height: 1;
+    margin-bottom: 0.25rem;
 }
 .price-original-striked {
-    font-size: 0.85rem; color: var(--text-muted);
-    text-decoration: line-through; font-weight: 500;
+    font-size: 0.85rem; color: #94A3B8; text-decoration: line-through; font-weight: 600;
 }
 .discount-chip {
-    font-size: 0.7rem; font-weight: 800; color: #FFF;
-    background: var(--ruby-gradient);
-    padding: 1px 6px; border-radius: 4px;
-    letter-spacing: 0.3px;
+    background: var(--discount-bg); color: var(--discount-red);
+    font-size: 0.72rem; font-weight: 800; padding: 2px 6px; border-radius: 4px;
 }
 .price-green-main {
-    font-size: 1.4rem; font-weight: 800;
-    color: var(--emerald); line-height: 1.2;
-    text-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
-    display: flex; align-items: baseline;
+    font-family: var(--font-heading);
+    font-size: 1.45rem; font-weight: 900;
+    color: var(--emerald-price); line-height: 1;
 }
-.price-green-main span { font-size: 0.9rem; margin-right: 2px; font-weight: 700; }
+.price-green-main span { font-size: 0.95rem; margin-right: 1px; }
 
+/* Add Button */
 .add-btn-lux {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.6rem 1.1rem; border-radius: var(--radius-sm);
-    background: var(--gold-gradient);
-    color: #06080F; font-size: 0.82rem; font-weight: 800;
-    letter-spacing: 0.5px; text-transform: uppercase;
-    transition: all 0.3s var(--ease-luxury);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.65rem 1.25rem; border-radius: var(--radius-pill);
+    background: var(--fire-gradient);
+    color: #FFFFFF; font-size: 0.88rem; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    transition: all 0.25s ease;
 }
 .add-btn-lux:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
-    color: #000;
+    background: var(--fire-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.4);
 }
 
+/* Stepper */
 .qty-stepper {
-    display: flex; align-items: center;
-    border: 1px solid var(--border-gold-bright);
-    border-radius: var(--radius-sm);
-    overflow: hidden; background: rgba(0,0,0,0.4);
+    display: flex; align-items: center; gap: 0.35rem;
+    background: #FFFFFF; border: 2px solid var(--fire-red);
+    border-radius: var(--radius-pill); padding: 3px;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.15);
 }
 .qty-stepper-btn {
-    width: 32px; height: 32px;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--fire-red); color: #FFF;
+    font-weight: 900; font-size: 1rem;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(212, 175, 55, 0.15);
-    color: var(--gold-2); font-size: 1rem; font-weight: 700;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
-.qty-stepper-btn:hover { background: var(--gold-2); color: #000; }
+.qty-stepper-btn:hover { background: var(--fire-red-dark); }
 .qty-stepper-num {
-    width: 38px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.88rem; font-weight: 800; color: var(--gold-1);
+    font-weight: 800; font-size: 0.95rem; min-width: 24px;
+    text-align: center; color: var(--text-primary);
 }
 
-/* ==================== PRIVILEGE OFFERS / CONCIERGE ==================== */
+/* ==================== OFFERS & DISCOUNTS SECTION ==================== */
 .privilege-section {
-    background: radial-gradient(circle at center, #131A30 0%, #060913 100%);
-    border-top: 1px solid var(--border-gold);
-    border-bottom: 1px solid var(--border-gold);
-    padding: 6rem 2rem;
-    position: relative; overflow: hidden;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FEF2F2 100%);
+    border-top: 1px solid #FECACA; border-bottom: 1px solid #FECACA;
+    padding: 5rem 2rem;
 }
 .privilege-grid {
     max-width: 1400px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 2rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
 }
 .privilege-card {
-    background: rgba(18, 24, 43, 0.75);
-    border: 1px solid var(--border-gold);
+    background: #FFFFFF;
+    border: 1.5px solid #FECACA;
     border-radius: var(--radius-lg);
-    padding: 2.2rem 1.8rem; position: relative;
-    backdrop-filter: blur(20px);
-    transition: all 0.4s var(--ease-luxury);
+    padding: 2.2rem 1.8rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s ease;
     display: flex; flex-direction: column;
 }
 .privilege-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--gold-2);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.25);
+    transform: translateY(-6px);
+    border-color: var(--fire-red);
+    box-shadow: 0 16px 30px rgba(220, 38, 38, 0.12);
 }
 .privilege-crest {
-    width: 50px; height: 50px; border-radius: 50%;
-    background: var(--gold-gradient); color: #06080F;
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--bg-fire-100); color: var(--fire-red);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; margin-bottom: 1.2rem;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    font-size: 1.3rem; margin-bottom: 1.2rem;
 }
 .privilege-savings {
-    font-family: var(--font-serif);
-    font-size: 2.2rem; font-weight: 800;
-    color: var(--gold-2); margin-bottom: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 2rem; font-weight: 900;
+    color: var(--fire-red); margin-bottom: 0.3rem;
 }
 .privilege-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--text-primary); margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.25rem; font-weight: 800;
+    color: var(--text-primary); margin-bottom: 0.6rem;
 }
 .privilege-card p {
     font-size: 0.88rem; color: var(--text-muted);
     line-height: 1.6; margin-bottom: 1.5rem; flex: 1;
 }
 .btn-whatsapp-lux {
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-    padding: 0.75rem 1.4rem; border-radius: var(--radius-pill);
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: white; font-size: 0.85rem; font-weight: 700;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
-    transition: all 0.3s ease;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    padding: 0.75rem 1.2rem; border-radius: var(--radius-md);
+    background: #25D366; color: #FFFFFF; font-weight: 800;
+    font-size: 0.88rem; transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
 }
 .btn-whatsapp-lux:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.55);
-    color: #FFF;
+    background: #1EBE5D; transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
 }
 
-/* ==================== CONTACT & VENUE ==================== */
-.venue-section { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
+/* ==================== STALL VENUE SECTION ==================== */
+.venue-section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
 .venue-grid {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 3.5rem; align-items: center;
+    gap: 2.5rem; align-items: stretch;
 }
 .venue-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-gold);
+    background: #FFFFFF; border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl);
-    padding: 2.5rem; box-shadow: var(--shadow-luxury);
+    padding: 2.5rem; box-shadow: var(--shadow-card);
 }
 .venue-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; }
+.venue-item:last-child { margin-bottom: 0; }
 .venue-icon-box {
-    width: 50px; height: 50px; border-radius: var(--radius-md);
-    background: rgba(212, 175, 55, 0.12);
-    border: 1px solid var(--border-gold);
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--bg-fire-100); color: var(--fire-red);
     display: flex; align-items: center; justify-content: center;
-    color: var(--gold-2); font-size: 1.25rem; flex-shrink: 0;
+    font-size: 1.25rem; flex-shrink: 0;
 }
 .venue-item h4 {
-    font-family: var(--font-serif);
-    font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.2rem;
+    font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800;
+    color: var(--text-primary); margin-bottom: 0.3rem;
 }
-.venue-item p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+.venue-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
 .map-frame-lux {
     border-radius: var(--radius-xl); overflow: hidden;
-    border: 1px solid var(--border-gold);
-    box-shadow: var(--shadow-luxury); height: 420px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-card); height: 420px;
 }
-.map-frame-lux iframe { width: 100%; height: 100%; border: 0; filter: contrast(1.1) brightness(0.95); }
+.map-frame-lux iframe { width: 100%; height: 100%; border: 0; }
 
-/* ==================== FOOTER ==================== */
+/* ==================== CLEAN WHITE FOOTER ==================== */
 .footer-lux {
-    background: #040509; border-top: 1px solid var(--border-gold);
-    padding: 4rem 2rem 2rem; color: var(--text-muted);
+    background: #0F172A; color: #E2E8F0;
+    padding: 4.5rem 2rem 2rem; border-top: 3px solid var(--fire-red);
 }
 .footer-container {
     max-width: 1400px; margin: 0 auto;
-    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: 3rem;
 }
-.footer-brand-title {
-    font-family: var(--font-serif);
-    font-size: 1.4rem; font-weight: 800;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 0.8rem;
-}
-.footer-text { font-size: 0.88rem; line-height: 1.8; max-width: 420px; }
+.footer-col-about h1 { color: #FFFFFF; }
+.footer-text { font-size: 0.88rem; line-height: 1.8; color: #94A3B8; }
 .footer-col-h {
-    font-family: var(--font-serif); font-size: 1rem; font-weight: 700;
-    color: var(--text-primary); margin-bottom: 1.2rem;
+    font-family: var(--font-heading); font-size: 1.05rem; font-weight: 800;
+    color: #FFFFFF; margin-bottom: 1.2rem; letter-spacing: 0.5px;
 }
 .footer-links-list { list-style: none; }
-.footer-links-list li { margin-bottom: 0.6rem; }
+.footer-links-list li { margin-bottom: 0.65rem; }
 .footer-links-list a {
-    font-size: 0.88rem; color: var(--text-muted); transition: all 0.2s ease;
+    font-size: 0.88rem; color: #94A3B8; transition: all 0.2s ease;
 }
-.footer-links-list a:hover { color: var(--gold-2); padding-left: 5px; }
-
+.footer-links-list a:hover { color: #FF6B6B; padding-left: 4px; }
 .footer-bottom-strip {
     max-width: 1400px; margin: 3rem auto 0; padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.82rem; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.82rem; color: #64748B; flex-wrap: wrap; gap: 1rem;
 }
 
-/* ==================== CART DRAWER (LUXURY OBSIDIAN) ==================== */
+/* ==================== CART DRAWER (CLEAN WHITE & FIRESTORM RED) ==================== */
 .cart-overlay {
-    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(8px);
+    position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
     z-index: 2000; opacity: 0; visibility: hidden;
-    transition: all 0.4s var(--ease-luxury);
+    transition: all 0.3s ease;
 }
 .cart-overlay.open { opacity: 1; visibility: visible; }
 .cart-drawer {
     position: fixed; top: 0; right: -520px; width: 520px; max-width: 100vw;
-    height: 100vh; background: #0A0E1A;
-    border-left: 1px solid var(--border-gold);
-    z-index: 2001; transition: right 0.45s var(--ease-luxury);
+    height: 100vh; background: #FFFFFF;
+    border-left: 1px solid var(--border-subtle);
+    z-index: 2001; transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex; flex-direction: column;
-    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.8);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
 }
 .cart-drawer.open { right: 0; }
 
 .cart-header-lux {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.5rem 2rem; border-bottom: 1px solid var(--border-gold);
-    background: rgba(16, 22, 38, 0.6);
+    padding: 1.4rem 1.8rem; border-bottom: 1px solid var(--border-subtle);
+    background: #FFFFFF;
 }
 .cart-header-lux h2 {
-    font-family: var(--font-serif);
-    font-size: 1.3rem; font-weight: 800;
-    color: var(--gold-1); display: flex; align-items: center; gap: 0.6rem;
+    font-family: var(--font-heading);
+    font-size: 1.35rem; font-weight: 800;
+    color: var(--text-primary); display: flex; align-items: center; gap: 0.6rem;
 }
 .cart-close-btn {
-    width: 38px; height: 38px; border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--bg-subtle);
     border: 1px solid var(--border-subtle);
     color: var(--text-muted); font-size: 1rem;
     display: flex; align-items: center; justify-content: center;
     transition: all 0.2s ease;
 }
-.cart-close-btn:hover { background: var(--ruby); color: white; border-color: transparent; }
+.cart-close-btn:hover { background: var(--fire-red); color: white; border-color: transparent; }
 
-.cart-body-lux { flex: 1; overflow-y: auto; padding: 1.5rem 2rem; }
+.cart-body-lux { flex: 1; overflow-y: auto; padding: 1.2rem 1.8rem; }
 .cart-empty-state { text-align: center; padding: 4rem 1rem; }
-.cart-empty-state i { font-size: 3.8rem; color: rgba(212, 175, 55, 0.3); margin-bottom: 1.2rem; }
-.cart-empty-state h3 { font-family: var(--font-serif); color: var(--gold-2); margin-bottom: 0.4rem; }
+.cart-empty-state i { font-size: 3.5rem; color: #CBD5E1; margin-bottom: 1rem; }
+.cart-empty-state h3 { font-family: var(--font-heading); color: var(--text-primary); font-size: 1.3rem; margin-bottom: 0.3rem; }
 
 .cart-item-row {
-    display: flex; gap: 1.2rem; padding: 1.2rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    animation: fadeInUp 0.3s ease;
+    display: flex; gap: 1rem; padding: 1rem 0;
+    border-bottom: 1px solid var(--border-subtle);
 }
 .cart-item-img-thumb {
     width: 65px; height: 65px; border-radius: var(--radius-sm);
-    object-fit: cover; flex-shrink: 0;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    object-fit: contain; flex-shrink: 0;
+    background: #F8FAFC; border: 1px solid var(--border-subtle);
 }
 .cart-item-details { flex: 1; }
-.cart-item-name { font-weight: 700; color: #FFF; font-size: 0.95rem; margin-bottom: 0.2rem; }
-.cart-item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem; }
-.cart-item-pricing { font-size: 0.92rem; margin-bottom: 0.5rem; }
+.cart-item-name { font-weight: 800; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 0.2rem; }
+.cart-item-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+.cart-item-pricing { font-size: 0.9rem; margin-bottom: 0.4rem; }
 
 .coupon-console {
-    padding: 1.2rem 2rem; background: rgba(14, 18, 32, 0.9);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.1rem 1.8rem; background: #F8FAFC;
+    border-top: 1px solid var(--border-subtle);
 }
 .coupon-input-box { display: flex; gap: 0.6rem; }
 .coupon-input-box input {
-    flex: 1; padding: 0.7rem 1rem; border: 1px solid var(--border-gold);
-    border-radius: var(--radius-sm); font-size: 0.9rem;
-    background: rgba(255, 255, 255, 0.04); color: #FFF;
+    flex: 1; padding: 0.7rem 1rem; border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 700;
+    background: #FFFFFF; color: var(--text-primary);
     text-transform: uppercase; letter-spacing: 1px;
 }
+.coupon-input-box input:focus { border-color: var(--fire-red); outline: none; }
 .coupon-apply-action {
-    padding: 0.7rem 1.4rem; background: var(--gold-gradient);
-    color: #000; border-radius: var(--radius-sm);
+    padding: 0.7rem 1.4rem; background: var(--fire-gradient);
+    color: #FFFFFF; border-radius: var(--radius-sm);
     font-weight: 800; font-size: 0.85rem; text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
 }
 
 .cart-footer-lux {
-    padding: 1.5rem 2rem; border-top: 1px solid var(--border-gold);
-    background: #080B15;
+    padding: 1.4rem 1.8rem; border-top: 1px solid var(--border-subtle);
+    background: #FFFFFF; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.04);
 }
 .cart-summary-line {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 0.45rem 0; font-size: 0.95rem; color: var(--text-muted);
+    padding: 0.4rem 0; font-size: 0.92rem; color: var(--text-muted); font-weight: 600;
 }
 .cart-summary-line.grand-total {
-    font-family: var(--font-serif);
-    font-size: 1.35rem; font-weight: 800; color: var(--gold-1);
-    border-top: 1px solid var(--border-gold);
-    padding-top: 0.9rem; margin-top: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.35rem; font-weight: 900; color: var(--text-primary);
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 0.8rem; margin-top: 0.4rem;
 }
+
 .checkout-btn-lux {
-    width: 100%; padding: 1.1rem; border-radius: var(--radius-pill);
-    background: var(--gold-gradient);
-    color: #06080F; font-size: 1.05rem; font-weight: 900;
-    text-transform: uppercase; letter-spacing: 1px;
-    margin-top: 1rem; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-    transition: all 0.3s ease;
+    width: 100%; padding: 1rem; border-radius: var(--radius-pill);
+    background: var(--fire-gradient);
+    color: #FFFFFF; font-size: 1rem; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    box-shadow: var(--fire-glow);
+    transition: all 0.25s ease;
 }
 .checkout-btn-lux:hover {
+    background: var(--fire-gradient-hover);
     transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
-    color: #000;
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.45);
 }
-.checkout-btn-lux:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+.checkout-btn-lux:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* ==================== MODALS (CHECKOUT, SEARCH, SUCCESS) ==================== */
 .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(12px);
+    position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
     z-index: 3000; display: flex; align-items: center; justify-content: center;
     padding: 1.5rem; opacity: 0; visibility: hidden;
-    transition: all 0.4s var(--ease-luxury);
+    transition: all 0.3s ease;
 }
 .modal-overlay.open { opacity: 1; visibility: visible; }
 .modal-box-lux {
-    background: #0D1120; border: 1px solid var(--border-gold-bright);
+    background: #FFFFFF; border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xl); max-width: 620px; width: 100%;
     max-height: 90vh; overflow-y: auto;
-    transform: translateY(30px); transition: transform 0.4s var(--ease-luxury);
-    box-shadow: var(--shadow-luxury);
+    transform: translateY(20px); transition: transform 0.3s ease;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 .modal-overlay.open .modal-box-lux { transform: translateY(0); }
 .modal-header-lux {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.6rem 2.2rem; border-bottom: 1px solid var(--border-gold);
-    background: rgba(17, 23, 41, 0.7);
+    padding: 1.5rem 2rem; border-bottom: 1px solid var(--border-subtle);
+    background: #FFFFFF;
 }
 .modal-header-lux h2 {
-    font-family: var(--font-serif); font-size: 1.35rem; font-weight: 800; color: var(--gold-1);
+    font-family: var(--font-heading); font-size: 1.35rem; font-weight: 800; color: var(--text-primary);
 }
-.modal-body-lux { padding: 2rem 2.2rem; }
+.modal-body-lux { padding: 1.8rem 2rem; }
 
-.lux-form-group { margin-bottom: 1.4rem; }
-.lux-label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.4rem; }
+.lux-form-group { margin-bottom: 1.25rem; }
+.lux-label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.4rem; }
 .lux-input, .lux-textarea {
-    width: 100%; padding: 0.85rem 1.1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-subtle);
+    width: 100%; padding: 0.85rem 1rem;
+    background: #FFFFFF;
+    border: 1.5px solid var(--border-subtle);
     border-radius: var(--radius-md);
-    color: #FFF; font-size: 0.95rem; transition: border-color 0.3s;
+    color: var(--text-primary); font-size: 0.95rem; font-weight: 600;
+    transition: border-color 0.2s;
 }
-.lux-input:focus, .lux-textarea:focus { border-color: var(--gold-2); outline: none; }
-.lux-textarea { min-height: 85px; resize: vertical; }
+.lux-input:focus, .lux-textarea:focus {
+    border-color: var(--fire-red);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+    outline: none;
+}
+.lux-textarea { min-height: 80px; resize: vertical; }
 
 .payment-seal-box {
-    background: radial-gradient(circle at center, #1E1606 0%, #0F0F1A 100%);
-    border: 1px solid var(--border-gold-bright);
-    border-radius: var(--radius-lg); padding: 1.8rem;
+    background: #FFFBEB;
+    border: 1.5px dashed var(--gold-festive);
+    border-radius: var(--radius-lg); padding: 1.6rem;
     text-align: center; margin-top: 1.5rem;
 }
-.payment-seal-box h3 { font-family: var(--font-serif); color: var(--gold-2); margin-bottom: 0.4rem; }
+.payment-seal-box h3 { font-family: var(--font-heading); color: #B45309; margin-bottom: 0.3rem; }
 
 /* Floating Elements */
 .whatsapp-float-lux {
     position: fixed; bottom: 2rem; left: 2rem;
-    width: 60px; height: 60px; border-radius: 50%;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white; display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem; box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
-    z-index: 500; transition: transform 0.3s var(--ease-spring);
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366; color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    z-index: 500; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     animation: pulseWhatsapp 2.5s infinite;
 }
-.whatsapp-float-lux:hover { transform: scale(1.12); }
+.whatsapp-float-lux:hover { transform: scale(1.1); }
 @keyframes pulseWhatsapp {
-    0%,100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-    50% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    0%,100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    50% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
 }
 
 .back-to-top-lux {
     position: fixed; bottom: 2rem; right: 2rem;
-    width: 50px; height: 50px; border-radius: 50%;
-    background: var(--gold-gradient); color: #000;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--fire-gradient); color: #FFF;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    font-size: 1.15rem; box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
     z-index: 500; opacity: 0; visibility: hidden;
-    transition: all 0.3s var(--ease-luxury);
+    transition: all 0.3s ease;
 }
 .back-to-top-lux.visible { opacity: 1; visibility: visible; }
-.back-to-top-lux:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6); }
+.back-to-top-lux:hover { transform: translateY(-3px); }
 
-/* Search Modal */
+/* Toast Notifications */
+.toast-container {
+    position: fixed; top: 2rem; right: 2rem; z-index: 9999;
+    display: flex; flex-direction: column; gap: 0.75rem; pointer-events: none;
+}
+.toast {
+    background: #0F172A; color: #FFFFFF;
+    padding: 0.9rem 1.4rem; border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    display: flex; align-items: center; gap: 0.8rem;
+    font-weight: 700; font-size: 0.92rem;
+    pointer-events: auto; animation: toastSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast-success { border-left: 4px solid #16A34A; }
+.toast-error { border-left: 4px solid var(--fire-red); }
+@keyframes toastSlide { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* Quick Search Modal */
 .search-modal-lux {
-    position: fixed; inset: 0; z-index: 3500;
-    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(15px);
-    display: flex; align-items: flex-start; justify-content: center;
-    padding: 12vh 1rem; opacity: 0; visibility: hidden;
-    transition: all 0.35s var(--ease-luxury);
+    position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 3000; display: flex; align-items: flex-start; justify-content: center;
+    padding: 6rem 1.5rem 2rem; opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
 }
 .search-modal-lux.open { opacity: 1; visibility: visible; }
 .search-modal-content {
-    background: #0D1222; border: 1px solid var(--border-gold);
-    border-radius: var(--radius-xl); width: 620px; max-width: 100%;
-    padding: 1.8rem; box-shadow: var(--shadow-luxury);
+    background: #FFFFFF; border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl); max-width: 600px; width: 100%;
+    padding: 1.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.2);
 }
 
-/* Toast */
-.toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 6000; display: flex; flex-direction: column; gap: 0.6rem; }
-.toast {
-    display: flex; align-items: center; gap: 0.8rem;
-    padding: 0.9rem 1.4rem; border-radius: var(--radius-md);
-    background: #0E1424; border: 1px solid var(--border-gold);
-    color: white; font-size: 0.88rem; font-weight: 600;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    animation: slideIn 0.3s ease, fadeOut 0.3s 2.5s forwards;
-}
-.toast-success i { color: var(--emerald); }
-.toast-error i { color: var(--ruby); }
-@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-@keyframes fadeOut { to { opacity: 0; transform: translateX(100%); } }
-
-/* ==================== RESPONSIVE DESIGN ==================== */
+/* Responsive Rules */
 @media (max-width: 1024px) {
-    .hero-wrapper { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
-    .hero-heading { font-size: 3rem; }
-    .hero-description { margin: 0 auto 2rem; }
+    .hero-wrapper { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .hero-description { margin-left: auto; margin-right: auto; }
     .hero-actions { justify-content: center; }
-    .countdown-box { margin: 0 auto 2rem; }
+    .hero-trust-bar { justify-content: center; }
+    .filter-top-row { grid-template-columns: 1fr 1fr; }
     .venue-grid { grid-template-columns: 1fr; }
-    .footer-container { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .nav-hamburger { display: flex; }
-    .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .stat-card:not(:last-child)::after { display: none; }
+    .footer-container { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-    .hero-heading { font-size: 2.3rem; }
-    .hero { padding: 4rem 1.2rem; }
-    .section { padding: 4rem 1.2rem; }
-    .section-title { font-size: 2.1rem; }
-    .filter-console { padding: 1.2rem; top: 75px; }
-    .nav-container { padding: 0.8rem 1.2rem; }
-    .products-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
-    .cart-drawer { width: 100vw; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero-heading { font-size: 2.5rem; }
+    .filter-top-row { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .stat-card:nth-child(2)::after { display: none; }
+    .footer-container { grid-template-columns: 1fr; }
 }
-@media (max-width: 480px) {
-    .hero-heading { font-size: 1.85rem; }
-    .products-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .product-img-wrapper { height: 145px; }
-    .product-info-wrap { padding: 0.85rem; }
-    .product-name-title { font-size: 0.88rem; }
-    .product-desc-snippet { display: none; }
-    .price-green-main { font-size: 1.15rem; }
-    .product-footer-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    .add-btn-lux { width: 100%; justify-content: center; padding: 0.5rem; font-size: 0.75rem; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .countdown-box { flex-direction: column; gap: 0.8rem; }
-    .whatsapp-float-lux { bottom: 1rem; left: 1rem; width: 50px; height: 50px; font-size: 1.5rem; }
-    .back-to-top-lux { bottom: 1rem; right: 1rem; width: 44px; height: 44px; }
+
+/* ==================== DIWALI FAMILY GREETING WELCOME LOADER ==================== */
+#diwali-welcome-loader {
+    position: fixed; inset: 0; z-index: 99999;
+    background: radial-gradient(circle at center, #2A080C 0%, #160305 60%, #0A0102 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
 }
-    </style>
+#diwali-welcome-loader.dismissed {
+    opacity: 0; visibility: hidden; pointer-events: none;
+}
+#loader-firework-canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1;
+}
+.loader-content-box {
+    position: relative; z-index: 2;
+    background: rgba(25, 6, 9, 0.84);
+    border: 2px solid rgba(255, 215, 64, 0.45);
+    border-radius: var(--radius-xl);
+    padding: 2.8rem 2.4rem;
+    max-width: 580px; width: 100%;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(220, 38, 38, 0.35);
+    animation: loaderContentPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes loaderContentPop {
+    0% { transform: scale(0.85); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.loader-diya-anim {
+    font-size: 3.8rem;
+    margin-bottom: 0.8rem;
+    display: inline-block;
+    filter: drop-shadow(0 0 25px rgba(255, 180, 0, 0.85));
+    animation: diyaFlamePulse 1.8s infinite ease-in-out;
+}
+@keyframes diyaFlamePulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 180, 0, 0.8)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 35px rgba(255, 80, 0, 1)); }
+}
+.loader-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255, 215, 64, 0.15);
+    border: 1px solid rgba(255, 215, 64, 0.4);
+    color: #FFD54F; padding: 0.35rem 1rem; border-radius: var(--radius-pill);
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 1.2rem;
+}
+.loader-greeting-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem; font-weight: 900;
+    color: #FFFFFF; line-height: 1.2;
+    margin-bottom: 0.8rem; letter-spacing: -0.5px;
+}
+.loader-fire-shimmer {
+    background: linear-gradient(135deg, #FFE082 0%, #FFD54F 40%, #FF7043 70%, #FF1744 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+.loader-greeting-desc {
+    color: #F1F5F9; font-size: 0.95rem; line-height: 1.6;
+    margin-bottom: 1.6rem; max-width: 460px; margin-left: auto; margin-right: auto;
+}
+.loader-brand-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    color: #FDE047; font-size: 0.85rem; font-weight: 800;
+    background: rgba(220, 38, 38, 0.25);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    padding: 0.4rem 1.1rem; border-radius: var(--radius-pill);
+    margin-bottom: 1.8rem;
+}
+.loader-progress-track {
+    width: 100%; height: 4px; background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px; overflow: hidden; margin-bottom: 1.4rem; position: relative;
+}
+.loader-progress-bar {
+    position: absolute; left: 0; top: 0; height: 100%; width: 0;
+    background: linear-gradient(90deg, #FFD54F, #FF1744);
+    animation: loaderFill 2.5s linear forwards;
+}
+@keyframes loaderFill { to { width: 100%; } }
+.btn-skip-welcome {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.6rem; border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF; font-weight: 800; font-size: 0.88rem;
+    transition: all 0.2s ease; cursor: pointer;
+}
+.btn-skip-welcome:hover {
+    background: #FFFFFF; color: #DC2626; border-color: #FFFFFF;
+    transform: translateY(-2px);
+}
+@media (max-width: 640px) {
+    .loader-content-box { padding: 2.2rem 1.5rem; }
+    .loader-greeting-title { font-size: 1.7rem; }
+    .loader-diya-anim { font-size: 3rem; }
+}
+
+</style>
 </head>
 <body>
+
+    <!-- Diwali Family Celebration Welcome Loader -->
+    <div id="diwali-welcome-loader">
+        <canvas id="loader-firework-canvas"></canvas>
+        <div class="loader-content-box">
+            <div class="loader-diya-anim">🪔</div>
+            <div class="loader-tag">Diwali 2026 Greetings</div>
+            <h1 class="loader-greeting-title">
+                Wishing You & Your Family<br>
+                <span class="loader-fire-shimmer">A Happy & Safe Diwali!</span>
+            </h1>
+            <p class="loader-greeting-desc">
+                May the festival of lights bring boundless happiness, health, and sparkling celebrations to your home.
+            </p>
+            <div class="loader-brand-badge">
+                <i class="fas fa-fire"></i> Sivakasi Firestorm Crackers • Sullurpeta
+            </div>
+            <div class="loader-progress-track">
+                <div class="loader-progress-bar"></div>
+            </div>
+            <div>
+                <button type="button" class="btn-skip-welcome" onclick="dismissWelcomeLoader()">
+                    Explore Crackers Store <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Interactive Background Canvas -->
     <canvas id="festive-canvas"></canvas>
-
-    <!-- Luxury Loading Screen -->
-    <div id="loader">
-        <div class="loader-emblem">🪔</div>
-        <div class="loader-brand">Sivakasi Firestorm</div>
-        <div class="loader-subtitle">Authentic Sivakasi Crackers • Sullurpeta</div>
-        <div class="loader-track"><div class="loader-progress"></div></div>
-    </div>
 
     <!-- Announcement Ribbon -->
     <div class="announcement-bar">
@@ -1148,7 +1200,7 @@ input, select, textarea { font-family: var(--font-sans); }
             <a href="#" class="nav-brand">
                 <div class="brand-seal">🪔</div>
                 <div class="nav-brand-text">
-                    <h1>SIVAKASI FIRESTORM</h1>
+                    <h1>Sivakasi <span>Firestorm</span></h1>
                     <p>High School Ground • Sullurpeta</p>
                 </div>
             </a>
@@ -1163,9 +1215,10 @@ input, select, textarea { font-family: var(--font-sans); }
                 <button class="nav-btn" onclick="openSearchModal()" title="Search Catalog (Ctrl+K)">
                     <i class="fas fa-search"></i>
                 </button>
-                <button class="nav-btn" onclick="openCart()" title="View Cart">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cart-count" style="display:none">0</span>
+                <button class="cart-nav-btn" onclick="openCart()" title="View Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-badge" id="cart-count">0</span>
                 </button>
                 <button class="nav-hamburger" id="hamburger-btn" onclick="openMobileMenu()">
                     <span></span><span></span><span></span>
@@ -1183,11 +1236,11 @@ input, select, textarea { font-family: var(--font-sans); }
             </div>
             <div style="padding: 2rem;">
                 <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.5rem;">
-                    <li><a href="#" onclick="closeMobileMenu()" style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold-2);">✨ Home</a></li>
-                    <li><a href="#products-section" onclick="closeMobileMenu()" style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF;">🧨 Crackers Catalog</a></li>
-                    <li><a href="#offers-section" onclick="closeMobileMenu()" style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF;">🏷️ Festival Offers</a></li>
-                    <li><a href="#contact-section" onclick="closeMobileMenu()" style="font-family: var(--font-serif); font-size: 1.1rem; color: #FFF;">📍 Stall Location</a></li>
-                    <li><a href="javascript:void(0)" onclick="closeMobileMenu(); downloadFullPriceListPDF();" style="font-family: var(--font-serif); font-size: 1.1rem; color: var(--gold-2);"><i class="fas fa-file-pdf"></i> Price List (PDF)</a></li>
+                    <li><a href="#" onclick="closeMobileMenu()" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--fire-red);">✨ Home</a></li>
+                    <li><a href="#products-section" onclick="closeMobileMenu()" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">🧨 Crackers Catalog</a></li>
+                    <li><a href="#offers-section" onclick="closeMobileMenu()" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">🏷️ Festival Offers</a></li>
+                    <li><a href="#contact-section" onclick="closeMobileMenu()" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">📍 Stall Location</a></li>
+                    <li><a href="javascript:void(0)" onclick="closeMobileMenu(); downloadFullPriceListPDF();" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--fire-red-dark);"><i class="fas fa-file-pdf"></i> Price List (PDF)</a></li>
                 </ul>
             </div>
         </div>
@@ -1197,8 +1250,8 @@ input, select, textarea { font-family: var(--font-sans); }
     <div class="search-modal-lux" id="search-modal" onclick="closeSearchModal(event)">
         <div class="search-modal-content" onclick="event.stopPropagation()">
             <div style="position: relative; margin-bottom: 1.2rem;">
-                <i class="fas fa-search" style="position:absolute; left: 1rem; top: 50%; transform:translateY(-50%); color: var(--gold-3);"></i>
-                <input type="text" id="search-modal-input" placeholder="Search sparklers, bombs, aerial shots, gift boxes..." oninput="handleSearchModal(this.value)" style="width: 100%; padding: 0.9rem 1rem 0.9rem 2.8rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-gold); border-radius: var(--radius-md); color:#FFF; font-size:1.05rem;" autofocus>
+                <i class="fas fa-search" style="position:absolute; left: 1rem; top: 50%; transform:translateY(-50%); color: var(--fire-red);"></i>
+                <input type="text" id="search-modal-input" placeholder="Search sparklers, bombs, aerial shots, gift boxes..." oninput="handleSearchModal(this.value)" style="width: 100%; padding: 0.9rem 1rem 0.9rem 2.8rem; background: var(--bg-subtle); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); color:var(--text-primary); font-size:1.05rem; font-weight:600;" autofocus>
             </div>
             <div id="search-modal-results" style="max-height: 50vh; overflow-y: auto;"></div>
         </div>
@@ -1210,20 +1263,47 @@ input, select, textarea { font-family: var(--font-sans); }
             <div class="hero-content">
                 <div class="hero-pill">
                     <span class="pulse-dot"></span>
-                    Direct From Sivakasi • Wholesale & Retail Outlets
+                    Direct Factory Outlets • Sullurpeta Diwali 2026
                 </div>
-                <h2 class="hero-heading">
+                <h1 class="hero-heading">
                     Sivakasi Firestorm Crackers <br>
-                    <span class="text-shimmer">Diwali 2026 Festival Sale</span>
-                </h2>
+                    <span class="fire-text">Diwali 2026 Mega Crackers Sale</span>
+                </h1>
                 <p class="hero-description">
-                    Light up your celebrations with 100% authentic, high-grade Sivakasi crackers at direct wholesale prices. Browse 100+ fresh items, compare discounts, and download an instant quotation or dispatch directly on WhatsApp.
+                    Order 100% genuine Sivakasi factory crackers at honest wholesale prices. Save up to 25% on sparklers, flower pots, 120-shot aerial cakes, and family gift boxes. Stall pickup at High School Ground, Sullurpeta or quick WhatsApp delivery.
                 </p>
+
+                <!-- E-Commerce Trust Badges -->
+                <div class="hero-trust-bar">
+                    <div class="trust-chip"><i class="fas fa-tag"></i> Wholesale Rates</div>
+                    <div class="trust-chip"><i class="fas fa-certificate"></i> 100% Genuine Sivakasi</div>
+                    <div class="trust-chip"><i class="fas fa-box"></i> Fresh 2026 Batch</div>
+                    <div class="trust-chip"><i class="fas fa-file-pdf"></i> Instant PDF Bill</div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#products-section" class="btn-fire">
+                        <i class="fas fa-shopping-cart"></i> Shop All Crackers (107 Items)
+                    </a>
+                    <button type="button" onclick="downloadFullPriceListPDF()" class="btn-outline-fire">
+                        <i class="fas fa-file-pdf"></i> Download 2026 Price List (PDF)
+                    </button>
+                    <button type="button" onclick="window.launchCelebrationVolley(4); showToast('success', '🎆 Bursting Diwali Fireworks!');" class="btn-outline-fire" style="border-color:#FCD34D; color:#B45309;">
+                        <i class="fas fa-sparkles"></i> Burst Fireworks
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Visual Showcase -->
+            <div class="hero-visual-card" onclick="window.launchCelebrationVolley(3); showToast('success', '🎆 Happy Diwali Celebration!');" style="cursor:pointer;" title="Tap here to burst colorful fireworks!">
+                <div class="hero-diya-art">🪔</div>
+                <h3 class="visual-title">Sivakasi Firestorm Stall</h3>
+                <p class="visual-desc">High School Ground, Sullurpeta • Tirupati District, AP</p>
 
                 <!-- Live Countdown -->
                 <div class="countdown-box">
                     <div class="countdown-title">
-                        <i class="fas fa-sparkles"></i> Diwali 2026<br>Celebration In
+                        <i class="fas fa-fire" style="color:var(--fire-red);"></i> Diwali 2026<br>Starts In
                     </div>
                     <div class="countdown-grid">
                         <div class="countdown-unit">
@@ -1248,29 +1328,11 @@ input, select, textarea { font-family: var(--font-sans); }
                     </div>
                 </div>
 
-                <div class="hero-actions">
-                    <a href="#products-section" class="btn-gold">
-                        <i class="fas fa-fire"></i> Browse Crackers Catalog
-                    </a>
-                    <button type="button" onclick="downloadFullPriceListPDF()" class="btn-glass" style="color:var(--gold-2);">
-                        <i class="fas fa-file-pdf"></i> Download 2026 Price List (PDF)
-                    </button>
-                    <button type="button" onclick="window.launchCelebrationVolley(4); showToast('success', '🎆 Bursting Diwali Fireworks!');" class="btn-glass">
-                        <i class="fas fa-sparkles"></i> Tap to Burst Crackers
-                    </button>
-                </div>
-            </div>
-
-            <!-- Hero Visual Showcase -->
-            <div class="hero-visual-card" onclick="window.launchCelebrationVolley(3); showToast('success', '🎆 Happy Diwali Celebration!');" style="cursor:pointer;" title="Tap here to burst colorful fireworks!">
-                <div class="hero-diya-art">🪔</div>
-                <h3 class="visual-title">Sivakasi Firestorm Crackers</h3>
-                <p class="visual-desc">High School Ground, Sullurpeta<br>Tirupati District, Andhra Pradesh</p>
-                <div style="font-size:0.75rem; color:var(--gold-3); margin-top:0.4rem;"><i class="fas fa-mouse-pointer"></i> Tap Diya to burst fireworks!</div>
+                <div style="font-size:0.75rem; color:var(--fire-red); font-weight:700;"><i class="fas fa-mouse-pointer"></i> Tap Diya anytime to burst fireworks!</div>
                 <div class="hero-badges-row">
-                    <div class="hero-badge-item"><i class="fas fa-shield-alt"></i> 100% Authentic</div>
-                    <div class="hero-badge-item"><i class="fas fa-tag"></i> Wholesale Rates</div>
-                    <div class="hero-badge-item"><i class="fas fa-check-circle"></i> Quality Tested</div>
+                    <div class="hero-badge-item"><i class="fas fa-shield-alt"></i> Safe & Tested</div>
+                    <div class="hero-badge-item"><i class="fas fa-check-circle"></i> Direct Sivakasi</div>
+                    <div class="hero-badge-item"><i class="fas fa-truck"></i> Fast Packing</div>
                 </div>
             </div>
         </div>
@@ -1301,9 +1363,9 @@ input, select, textarea { font-family: var(--font-sans); }
     <!-- Crackers Catalog Section -->
     <section class="section" id="products-section">
         <div class="section-header">
-            <div class="section-tag"><i class="fas fa-sparkles"></i> Fresh 2026 Inventory</div>
-            <h2 class="section-title">Explore Our Crackers</h2>
-            <p class="section-subtitle">From sparkling family favorites to dazzling multi-color sky shots and value-packed gift boxes. All items with transparent wholesale discounts.</p>
+            <div class="section-tag"><i class="fas fa-fire"></i> Fresh 2026 Inventory • 107 Varieties</div>
+            <h2 class="section-title">Our Crackers Catalog</h2>
+            <p class="section-subtitle">Browse all 107 fresh Sivakasi crackers with wholesale discounts. Compare actual MRP vs offer price and add to your cart.</p>
         </div>
 
         <!-- Sticky Floating Console -->
@@ -1311,7 +1373,7 @@ input, select, textarea { font-family: var(--font-sans); }
             <div class="filter-top-row">
                 <div class="search-input-wrapper">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="search-input" placeholder="Search by name, category, or sound..." oninput="filterProducts()">
+                    <input type="text" id="search-input" placeholder="Search crackers by name or category (e.g. sparklers, 12 shot, flower pot, lakshmi bomb)..." oninput="filterProducts()">
                     <span class="kbd-shortcut">⌘K</span>
                 </div>
                 <select class="luxury-select" id="category-filter" onchange="filterProducts()">
@@ -1500,43 +1562,50 @@ input, select, textarea { font-family: var(--font-sans); }
     <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
     <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header-lux">
-            <h2><i class="fas fa-shopping-bag"></i> Your Celebration Bag</h2>
+            <h2><i class="fas fa-shopping-cart" style="color:var(--fire-red);"></i> <span id="cart-drawer-title">Shopping Cart</span></h2>
             <button class="cart-close-btn" onclick="closeCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div style="padding:0.75rem 1.8rem 0; background:#FFF5F5; border-bottom:1px solid #FEE2E2; display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; font-weight:700; color:#B91C1C;">
+            <i class="fas fa-store"></i> <span>Stall Pickup: High School Ground, Sullurpeta</span>
         </div>
         <div class="cart-body-lux" id="cart-body"></div>
         <div class="coupon-console">
             <div class="coupon-input-box">
-                <input type="text" id="coupon-input" placeholder="Enter VIP Coupon Code" maxlength="20">
+                <input type="text" id="coupon-input" placeholder="Enter Coupon Code (e.g. DIWALI2026)" maxlength="20">
                 <button class="coupon-apply-action" onclick="applyCoupon()">Apply</button>
             </div>
             <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.5rem;">
-                💬 Need a coupon? <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20a%20discount%20coupon%20code%20for%20my%20order" target="_blank" style="color:var(--gold-2); font-weight:700; text-decoration:underline;">Ask us on WhatsApp (9490042905)</a>
+                💬 Need a coupon? <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20a%20discount%20coupon%20code%20for%20my%20order" target="_blank" style="color:var(--fire-red); font-weight:700; text-decoration:underline;">Ask us on WhatsApp (9490042905)</a>
             </div>
             <div class="coupon-msg" id="coupon-msg" style="font-size:0.8rem; margin-top:0.4rem;"></div>
-            <div class="coupon-applied" id="coupon-applied" style="display:none; margin-top:0.5rem; background:rgba(0,230,118,0.1); border:1px solid rgba(0,230,118,0.3); padding:0.4rem 0.8rem; border-radius:6px; justify-content:space-between; align-items:center;">
-                <span id="coupon-applied-text" style="color:var(--emerald); font-size:0.85rem; font-weight:700;"></span>
-                <button onclick="removeCoupon()" style="background:none; color:var(--ruby); font-weight:700; font-size:0.8rem;">Remove</button>
+            <div class="coupon-applied" id="coupon-applied" style="display:none; margin-top:0.5rem; background:#DCFCE7; border:1px solid #86EFAC; padding:0.4rem 0.8rem; border-radius:6px; justify-content:space-between; align-items:center;">
+                <span id="coupon-applied-text" style="color:#15803D; font-size:0.85rem; font-weight:700;"></span>
+                <button onclick="removeCoupon()" style="background:none; color:var(--fire-red); font-weight:700; font-size:0.8rem; cursor:pointer;">Remove</button>
             </div>
         </div>
         <div class="cart-footer-lux">
             <div class="cart-summary-line">
-                <span>Subtotal</span>
-                <span id="cart-subtotal" style="color:#FFF; font-weight:700;">₹0</span>
+                <span>Total MRP:</span>
+                <span id="cart-mrp" style="color:var(--text-muted); font-weight:600;">₹0</span>
             </div>
-            <div class="cart-summary-line" id="discount-row" style="display:none; color:var(--emerald);">
-                <span>Coupon Savings</span>
+            <div class="cart-summary-line" style="color:var(--emerald-price);">
+                <span>Crackers Discount:</span>
+                <span id="cart-crackers-savings" style="font-weight:700;">-₹0</span>
+            </div>
+            <div class="cart-summary-line" id="discount-row" style="display:none; color:var(--fire-red);">
+                <span>Coupon Savings:</span>
                 <span id="cart-discount" style="font-weight:700;">-₹0</span>
             </div>
             <div class="cart-summary-line grand-total">
-                <span>Total Payable:</span>
-                <span id="cart-total" style="color:var(--emerald); font-weight:900;">₹0</span>
+                <span>Final Payable:</span>
+                <span id="cart-total" style="color:var(--emerald-price); font-weight:900;">₹0</span>
             </div>
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.8rem; margin-top:1rem;">
-                <button type="button" class="btn-glass" style="justify-content:center; padding:0.9rem; font-size:0.88rem; color:var(--gold-2);" onclick="downloadCartQuotationPDF()">
+                <button type="button" class="btn-outline-fire" style="justify-content:center; padding:0.85rem; font-size:0.88rem;" onclick="downloadCartQuotationPDF()">
                     <i class="fas fa-file-pdf"></i> Download PDF
                 </button>
-                <button class="checkout-btn-lux" id="checkout-btn" style="margin-top:0; padding:0.9rem; font-size:0.92rem;" onclick="openCheckout()" disabled>
-                    <i class="fas fa-arrow-right"></i> Order Details
+                <button class="checkout-btn-lux" id="checkout-btn" style="margin-top:0; padding:0.85rem; font-size:0.92rem;" onclick="openCheckout()" disabled>
+                    <i class="fas fa-arrow-right"></i> Order Now
                 </button>
             </div>
         </div>
@@ -1546,7 +1615,7 @@ input, select, textarea { font-family: var(--font-sans); }
     <div class="modal-overlay" id="checkout-modal">
         <div class="modal-box-lux" onclick="event.stopPropagation()">
             <div class="modal-header-lux">
-                <h2>📝 Finalize Order & Quotation</h2>
+                <h2><i class="fas fa-clipboard-check" style="color:var(--fire-red);"></i> Checkout & Order Summary</h2>
                 <button class="cart-close-btn" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body-lux">
@@ -1633,11 +1702,14 @@ input, select, textarea { font-family: var(--font-sans); }
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
     <script>
+// ==================== PRE-BUNDLED CATALOG (INSTANT 0ms RENDER) ====================
+const DEFAULT_PRODUCTS = [{"id": 1, "name": "7cm Electrical Sparkler", "category": "Sparklers", "price": 22, "unit": "1 Pkt", "description": "Classic 7cm electrical sparkler for safe fun. Perfect for kids and beginners.", "image": "assets/products/prod-1-7cm-electrical-sparkler.jpg", "stock": 70, "badge": "", "originalPrice": 29}, {"id": 2, "name": "7cm Color Sparkler", "category": "Sparklers", "price": 27, "unit": "1 Pkt", "description": "Vibrant 7cm color sparkler that glows in multiple colors. A kids' favorite!", "image": "assets/products/prod-2-7cm-color-sparkler.jpg", "stock": 70, "badge": "", "originalPrice": 35}, {"id": 3, "name": "10cm Electrical Sparkler", "category": "Sparklers", "price": 57, "unit": "1 Pkt", "description": "Medium-length 10cm electrical sparkler with bright white sparks.", "image": "assets/products/prod-3-10cm-electrical-sparkler.jpg", "stock": 50, "badge": "", "originalPrice": 74}, {"id": 4, "name": "10cm Color Sparkler", "category": "Sparklers", "price": 60, "unit": "1 Pkt", "description": "10cm multicolor sparkler with dazzling rainbow sparks.", "image": "assets/products/prod-4-10cm-color-sparkler.jpg", "stock": 50, "badge": "", "originalPrice": 78}, {"id": 5, "name": "15cm Electrical Sparkler", "category": "Sparklers", "price": 93, "unit": "1 Pkt", "description": "Long-lasting 15cm electrical sparkler with brilliant white sparks.", "image": "assets/products/prod-5-15cm-electrical-sparkler.jpg", "stock": 200, "badge": "Popular", "originalPrice": 121}, {"id": 6, "name": "15cm Color Sparkler", "category": "Sparklers", "price": 102, "unit": "1 Pkt", "description": "Colorful 15cm sparkler that produces stunning multicolor sparks.", "image": "assets/products/prod-6-15cm-color-sparkler.jpg", "stock": 200, "badge": "", "originalPrice": 133}, {"id": 7, "name": "15cm Red Sparkler", "category": "Sparklers", "price": 120, "unit": "1 Pkt", "description": "Beautiful 15cm red sparkler emitting brilliant red-tinted sparks.", "image": "assets/products/prod-7-15cm-red-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 156}, {"id": 8, "name": "15cm Green Sparkler", "category": "Sparklers", "price": 112, "unit": "1 Pkt", "description": "Unique 15cm green sparkler with vivid emerald green sparks.", "image": "assets/products/prod-8-15cm-green-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 146}, {"id": 9, "name": "30cm Electrical Sparkler", "category": "Sparklers", "price": 93, "unit": "1 Pkt", "description": "Long 30cm electrical sparkler with extended burn time.", "image": "assets/products/prod-9-30cm-electrical-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 121}, {"id": 10, "name": "30cm Green Sparkler", "category": "Sparklers", "price": 112, "unit": "1 Pkt", "description": "30cm green sparkler with dazzling emerald glow and long burn.", "image": "assets/products/prod-10-30cm-green-sparkler.jpg", "stock": 100, "badge": "", "originalPrice": 146}, {"id": 11, "name": "30cm Red Sparkler", "category": "Sparklers", "price": 120, "unit": "1 Pkt", "description": "30cm red sparkler with brilliant crimson sparks effect.", "image": "assets/products/prod-11-30cm-red-sparkler.jpg", "stock": 200, "badge": "", "originalPrice": 156}, {"id": 12, "name": "50cm Sparkler (Electric)", "category": "Sparklers", "price": 300, "unit": "1 Pkt", "description": "Premium 50cm electrical sparkler with intense bright sparks and long burn.", "image": "assets/products/prod-12-50cm-sparkler-electric.jpg", "stock": 25, "badge": "Premium", "originalPrice": 390}, {"id": 13, "name": "50cm Sparkler (Color)", "category": "Sparklers", "price": 338, "unit": "1 Pkt", "description": "Premium 50cm multicolor sparkler with vibrant rainbow effects.", "image": "assets/products/prod-13-50cm-sparkler-color.jpg", "stock": 25, "badge": "Premium", "originalPrice": 439}, {"id": 14, "name": "75cm Electrical Sparkler", "category": "Sparklers", "price": 712, "unit": "1 Pkt", "description": "Extra-long 75cm sparkler for grand celebrations. Maximum sparkle time!", "image": "", "stock": 10, "badge": "Premium", "originalPrice": 926}, {"id": 15, "name": "Chilaka Tapas (Kuruvi)", "category": "Sound Crackers", "price": 27, "unit": "1 Pkt (10 Ply)", "description": "Classic Kuruvi / Chilaka Tapas with crisp popping sound. Traditional favorite!", "image": "assets/products/prod-15-chilaka-tapas-kuruvi.jpg", "stock": 150, "badge": "", "originalPrice": 35}, {"id": 16, "name": "3.5\" Lakshmi (8 Ply)", "category": "Sound Crackers", "price": 33, "unit": "1 Pc", "description": "Compact 3.5 inch Lakshmi cracker with 8 ply for a solid loud burst.", "image": "assets/products/prod-16-3-5-lakshmi-8-ply.jpg", "stock": 100, "badge": "", "originalPrice": 43}, {"id": 17, "name": "4\" Lakshmi (7 Ply)", "category": "Sound Crackers", "price": 48, "unit": "1 Pc", "description": "Standard 4 inch Lakshmi cracker with a satisfying loud bang.", "image": "assets/products/prod-17-4-lakshmi-7-ply.jpg", "stock": 200, "badge": "Popular", "originalPrice": 62}, {"id": 18, "name": "4\" Gold Lakshmi (10 Ply)", "category": "Sound Crackers", "price": 93, "unit": "1 Pc", "description": "Premium 4 inch gold Lakshmi with 10 ply for extra powerful blast.", "image": "assets/products/prod-18-4-gold-lakshmi-10-ply.jpg", "stock": 200, "badge": "", "originalPrice": 121}, {"id": 19, "name": "4\" Roster / Ganesh Cracker", "category": "Sound Crackers", "price": 158, "unit": "1 Pc", "description": "Festive 4 inch Ganesh-shaped cracker with thunderous sound.", "image": "assets/products/prod-19-4-roster-ganesh-cracker.jpg", "stock": 50, "badge": "New", "originalPrice": 205}, {"id": 20, "name": "5\" Elephant Cracker", "category": "Sound Crackers", "price": 105, "unit": "1 Pc", "description": "5 inch elephant-shaped cracker with deep booming sound.", "image": "assets/products/prod-20-5-elephant-cracker.jpg", "stock": 50, "badge": "", "originalPrice": 136}, {"id": 21, "name": "5\" HULK Cracker (20 Ply)", "category": "Sound Crackers", "price": 232, "unit": "1 Pc", "description": "Massive 5 inch HULK with 20 ply. Earth-shattering power!", "image": "", "stock": 50, "badge": "Premium", "originalPrice": 302}, {"id": 22, "name": "6\" Lakshmi / Superman", "category": "Sound Crackers", "price": 128, "unit": "1 Pc", "description": "Large 6 inch Lakshmi / Superman cracker for maximum impact.", "image": "", "stock": 50, "badge": "", "originalPrice": 166}, {"id": 23, "name": "6\" Lakshmi (12 Ply)", "category": "Sound Crackers", "price": 128, "unit": "1 Pc", "description": "Heavy-duty 6 inch Lakshmi with 12 ply. Extremely loud!", "image": "assets/products/prod-23-6-lakshmi-12-ply.jpg", "stock": 100, "badge": "", "originalPrice": 166}, {"id": 24, "name": "5\" Gold Lakshmi (10 Ply)", "category": "Sound Crackers", "price": 150, "unit": "1 Pc", "description": "Premium 5 inch gold Lakshmi with 10 ply for extra bass.", "image": "assets/products/prod-24-5-gold-lakshmi-10-ply.jpg", "stock": 30, "badge": "", "originalPrice": 195}, {"id": 25, "name": "2 Sound Bomb", "category": "Sound Crackers", "price": 93, "unit": "1 Pc", "description": "Double-blast bomb with two sequential loud explosions.", "image": "assets/products/prod-25-2-sound-bomb.jpg", "stock": 100, "badge": "", "originalPrice": 121}, {"id": 26, "name": "3 Sound Bomb", "category": "Sound Crackers", "price": 132, "unit": "1 Pc", "description": "Triple-blast bomb with three powerful sequential explosions.", "image": "", "stock": 50, "badge": "", "originalPrice": 172}, {"id": 27, "name": "28 Wala / 28 Chorsa", "category": "Sound Crackers", "price": 33, "unit": "1 Pkt", "description": "Pack of 28 crackers strung together for continuous bursting.", "image": "assets/products/prod-27-28-wala-28-chorsa.jpg", "stock": 300, "badge": "Bestseller", "originalPrice": 43}, {"id": 28, "name": "24 Deluxe", "category": "Sound Crackers", "price": 120, "unit": "1 Pkt", "description": "Premium 24-piece deluxe chain cracker with louder bursts.", "image": "assets/products/prod-28-24-deluxe.jpg", "stock": 150, "badge": "", "originalPrice": 156}, {"id": 29, "name": "50 Deluxe", "category": "Sound Crackers", "price": 225, "unit": "1 Pkt", "description": "Premium 50-piece deluxe chain cracker. Extended celebration!", "image": "assets/products/prod-29-50-deluxe.jpg", "stock": 30, "badge": "", "originalPrice": 292}, {"id": 30, "name": "100 Deluxe", "category": "Sound Crackers", "price": 450, "unit": "1 Pkt", "description": "100-piece deluxe chain cracker for non-stop crackling celebration.", "image": "assets/products/prod-30-100-deluxe.jpg", "stock": 5, "badge": "", "originalPrice": 585}, {"id": 31, "name": "200 Wala", "category": "Sound Crackers", "price": 225, "unit": "1 Pkt", "description": "200 cracker garland. Long-lasting chain of booming bursts!", "image": "assets/products/prod-31-200-wala.jpg", "stock": 30, "badge": "", "originalPrice": 292}, {"id": 32, "name": "100 Wala", "category": "Sound Crackers", "price": 112, "unit": "1 Pkt", "description": "100 cracker garland for a festive celebration.", "image": "assets/products/prod-32-100-wala.jpg", "stock": 30, "badge": "", "originalPrice": 146}, {"id": 33, "name": "8 Wala Chorsa", "category": "Sound Crackers", "price": 1125, "unit": "1 Box", "description": "Premium large 8 Wala Chorsa box. Extra loud and powerful!", "image": "", "stock": 5, "badge": "Premium", "originalPrice": 1462}, {"id": 34, "name": "50 Deluxe Crackers", "category": "Sound Crackers", "price": 338, "unit": "1 Pkt", "description": "50-piece premium deluxe crackers for extended bursting.", "image": "assets/products/prod-34-50-deluxe-crackers.jpg", "stock": 20, "badge": "", "originalPrice": 439}, {"id": 35, "name": "Bijili (Red Bijili 50 pcs)", "category": "Sound Crackers", "price": 33, "unit": "1 Pkt (50 pcs)", "description": "Classic red Bijili pack of 50. Rapid-fire popping fun!", "image": "assets/products/prod-35-bijili-red-bijili-50-pcs.jpg", "stock": 150, "badge": "", "originalPrice": 43}, {"id": 36, "name": "Bijili (Red Bijili 100 pcs)", "category": "Sound Crackers", "price": 68, "unit": "1 Pkt (100 pcs)", "description": "Red Bijili mega pack of 100 for non-stop crackling celebration.", "image": "assets/products/prod-36-bijili-red-bijili-100-pcs.jpg", "stock": 150, "badge": "", "originalPrice": 88}, {"id": 37, "name": "28 Giant", "category": "Sound Crackers", "price": 60, "unit": "1 Pkt", "description": "Giant 28 cracker chain with extra powerful bursts.", "image": "assets/products/prod-37-28-giant.jpg", "stock": 150, "badge": "", "originalPrice": 78}, {"id": 38, "name": "Flower Pot Small", "category": "Ground Chakkars & Pots", "price": 112, "unit": "1 Pc", "description": "Small flower pot that sprays colorful sparks upward like a fountain.", "image": "assets/products/prod-38-flower-pot-small.jpg", "stock": 40, "badge": "", "originalPrice": 146}, {"id": 39, "name": "Flower Pot Special", "category": "Ground Chakkars & Pots", "price": 207, "unit": "1 Pc", "description": "Special flower pot with multicolor fountain and crackling effect.", "image": "assets/products/prod-39-flower-pot-special.jpg", "stock": 75, "badge": "Popular", "originalPrice": 269}, {"id": 40, "name": "Flower Pot Ashoka (5 Pcs)", "category": "Ground Chakkars & Pots", "price": 300, "unit": "1 Box (5 Pcs)", "description": "Premium 5-pack Ashoka flower pots with multi-stage colour effects.", "image": "assets/products/prod-40-flower-pot-ashoka-5-pcs.jpg", "stock": 30, "badge": "New", "originalPrice": 390}, {"id": 41, "name": "Colour Koti (Standard)", "category": "Ground Chakkars & Pots", "price": 562, "unit": "1 Box", "description": "Standard Colour Koti that produces a beautiful multicolour fountain display.", "image": "assets/products/prod-41-colour-koti-standard.jpg", "stock": 100, "badge": "", "originalPrice": 731}, {"id": 42, "name": "Colour Koti (Deluxe)", "category": "Ground Chakkars & Pots", "price": 938, "unit": "1 Box", "description": "Deluxe Colour Koti with enhanced colour effects and longer duration.", "image": "assets/products/prod-42-colour-koti-deluxe.jpg", "stock": 80, "badge": "Premium", "originalPrice": 1219}, {"id": 43, "name": "Ground Chakkar Big (10 pcs)", "category": "Ground Chakkars & Pots", "price": 93, "unit": "1 Pkt (10 pcs)", "description": "Pack of 10 ground chakkars that spin on the ground with colorful sparks.", "image": "assets/products/prod-43-ground-chakkar-big-10-pcs.jpg", "stock": 50, "badge": "", "originalPrice": 121}, {"id": 44, "name": "Ground Chakkar Special", "category": "Ground Chakkars & Pots", "price": 168, "unit": "1 Pc", "description": "Special large ground chakkar with colour-changing spin effect.", "image": "assets/products/prod-44-ground-chakkar-special.jpg", "stock": 50, "badge": "", "originalPrice": 218}, {"id": 45, "name": "Musical Chakkar", "category": "Ground Chakkars & Pots", "price": 488, "unit": "1 Pc", "description": "Premium musical ground chakkar with whistle and spin effect.", "image": "", "stock": 10, "badge": "Premium", "originalPrice": 634}, {"id": 46, "name": "Spinner Deluxe", "category": "Ground Chakkars & Pots", "price": 675, "unit": "1 Pc", "description": "Deluxe spinner with extended colour effects and high spin speed.", "image": "assets/products/prod-46-spinner-deluxe.jpg", "stock": 50, "badge": "", "originalPrice": 878}, {"id": 47, "name": "Spinner Special", "category": "Ground Chakkars & Pots", "price": 488, "unit": "1 Pc", "description": "Special spinner with multicolour effects and loud whistle sound.", "image": "assets/products/prod-47-spinner-special.jpg", "stock": 30, "badge": "", "originalPrice": 634}, {"id": 48, "name": "Ground Chakkar Deluxe", "category": "Ground Chakkars & Pots", "price": 338, "unit": "1 Pc", "description": "Large deluxe ground chakkar with multiple colour stages.", "image": "assets/products/prod-48-ground-chakkar-deluxe.jpg", "stock": 100, "badge": "", "originalPrice": 439}, {"id": 49, "name": "Hydro Bomb (BS)", "category": "Bombs & Rockets", "price": 188, "unit": "1 Pc", "description": "Standard Hydro Bomb with powerful water-effect explosion.", "image": "assets/products/prod-49-hydro-bomb-bs.jpg", "stock": 50, "badge": "", "originalPrice": 244}, {"id": 50, "name": "Hydro Bomb (GS)", "category": "Bombs & Rockets", "price": 207, "unit": "1 Pc", "description": "Premium Hydro Bomb with enhanced sound and smoke effect.", "image": "assets/products/prod-50-hydro-bomb-gs.jpg", "stock": 100, "badge": "", "originalPrice": 269}, {"id": 51, "name": "Classic Green Bomb", "category": "Bombs & Rockets", "price": 338, "unit": "1 Pc", "description": "Classic green bomb with thunderous explosion and green smoke.", "image": "assets/products/prod-51-classic-green-bomb.jpg", "stock": 140, "badge": "Popular", "originalPrice": 439}, {"id": 52, "name": "Jumbo Bomb", "category": "Bombs & Rockets", "price": 675, "unit": "1 Pc", "description": "Jumbo-sized bomb with massive explosion. Handle with care!", "image": "assets/products/prod-52-jumbo-bomb.jpg", "stock": 75, "badge": "Premium", "originalPrice": 878}, {"id": 53, "name": "Jurassic Bomb", "category": "Bombs & Rockets", "price": 562, "unit": "1 Pc", "description": "Uniquely shaped Jurassic bomb with earth-shaking impact.", "image": "assets/products/prod-53-jurassic-bomb.jpg", "stock": 20, "badge": "New", "originalPrice": 731}, {"id": 54, "name": "Whistle Rocket", "category": "Bombs & Rockets", "price": 450, "unit": "1 Pc", "description": "Rocket with whistling sound that soars into the sky.", "image": "assets/products/prod-54-whistle-rocket.jpg", "stock": 20, "badge": "", "originalPrice": 585}, {"id": 55, "name": "Purukose Bomb", "category": "Bombs & Rockets", "price": 57, "unit": "1 Pc", "description": "Small yet powerful Purukose bomb for quick celebration.", "image": "", "stock": 500, "badge": "", "originalPrice": 74}, {"id": 56, "name": "Nellore Guns", "category": "Bombs & Rockets", "price": 15, "unit": "1 Pc", "description": "Small toy gun-style cracker. Fun and safe for celebrations.", "image": "", "stock": 500, "badge": "", "originalPrice": 20}, {"id": 57, "name": "3 Sound Rocket", "category": "Bombs & Rockets", "price": 338, "unit": "1 Pc", "description": "Rocket that produces 3 sequential loud blasts in the sky.", "image": "assets/products/prod-57-3-sound-rocket.jpg", "stock": 20, "badge": "", "originalPrice": 439}, {"id": 58, "name": "Rocket Bomb Small / Baby Rocket", "category": "Bombs & Rockets", "price": 112, "unit": "1 Pc", "description": "Small rocket bomb that launches with a bang. Entry-level rocket fun!", "image": "assets/products/prod-58-rocket-bomb-small-baby-rocket.jpg", "stock": 20, "badge": "", "originalPrice": 146}, {"id": 59, "name": "Rocket Bomb Big", "category": "Bombs & Rockets", "price": 150, "unit": "1 Pc", "description": "Large rocket bomb that launches high with a powerful explosion.", "image": "assets/products/prod-59-rocket-bomb-big.jpg", "stock": 50, "badge": "", "originalPrice": 195}, {"id": 60, "name": "1/4 kg Paper Bomb", "category": "Bombs & Rockets", "price": 112, "unit": "1 Pc", "description": "Quarter kilo paper bomb with thunderous ground-shaking blast.", "image": "assets/products/prod-60-1-4-kg-paper-bomb.jpg", "stock": 10, "badge": "", "originalPrice": 146}, {"id": 61, "name": "1 kg Paper Bomb", "category": "Bombs & Rockets", "price": 450, "unit": "1 Pc", "description": "Massive 1 kg paper bomb for the ultimate ground blast experience.", "image": "assets/products/prod-61-1-kg-paper-bomb.jpg", "stock": 5, "badge": "Premium", "originalPrice": 585}, {"id": 62, "name": "Lunik / Lunik Express", "category": "Bombs & Rockets", "price": 300, "unit": "1 Pc", "description": "Lunik rocket that zooms upward with bright trail and aerial blast.", "image": "", "stock": 30, "badge": "", "originalPrice": 390}, {"id": 63, "name": "1K Wala Garland", "category": "Garlands / Walas", "price": 488, "unit": "1 Pkt", "description": "1000-cracker garland for grand celebrations. Non-stop 2+ minutes of bursting!", "image": "assets/products/prod-63-1k-wala-garland.jpg", "stock": 72, "badge": "Popular", "originalPrice": 634}, {"id": 64, "name": "2K Wala Garland", "category": "Garlands / Walas", "price": 1050, "unit": "1 Pkt", "description": "2000-cracker garland. Extended celebration with 5+ minutes of crackling!", "image": "assets/products/prod-64-2k-wala-garland.jpg", "stock": 20, "badge": "", "originalPrice": 1365}, {"id": 65, "name": "5K Wala Garland", "category": "Garlands / Walas", "price": 2250, "unit": "1 Pkt", "description": "Massive 5000-cracker garland. The ultimate grand celebration item!", "image": "assets/products/prod-65-5k-wala-garland.jpg", "stock": 8, "badge": "Premium", "originalPrice": 2925}, {"id": 66, "name": "7 Shots", "category": "Aerial Shots & Fancy", "price": 450, "unit": "1 Box", "description": "7-shot aerial display with colorful sky bursts.", "image": "", "stock": 10, "badge": "", "originalPrice": 585}, {"id": 67, "name": "12 Shot Blaster", "category": "Aerial Shots & Fancy", "price": 412, "unit": "1 Box", "description": "12-shot multi-colour aerial blaster for stunning sky display.", "image": "assets/products/prod-67-12-shot-blaster.jpg", "stock": 20, "badge": "", "originalPrice": 536}, {"id": 68, "name": "12 Shot Blaster (GS)", "category": "Aerial Shots & Fancy", "price": 488, "unit": "1 Box", "description": "Premium 12-shot blaster with enhanced colour effects and louder bursts.", "image": "assets/products/prod-68-12-shot-blaster-gs.jpg", "stock": 20, "badge": "", "originalPrice": 634}, {"id": 69, "name": "30 Shot Multi Colour (GS)", "category": "Aerial Shots & Fancy", "price": 1500, "unit": "1 Box", "description": "Premium 30-shot multicolour aerial show. Spectacular sky display!", "image": "assets/products/prod-69-30-shot-multi-colour-gs.jpg", "stock": 10, "badge": "Premium", "originalPrice": 1950}, {"id": 70, "name": "30 Shot Multi Colour (BS)", "category": "Aerial Shots & Fancy", "price": 1312, "unit": "1 Box", "description": "30-shot multicolour aerial display with vivid sky patterns.", "image": "assets/products/prod-70-30-shot-multi-colour-bs.jpg", "stock": 10, "badge": "", "originalPrice": 1706}, {"id": 71, "name": "60 Shot Multi Colour (GS)", "category": "Aerial Shots & Fancy", "price": 3000, "unit": "1 Box", "description": "Premium 60-shot grand aerial display. A mini firework show!", "image": "assets/products/prod-71-60-shot-multi-colour-gs.jpg", "stock": 5, "badge": "Premium", "originalPrice": 3900}, {"id": 72, "name": "60 Shot Multi Colour (BS)", "category": "Aerial Shots & Fancy", "price": 2625, "unit": "1 Box", "description": "60-shot multicolour aerial display for a grand celebration.", "image": "assets/products/prod-72-60-shot-multi-colour-bs.jpg", "stock": 5, "badge": "", "originalPrice": 3412}, {"id": 73, "name": "120 Shot Multi Colour", "category": "Aerial Shots & Fancy", "price": 4125, "unit": "1 Box", "description": "Grand 120-shot aerial display. The ultimate firework show experience!", "image": "assets/products/prod-73-120-shot-multi-colour.jpg", "stock": 6, "badge": "Premium", "originalPrice": 5362}, {"id": 74, "name": "Butterfly (Colour Changing)", "category": "Fancy Items", "price": 412, "unit": "1 Pc", "description": "Beautiful colour-changing butterfly that spins and flies upward.", "image": "assets/products/prod-74-butterfly-colour-changing.jpg", "stock": 20, "badge": "", "originalPrice": 536}, {"id": 75, "name": "Drone (10 Pcs)", "category": "Fancy Items", "price": 375, "unit": "1 Pkt (10 Pcs)", "description": "Pack of 10 drone-style spinners that whirl into the sky with sparks.", "image": "assets/products/prod-75-drone-10-pcs.jpg", "stock": 10, "badge": "New", "originalPrice": 488}, {"id": 76, "name": "Helicopter (10 Pcs)", "category": "Fancy Items", "price": 262, "unit": "1 Pkt (10 Pcs)", "description": "Pack of 10 helicopter spinners that fly up with colorful trail.", "image": "assets/products/prod-76-helicopter-10-pcs.jpg", "stock": 10, "badge": "", "originalPrice": 341}, {"id": 77, "name": "Photo Flash", "category": "Fancy Items", "price": 225, "unit": "1 Pc", "description": "Bright photo flash cracker that illuminates the night sky.", "image": "assets/products/prod-77-photo-flash.jpg", "stock": 10, "badge": "", "originalPrice": 292}, {"id": 78, "name": "Disco Wheel", "category": "Fancy Items", "price": 150, "unit": "1 Pc", "description": "Spinning disco wheel with mesmerizing multi-colour light effects.", "image": "", "stock": 10, "badge": "", "originalPrice": 195}, {"id": 79, "name": "Magic Boom", "category": "Fancy Items", "price": 338, "unit": "1 Pc", "description": "Magical surprise cracker with multi-stage visual and sound effects.", "image": "", "stock": 5, "badge": "New", "originalPrice": 439}, {"id": 80, "name": "Tri Color Fountain", "category": "Fancy Items", "price": 1032, "unit": "1 Pc", "description": "Grand tri-colour fountain with Indian flag colors. Perfect for patriotic celebrations!", "image": "assets/products/prod-80-tri-color-fountain.jpg", "stock": 5, "badge": "Premium", "originalPrice": 1342}, {"id": 81, "name": "5 Color Fountain", "category": "Fancy Items", "price": 562, "unit": "1 Pc", "description": "Stunning 5-colour fountain with sequential colour-changing effects.", "image": "assets/products/prod-81-5-color-fountain.jpg", "stock": 5, "badge": "", "originalPrice": 731}, {"id": 82, "name": "Peacock Small / Colour", "category": "Fancy Items", "price": 488, "unit": "1 Pc", "description": "Peacock-shaped fancy item that fans out with beautiful sparks.", "image": "assets/products/prod-82-peacock-small-colour.jpg", "stock": 10, "badge": "", "originalPrice": 634}, {"id": 83, "name": "Peacock Big / Dragon Peacock", "category": "Fancy Items", "price": 1312, "unit": "1 Pc", "description": "Large dragon peacock with magnificent multi-stage display effect.", "image": "assets/products/prod-83-peacock-big-dragon-peacock.jpg", "stock": 5, "badge": "Premium", "originalPrice": 1706}, {"id": 84, "name": "Kit Kat / Chitput", "category": "Fancy Items", "price": 75, "unit": "1 Pc", "description": "Fun Kit Kat / Chitput cracker with small crackle and colour.", "image": "", "stock": 100, "badge": "", "originalPrice": 98}, {"id": 85, "name": "Twinkling Star 1.5\"", "category": "Fancy Items", "price": 68, "unit": "1 Pc", "description": "Small twinkling star that glows with beautiful sparkle effect.", "image": "assets/products/prod-85-twinkling-star-1-5.jpg", "stock": 50, "badge": "", "originalPrice": 88}, {"id": 86, "name": "4\" Twinkling Star", "category": "Fancy Items", "price": 225, "unit": "1 Pc", "description": "Large 4-inch twinkling star with extended bright sparkle.", "image": "assets/products/prod-86-4-twinkling-star.jpg", "stock": 20, "badge": "", "originalPrice": 292}, {"id": 87, "name": "Anaconda", "category": "Fancy Items", "price": 168, "unit": "1 Pc", "description": "Ground snake firework that slithers along the ground with sparks.", "image": "assets/products/prod-87-anaconda.jpg", "stock": 10, "badge": "", "originalPrice": 218}, {"id": 88, "name": "Snake Eggs", "category": "Fancy Items", "price": 675, "unit": "1 Unit", "description": "Fun snake egg tablets that expand into ash snakes when lit.", "image": "assets/products/prod-88-snake-eggs.jpg", "stock": 2, "badge": "", "originalPrice": 878}, {"id": 89, "name": "Gadha (Mace)", "category": "Fancy Items", "price": 938, "unit": "1 Pc", "description": "Large mace-shaped novelty firework with multi-stage display.", "image": "", "stock": 2, "badge": "Premium", "originalPrice": 1219}, {"id": 90, "name": "Sword", "category": "Fancy Items", "price": 638, "unit": "1 Pc", "description": "Sword-shaped novelty firework with sparkling blade effect.", "image": "", "stock": 2, "badge": "Premium", "originalPrice": 829}, {"id": 91, "name": "Gas Cylinder", "category": "Fancy Items", "price": 638, "unit": "1 Pc", "description": "Novelty gas cylinder shaped firework with multi-stage effects.", "image": "", "stock": 5, "badge": "", "originalPrice": 829}, {"id": 92, "name": "Little Star (Small Fountain)", "category": "Fancy Items", "price": 120, "unit": "1 Pc", "description": "Small fountain star with sparkling jets of colour.", "image": "assets/products/prod-92-little-star-small-fountain.jpg", "stock": 20, "badge": "", "originalPrice": 156}, {"id": 93, "name": "Bada Star (Big Fountain)", "category": "Fancy Items", "price": 468, "unit": "1 Pc", "description": "Large fountain star with extended multi-colour display.", "image": "assets/products/prod-93-bada-star-big-fountain.jpg", "stock": 5, "badge": "", "originalPrice": 608}, {"id": 94, "name": "Electric Stones", "category": "Fancy Items", "price": 38, "unit": "1 Pkt", "description": "Fun electric stones that spark on impact. Safe for all ages!", "image": "", "stock": 50, "badge": "", "originalPrice": 49}, {"id": 95, "name": "18\" Pencil", "category": "Fancy Items", "price": 262, "unit": "1 Pc", "description": "Large 18-inch pencil sparkler with beautiful fountain effect.", "image": "assets/products/prod-95-18-pencil.jpg", "stock": 50, "badge": "", "originalPrice": 341}, {"id": 96, "name": "15\" Pencil", "category": "Fancy Items", "price": 225, "unit": "1 Pc", "description": "15-inch pencil sparkler with colourful fountain display.", "image": "assets/products/prod-96-15-pencil.jpg", "stock": 10, "badge": "", "originalPrice": 292}, {"id": 97, "name": "Golden Star Pencil (3 Pcs)", "category": "Fancy Items", "price": 450, "unit": "1 Box (3 Pcs)", "description": "Premium golden star pencil set with golden shower effect.", "image": "assets/products/prod-97-golden-star-pencil-3-pcs.jpg", "stock": 30, "badge": "", "originalPrice": 585}, {"id": 98, "name": "21 Item Family Box", "category": "Family Gift Boxes", "price": 938, "unit": "1 Box", "description": "Starter family gift box with 21 assorted crackers. Perfect for small families!", "image": "assets/products/prod-98-21-item-family-box.jpg", "stock": 20, "badge": "", "originalPrice": 1219}, {"id": 99, "name": "30 Item Family Box", "category": "Family Gift Boxes", "price": 1500, "unit": "1 Box", "description": "Medium family gift box with 30 assorted crackers for complete celebration.", "image": "assets/products/prod-99-30-item-family-box.jpg", "stock": 50, "badge": "Popular", "originalPrice": 1950}, {"id": 100, "name": "50 Item Family Box (GS)", "category": "Family Gift Boxes", "price": 3375, "unit": "1 Box", "description": "Premium 50-item gift box with top-grade crackers. Ideal for gifting!", "image": "assets/products/prod-100-50-item-family-box-gs.jpg", "stock": 5, "badge": "Premium", "originalPrice": 4388}, {"id": 101, "name": "50 Item Family Box (BS)", "category": "Family Gift Boxes", "price": 2625, "unit": "1 Box", "description": "Value 50-item family box with great assortment of crackers.", "image": "assets/products/prod-101-50-item-family-box-bs.jpg", "stock": 22, "badge": "Bestseller", "originalPrice": 3412}, {"id": 102, "name": "60 Item Family Box (GS)", "category": "Family Gift Boxes", "price": 3750, "unit": "1 Box", "description": "Grand 60-item premium family box for a complete Diwali celebration.", "image": "assets/products/prod-102-60-item-family-box-gs.jpg", "stock": 3, "badge": "Premium", "originalPrice": 4875}, {"id": 103, "name": "70 Item Family Box", "category": "Family Gift Boxes", "price": 3750, "unit": "1 Box", "description": "The ultimate 70-item family box. Everything you need for a grand Diwali!", "image": "assets/products/prod-103-70-item-family-box.jpg", "stock": 2, "badge": "Premium", "originalPrice": 4875}, {"id": 104, "name": "Wonder Throw", "category": "Fun Items", "price": 188, "unit": "1 Pkt", "description": "Fun throw crackers that pop on impact. Safe and entertaining!", "image": "assets/products/prod-104-wonder-throw.jpg", "stock": 80, "badge": "", "originalPrice": 244}, {"id": 105, "name": "Beedi Pataaku (Corsair)", "category": "Fun Items", "price": 262, "unit": "1 Pkt", "description": "Classic beedi-style crackers with sharp cracking sound.", "image": "", "stock": 48, "badge": "", "originalPrice": 341}, {"id": 106, "name": "Pop Pop", "category": "Fun Items", "price": 938, "unit": "1 Box", "description": "Large box of Pop Pop crackers - just throw and they pop! Kids love it!", "image": "", "stock": 48, "badge": "", "originalPrice": 1219}, {"id": 107, "name": "Color Matches (Full Box)", "category": "Fun Items", "price": 11250, "unit": "1 Full Box", "description": "Complete box of colour matches for safe and fun sparkling celebrations.", "image": "", "stock": 1, "badge": "", "originalPrice": 14625}];
+
 // ==================== GLOBAL APP STATE ====================
-let products = [];
+let products = [...DEFAULT_PRODUCTS];
 let cart = JSON.parse(localStorage.getItem('firestorm_cart') || '[]');
 let appliedCoupon = JSON.parse(localStorage.getItem('firestorm_coupon') || 'null');
-let filteredProducts = [];
+let filteredProducts = [...products];
 
 // ==================== COUPON REGISTRY ====================
 const COUPONS = {
@@ -1659,31 +1731,219 @@ const CATEGORY_EMOJIS = {
     'Fun Items': '🎈',
 };
 
-// ==================== INIT ====================
-document.addEventListener('DOMContentLoaded', async () => {
-    initFestiveCanvas();
-    initCountdown();
-    setupNavbar();
+// ==================== ROBUST APP INITIALIZATION ====================
 
-    await loadProducts();
+// ==================== DIWALI WELCOME LOADER FIREWORKS ENGINE ====================
+let welcomeLoaderDismissed = false;
+let loaderCanvasAnimId = null;
+
+function initLoaderFireworks() {
+    const canvas = document.getElementById('loader-firework-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        if (welcomeLoaderDismissed) return;
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    const lRockets = [];
+    const lSparks = [];
+    const lRings = [];
+
+    const lPalettes = [
+        ['#FFD700', '#FF1744', '#FF9100', '#FFF59D', '#FF5252'],
+        ['#00E676', '#00E5FF', '#76FF03', '#FFFFFF', '#69F0AE'],
+        ['#E040FB', '#7C4DFF', '#FF4081', '#FFE57F', '#D500F9'],
+        ['#FF1744', '#FFEA00', '#00E676', '#2979FF', '#D500F9'],
+        ['#FFD54F', '#FFA000', '#FFFFFF', '#FF80AB', '#00E5FF']
+    ];
+
+    function spawnLoaderRocket() {
+        if (welcomeLoaderDismissed) return;
+        const targetX = width * (0.15 + 0.7 * Math.random());
+        const targetY = height * (0.12 + 0.35 * Math.random());
+        const startX = targetX + (Math.random() - 0.5) * 80;
+        const startY = height + 15;
+        const pal = lPalettes[Math.floor(Math.random() * lPalettes.length)];
+        lRockets.push({
+            x: startX, y: startY, targetX, targetY, palette: pal,
+            vx: (targetX - startX) / 25, vy: -15 - Math.random() * 4,
+            trail: [], exploded: false
+        });
+    }
+
+    // Launch initial volleys immediately
+    spawnLoaderRocket();
+    setTimeout(spawnLoaderRocket, 250);
+    setTimeout(spawnLoaderRocket, 600);
+    setTimeout(spawnLoaderRocket, 1000);
+    setTimeout(spawnLoaderRocket, 1400);
+    setTimeout(spawnLoaderRocket, 1800);
+
+    function explodeLoader(r) {
+        const pal = r.palette;
+        lRings.push({ x: r.x, y: r.y, radius: 4, maxRadius: 50, alpha: 0.9, color: pal[0] });
+        const count = 75 + Math.floor(Math.random() * 30);
+        for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.pow(Math.random(), 0.6) * 8.5 + 0.5;
+            lSparks.push({
+                x: r.x, y: r.y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                color: pal[Math.floor(Math.random() * pal.length)],
+                alpha: 1, decay: Math.random() * 0.018 + 0.014,
+                gravity: 0.09, friction: 0.955
+            });
+        }
+    }
+
+    function animateLoader() {
+        if (welcomeLoaderDismissed && lRockets.length === 0 && lSparks.length === 0) {
+            return;
+        }
+        ctx.clearRect(0, 0, width, height);
+
+        // Rockets
+        for (let i = lRockets.length - 1; i >= 0; i--) {
+            const r = lRockets[i];
+            r.trail.push({ x: r.x, y: r.y });
+            if (r.trail.length > 6) r.trail.shift();
+            r.x += r.vx;
+            r.y += r.vy;
+            r.vy += 0.14;
+
+            ctx.save();
+            ctx.fillStyle = '#FFFFFF';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = r.palette[0];
+            ctx.beginPath();
+            ctx.arc(r.x, r.y, 2.5, 0, Math.PI * 2);
+            ctx.fill();
+
+            for (let j = 0; j < r.trail.length; j++) {
+                ctx.globalAlpha = (j + 1) / r.trail.length * 0.7;
+                ctx.fillStyle = r.palette[j % r.palette.length];
+                ctx.beginPath();
+                ctx.arc(r.trail[j].x, r.trail[j].y, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.restore();
+
+            if (r.vy >= -0.5 || r.y <= r.targetY) {
+                explodeLoader(r);
+                lRockets.splice(i, 1);
+            }
+        }
+
+        // Rings
+        for (let i = lRings.length - 1; i >= 0; i--) {
+            const rg = lRings[i];
+            rg.radius += (rg.maxRadius - rg.radius) * 0.3 + 2;
+            rg.alpha -= 0.07;
+            if (rg.alpha <= 0) { lRings.splice(i, 1); continue; }
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, rg.alpha);
+            ctx.strokeStyle = rg.color;
+            ctx.lineWidth = 2.5;
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = rg.color;
+            ctx.beginPath();
+            ctx.arc(rg.x, rg.y, rg.radius, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // Sparks
+        for (let i = lSparks.length - 1; i >= 0; i--) {
+            const s = lSparks[i];
+            s.vx *= s.friction;
+            s.vy *= s.friction;
+            s.vy += s.gravity;
+            s.x += s.vx;
+            s.y += s.vy;
+            s.alpha -= s.decay;
+
+            if (s.alpha <= 0) { lSparks.splice(i, 1); continue; }
+
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, s.alpha);
+            ctx.fillStyle = s.color;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = s.color;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, 1.8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        loaderCanvasAnimId = requestAnimationFrame(animateLoader);
+    }
+    animateLoader();
+}
+
+function dismissWelcomeLoader() {
+    if (welcomeLoaderDismissed) return;
+    welcomeLoaderDismissed = true;
+    const loader = document.getElementById('diwali-welcome-loader');
+    if (loader) {
+        loader.classList.add('dismissed');
+        setTimeout(() => {
+            if (loader.parentNode) {
+                loader.parentNode.removeChild(loader);
+            } else if (typeof loader.remove === 'function') {
+                loader.remove();
+            }
+            if (loaderCanvasAnimId) cancelAnimationFrame(loaderCanvasAnimId);
+        }, 850);
+    }
+}
+
+// Auto dismiss after 2.6s celebration
+setTimeout(dismissWelcomeLoader, 2600);
+
+function initApp() {
+    try { initLoaderFireworks(); } catch(e) { console.warn(e); }
+    try {
+        initFestiveCanvas();
+    } catch(e) { console.warn("Canvas init:", e); }
+
+    try {
+        initCountdown();
+    } catch(e) { console.warn("Countdown init:", e); }
+
+    try {
+        setupNavbar();
+    } catch(e) { console.warn("Navbar init:", e); }
+
+    populateCategoryFilter();
     renderProducts();
     updateCart();
 
-    // Hide loader smoothly
-    setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader) loader.classList.add('hidden');
-    }, 1200);
+    // Async fetch for freshest updates in background
+    loadProducts();
 
     if (appliedCoupon && COUPONS[appliedCoupon.code]) {
         const cRow = document.getElementById('coupon-applied');
         if (cRow) {
             cRow.style.display = 'flex';
-            document.getElementById('coupon-applied-text').innerHTML =
-                `<i class="fas fa-tag"></i> ${appliedCoupon.code} — ${COUPONS[appliedCoupon.code].desc}`;
+            const cText = document.getElementById('coupon-applied-text');
+            if (cText) cText.innerHTML = `<i class="fas fa-tag"></i> ${appliedCoupon.code} — ${COUPONS[appliedCoupon.code].desc}`;
         }
     }
-});
+}
+
+// Immediate execution - never blocks or waits
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
 
 // ==================== REALTIME DIWALI COUNTDOWN ====================
 function initCountdown() {
@@ -1717,16 +1977,16 @@ function initCountdown() {
 
 // ==================== HIGH DEFINITION DIWALI MULTICOLOR FIREWORKS SYSTEM ====================
 const FIREWORK_PALETTES = [
-    // Vibrant Diwali Gold & Crimson
-    ['#FFE082', '#FFD54F', '#FFCA28', '#FF1744', '#FF5252', '#FFFFFF'],
+    // Firestorm Flame & Crimson
+    ['#DC2626', '#FF1744', '#EA580C', '#F97316', '#B91C1C', '#D97706'],
     // Peacock Emerald & Sky Cyan
-    ['#00E676', '#69F0AE', '#00E5FF', '#18FFFF', '#76FF03', '#FFFFFF'],
-    // Vibrant Amethyst & Neon Pink
-    ['#E040FB', '#EA80FC', '#7C4DFF', '#B388FF', '#FF4081', '#FF80AB'],
-    // Multi-Color Rainbow Celebration
-    ['#FF1744', '#FFEA00', '#00E676', '#2979FF', '#D500F9', '#FF9100', '#FFFFFF'],
-    // Sparkling Silver & Golden Crackle
-    ['#FFFFFF', '#FFF9C4', '#FFE082', '#FFA000', '#ECEFF1', '#FFD54F']
+    ['#059669', '#10B981', '#0284C7', '#06B6D4', '#16A34A', '#0D9488'],
+    // Amethyst Violet & Hot Magenta
+    ['#9333EA', '#C026D3', '#DB2777', '#E11D48', '#7C3AED', '#BE185D'],
+    // Multi-Color Rainbow Fireworks
+    ['#DC2626', '#EA580C', '#D97706', '#16A34A', '#2563EB', '#9333EA'],
+    // Saffron Gold & Sparkling Crackles
+    ['#D97706', '#F59E0B', '#B45309', '#EA580C', '#DC2626', '#78350F']
 ];
 
 let activeRockets = [];
@@ -1956,8 +2216,8 @@ function initFestiveCanvas() {
 
     // Clicking anywhere on hero/background launches a firework
     window.addEventListener('click', (e) => {
-        // Only launch if clicking on background, hero, or non-interactive containers
         const target = e.target;
+        if (!target || typeof target.closest !== 'function') return;
         if (target.closest('button, a, input, select, textarea, .product-card, .cart-drawer, .modal-box-lux')) {
             return;
         }
@@ -2052,49 +2312,70 @@ function initFestiveCanvas() {
 async function loadProducts() {
     try {
         const resp = await fetch('products.json');
-        products = await resp.json();
+        if (resp.ok) {
+            const data = await resp.json();
+            if (Array.isArray(data) && data.length > 0) {
+                products = data;
+                filteredProducts = [...products];
+                populateCategoryFilter();
+                renderProducts();
+            }
+        }
     } catch (e) {
-        console.error('Failed to load products:', e);
-        products = [];
+        console.log('Using pre-bundled product catalog');
     }
-    filteredProducts = [...products];
-    populateCategoryFilter();
 }
 
 function populateCategoryFilter() {
     const cats = [...new Set(products.map(p => p.category))];
     const select = document.getElementById('category-filter');
-    cats.forEach(cat => {
-        const opt = document.createElement('option');
-        opt.value = cat;
-        opt.textContent = `${CATEGORY_EMOJIS[cat] || '🎆'} ${cat}`;
-        select.appendChild(opt);
-    });
+    if (select) {
+        select.innerHTML = '<option value="">All Categories</option>';
+        cats.forEach(cat => {
+            const opt = document.createElement('option');
+            opt.value = cat;
+            opt.textContent = `${CATEGORY_EMOJIS[cat] || '🎆'} ${cat}`;
+            select.appendChild(opt);
+        });
+    }
 
     const tagsContainer = document.getElementById('filter-tags');
-    tagsContainer.innerHTML = `<button class="category-pill active" onclick="setCategory('')">All Crackers</button>`;
-    cats.forEach(cat => {
-        tagsContainer.innerHTML += `<button class="category-pill" onclick="setCategory('${cat}')">${CATEGORY_EMOJIS[cat] || '✨'} ${cat}</button>`;
-    });
+    if (tagsContainer) {
+        tagsContainer.innerHTML = `<button class="category-pill active" onclick="setCategory('')">All Crackers (${products.length})</button>`;
+        cats.forEach(cat => {
+            const catCount = products.filter(p => p.category === cat).length;
+            tagsContainer.innerHTML += `<button class="category-pill" onclick="setCategory('${cat}')">${CATEGORY_EMOJIS[cat] || '✨'} ${cat} (${catCount})</button>`;
+        });
+    }
 }
 
 function setCategory(cat) {
-    document.getElementById('category-filter').value = cat;
-    document.querySelectorAll('.category-pill').forEach(t => t.classList.remove('active'));
-    if (event && event.target && event.target.classList.contains('category-pill')) {
-        event.target.classList.add('active');
-    }
+    const sel = document.getElementById('category-filter');
+    if (sel) sel.value = cat;
+    document.querySelectorAll('.category-pill').forEach(t => {
+        const text = t.textContent.trim();
+        if (!cat && text.startsWith('All Crackers')) {
+            t.classList.add('active');
+        } else if (cat && text.includes(cat)) {
+            t.classList.add('active');
+        } else {
+            t.classList.remove('active');
+        }
+    });
+    // In-place instant filtering without jarring scroll jumps
     filterProducts();
-    document.getElementById('products-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function filterByCategory(cat) {
-    document.getElementById('category-filter').value = cat;
+    const sel = document.getElementById('category-filter');
+    if (sel) sel.value = cat;
     document.querySelectorAll('.category-pill').forEach(t => {
         t.classList.toggle('active', t.textContent.includes(cat));
     });
     filterProducts();
-    document.getElementById('products-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Smoothly scroll to product catalog when clicked from footer or external links
+    const sec = document.getElementById('products-section');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ==================== FILTERING & SORTING ====================
@@ -2128,7 +2409,7 @@ function filterProducts() {
     const tags = document.querySelectorAll('.category-pill');
     tags.forEach(t => {
         const tagText = t.textContent.trim();
-        if (!category && tagText === 'All Crackers') {
+        if (!category && tagText.startsWith('All Crackers')) {
             t.classList.add('active');
         } else if (category && tagText.includes(category)) {
             t.classList.add('active');
@@ -2145,22 +2426,23 @@ function renderProducts() {
 
     if (filteredProducts.length === 0) {
         grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 5rem 1rem;">
-                <div style="font-size: 3.5rem; color: var(--gold-3); opacity: 0.5; margin-bottom: 1rem;"><i class="fas fa-search"></i></div>
-                <h3 style="font-family: var(--font-serif); color: var(--gold-1); font-size: 1.4rem;">No Crackers Found</h3>
-                <p style="color: var(--text-muted);">Please refine your search keywords or clear filters to see all crackers.</p>
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem;">
+                <div style="font-size: 3rem; color: #CBD5E1; margin-bottom: 0.8rem;"><i class="fas fa-search"></i></div>
+                <h3 style="font-family: var(--font-heading); color: var(--text-primary); font-size: 1.35rem; font-weight:800;">No Crackers Found</h3>
+                <p style="color: var(--text-muted);">Try searching for sparklers, pots, chakkars, bombs, or clear filters.</p>
             </div>`;
-        countEl.textContent = 'Showing 0 items';
+        countEl.textContent = 'Showing 0 crackers';
         return;
     }
 
-    countEl.textContent = `Showing ${filteredProducts.length} of ${products.length} products`;
+    countEl.textContent = `Showing ${filteredProducts.length} of ${products.length} crackers`;
 
     grid.innerHTML = filteredProducts.map(p => {
         const inCart = cart.find(c => c.id === p.id);
-        const badgeClass = p.badge ? `badge-${p.badge.toLowerCase()}` : '';
+        const badgeClass = p.badge ? `badge-${p.badge.toLowerCase().replace(/\s+/g, '-')}` : '';
         const origPrice = p.originalPrice || Math.round(p.price * 1.3);
         const discountPct = Math.round(((origPrice - p.price) / origPrice) * 100);
+        const savings = origPrice - p.price;
 
         return `
             <div class="product-card">
@@ -2170,29 +2452,33 @@ function renderProducts() {
                         <div class="not-available-box" style="display:none;">
                             <div class="not-available-icon"><i class="fas fa-box-open"></i></div>
                             <span class="not-available-text">Sealed Box Packaging</span>
-                            <span class="not-available-sub">Image Not Available</span>
+                            <span class="not-available-sub">100% Genuine Sivakasi</span>
                         </div>
                     ` : `
                         <div class="not-available-box">
                             <div class="not-available-icon"><i class="fas fa-box-open"></i></div>
                             <span class="not-available-text">Sealed Box Packaging</span>
-                            <span class="not-available-sub">Image Not Available</span>
+                            <span class="not-available-sub">100% Genuine Sivakasi</span>
                         </div>
                     `}
                     ${p.badge ? `<span class="luxury-badge ${badgeClass}">${p.badge}</span>` : ''}
                 </div>
                 <div class="product-info-wrap">
-                    <div class="product-category-lbl">${p.category}</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                        <span class="product-category-lbl">${p.category}</span>
+                        <span style="display:inline-flex; align-items:center; gap:4px; font-size:0.68rem; font-weight:800; color:#15803D; background:#DCFCE7; padding:2px 7px; border-radius:4px;"><i class="fas fa-check-circle"></i> In Stock</span>
+                    </div>
                     <h3 class="product-name-title">${p.name}</h3>
                     <p class="product-desc-snippet">${p.description}</p>
-                    <div class="product-packaging-unit"><i class="fas fa-box-archive"></i> Unit: ${p.unit}</div>
+                    <div class="product-packaging-unit"><i class="fas fa-box"></i> Packing: ${p.unit}</div>
                     <div class="product-footer-row">
                         <div class="price-stack">
                             <div class="price-comparison-line">
-                                <span class="price-original-striked">₹${origPrice}</span>
+                                <span class="price-original-striked">MRP ₹${origPrice}</span>
                                 <span class="discount-chip">-${discountPct}%</span>
                             </div>
                             <div class="price-green-main"><span>₹</span>${p.price}</div>
+                            <div style="font-size:0.7rem; color:#15803D; font-weight:700; margin-top:2px;">Save ₹${savings}</div>
                         </div>
                         ${inCart ? `
                             <div class="qty-stepper">
@@ -2202,7 +2488,7 @@ function renderProducts() {
                             </div>
                         ` : `
                             <button class="add-btn-lux" onclick="addToCart(${p.id})">
-                                <i class="fas fa-plus"></i> Add
+                                <i class="fas fa-shopping-cart"></i> Add
                             </button>
                         `}
                     </div>
@@ -2211,7 +2497,6 @@ function renderProducts() {
     }).join('');
 }
 
-// ==================== CART ACTIONS ====================
 function addToCart(id) {
     const isFirstItem = (cart.length === 0);
     const existing = cart.find(c => c.id === id);
@@ -2262,8 +2547,15 @@ function saveCart() {
 function updateCart() {
     const countEl = document.getElementById('cart-count');
     const totalItems = cart.reduce((s, c) => s + c.qty, 0);
-    countEl.textContent = totalItems;
-    countEl.style.display = totalItems > 0 ? 'flex' : 'none';
+    if (countEl) {
+        countEl.textContent = totalItems;
+        countEl.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+
+    const titleEl = document.getElementById('cart-drawer-title');
+    if (titleEl) {
+        titleEl.textContent = totalItems > 0 ? `Shopping Cart (${totalItems} items)` : 'Shopping Cart';
+    }
 
     renderCartDrawer();
     updateCartSummary();
@@ -2277,7 +2569,7 @@ function renderCartDrawer() {
             <div class="cart-empty-state">
                 <i class="fas fa-shopping-bag"></i>
                 <h3>Your Cart is Empty</h3>
-                <p style="color:var(--text-muted); font-size:0.9rem;">Select your favorite Sivakasi crackers to begin shopping.</p>
+                <p style="color:var(--text-muted); font-size:0.9rem;">Add sparklers, pots, chakkars, or gift boxes to start your order.</p>
             </div>`;
         return;
     }
@@ -2292,18 +2584,18 @@ function renderCartDrawer() {
             <div class="cart-item-row">
                 ${p.image ? `
                     <img src="${p.image}" alt="${p.name}" class="cart-item-img-thumb" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="cart-item-img-thumb not-avail-thumb" style="display:none;"><i class="fas fa-box-open"></i></div>
+                    <div class="cart-item-img-thumb not-avail-thumb" style="display:none; align-items:center; justify-content:center;"><i class="fas fa-box-open" style="color:var(--fire-red);"></i></div>
                 ` : `
-                    <div class="cart-item-img-thumb not-avail-thumb"><i class="fas fa-box-open"></i></div>
+                    <div class="cart-item-img-thumb not-avail-thumb" style="display:flex; align-items:center; justify-content:center;"><i class="fas fa-box-open" style="color:var(--fire-red);"></i></div>
                 `}
                 <div class="cart-item-details">
                     <div class="cart-item-name">${p.name}</div>
                     <div class="cart-item-meta">${p.unit}</div>
                     <div class="cart-item-pricing">
-                        <span style="color:var(--emerald); font-weight:800;">₹${p.price}</span>
-                        <span style="color:var(--text-muted); text-decoration:line-through; font-size:0.8rem; margin:0 4px;">₹${origPrice}</span>
-                        <span style="color:var(--ruby); font-size:0.75rem; font-weight:800;">-${discountPct}%</span>
-                        <span style="color:var(--text-secondary); margin-left:6px; font-weight:600;">× ${c.qty} = ₹${(p.price * c.qty).toLocaleString('en-IN')}</span>
+                        <span style="color:var(--emerald-price); font-weight:800;">₹${p.price}</span>
+                        <span style="color:#94A3B8; text-decoration:line-through; font-size:0.8rem; margin:0 4px;">₹${origPrice}</span>
+                        <span style="color:var(--fire-red); font-size:0.75rem; font-weight:800;">-${discountPct}%</span>
+                        <span style="color:var(--text-secondary); margin-left:6px; font-weight:700;">× ${c.qty} = ₹${(p.price * c.qty).toLocaleString('en-IN')}</span>
                     </div>
                     <div style="display:flex; align-items:center; gap:1rem; margin-top:0.4rem;">
                         <div class="qty-stepper">
@@ -2311,7 +2603,7 @@ function renderCartDrawer() {
                             <span class="qty-stepper-num">${c.qty}</span>
                             <button class="qty-stepper-btn" onclick="changeQty(${p.id}, 1)">+</button>
                         </div>
-                        <button onclick="removeFromCart(${p.id})" style="background:none; color:var(--ruby); font-size:0.8rem; font-weight:600; cursor:pointer;">
+                        <button onclick="removeFromCart(${p.id})" style="background:none; color:var(--fire-red); font-size:0.8rem; font-weight:700; cursor:pointer;">
                             <i class="fas fa-trash-alt"></i> Remove
                         </button>
                     </div>
@@ -2321,10 +2613,18 @@ function renderCartDrawer() {
 }
 
 function updateCartSummary() {
+    const totalMRP = cart.reduce((s, c) => {
+        const p = products.find(pr => pr.id === c.id);
+        const orig = p ? (p.originalPrice || Math.round(p.price * 1.3)) : 0;
+        return s + (orig * c.qty);
+    }, 0);
+
     const subtotal = cart.reduce((s, c) => {
         const p = products.find(pr => pr.id === c.id);
         return s + (p ? p.price * c.qty : 0);
     }, 0);
+
+    const crackersSavings = Math.max(0, totalMRP - subtotal);
 
     let discount = 0;
     if (appliedCoupon && COUPONS[appliedCoupon.code]) {
@@ -2338,14 +2638,26 @@ function updateCartSummary() {
 
     const total = Math.max(0, subtotal - discount);
 
-    document.getElementById('cart-subtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
-    document.getElementById('cart-discount').textContent = `-₹${discount.toLocaleString('en-IN')}`;
-    document.getElementById('discount-row').style.display = discount > 0 ? 'flex' : 'none';
-    document.getElementById('cart-total').textContent = `₹${total.toLocaleString('en-IN')}`;
-    document.getElementById('checkout-btn').disabled = cart.length === 0;
+    const mrpEl = document.getElementById('cart-mrp');
+    if (mrpEl) mrpEl.textContent = `₹${totalMRP.toLocaleString('en-IN')}`;
+
+    const crackersSavEl = document.getElementById('cart-crackers-savings');
+    if (crackersSavEl) crackersSavEl.textContent = `-₹${crackersSavings.toLocaleString('en-IN')}`;
+
+    const discountRow = document.getElementById('discount-row');
+    const discountEl = document.getElementById('cart-discount');
+    if (discountRow && discountEl) {
+        discountRow.style.display = discount > 0 ? 'flex' : 'none';
+        discountEl.textContent = `-₹${discount.toLocaleString('en-IN')}`;
+    }
+
+    const totalEl = document.getElementById('cart-total');
+    if (totalEl) totalEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) checkoutBtn.disabled = cart.length === 0;
 }
 
-// ==================== COUPONS ====================
 function applyCoupon() {
     const input = document.getElementById('coupon-input');
     const code = input.value.trim().toUpperCase();
@@ -2805,24 +3117,25 @@ function handleSearchModal(query) {
         const discountPct = Math.round(((origPrice - p.price) / origPrice) * 100);
 
         return `
-        <div onclick="searchGoToProduct('${p.category}')" style="display:flex; align-items:center; gap:1rem; padding:0.85rem; border-radius:10px; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background='transparent'">
+        <div onclick="searchGoToProduct('${p.category}')" style="display:flex; align-items:center; gap:1rem; padding:0.75rem 0.9rem; border-radius:10px; cursor:pointer; transition:all 0.2s; border-bottom:1px solid #F1F5F9;" onmouseover="this.style.background='#FEF2F2'" onmouseout="this.style.background='transparent'">
             ${p.image ? `
-                <img src="${p.image}" alt="${p.name}" style="width:42px;height:42px;border-radius:8px;object-fit:cover;border:1px solid rgba(212,175,55,0.3);" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-                <span class="search-not-avail" style="display:none;"><i class="fas fa-box-open"></i></span>
+                <img src="${p.image}" alt="${p.name}" style="width:48px;height:48px;border-radius:8px;object-fit:contain;background:#F8FAFC;border:1px solid #E2E8F0;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+                <span class="search-not-avail" style="display:none;width:48px;height:48px;background:#F8FAFC;border-radius:8px;align-items:center;justify-content:center;color:var(--fire-red);border:1px solid #E2E8F0;"><i class="fas fa-box-open"></i></span>
             ` : `
-                <span class="search-not-avail"><i class="fas fa-box-open"></i></span>
+                <span class="search-not-avail" style="display:inline-flex;width:48px;height:48px;background:#F8FAFC;border-radius:8px;align-items:center;justify-content:center;color:var(--fire-red);border:1px solid #E2E8F0;"><i class="fas fa-box-open"></i></span>
             `}
             <div style="flex:1;">
-                <h4 style="font-size:0.95rem; font-weight:700; color:#FFF; margin-bottom:2px;">${p.name}</h4>
+                <h4 style="font-size:0.95rem; font-weight:800; color:var(--text-primary); margin-bottom:2px;">${p.name}</h4>
                 <p style="font-size:0.82rem;">
-                    <span style="color:var(--emerald); font-weight:800;">₹${p.price}</span>
-                    <span style="color:var(--text-muted); text-decoration:line-through; font-size:0.75rem; margin:0 4px;">₹${origPrice}</span>
-                    <span style="color:var(--ruby); font-size:0.72rem; font-weight:800;">-${discountPct}%</span>
-                    <span style="color:var(--text-dim); margin-left:6px;">• ${p.category}</span>
+                    <span style="color:var(--emerald-price); font-weight:800;">₹${p.price}</span>
+                    <span style="color:#94A3B8; text-decoration:line-through; font-size:0.75rem; margin:0 4px;">₹${origPrice}</span>
+                    <span style="color:var(--fire-red); font-size:0.72rem; font-weight:800;">-${discountPct}%</span>
+                    <span style="color:var(--text-muted); margin-left:6px;">• ${p.category}</span>
                 </p>
             </div>
+            <i class="fas fa-chevron-right" style="color:#CBD5E1; font-size:0.85rem;"></i>
         </div>`;
-    }).join('') || '<p style="padding:1.5rem; color:var(--text-muted); text-align:center;">No matching crackers found</p>';
+    }).join('') || '<p style="padding:1.5rem; color:var(--text-muted); text-align:center; font-weight:600;">No matching crackers found</p>';
 }
 
 function searchGoToProduct(cat) {
