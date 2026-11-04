@@ -1036,7 +1036,35 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 .cart-close-btn:hover { background: var(--fire-red); color: white; border-color: transparent; }
 
-.cart-body-lux { flex: 1; overflow-y: auto; padding: 1.2rem 1.8rem; }
+.cart-clear-btn {
+    background: #FEE2E2;
+    border: 1px solid #FECACA;
+    color: var(--fire-red);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.cart-clear-btn:hover {
+    background: var(--fire-red);
+    color: #FFFFFF;
+    border-color: var(--fire-red);
+}
+
+.cart-body-lux {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.2rem 1.6rem 2rem;
+    -webkit-overflow-scrolling: touch;
+}
+.cart-items-container {
+    margin-bottom: 1.5rem;
+}
 .cart-empty-state { text-align: center; padding: 4rem 1rem; }
 .cart-empty-state i { font-size: 3.5rem; color: #CBD5E1; margin-bottom: 1rem; }
 .cart-empty-state h3 { font-family: var(--font-heading); color: var(--text-primary); font-size: 1.3rem; margin-bottom: 0.3rem; }
@@ -1056,8 +1084,11 @@ input, select, textarea { font-family: var(--font-sans); }
 .cart-item-pricing { font-size: 0.9rem; margin-bottom: 0.4rem; }
 
 .coupon-console {
-    padding: 1.1rem 1.8rem; background: #F8FAFC;
-    border-top: 1px solid var(--border-subtle);
+    padding: 1.1rem 1.4rem;
+    background: #F8FAFC;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.2rem;
 }
 .coupon-input-box { display: flex; gap: 0.6rem; }
 .coupon-input-box input {
@@ -1075,8 +1106,12 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 
 .cart-footer-lux {
-    padding: 1.4rem 1.8rem; border-top: 1px solid var(--border-subtle);
-    background: #FFFFFF; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.04);
+    padding: 1.4rem 1.4rem;
+    background: #FFFFFF;
+    border: 1.5px solid #FECACA;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
 }
 .cart-summary-line {
     display: flex; justify-content: space-between; align-items: center;
@@ -2273,11 +2308,18 @@ input, select, textarea { font-family: var(--font-sans); }
     <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
     <div class="cart-drawer" id="cart-drawer">
         <div class="cart-header-lux">
-            <h2><i class="fas fa-shopping-cart" style="color:var(--fire-red);"></i> <span id="cart-drawer-title">Shopping Cart</span></h2>
-            <button class="cart-close-btn" onclick="closeCart()"><i class="fas fa-times"></i></button>
+            <div>
+                <h2><i class="fas fa-shopping-cart" style="color:var(--fire-red);"></i> <span id="cart-drawer-title">Shopping Cart</span></h2>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.6rem;">
+                <button type="button" class="cart-clear-btn" id="cart-clear-btn" onclick="clearCart()" title="Clear all items from cart" style="display:none;">
+                    <i class="fas fa-trash-alt"></i> Clear Cart
+                </button>
+                <button class="cart-close-btn" onclick="closeCart()"><i class="fas fa-times"></i></button>
+            </div>
         </div>
-        <div style="padding:0.75rem 1.4rem; background:#FEF2F2; border-bottom:1px solid #FEE2E2; font-size:0.78rem; line-height:1.45; color:#991B1B;">
-            <div style="display:flex; align-items:flex-start; gap:0.45rem; margin-bottom:0.3rem;">
+        <div style="padding:0.65rem 1.4rem; background:#FEF2F2; border-bottom:1px solid #FEE2E2; font-size:0.76rem; line-height:1.45; color:#991B1B;">
+            <div style="display:flex; align-items:flex-start; gap:0.45rem; margin-bottom:0.25rem;">
                 <i class="fas fa-truck" style="margin-top:2px; color:var(--fire-red);"></i>
                 <span><strong>Delivery:</strong> Available only in <strong>Sullurpeta, AP</strong> (Starts <strong>6th Nov</strong>).</span>
             </div>
@@ -2286,45 +2328,61 @@ input, select, textarea { font-family: var(--font-sans); }
                 <span><strong>Stall Pickup:</strong> Collect at <strong>Govt High School Ground</strong> <em>(Shop No. coming soon!)</em>.</span>
             </div>
         </div>
-        <div class="cart-body-lux" id="cart-body"></div>
-        <div class="coupon-console">
-            <div class="coupon-input-box">
-                <input type="text" id="coupon-input" placeholder="Enter Coupon Code (e.g. DIWALI2026)" maxlength="20">
-                <button class="coupon-apply-action" onclick="applyCoupon()">Apply</button>
+        
+        <!-- Scrollable Cart Body containing Products List + Scroll-to-view Coupon & Summary Sections -->
+        <div class="cart-body-lux" id="cart-body-wrap">
+            <div class="cart-items-container" id="cart-items-container">
+                <div class="cart-body-lux" id="cart-body" style="padding:0; overflow:visible;"></div>
             </div>
-            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.5rem;">
-                💬 Need a coupon? <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20a%20discount%20coupon%20code%20for%20my%20order" target="_blank" style="color:var(--fire-red); font-weight:700; text-decoration:underline;">Ask us on WhatsApp (9490042905)</a>
-            </div>
-            <div class="coupon-msg" id="coupon-msg" style="font-size:0.8rem; margin-top:0.4rem;"></div>
-            <div class="coupon-applied" id="coupon-applied" style="display:none; margin-top:0.5rem; background:#DCFCE7; border:1px solid #86EFAC; padding:0.4rem 0.8rem; border-radius:6px; justify-content:space-between; align-items:center;">
-                <span id="coupon-applied-text" style="color:#15803D; font-size:0.85rem; font-weight:700;"></span>
-                <button onclick="removeCoupon()" style="background:none; color:var(--fire-red); font-weight:700; font-size:0.8rem; cursor:pointer;">Remove</button>
-            </div>
-        </div>
-        <div class="cart-footer-lux">
-            <div class="cart-summary-line">
-                <span>Total MRP:</span>
-                <span id="cart-mrp" style="color:var(--text-muted); font-weight:600;">₹0</span>
-            </div>
-            <div class="cart-summary-line" style="color:var(--emerald-price);">
-                <span>Crackers Discount:</span>
-                <span id="cart-crackers-savings" style="font-weight:700;">-₹0</span>
-            </div>
-            <div class="cart-summary-line" id="discount-row" style="display:none; color:var(--fire-red);">
-                <span>Coupon Savings:</span>
-                <span id="cart-discount" style="font-weight:700;">-₹0</span>
-            </div>
-            <div class="cart-summary-line grand-total">
-                <span>Final Payable:</span>
-                <span id="cart-total" style="color:var(--emerald-price); font-weight:900;">₹0</span>
-            </div>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.8rem; margin-top:1rem;">
-                <button type="button" class="btn-outline-fire" style="justify-content:center; padding:0.85rem; font-size:0.88rem;" onclick="downloadCartQuotationPDF()">
-                    <i class="fas fa-file-pdf"></i> Download PDF
-                </button>
-                <button class="checkout-btn-lux" id="checkout-btn" style="margin-top:0; padding:0.85rem; font-size:0.92rem;" onclick="openCheckout()" disabled>
-                    <i class="fas fa-arrow-right"></i> Order Now
-                </button>
+            
+            <div id="cart-bottom-sections" style="display:none;">
+                <div class="coupon-console">
+                    <div style="font-weight:800; font-size:0.85rem; color:var(--text-primary); margin-bottom:0.6rem; display:flex; align-items:center; gap:0.45rem;">
+                        <i class="fas fa-tag" style="color:var(--fire-red);"></i> Festival Coupon Code
+                    </div>
+                    <div class="coupon-input-box">
+                        <input type="text" id="coupon-input" placeholder="Enter Code (e.g. DIWALI2026)" maxlength="20">
+                        <button class="coupon-apply-action" onclick="applyCoupon()">Apply</button>
+                    </div>
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.5rem;">
+                        💬 Need a coupon? <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20a%20discount%20coupon%20code%20for%20my%20order" target="_blank" style="color:var(--fire-red); font-weight:700; text-decoration:underline;">Ask us on WhatsApp (9490042905)</a>
+                    </div>
+                    <div class="coupon-msg" id="coupon-msg" style="font-size:0.8rem; margin-top:0.4rem;"></div>
+                    <div class="coupon-applied" id="coupon-applied" style="display:none; margin-top:0.5rem; background:#DCFCE7; border:1px solid #86EFAC; padding:0.4rem 0.8rem; border-radius:6px; justify-content:space-between; align-items:center;">
+                        <span id="coupon-applied-text" style="color:#15803D; font-size:0.85rem; font-weight:700;"></span>
+                        <button onclick="removeCoupon()" style="background:none; color:var(--fire-red); font-weight:700; font-size:0.8rem; cursor:pointer;">Remove</button>
+                    </div>
+                </div>
+                
+                <div class="cart-footer-lux">
+                    <div style="font-weight:800; font-size:0.95rem; color:var(--text-primary); margin-bottom:0.8rem; border-bottom:1px solid var(--border-subtle); padding-bottom:0.4rem;">
+                        <i class="fas fa-receipt" style="color:var(--fire-red);"></i> Bill Summary
+                    </div>
+                    <div class="cart-summary-line">
+                        <span>Total MRP:</span>
+                        <span id="cart-mrp" style="color:var(--text-muted); font-weight:600;">₹0</span>
+                    </div>
+                    <div class="cart-summary-line" style="color:var(--emerald-price);">
+                        <span>Crackers Discount:</span>
+                        <span id="cart-crackers-savings" style="font-weight:700;">-₹0</span>
+                    </div>
+                    <div class="cart-summary-line" id="discount-row" style="display:none; color:var(--fire-red);">
+                        <span>Coupon Savings:</span>
+                        <span id="cart-discount" style="font-weight:700;">-₹0</span>
+                    </div>
+                    <div class="cart-summary-line grand-total">
+                        <span>Final Payable:</span>
+                        <span id="cart-total" style="color:var(--emerald-price); font-weight:900;">₹0</span>
+                    </div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.8rem; margin-top:1.2rem;">
+                        <button type="button" class="btn-outline-fire" style="justify-content:center; padding:0.85rem; font-size:0.88rem;" onclick="downloadCartQuotationPDF()">
+                            <i class="fas fa-file-pdf"></i> Download PDF
+                        </button>
+                        <button class="checkout-btn-lux" id="checkout-btn" style="margin-top:0; padding:0.85rem; font-size:0.92rem;" onclick="openCheckout()" disabled>
+                            <i class="fas fa-arrow-right"></i> Order Now
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -3480,8 +3538,25 @@ function updateFloatingCartBar(totalItems) {
     }
 }
 
+function clearCart() {
+    if (cart.length === 0) return;
+    if (confirm('Are you sure you want to clear all items from your cart?')) {
+        cart = [];
+        saveCart();
+        updateCart();
+        renderProducts();
+        showToast('error', 'Cart has been cleared');
+    }
+}
+
 function renderCartDrawer() {
     const body = document.getElementById('cart-body');
+    const bottomSections = document.getElementById('cart-bottom-sections');
+    const clearBtn = document.getElementById('cart-clear-btn');
+
+    if (clearBtn) {
+        clearBtn.style.display = cart.length > 0 ? 'inline-flex' : 'none';
+    }
 
     if (cart.length === 0) {
         body.innerHTML = `
@@ -3490,8 +3565,11 @@ function renderCartDrawer() {
                 <h3>Your Cart is Empty</h3>
                 <p style="color:var(--text-muted); font-size:0.9rem;">Add sparklers, pots, chakkars, or gift boxes to start your order.</p>
             </div>`;
+        if (bottomSections) bottomSections.style.display = 'none';
         return;
     }
+
+    if (bottomSections) bottomSections.style.display = 'block';
 
     body.innerHTML = cart.map(c => {
         const p = products.find(pr => pr.id === c.id);
@@ -3792,6 +3870,13 @@ Wishing you & your family a Safe & Happy Diwali! 🪔✨`;
     const encoded = encodeURIComponent(msg);
     window.open(`https://wa.me/919490042905?text=${encoded}`, '_blank');
 
+    // Automatically trigger PDF quotation download upon sending order on WhatsApp
+    try {
+        generatePDF(false);
+    } catch(err) {
+        console.warn('Auto PDF download error:', err);
+    }
+
     // Launch High Definition Diwali Fireworks Volley!
     window.launchCelebrationVolley(5);
     showOrderSuccess();
@@ -3803,11 +3888,12 @@ function downloadCartQuotationPDF() {
         showToast('error', 'Your cart is empty! Add items first to download quotation.');
         return;
     }
-    generatePDF();
+    // Download PDF quotation directly without closing the cart or clearing items
+    generatePDF(false);
 }
 
 // ==================== PROFESSIONAL ORDER QUOTATION PDF ENGINE ====================
-function generatePDF() {
+function generatePDF(showSuccessModal = false) {
     const order = getOrderData();
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
@@ -3942,7 +4028,9 @@ function generatePDF() {
     // Launch High Definition Diwali Fireworks Volley!
     window.launchCelebrationVolley(5);
     showToast('success', '📄 Official PDF Quotation Downloaded!');
-    showOrderSuccess();
+    if (showSuccessModal) {
+        showOrderSuccess();
+    }
 }
 
 // ==================== 1-CLICK COMPLETE 2026 PRICE LIST PDF DOWNLOAD ====================
