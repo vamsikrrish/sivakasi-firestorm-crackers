@@ -2499,11 +2499,17 @@ setTimeout(dismissWelcomeLoader, 2600);
 
 // ==================== VIEW MODE SWITCHER (CARD vs LIST) ====================
 // Standard UX Convention:
-// - Screen width < 768px (Mobile): Default to LIST view (fast vertical scanning, optimal for mobile)
-// - Screen width >= 768px (Desktop/Tablet): Default to CARD (GRID) view (rich visual grid)
-// - User's explicit choice is saved in localStorage.
+// - Screen width < 768px (Mobile): ALWAYS default to LIST view (fast vertical scanning, optimal for mobile)
+// - Screen width >= 768px (Desktop/Tablet): Default to CARD (GRID) view (or user saved preference)
 
-let currentViewMode = localStorage.getItem('firestorm_view_mode') || (window.innerWidth < 768 ? 'list' : 'card');
+function getInitialViewMode() {
+    if (window.innerWidth < 768) {
+        return 'list'; // On mobile screens, always default to list view
+    }
+    return localStorage.getItem('firestorm_view_mode') || 'card';
+}
+
+let currentViewMode = getInitialViewMode();
 
 function setViewMode(mode) {
     currentViewMode = mode;
@@ -2531,10 +2537,15 @@ function applyViewModeUI() {
 }
 
 window.addEventListener('resize', () => {
-    if (!localStorage.getItem('firestorm_view_mode')) {
-        const autoMode = window.innerWidth < 768 ? 'list' : 'card';
-        if (autoMode !== currentViewMode) {
-            currentViewMode = autoMode;
+    if (window.innerWidth < 768) {
+        if (currentViewMode !== 'list') {
+            currentViewMode = 'list';
+            applyViewModeUI();
+        }
+    } else {
+        const saved = localStorage.getItem('firestorm_view_mode') || 'card';
+        if (currentViewMode !== saved) {
+            currentViewMode = saved;
             applyViewModeUI();
         }
     }
@@ -3134,7 +3145,6 @@ function renderProducts() {
                         </div>
                     `}
                     ${p.badge ? `<span class="luxury-badge ${badgeClass}">${p.badge}</span>` : ''}
-                    <span style="position:absolute; bottom:4px; left:4px; background:rgba(0,0,0,0.68); color:#F8FAFC; font-size:0.55rem; font-weight:700; padding:1px 5px; border-radius:3px; z-index:2; backdrop-filter:blur(2px); letter-spacing:0.3px;">Ref. Image</span>
                 </div>
                 <div class="product-info-wrap">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
