@@ -2296,7 +2296,7 @@ input, select, textarea { font-family: var(--font-sans); }
             </div>
         </div>
         <div class="footer-bottom-strip">
-            <div>© 2026 Sivakasi Firestorm Crackers. Sullurpeta. All rights reserved.</div>
+            <div id="footer-copyright" style="user-select:none; cursor:pointer;">© 2026 Sivakasi Firestorm Crackers. Sullurpeta. All rights reserved.</div>
             <div style="color:var(--text-dim); display:flex; gap:1.5rem;">
                 <span>100% Authentic Sivakasi Pyrotechnics</span>
                 <span>Wholesale & Retail</span>
@@ -2819,6 +2819,10 @@ function initApp() {
     try {
         setupNavbar();
     } catch(e) { console.warn("Navbar init:", e); }
+
+    try {
+        initVisitTracker();
+    } catch(e) { console.warn("Visit tracker init:", e); }
 
     populateCategoryFilter();
     renderProducts();
@@ -4236,6 +4240,108 @@ function setupNavbar() {
         backToTop.classList.toggle('visible', window.scrollY > 450);
     });
 }
+
+// ==================== HIDDEN VISIT TRACKER & OWNER STATS ====================
+function initVisitTracker() {
+    // 1. Silently record visit in the background (1 hit recorded per session to prevent inflate on refresh)
+    try {
+        if (!sessionStorage.getItem('fs_visit_recorded')) {
+            sessionStorage.setItem('fs_visit_recorded', '1');
+            const img = new Image();
+            img.src = 'https://hits.dwyl.com/vamsikrrish/sivakasi-firestorm-crackers.svg?ts=' + Date.now();
+        }
+    } catch(e) {
+        const img = new Image();
+        img.src = 'https://hits.dwyl.com/vamsikrrish/sivakasi-firestorm-crackers.svg?ts=' + Date.now();
+    }
+
+    // 2. Secret URL parameter trigger: ?admin, ?stats, or ?visits
+    try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('admin') || params.has('stats') || params.has('visits')) {
+            setTimeout(() => {
+                showVisitStatsModal();
+            }, 500);
+        }
+    } catch(e) {}
+
+    // 3. Secret Triple-Click on footer copyright text
+    const copyrightEl = document.getElementById('footer-copyright');
+    if (copyrightEl) {
+        let clickCount = 0;
+        let clickTimer = null;
+        copyrightEl.addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            if (clickCount >= 3) {
+                clickCount = 0;
+                showVisitStatsModal();
+            } else {
+                clickTimer = setTimeout(() => { clickCount = 0; }, 1200);
+            }
+        });
+    }
+}
+
+async function showVisitStatsModal() {
+    // Check if modal already open
+    const existing = document.getElementById('fs-admin-modal');
+    if (existing) existing.remove();
+
+    // Show initial loading modal immediately
+    const modal = document.createElement('div');
+    modal.id = 'fs-admin-modal';
+    modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; z-index:999999; font-family:"Inter",-apple-system,sans-serif; padding:1.2rem;';
+    
+    modal.innerHTML = `
+        <div style="background:linear-gradient(145deg, #18120c, #0d0704); border:2px solid #EAB308; border-radius:18px; padding:2rem; max-width:440px; width:100%; box-shadow:0 20px 50px rgba(234,179,8,0.25); text-align:center; color:#fff; position:relative;">
+            <div style="font-size:2.2rem; margin-bottom:0.4rem;">📊</div>
+            <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:0.2rem; color:#FDE047;">Store Traffic Analytics</h3>
+            <p style="font-size:0.8rem; color:#94A3B8; margin-bottom:1.5rem;">Private owner dashboard (Hidden from customers)</p>
+            
+            <div style="background:rgba(0,0,0,0.6); border:1px solid rgba(234,179,8,0.4); border-radius:12px; padding:1.2rem; margin-bottom:1.2rem;">
+                <div style="font-size:0.8rem; color:#CBD5E1; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Total Page Visits</div>
+                <div id="fs-admin-hit-count" style="font-size:3rem; font-weight:900; color:#4ADE80; font-family:monospace; margin:0.4rem 0;">
+                    <i class="fas fa-spinner fa-spin" style="font-size:2rem; color:#EAB308;"></i>
+                </div>
+                <div style="font-size:0.75rem; color:#94A3B8;">Accredited by dwyl hits service</div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:0.6rem;">
+                <a href="https://hits.dwyl.com/vamsikrrish/sivakasi-firestorm-crackers.svg" target="_blank" style="display:block; padding:0.75rem; background:rgba(234,179,8,0.15); border:1px solid #EAB308; border-radius:8px; color:#FDE047; text-decoration:none; font-size:0.85rem; font-weight:700;">
+                    🔗 Open Direct Live Badge
+                </a>
+                <button type="button" onclick="document.getElementById('fs-admin-modal').remove()" style="padding:0.75rem; background:#DC2626; border:none; border-radius:8px; color:#fff; font-size:0.9rem; font-weight:700; cursor:pointer;">
+                    Close
+                </button>
+            </div>
+        </div>
+    `;
+
+    modal.onclick = (e) => {
+        if (e.target === modal) modal.remove();
+    };
+    document.body.appendChild(modal);
+
+    // Fetch live hit count
+    try {
+        const res = await fetch('https://hits.dwyl.com/vamsikrrish/sivakasi-firestorm-crackers.json?ts=' + Date.now());
+        const data = await res.json();
+        const hitEl = document.getElementById('fs-admin-hit-count');
+        if (hitEl) {
+            hitEl.textContent = data.message || 'N/A';
+        }
+    } catch(err) {
+        const hitEl = document.getElementById('fs-admin-hit-count');
+        if (hitEl) {
+            hitEl.innerHTML = '<span style="font-size:1.2rem; color:#EF4444;">Offline</span>';
+        }
+    }
+}
+
+// Console access
+window.getVisitStats = showVisitStatsModal;
+window.firestormStats = showVisitStatsModal;
 
 // ==================== KEYBOARD SHORTCUTS ====================
 document.addEventListener('keydown', (e) => {
