@@ -2,3 +2,5 @@
 *.log
 assets/audio/
 assets/images/
+serve.py
+scratch/
