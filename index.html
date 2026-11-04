@@ -74,12 +74,20 @@
     --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 body {
     font-family: var(--font-sans);
     background-color: var(--bg-main);
     color: var(--text-secondary);
     line-height: 1.6;
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
     position: relative;
     -webkit-font-smoothing: antialiased;
@@ -121,9 +129,10 @@ input, select, textarea { font-family: var(--font-sans); }
 /* ==================== ANNOUNCEMENT STRIP ==================== */
 .announcement-bar {
     background: linear-gradient(90deg, #991B1B 0%, #DC2626 50%, #B91C1C 100%);
-    color: #FFFFFF; padding: 9px 1.5rem;
+    color: #FFFFFF; padding: 9px 1rem;
     font-size: 0.84rem; font-weight: 700; letter-spacing: 0.5px;
     position: relative; overflow: hidden;
+    width: 100%; max-width: 100%;
     box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
 }
 .announcement-bar .marquee {
@@ -817,14 +826,20 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 .cart-overlay.open { opacity: 1; visibility: visible; }
 .cart-drawer {
-    position: fixed; top: 0; right: -520px; width: 520px; max-width: 100vw;
-    height: 100vh; background: #FFFFFF;
+    position: fixed; top: 0; right: 0; width: 100%; max-width: 440px;
+    height: 100vh; height: 100dvh; background: #FFFFFF;
     border-left: 1px solid var(--border-subtle);
-    z-index: 2001; transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 2001;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.32s ease;
     display: flex; flex-direction: column;
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
 }
-.cart-drawer.open { right: 0; }
+.cart-drawer.open {
+    transform: translateX(0);
+    visibility: visible;
+}
 
 .cart-header-lux {
     display: flex; align-items: center; justify-content: space-between;
@@ -1028,7 +1043,7 @@ input, select, textarea { font-family: var(--font-sans); }
 
 /* Responsive Rules */
 @media (max-width: 1024px) {
-    .hero-wrapper { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+    .hero-wrapper { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
     .hero-description { margin-left: auto; margin-right: auto; }
     .hero-actions { justify-content: center; }
     .hero-trust-bar { justify-content: center; }
@@ -1036,14 +1051,147 @@ input, select, textarea { font-family: var(--font-sans); }
     .venue-grid { grid-template-columns: 1fr; }
     .footer-container { grid-template-columns: 1fr 1fr; }
 }
+
 @media (max-width: 768px) {
+    /* Navigation */
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
-    .hero-heading { font-size: 2.5rem; }
-    .filter-top-row { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .nav-container { padding: 0.65rem 0.85rem; width: 100%; }
+    .nav-brand { gap: 0.6rem; }
+    .brand-seal { width: 36px; height: 36px; font-size: 1.15rem; }
+    .nav-brand-text h1 { font-size: 1.05rem; }
+    .nav-brand-text p { font-size: 0.65rem; }
+    .nav-actions { gap: 0.45rem; }
+    .nav-btn { width: 36px; height: 36px; font-size: 0.95rem; }
+    .cart-nav-btn { padding: 0.45rem 0.75rem; font-size: 0.82rem; }
+    .cart-nav-btn span:not(.cart-badge) { display: none; }
+
+    /* Hero */
+    .hero { padding: 2rem 1rem 2.8rem; overflow: hidden; }
+    .hero-pill {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.85rem;
+        white-space: normal;
+        text-align: center;
+        max-width: 100%;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+    }
+    .hero-heading {
+        font-size: 2.1rem;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    .hero-description {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 1.4rem;
+    }
+    .hero-trust-bar {
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 1.4rem;
+    }
+    .trust-chip {
+        font-size: 0.76rem;
+        padding: 0.3rem 0.65rem;
+    }
+    .hero-actions {
+        gap: 0.65rem;
+        justify-content: center;
+    }
+    .hero-visual-card {
+        padding: 1.4rem 0.85rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .hero-diya-art { font-size: 4rem; }
+    .countdown-box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 0.85rem 0.6rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .countdown-title { text-align: center; }
+    .countdown-grid { justify-content: center; gap: 0.5rem; }
+    .countdown-unit { min-width: 38px; }
+    .countdown-val { font-size: 1.35rem; }
+    .hero-badges-row { gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+
+    /* Stats */
+    .stats-banner { padding: 1.5rem 1rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
     .stat-card:nth-child(2)::after { display: none; }
-    .footer-container { grid-template-columns: 1fr; }
+    .stat-number { font-size: 1.85rem; }
+    .stat-label { font-size: 0.72rem; }
+
+    /* Section & Product Catalog */
+    .section { padding: 2.5rem 1rem; max-width: 100%; }
+    #products-section { padding: 1.5rem 0.85rem 3rem; max-width: 100%; }
+    .section-title { font-size: 1.85rem; }
+    .section-subtitle { font-size: 0.92rem; }
+    .filter-console {
+        padding: 0.75rem;
+        border-radius: var(--radius-md);
+        margin-bottom: 1.2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .filter-top-row {
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+    }
+    .category-tags-row {
+        width: 100%;
+        min-width: 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Venue & Footer */
+    .venue-section { padding: 2.5rem 1rem; max-width: 100%; }
+    .venue-card { padding: 1.5rem 1rem; }
+    .map-frame-lux { height: 280px; }
+    .footer-lux { padding: 3rem 1rem 1.5rem; }
+    .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom-strip { flex-direction: column; text-align: center; gap: 0.6rem; }
+
+    /* Modals & Floating buttons */
+    .modal-overlay { padding: 1rem; }
+    .modal-box-lux {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: var(--radius-lg);
+    }
+    .modal-header-lux { padding: 1.2rem 1rem; }
+    .modal-body-lux { padding: 1.2rem 1rem; }
+    .payment-seal-box { padding: 1rem 0.8rem; }
+    .whatsapp-float-lux {
+        bottom: 1.2rem; left: 1rem;
+        width: 48px; height: 48px; font-size: 1.5rem;
+    }
+    .back-to-top-lux {
+        bottom: 1.2rem; right: 1rem;
+        width: 44px; height: 44px; font-size: 1rem;
+    }
+    .search-modal-lux { padding: 4.5rem 1rem 2rem; }
+    .search-modal-content { padding: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+    .hero-heading { font-size: 1.75rem; }
+    .hero-actions { flex-direction: column; width: 100%; }
+    .hero-actions .btn-fire,
+    .hero-actions .btn-outline-fire {
+        width: 100%;
+        justify-content: center;
+        padding: 0.85rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    .checkout-actions-row { flex-direction: column; gap: 0.6rem; }
+    .checkout-action-btn { width: 100% !important; min-width: 0 !important; }
 }
 
 /* ==================== DIWALI FAMILY GREETING WELCOME LOADER ==================== */
@@ -1252,24 +1400,76 @@ input, select, textarea { font-family: var(--font-sans); }
 
 @media (max-width: 640px) {
     .products-grid.view-list .product-card {
-        padding: 0.65rem 0.75rem;
-        gap: 0.75rem;
+        padding: 0.65rem 0.65rem;
+        gap: 0.65rem;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
     }
     .products-grid.view-list .product-img-wrapper {
-        width: 70px; height: 70px; min-width: 70px;
+        width: 64px; height: 64px; min-width: 64px;
+        flex-shrink: 0;
+    }
+    .products-grid.view-list .product-info-wrap {
+        min-width: 0;
+        flex: 1;
+        overflow: hidden;
     }
     .products-grid.view-list .product-name-title {
-        font-size: 0.92rem;
+        font-size: 0.88rem;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-word;
+        margin-bottom: 0.2rem;
+    }
+    .products-grid.view-list .product-packaging-unit {
+        font-size: 0.68rem;
+        padding: 0.15rem 0.45rem;
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .products-grid.view-list .product-footer-row {
-        gap: 0.65rem;
+        gap: 0.35rem;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+    .products-grid.view-list .price-stack {
+        text-align: right;
+        align-items: flex-end;
+        gap: 0;
     }
     .products-grid.view-list .price-green-main {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
+        line-height: 1.1;
+    }
+    .products-grid.view-list .price-original-striked {
+        font-size: 0.7rem;
+    }
+    .products-grid.view-list .discount-chip {
+        display: none;
     }
     .products-grid.view-list .add-btn-lux {
-        padding: 0.45rem 0.85rem;
-        font-size: 0.8rem;
+        padding: 0.35rem 0.65rem;
+        font-size: 0.76rem;
+    }
+    .products-grid.view-list .qty-stepper {
+        padding: 2px 4px;
+        gap: 4px;
+    }
+    .products-grid.view-list .qty-stepper-btn {
+        width: 22px; height: 22px; font-size: 0.72rem;
+    }
+    .products-grid.view-list .qty-stepper-num {
+        font-size: 0.8rem; min-width: 16px;
     }
 }
 
@@ -1756,7 +1956,7 @@ input, select, textarea { font-family: var(--font-sans); }
                         <label class="lux-label">Full Name *</label>
                         <input type="text" class="lux-input" id="cust-name" required placeholder="e.g. Ramesh Kumar">
                     </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <div class="checkout-form-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                         <div class="lux-form-group">
                             <label class="lux-label">Phone / WhatsApp *</label>
                             <input type="tel" class="lux-input" id="cust-phone" required placeholder="+91 9490042905" pattern="[0-9+\s\-]{10,15}">
@@ -1779,26 +1979,26 @@ input, select, textarea { font-family: var(--font-sans); }
                     <div class="payment-seal-box">
                         <h3>💳 UPI / QR Code Payment</h3>
                         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.8rem;">Pay via GooglePay, PhonePe, Paytm, or BHIM</p>
-                        <div style="width:160px; height:160px; margin:0 auto; background:white; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:700; border:2px dashed var(--gold-3); padding:1rem; text-align:center; font-size:0.85rem;">
+                        <div style="width:160px; height:160px; margin:0 auto; background:white; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#000; font-weight:700; border:2px dashed #FCA5A5; padding:1rem; text-align:center; font-size:0.85rem;">
                             <span>UPI QR CODE<br><small style="color:#666; font-size:0.75rem;">(Scan & Pay)</small></span>
                         </div>
-                        <div style="display:flex; align-items:center; justify-content:center; gap:0.6rem; margin-top:0.8rem;">
-                            <span style="font-size:0.95rem; font-weight:800; color:var(--gold-2);">UPI ID: 9490042905@ybl</span>
-                            <button type="button" onclick="navigator.clipboard.writeText('9490042905@ybl'); showToast('success', 'UPI ID copied to clipboard!');" style="background:rgba(255,255,255,0.1); color:var(--gold-1); border:1px solid var(--border-gold); padding:2px 8px; border-radius:6px; font-size:0.75rem;">
+                        <div style="display:flex; align-items:center; justify-content:center; gap:0.6rem; margin-top:0.8rem; flex-wrap:wrap;">
+                            <span style="font-size:0.95rem; font-weight:800; color:var(--fire-red-dark);">UPI ID: 9490042905@ybl</span>
+                            <button type="button" onclick="navigator.clipboard.writeText('9490042905@ybl'); showToast('success', 'UPI ID copied to clipboard!');" style="background:#FEE2E2; color:var(--fire-red-dark); border:1px solid #FECACA; padding:3px 10px; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                         </div>
-                        <p style="font-size:0.75rem; color:var(--text-dim); margin-top:0.5rem;">
-                            * Manual verification: Once transferred, click "Dispatch Order via WhatsApp". Our counter confirms receipt immediately.
+                        <p style="font-size:0.75rem; color:var(--text-muted); margin-top:0.5rem;">
+                            * Manual verification: Once transferred, click "Send Order on WhatsApp". Our counter confirms receipt immediately.
                         </p>
                     </div>
 
                     <!-- Action Buttons -->
-                    <div style="display:flex; gap:1rem; margin-top:1.8rem; flex-wrap:wrap;">
-                        <button type="button" class="btn-whatsapp-lux" style="flex:1.2; min-width:200px; padding:0.95rem;" onclick="sendWhatsApp()">
+                    <div class="checkout-actions-row" style="display:flex; gap:0.8rem; margin-top:1.8rem; flex-wrap:wrap;">
+                        <button type="button" class="btn-whatsapp-lux checkout-action-btn" style="flex:1.2; min-width:140px; padding:0.95rem;" onclick="sendWhatsApp()">
                             <i class="fab fa-whatsapp" style="font-size:1.15rem;"></i> Send Order on WhatsApp
                         </button>
-                        <button type="button" class="btn-glass" style="flex:1; min-width:180px; justify-content:center; padding:0.95rem; color:var(--gold-2);" onclick="generatePDF()">
+                        <button type="button" class="btn-outline-fire checkout-action-btn" style="flex:1; min-width:140px; justify-content:center; padding:0.95rem;" onclick="generatePDF()">
                             <i class="fas fa-file-pdf"></i> Download Quotation (PDF)
                         </button>
                     </div>
@@ -1811,9 +2011,9 @@ input, select, textarea { font-family: var(--font-sans); }
     <div class="modal-overlay" id="success-modal">
         <div class="modal-box-lux" style="max-width:480px; text-align:center; padding:3rem 2rem;" onclick="event.stopPropagation()">
             <div style="font-size:4rem; margin-bottom:1rem; animation:festivePulse 2s infinite;">🎉</div>
-            <h2 style="font-family:var(--font-serif); font-size:1.6rem; color:var(--gold-1); margin-bottom:0.5rem;">Quotation Generated!</h2>
+            <h2 style="font-family:var(--font-heading); font-size:1.6rem; color:var(--fire-red-dark); margin-bottom:0.5rem;">Quotation Generated!</h2>
             <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6; margin-bottom:2rem;">Your order breakdown has been formatted. Our desk at High School Ground, Sullurpeta will connect with you to confirm fulfillment.</p>
-            <button class="btn-gold" style="width:100%; justify-content:center;" onclick="closeSuccessModal()">
+            <button class="btn-fire" style="width:100%; justify-content:center;" onclick="closeSuccessModal()">
                 Continue Exploring Catalog
             </button>
         </div>
