@@ -812,6 +812,16 @@ input, select, textarea { font-family: var(--font-sans); }
     background: var(--bg-subtle); padding: 0.3rem 0.65rem; border-radius: 6px;
     margin-bottom: 1rem; width: fit-content;
 }
+.product-details-chip {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 0.72rem; font-weight: 800; color: var(--fire-red);
+    background: #FEF2F2; border: 1px solid #FECACA;
+    padding: 0.22rem 0.55rem; border-radius: var(--radius-pill);
+    text-decoration: none; transition: all 0.2s ease;
+}
+.product-details-chip:hover {
+    background: var(--fire-red); color: #FFFFFF; border-color: var(--fire-red);
+}
 
 /* Pricing Row */
 .product-footer-row {
@@ -3387,7 +3397,7 @@ function renderProducts() {
 
         return `
             <div class="product-card">
-                <div class="product-img-wrapper">
+                <a href="product.html?id=${p.id}" class="product-img-wrapper" title="Click to view details for ${p.name}">
                     ${p.image ? `
                         <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="not-available-box" style="display:none;">
@@ -3403,15 +3413,20 @@ function renderProducts() {
                         </div>
                     `}
                     ${p.badge ? `<span class="luxury-badge ${badgeClass}">${p.badge}</span>` : ''}
-                </div>
+                </a>
                 <div class="product-info-wrap">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
                         <span class="product-category-lbl">${p.category}</span>
                         <span style="display:inline-flex; align-items:center; gap:4px; font-size:0.68rem; font-weight:800; color:#15803D; background:#DCFCE7; padding:2px 7px; border-radius:4px;"><i class="fas fa-check-circle"></i> In Stock</span>
                     </div>
-                    <h3 class="product-name-title">${p.name}</h3>
+                    <a href="product.html?id=${p.id}" style="text-decoration:none; color:inherit;" title="View details for ${p.name}">
+                        <h3 class="product-name-title">${p.name}</h3>
+                    </a>
                     <p class="product-desc-snippet">${p.description}</p>
-                    <div class="product-packaging-unit"><i class="fas fa-box"></i> Packing: ${p.unit}</div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; gap:0.4rem; flex-wrap:wrap;">
+                        <div class="product-packaging-unit" style="margin-bottom:0;"><i class="fas fa-box"></i> Packing: ${p.unit}</div>
+                        <a href="product.html?id=${p.id}" class="product-details-chip" title="View full details and specs">Details <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+                    </div>
                     <div class="product-footer-row">
                         <div class="price-stack">
                             <div class="price-comparison-line">
@@ -3423,12 +3438,12 @@ function renderProducts() {
                         </div>
                         ${inCart ? `
                             <div class="qty-stepper">
-                                <button class="qty-stepper-btn" onclick="changeQty(${p.id}, -1)">−</button>
+                                <button class="qty-stepper-btn" onclick="event.stopPropagation(); changeQty(${p.id}, -1)">−</button>
                                 <span class="qty-stepper-num">${inCart.qty}</span>
-                                <button class="qty-stepper-btn" onclick="changeQty(${p.id}, 1)">+</button>
+                                <button class="qty-stepper-btn" onclick="event.stopPropagation(); changeQty(${p.id}, 1)">+</button>
                             </div>
                         ` : `
-                            <button class="add-btn-lux" onclick="addToCart(${p.id})">
+                            <button class="add-btn-lux" onclick="event.stopPropagation(); addToCart(${p.id})">
                                 <i class="fas fa-shopping-cart"></i> Add
                             </button>
                         `}
@@ -4161,7 +4176,7 @@ function handleSearchModal(query) {
         const discountPct = Math.round(((origPrice - p.price) / origPrice) * 100);
 
         return `
-        <div onclick="searchGoToProduct('${p.category}')" style="display:flex; align-items:center; gap:1rem; padding:0.75rem 0.9rem; border-radius:10px; cursor:pointer; transition:all 0.2s; border-bottom:1px solid #F1F5F9;" onmouseover="this.style.background='#FEF2F2'" onmouseout="this.style.background='transparent'">
+        <div onclick="window.location.href='product.html?id=${p.id}'" style="display:flex; align-items:center; gap:1rem; padding:0.75rem 0.9rem; border-radius:10px; cursor:pointer; transition:all 0.2s; border-bottom:1px solid #F1F5F9;" onmouseover="this.style.background='#FEF2F2'" onmouseout="this.style.background='transparent'">
             ${p.image ? `
                 <img src="${p.image}" alt="${p.name}" style="width:48px;height:48px;border-radius:8px;object-fit:contain;background:#F8FAFC;border:1px solid #E2E8F0;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
                 <span class="search-not-avail" style="display:none;width:48px;height:48px;background:#F8FAFC;border-radius:8px;align-items:center;justify-content:center;color:var(--fire-red);border:1px solid #E2E8F0;"><i class="fas fa-box-open"></i></span>
