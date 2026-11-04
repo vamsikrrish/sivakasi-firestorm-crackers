@@ -1149,6 +1149,130 @@ input, select, textarea { font-family: var(--font-sans); }
     .loader-diya-anim { font-size: 3rem; }
 }
 
+
+/* ==================== VIEW TOGGLE & LIST VIEW STYLES ==================== */
+.view-toggle-wrap {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    padding: 2px;
+    gap: 2px;
+}
+.view-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.32rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.view-toggle-btn:hover {
+    color: var(--fire-red);
+}
+.view-toggle-btn.active {
+    background: #FFFFFF;
+    color: var(--fire-red-dark);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* List View Layout */
+.products-grid.view-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.products-grid.view-list .product-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.8rem 1.25rem;
+    border-radius: var(--radius-md);
+    gap: 1.2rem;
+}
+.products-grid.view-list .product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.08);
+}
+.products-grid.view-list .product-img-wrapper {
+    width: 82px; height: 82px; min-width: 82px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 0;
+}
+.products-grid.view-list .luxury-badge {
+    top: 0.3rem; left: 0.3rem;
+    padding: 0.15rem 0.45rem;
+    font-size: 0.58rem;
+}
+.products-grid.view-list .product-info-wrap {
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.products-grid.view-list .product-category-lbl {
+    font-size: 0.68rem;
+    margin-bottom: 0.15rem;
+}
+.products-grid.view-list .product-name-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+}
+.products-grid.view-list .product-desc-snippet {
+    display: none;
+}
+.products-grid.view-list .product-packaging-unit {
+    margin-bottom: 0;
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+}
+.products-grid.view-list .product-footer-row {
+    border-top: none;
+    padding-top: 0;
+    margin-left: auto;
+    gap: 1.2rem;
+    flex-shrink: 0;
+    align-items: center;
+}
+.products-grid.view-list .price-stack {
+    text-align: right;
+    align-items: flex-end;
+}
+.products-grid.view-list .price-green-main {
+    font-size: 1.35rem;
+}
+
+@media (max-width: 640px) {
+    .products-grid.view-list .product-card {
+        padding: 0.65rem 0.75rem;
+        gap: 0.75rem;
+    }
+    .products-grid.view-list .product-img-wrapper {
+        width: 70px; height: 70px; min-width: 70px;
+    }
+    .products-grid.view-list .product-name-title {
+        font-size: 0.92rem;
+    }
+    .products-grid.view-list .product-footer-row {
+        gap: 0.65rem;
+    }
+    .products-grid.view-list .price-green-main {
+        font-size: 1.2rem;
+    }
+    .products-grid.view-list .add-btn-lux {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.8rem;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -1190,7 +1314,7 @@ input, select, textarea { font-family: var(--font-sans); }
             <span class="marquee-item"><i class="fas fa-map-marker-alt gold-star"></i> Flagship Stall: High School Ground, Sullurpeta</span>
             <span class="marquee-item"><i class="fab fa-whatsapp gold-star"></i> WhatsApp / Call: +91 9490042905 for Instant Orders</span>
             <span class="marquee-item"><i class="fas fa-percent gold-star"></i> Up to 25% Festival Discounts on All Crackers</span>
-            <span class="marquee-item"><i class="fas fa-file-pdf gold-star"></i> Instant Quotation PDF & Full Price List Download Available</span>
+            <span class="marquee-item"><i class="fas fa-file-invoice gold-star"></i> Instant Order Estimate PDF & WhatsApp Billing Available</span>
         </div>
     </div>
 
@@ -1209,7 +1333,7 @@ input, select, textarea { font-family: var(--font-sans); }
                 <li><a href="#products-section">Crackers Catalog</a></li>
                 <li><a href="#offers-section">Festival Discounts</a></li>
                 <li><a href="#contact-section">Stall Location</a></li>
-                <li><a href="javascript:void(0)" onclick="downloadFullPriceListPDF()" style="color:var(--gold-2);"><i class="fas fa-file-pdf"></i> Price List (PDF)</a></li>
+                
             </ul>
             <div class="nav-actions">
                 <button class="nav-btn" onclick="openSearchModal()" title="Search Catalog (Ctrl+K)">
@@ -1240,7 +1364,7 @@ input, select, textarea { font-family: var(--font-sans); }
                     <li><a href="#products-section" onclick="closeMobileMenu()" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">🧨 Crackers Catalog</a></li>
                     <li><a href="#offers-section" onclick="closeMobileMenu()" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">🏷️ Festival Offers</a></li>
                     <li><a href="#contact-section" onclick="closeMobileMenu()" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">📍 Stall Location</a></li>
-                    <li><a href="javascript:void(0)" onclick="closeMobileMenu(); downloadFullPriceListPDF();" style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--fire-red-dark);"><i class="fas fa-file-pdf"></i> Price List (PDF)</a></li>
+                    
                 </ul>
             </div>
         </div>
@@ -1285,9 +1409,7 @@ input, select, textarea { font-family: var(--font-sans); }
                     <a href="#products-section" class="btn-fire">
                         <i class="fas fa-shopping-cart"></i> Shop All Crackers (107 Items)
                     </a>
-                    <button type="button" onclick="downloadFullPriceListPDF()" class="btn-outline-fire">
-                        <i class="fas fa-file-pdf"></i> Download 2026 Price List (PDF)
-                    </button>
+                    
                     <button type="button" onclick="window.launchCelebrationVolley(4); showToast('success', '🎆 Bursting Diwali Fireworks!');" class="btn-outline-fire" style="border-color:#FCD34D; color:#B45309;">
                         <i class="fas fa-sparkles"></i> Burst Fireworks
                     </button>
@@ -1397,7 +1519,17 @@ input, select, textarea { font-family: var(--font-sans); }
                 </select>
             </div>
             <div class="category-tags-row" id="filter-tags"></div>
-            <div class="results-meta" id="results-count"></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.6rem; padding-top:0.5rem; border-top:1px solid var(--border-subtle); flex-wrap:wrap; gap:0.5rem;">
+                <div class="results-meta" id="results-count" style="margin-top:0;"></div>
+                <div class="view-toggle-wrap">
+                    <button type="button" class="view-toggle-btn active" id="view-card-btn" onclick="setViewMode('card')" title="Card Grid View">
+                        <i class="fas fa-th-large"></i> <span>Cards</span>
+                    </button>
+                    <button type="button" class="view-toggle-btn" id="view-list-btn" onclick="setViewMode('list')" title="Compact List View">
+                        <i class="fas fa-list"></i> <span>List</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Products Grid -->
@@ -1514,7 +1646,7 @@ input, select, textarea { font-family: var(--font-sans); }
                 <div style="margin-top:1.2rem; display:flex; gap:1rem;">
                     <a href="https://wa.me/919490042905" target="_blank" style="color:#25D366; font-size:1.4rem;"><i class="fab fa-whatsapp"></i></a>
                     <a href="tel:+919490042905" style="color:var(--gold-2); font-size:1.4rem;"><i class="fas fa-phone-alt"></i></a>
-                    <a href="javascript:void(0)" onclick="downloadFullPriceListPDF()" style="color:var(--ruby); font-size:1.4rem;" title="Download Price List PDF"><i class="fas fa-file-pdf"></i></a>
+                    
                 </div>
             </div>
             <div>
@@ -1524,7 +1656,7 @@ input, select, textarea { font-family: var(--font-sans); }
                     <li><a href="#products-section">Crackers Catalog</a></li>
                     <li><a href="#offers-section">Festival Offers</a></li>
                     <li><a href="#contact-section">Stall Location</a></li>
-                    <li><a href="javascript:void(0)" onclick="downloadFullPriceListPDF()"><i class="fas fa-file-pdf"></i> Full Price List (PDF)</a></li>
+                    
                 </ul>
             </div>
             <div>
@@ -1907,7 +2039,52 @@ function dismissWelcomeLoader() {
 // Auto dismiss after 2.6s celebration
 setTimeout(dismissWelcomeLoader, 2600);
 
+
+// ==================== VIEW MODE SWITCHER (CARD vs LIST) ====================
+// Standard UX Convention:
+// - Screen width < 768px (Mobile): Default to LIST view (fast vertical scanning, optimal for mobile)
+// - Screen width >= 768px (Desktop/Tablet): Default to CARD (GRID) view (rich visual grid)
+// - User's explicit choice is saved in localStorage.
+
+let currentViewMode = localStorage.getItem('firestorm_view_mode') || (window.innerWidth < 768 ? 'list' : 'card');
+
+function setViewMode(mode) {
+    currentViewMode = mode;
+    localStorage.setItem('firestorm_view_mode', mode);
+    applyViewModeUI();
+}
+
+function applyViewModeUI() {
+    const grid = document.getElementById('products-grid');
+    const cardBtn = document.getElementById('view-card-btn');
+    const listBtn = document.getElementById('view-list-btn');
+
+    if (grid) {
+        if (currentViewMode === 'list') {
+            grid.classList.add('view-list');
+        } else {
+            grid.classList.remove('view-list');
+        }
+    }
+
+    if (cardBtn && listBtn) {
+        cardBtn.classList.toggle('active', currentViewMode === 'card');
+        listBtn.classList.toggle('active', currentViewMode === 'list');
+    }
+}
+
+window.addEventListener('resize', () => {
+    if (!localStorage.getItem('firestorm_view_mode')) {
+        const autoMode = window.innerWidth < 768 ? 'list' : 'card';
+        if (autoMode !== currentViewMode) {
+            currentViewMode = autoMode;
+            applyViewModeUI();
+        }
+    }
+});
+
 function initApp() {
+    applyViewModeUI();
     try { initLoaderFireworks(); } catch(e) { console.warn(e); }
     try {
         initFestiveCanvas();
