@@ -1,5 +1,434 @@
 [
   {
+    "id": 109,
+    "name": "5k Family Combo",
+    "category": "Firestorm Special Assorted Combos",
+    "price": 5000,
+    "originalPrice": 7241,
+    "unit": "1 Mega Box (40 Varieties / 58+ Pcs)",
+    "description": "Firestorm Special Assorted Diwali Hamper! 40 hand-picked varieties loaded with electric sparklers, color pots, ground chakkars, Lakshmi crackers, 1K wala garland, and 30-shot multi-color sky shots. Total individual retail value is ₹7,241 — yours at a smart buy festival price of ₹5,000 (Save ₹2,241 / 31% OFF)!",
+    "image": "assets/products/prod-109-5k-family-combo.jpg",
+    "stock": 35,
+    "badge": "Smart Buy ⭐",
+    "comboItems": [
+      {
+        "name": "7cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 30
+      },
+      {
+        "name": "7cm Color Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 30
+      },
+      {
+        "name": "10cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 53
+      },
+      {
+        "name": "10cm Color Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 53
+      },
+      {
+        "name": "15cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "15cm Red Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "15cm Green Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "Chilaka Tapas",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 30
+      },
+      {
+        "name": "3.5\" Inches Lakshmi",
+        "unit": "1 Pkt (8 Ply) × 1",
+        "price": 45
+      },
+      {
+        "name": "4\" Inches Gold Lakshmi",
+        "unit": "1 Pkt (10 Ply) × 1",
+        "price": 90
+      },
+      {
+        "name": "5\" Inches Elephant",
+        "unit": "1 Pkt × 1",
+        "price": 120
+      },
+      {
+        "name": "2 Sound Bomb",
+        "unit": "1 Box (5 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "3 Sound Bomb",
+        "unit": "1 Box (5 Pcs) × 1",
+        "price": 120
+      },
+      {
+        "name": "Hydro Bomb",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 165
+      },
+      {
+        "name": "Jumbo Bomb",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 480
+      },
+      {
+        "name": "Purukose Bomb",
+        "unit": "1 Pkt × 10",
+        "price": 380
+      },
+      {
+        "name": "Nellore Guns",
+        "unit": "1 Pkt × 10",
+        "price": 150
+      },
+      {
+        "name": "1 kg Paper Bomb",
+        "unit": "1 Pc (1kg) × 1",
+        "price": 450
+      },
+      {
+        "name": "Mirapakay Tapas (Red Bijili 50 pcs)",
+        "unit": "1 Pkt (50 Pcs) × 1",
+        "price": 45
+      },
+      {
+        "name": "Mirapakay Tapas (Red Bijili 100 pcs)",
+        "unit": "1 Pkt (100 Pcs) × 1",
+        "price": 75
+      },
+      {
+        "name": "200 Wala",
+        "unit": "1 Piece × 1",
+        "price": 150
+      },
+      {
+        "name": "100 Wala",
+        "unit": "1 Piece × 2",
+        "price": 150
+      },
+      {
+        "name": "50 Deluxe Crackers",
+        "unit": "1 Piece × 1",
+        "price": 160
+      },
+      {
+        "name": "1K Wala",
+        "unit": "1 Box (1000 Pcs) × 1",
+        "price": 300
+      },
+      {
+        "name": "Flower Pot Special (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 165
+      },
+      {
+        "name": "Flower Pot Ashoka (5 Pcs)",
+        "unit": "1 Box (5 Pcs) × 1",
+        "price": 240
+      },
+      {
+        "name": "Colour Koti (Standard) (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 390
+      },
+      {
+        "name": "Ground Chakkar Big (10 pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "Ground Chakkar Special (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 180
+      },
+      {
+        "name": "Musical Chakkar (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 375
+      },
+      {
+        "name": "Rocket Bomb Small (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "Rocket Bomb Big (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 150
+      },
+      {
+        "name": "30 Shot Multi Colour",
+        "unit": "1 Box (30 Shots) × 1",
+        "price": 825
+      },
+      {
+        "name": "4\" Inches Twinkling Star (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 170
+      },
+      {
+        "name": "Twinkling Star 1.5\" Inches (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 65
+      },
+      {
+        "name": "Snake Eggs (Paamu Billalu - Small) - (10 Tblts)",
+        "unit": "1 Box (10 Tablets) × 1",
+        "price": 15
+      },
+      {
+        "name": "Pop Pop - (50 Pkts)",
+        "unit": "1 Box (50 Pkts) × 1",
+        "price": 500
+      },
+      {
+        "name": "Color Matches - (10 Pkts - Assorted)",
+        "unit": "1 Bundle (10 Pkts) × 1",
+        "price": 150
+      },
+      {
+        "name": "Kit Kat (Venna Muddalu)",
+        "unit": "1 Box × 1",
+        "price": 70
+      },
+      {
+        "name": "Peacock Small",
+        "unit": "1 Piece × 1",
+        "price": 330
+      }
+    ],
+    "subtotal": 7241,
+    "noCoupon": true,
+    "couponPolicy": "Coupons are not allowed on this combo as it is already at the best possible price. Happy Diwali 🪔"
+  },
+  {
+    "id": 110,
+    "name": "6k Salaar Combo",
+    "category": "Firestorm Special Assorted Combos",
+    "price": 6000,
+    "originalPrice": 8619,
+    "unit": "1 Monster Box (39 Heavy Varieties)",
+    "description": "Inspired by Prabhas blockbuster Salaar! High-decibel, power-packed combo loaded with heavy sound bombs (Hydro, Jumbo, Jurassic, Classic Green, Paper Bombs), 5K Wala Garland, 30 Shot Multi-Colour, and thunderous crackers. Total individual retail value is ₹8,619 — blockbuster offer price of ₹6,000 (Save ₹2,619 / 30% OFF)!",
+    "image": "assets/products/prod-110-6k-salaar-combo.jpg",
+    "stock": 25,
+    "badge": "Blockbuster Salaar 💥",
+    "comboItems": [
+      {
+        "name": "7cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 2",
+        "price": 60
+      },
+      {
+        "name": "7cm Color Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 2",
+        "price": 60
+      },
+      {
+        "name": "10cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 53
+      },
+      {
+        "name": "10cm Color Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 53
+      },
+      {
+        "name": "30cm Electrical Sparkler",
+        "unit": "1 Pkt (5 Pcs) × 1",
+        "price": 105
+      },
+      {
+        "name": "30cm Red Sparkler",
+        "unit": "1 Pkt (5 Pcs) × 1",
+        "price": 105
+      },
+      {
+        "name": "3.5\" Inches Lakshmi",
+        "unit": "1 Pkt (8 Ply) × 1",
+        "price": 45
+      },
+      {
+        "name": "4\" Inches Lakshmi",
+        "unit": "1 Pkt (7 Ply) × 1",
+        "price": 60
+      },
+      {
+        "name": "4\" Inches Gold Lakshmi",
+        "unit": "1 Pkt (10 Ply) × 1",
+        "price": 90
+      },
+      {
+        "name": "5\" Inches Elephant",
+        "unit": "1 Pkt × 1",
+        "price": 120
+      },
+      {
+        "name": "5\" Inches HULK",
+        "unit": "1 Pkt (20 Ply) × 1",
+        "price": 195
+      },
+      {
+        "name": "6\" Inches Lakshmi/ Superman/figher",
+        "unit": "1 Pkt × 1",
+        "price": 165
+      },
+      {
+        "name": "5\" Inches Gold Lakshmi (10 Ply)",
+        "unit": "1 Pkt (10 Ply) × 1",
+        "price": 150
+      },
+      {
+        "name": "6\" Inches Lakshmi (12 Ply)",
+        "unit": "1 Pkt (12 Ply) × 1",
+        "price": 180
+      },
+      {
+        "name": "2 Sound Bomb",
+        "unit": "1 Box (5 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "3 Sound Bomb",
+        "unit": "1 Box (5 Pcs) × 1",
+        "price": 120
+      },
+      {
+        "name": "Hydro Bomb",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 165
+      },
+      {
+        "name": "Classic Green Bomb",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 255
+      },
+      {
+        "name": "Jumbo Bomb",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 480
+      },
+      {
+        "name": "Jussaric Bomb",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 450
+      },
+      {
+        "name": "Purukose Bomb",
+        "unit": "1 Pkt × 10",
+        "price": 380
+      },
+      {
+        "name": "Nellore Guns",
+        "unit": "1 Pkt × 10",
+        "price": 150
+      },
+      {
+        "name": "1/4 kg Premium Paper Bomb",
+        "unit": "1 Pc (250g) × 1",
+        "price": 120
+      },
+      {
+        "name": "1 kg Paper Bomb",
+        "unit": "1 Pc (1kg) × 1",
+        "price": 450
+      },
+      {
+        "name": "Mirapakay Tapas (Red Bijili 50 pcs)",
+        "unit": "1 Pkt (50 Pcs) × 1",
+        "price": 45
+      },
+      {
+        "name": "50 Deluxe Crackers",
+        "unit": "1 Piece × 1",
+        "price": 160
+      },
+      {
+        "name": "Rocket Bomb Big (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 150
+      },
+      {
+        "name": "Lunik Express (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 329
+      },
+      {
+        "name": "7 Shots (5 Pcs)",
+        "unit": "1 Box (5 Pcs) × 1",
+        "price": 349
+      },
+      {
+        "name": "12 Shot Blaster",
+        "unit": "1 Box (12 Shots) × 1",
+        "price": 300
+      },
+      {
+        "name": "30 Shot Multi Colour",
+        "unit": "1 Box (30 Shots) × 1",
+        "price": 825
+      },
+      {
+        "name": "Beedi Pataaka - (10 Pkts)",
+        "unit": "1 Box (10 Pkts) × 1",
+        "price": 200
+      },
+      {
+        "name": "Chilaka Tapas",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 30
+      },
+      {
+        "name": "4\" Inches Roster/Ganesh",
+        "unit": "1 Pkt × 1",
+        "price": 150
+      },
+      {
+        "name": "Mirapakay Tapas (Red Bijili 100 pcs)",
+        "unit": "1 Pkt (100 Pcs) × 1",
+        "price": 75
+      },
+      {
+        "name": "200 Wala",
+        "unit": "1 Piece × 1",
+        "price": 150
+      },
+      {
+        "name": "100 Wala",
+        "unit": "1 Piece × 1",
+        "price": 75
+      },
+      {
+        "name": "5K Wala",
+        "unit": "1 Box (5000 Pcs) × 1",
+        "price": 1350
+      },
+      {
+        "name": "100 Deluxe",
+        "unit": "1 Piece × 1",
+        "price": 330
+      }
+    ],
+    "subtotal": 8619,
+    "noCoupon": true,
+    "couponPolicy": "Coupons are not allowed on this combo as it is already at the best possible price. Happy Diwali 🪔"
+  },
+  {
     "id": 1,
     "name": "7cm Electrical Sparkler",
     "category": "Sparklers (Kakarothulu)",
