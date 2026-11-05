@@ -268,58 +268,7 @@ input, select, textarea { font-family: var(--font-sans); }
     background: var(--text-primary); border-radius: 2px;
 }
 
-/* ==================== STICKY CATEGORY QUICK-NAV BAR ==================== */
-.category-quicknav {
-    position: sticky; top: 64px; z-index: 999;
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-subtle);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    padding: 0;
-    transition: top 0.3s ease;
-}
-.quicknav-inner {
-    max-width: 1440px; margin: 0 auto;
-    display: flex; align-items: center; gap: 0;
-    padding: 0 1.5rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-}
-.quicknav-inner::-webkit-scrollbar { display: none; }
-.quicknav-chip {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    padding: 0.65rem 1rem;
-    font-size: 0.82rem; font-weight: 700;
-    color: var(--text-secondary);
-    white-space: nowrap;
-    border-bottom: 2.5px solid transparent;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    background: none; border-top: none; border-left: none; border-right: none;
-    font-family: var(--font-sans);
-}
-.quicknav-chip:hover {
-    color: var(--fire-red);
-    background: var(--bg-fire-subtle);
-}
-.quicknav-chip.active {
-    color: var(--fire-red-dark);
-    border-bottom-color: var(--fire-red);
-    font-weight: 800;
-}
-.quicknav-chip i { font-size: 0.88rem; }
-.quicknav-chip .qn-count {
-    font-size: 0.68rem; font-weight: 800;
-    background: var(--bg-fire-100); color: var(--fire-red);
-    padding: 1px 5px; border-radius: 8px;
-    min-width: 18px; text-align: center;
-}
-.quicknav-chip.active .qn-count {
-    background: var(--fire-red); color: #FFF;
-}
+/* Unified Category Filter: Redundant sticky top quicknav bar removed in favor of the in-catalog filter console below */
 
 /* ==================== HERO SECTION (CLEAN, SUBTLE 3D & ELEGANT) ==================== */
 .hero {
@@ -409,22 +358,15 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 
 .hero-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(16px) rotateX(-12deg);
-    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s ease;
-    pointer-events: none;
+    display: none;
 }
 .hero-slide.active {
-    position: relative;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) rotateX(0deg);
-    pointer-events: auto;
+    display: block;
+    animation: heroFadeIn 0.35s ease forwards;
+}
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-heading {
@@ -834,7 +776,7 @@ input, select, textarea { font-family: var(--font-sans); }
 }
 
 /* ==================== SHOPPING FILTER BAR ==================== */
-#products-section { padding: 1.2rem 2rem 4rem; scroll-margin-top: 110px; }
+#products-section { padding: 1.2rem 2rem 4rem; scroll-margin-top: 75px; }
 #products-section .section-header { margin-bottom: 0.8rem; }
 .filter-console {
     background: #FFFFFF;
@@ -845,6 +787,7 @@ input, select, textarea { font-family: var(--font-sans); }
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 10;
+    scroll-margin-top: 80px;
 }
 .filter-top-row {
     display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -909,6 +852,7 @@ input, select, textarea { font-family: var(--font-sans); }
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary); font-size: 0.8rem; font-weight: 700;
     white-space: nowrap; transition: all 0.2s ease;
+    cursor: pointer; font-family: inherit;
 }
 .category-pill:hover {
     background: var(--bg-fire-100);
@@ -2067,10 +2011,7 @@ input, select, textarea { font-family: var(--font-sans); }
     .stat-number { font-size: 0.88rem; }
     .stat-label { font-size: 0.65rem; }
 
-    /* Category Quick Nav */
-    .category-quicknav { top: 52px; }
-    .quicknav-inner { padding: 0 0.5rem; }
-    .quicknav-chip { padding: 0.55rem 0.7rem; font-size: 0.76rem; }
+
 
     /* Section & Product Catalog */
     .section { padding: 2.5rem 1rem; max-width: 100%; }
@@ -2534,12 +2475,7 @@ input, select, textarea { font-family: var(--font-sans); }
         </div>
     </nav>
 
-    <!-- Sticky Category Quick-Nav Bar -->
-    <div class="category-quicknav" id="category-quicknav">
-        <div class="quicknav-inner" id="quicknav-inner">
-            <!-- Dynamically populated by JS -->
-        </div>
-    </div>
+
 
     <!-- Mobile Drawer -->
     <div class="modal-overlay" id="mobile-menu" onclick="closeMobileMenu(event)">
@@ -2775,7 +2711,7 @@ input, select, textarea { font-family: var(--font-sans); }
                     <h3 class="combos-spotlight-title">Firestorm Special Assorted Combos</h3>
                     <p class="combos-spotlight-sub">Curated mega hampers loaded with authentic Sivakasi crackers at maximum wholesale savings. Transparent itemized breakdown!</p>
                 </div>
-                <button type="button" class="btn-outline-fire" onclick="setCategory('Firestorm Special Assorted Combos')" style="font-size:0.82rem; padding:0.45rem 1rem;">
+                <button type="button" class="btn-outline-fire" onclick="setCategory('Firestorm Special Assorted Combos', true)" style="font-size:0.82rem; padding:0.45rem 1rem;">
                     View Combos Category <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
@@ -4124,60 +4060,52 @@ function populateCategoryFilter() {
 
     const tagsContainer = document.getElementById('filter-tags');
     if (tagsContainer) {
-        tagsContainer.innerHTML = `<button class="category-pill active" onclick="setCategory('')">All Crackers (${products.length})</button>`;
+        tagsContainer.innerHTML = `<button type="button" class="category-pill active" onclick="setCategory('')">All Crackers (${products.length})</button>`;
         cats.forEach(cat => {
             const catCount = products.filter(p => p.category === cat).length;
-            tagsContainer.innerHTML += `<button class="category-pill" onclick="setCategory('${cat}')">${CATEGORY_EMOJIS[cat] || '✨'} ${cat} (${catCount})</button>`;
+            tagsContainer.innerHTML += `<button type="button" class="category-pill" onclick="setCategory('${cat}')">${CATEGORY_EMOJIS[cat] || '✨'} ${cat} (${catCount})</button>`;
         });
     }
 
-    // Populate Top Sticky Category Quick-Nav
-    const quicknavInner = document.getElementById('quicknav-inner');
-    if (quicknavInner) {
-        quicknavInner.innerHTML = `<button type="button" class="quicknav-chip active" onclick="setCategoryQuick('')"><span>✨ All</span> <span class="qn-count">${products.length}</span></button>`;
-        cats.forEach(cat => {
-            const catCount = products.filter(p => p.category === cat).length;
-            const shortName = cat.split('(')[0].trim();
-            quicknavInner.innerHTML += `<button type="button" class="quicknav-chip" data-cat="${cat}" onclick="setCategoryQuick('${cat}')"><span>${CATEGORY_EMOJIS[cat] || '✨'} ${shortName}</span> <span class="qn-count">${catCount}</span></button>`;
-        });
-    }
 }
 
-function setCategoryQuick(cat) {
-    setCategory(cat);
-    // Smoothly scroll directly into the product catalog
-    const sec = document.getElementById('products-section');
-    if (sec) {
-        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-
-function setCategory(cat) {
+function setCategory(cat, shouldScroll = false) {
     const sel = document.getElementById('category-filter');
     if (sel) sel.value = cat;
+
+    let activePill = null;
     document.querySelectorAll('.category-pill').forEach(t => {
         const text = t.textContent.trim();
-        if (!cat && text.startsWith('All Crackers')) {
+        const isActive = (!cat && text.startsWith('All Crackers')) || (cat && text.includes(cat));
+        if (isActive) {
             t.classList.add('active');
-        } else if (cat && text.includes(cat)) {
-            t.classList.add('active');
+            activePill = t;
         } else {
             t.classList.remove('active');
         }
     });
 
-    // Sync Sticky Quick-Nav chips
-    document.querySelectorAll('.quicknav-chip').forEach(qn => {
-        const qnCat = qn.getAttribute('data-cat') || '';
-        if ((!cat && !qnCat) || (cat && qnCat === cat)) {
-            qn.classList.add('active');
-            qn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        } else {
-            qn.classList.remove('active');
-        }
-    });
+    // Smooth horizontal scroll inside the category tags bar without jumping page scroll
+    const tagsContainer = document.getElementById('filter-tags');
+    if (tagsContainer && activePill) {
+        const pillOffset = activePill.offsetLeft - tagsContainer.offsetLeft;
+        const targetScroll = pillOffset - (tagsContainer.clientWidth / 2) + (activePill.clientWidth / 2);
+        tagsContainer.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
+    }
 
     filterProducts();
+
+    // Only scroll vertically if explicitly requested (e.g., from 'View Combos Category' button)
+    if (shouldScroll) {
+        const target = document.querySelector('.filter-console') || document.getElementById('products-grid');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+}
+
+function setCategoryQuick(cat) {
+    setCategory(cat, true);
 }
 
 function filterByCategory(cat) {
@@ -4187,9 +4115,8 @@ function filterByCategory(cat) {
         t.classList.toggle('active', t.textContent.includes(cat));
     });
     filterProducts();
-    // Smoothly scroll to product catalog when clicked from footer or external links
-    const sec = document.getElementById('products-section');
-    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const target = document.querySelector('.filter-console') || document.getElementById('products-grid');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ==================== FILTERING & SORTING ====================
