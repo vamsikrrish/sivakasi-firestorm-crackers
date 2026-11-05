@@ -1126,11 +1126,18 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
     line-height: 1.45;
 }
 .combo-table-container {
-    max-height: 380px;
+    max-height: 480px;
+    min-height: 280px;
     overflow-y: auto;
-    border: 1px solid var(--border-subtle);
+    border: 1.5px solid var(--border-subtle);
     border-radius: var(--radius-md);
     background: #FAFAFA;
+    -webkit-overflow-scrolling: touch;
+}
+@media (min-width: 768px) {
+    .combo-table-container {
+        max-height: 520px;
+    }
 }
 .combo-table-container::-webkit-scrollbar {
     width: 6px;
@@ -1155,7 +1162,7 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 0.65rem 0.75rem;
-    border-bottom: 1px solid var(--border-subtle);
+    border-bottom: 1.5px solid var(--border-subtle);
     z-index: 2;
 }
 .combo-table tbody td {
@@ -1193,45 +1200,93 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
     color: var(--text-primary);
     white-space: nowrap;
 }
-.combo-table tfoot {
-    position: sticky;
-    bottom: 0;
+.combo-scroll-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #B45309;
+    margin-bottom: 0.45rem;
+}
+.combo-summary-card {
     background: #FFFBEB;
-    border-top: 2px solid #FCD34D;
-    z-index: 2;
+    border: 1.5px solid #FCD34D;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
-.combo-table tfoot td {
-    padding: 0.65rem 0.75rem;
-    border-top: 1px solid #FEF3C7;
-}
-.combo-tf-subtotal td {
+.combo-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    font-size: 0.82rem;
 }
-.combo-td-total {
-    text-align: right;
+.combo-summary-row.deal-row {
+    padding-top: 0.45rem;
+    border-top: 1px dashed #FCD34D;
     font-weight: 800;
-    color: var(--text-muted);
+    color: var(--text-primary);
+}
+.combo-summary-row.savings-row {
+    padding: 0.5rem 0.75rem;
+    background: #DCFCE7;
+    border: 1px solid #86EFAC;
+    border-radius: 6px;
+    color: #15803D;
+    font-weight: 800;
+}
+.combo-summary-val.subtotal {
     text-decoration: line-through;
+    color: var(--text-muted);
+    font-weight: 700;
 }
-.combo-tf-offer td {
+.combo-summary-val.deal {
     color: var(--fire-red);
-    font-size: 0.95rem;
-}
-.combo-td-deal {
-    text-align: right;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 900;
-    color: var(--fire-red);
 }
-.combo-tf-savings td {
+.combo-summary-val.saved {
     color: #15803D;
-    font-size: 0.88rem;
-}
-.combo-td-saved {
-    text-align: right;
+    font-size: 0.92rem;
     font-weight: 900;
-    color: #15803D;
+}
+@media (max-width: 576px) {
+    .combo-breakdown-card {
+        padding: 0.9rem;
+    }
+    .combo-table-container {
+        max-height: 440px;
+    }
+    .combo-table tbody td {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    .combo-td-num {
+        width: 24px;
+        font-size: 0.72rem;
+    }
+    .combo-unit-chip {
+        font-size: 0.7rem;
+        padding: 2px 5px;
+    }
+    .combo-td-price {
+        font-size: 0.82rem;
+    }
+    .combo-summary-card {
+        padding: 0.75rem 0.85rem;
+    }
+    .combo-summary-row {
+        font-size: 0.8rem;
+    }
+    .combo-summary-val.deal {
+        font-size: 1.05rem;
+    }
 }
 
 
@@ -1853,6 +1908,9 @@ function renderProductDetail(p) {
                     <p class="combo-breakdown-desc">
                         Every item included in this mega combo is listed below with its individual pack size and retail price. Compare and see your huge festival savings!
                     </p>
+                    <div class="combo-scroll-hint">
+                        <i class="fas fa-arrows-alt-v"></i> Scroll to view all ${p.comboItems.length} varieties (${p.comboItems.length} items included)
+                    </div>
                     <div class="combo-table-container">
                         <table class="combo-table">
                             <thead>
@@ -1873,21 +1931,22 @@ function renderProductDetail(p) {
                                     </tr>
                                 `).join("")}
                             </tbody>
-                            <tfoot>
-                                <tr class="combo-tf-subtotal">
-                                    <td colspan="3"><strong>Total Individual Items Retail Value (Subtotal):</strong></td>
-                                    <td class="combo-td-total">₹${p.subtotal || origPrice}</td>
-                                </tr>
-                                <tr class="combo-tf-offer">
-                                    <td colspan="3"><strong>Special Combo Offer Price:</strong></td>
-                                    <td class="combo-td-deal">₹${p.price}</td>
-                                </tr>
-                                <tr class="combo-tf-savings">
-                                    <td colspan="3"><strong>🎉 Total Net Savings (Festival Smart Buy):</strong></td>
-                                    <td class="combo-td-saved">Save ₹${(p.subtotal || origPrice) - p.price} (${discountPct}% OFF)</td>
-                                </tr>
-                            </tfoot>
                         </table>
+                    </div>
+                    <!-- Transparent Price Breakdown Summary Card -->
+                    <div class="combo-summary-card">
+                        <div class="combo-summary-row">
+                            <span class="combo-summary-lbl">Total Retail Value (Subtotal):</span>
+                            <span class="combo-summary-val subtotal">₹${p.subtotal || origPrice}</span>
+                        </div>
+                        <div class="combo-summary-row deal-row">
+                            <span class="combo-summary-lbl">Special Combo Festival Price:</span>
+                            <span class="combo-summary-val deal">₹${p.price}</span>
+                        </div>
+                        <div class="combo-summary-row savings-row">
+                            <span class="combo-summary-lbl"><i class="fas fa-sparkles"></i> Total Net Savings (Smart Buy):</span>
+                            <span class="combo-summary-val saved">Save ₹${(p.subtotal || origPrice) - p.price} (${discountPct}% OFF)</span>
+                        </div>
                     </div>
                     <div class="combo-no-coupon-callout">
                         <i class="fas fa-info-circle"></i>
