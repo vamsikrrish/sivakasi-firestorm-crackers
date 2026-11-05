@@ -2398,32 +2398,56 @@ function toggleFulfillment(val) {
 }
 
 function getOrderData() {
-    const name = document.getElementById('cust-name').value.trim() || 'Valued Customer';
-    const phone = document.getElementById('cust-phone').value.trim() || '';
+    const name = document.getElementById('cust-name') ? document.getElementById('cust-name').value.trim() : '';
+    const phone = document.getElementById('cust-phone') ? document.getElementById('cust-phone').value.trim() : '';
+    const email = document.getElementById('cust-email') ? document.getElementById('cust-email').value.trim() : '';
     const fulfillRadio = document.querySelector('input[name="fulfillment_type"]:checked');
     const fulfillment = fulfillRadio ? fulfillRadio.value : 'Pickup';
-    const rawAddress = document.getElementById('cust-address').value.trim();
+    const rawAddress = document.getElementById('cust-address') ? document.getElementById('cust-address').value.trim() : '';
     const address = (fulfillment === 'Pickup')
         ? `[STORE PICKUP - Govt High School Ground] ${rawAddress || 'Self-Pickup'}`
         : `[HOME DELIVERY - Sullurpeta Only] ${rawAddress || 'Address in Sullurpeta'}`;
-    const notes = document.getElementById('cust-notes').value.trim() || '';
+    const notes = document.getElementById('cust-notes') ? document.getElementById('cust-notes').value.trim() : '';
 
     const subtotal = cart.reduce((s, c) => {
         const p = products.find(pr => pr.id === c.id);
         return s + (p ? p.price * c.qty : 0);
     }, 0);
 
+    const eligibleSubtotal = cart.reduce((s, c) => {
+        const p = products.find(pr => pr.id === c.id);
+        if (p && (p.noCoupon || p.category === "Firestorm Special Assorted Combos")) return s;
+        return s + (p ? p.price * c.qty : 0);
+    }, 0);
+
+    const couponInfo = (appliedCoupon && COUPONS[appliedCoupon.code]) ? COUPONS[appliedCoupon.code] : null;
+    const couponCode = couponInfo ? appliedCoupon.code : null;
+    const couponDesc = couponInfo ? couponInfo.desc : '';
+    const couponValue = couponInfo ? couponInfo.value : 0;
+    const couponType = couponInfo ? couponInfo.type : 'percent';
+
     let discount = 0;
-    let couponCode = appliedCoupon ? appliedCoupon.code : null;
-    if (appliedCoupon && COUPONS[appliedCoupon.code]) {
-        const c = COUPONS[appliedCoupon.code];
-        discount = c.type === 'percent' ? Math.round(subtotal * c.value / 100) : c.value;
+    if (couponInfo) {
+        discount = couponType === 'percent'
+            ? Math.round(eligibleSubtotal * couponValue / 100)
+            : Math.min(couponValue, eligibleSubtotal);
     }
 
     const total = Math.max(0, subtotal - discount);
     const items = cart.map(c => {
         const p = products.find(pr => pr.id === c.id);
-        return { name: p?.name || 'Item', unit: p?.unit || '', price: p?.price || 0, qty: c.qty, total: (p?.price || 0) * c.qty };
+        const originalPrice = p?.originalPrice || Math.round((p?.price || 0) * 1.3);
+        const isEligible = !(p?.noCoupon || p?.category === "Firestorm Special Assorted Combos");
+        return {
+            id: p?.id,
+            name: p?.name || 'Item',
+            unit: p?.unit || '',
+            originalPrice,
+            price: p?.price || 0,
+            qty: c.qty,
+            isEligible,
+            total: (p?.price || 0) * c.qty
+        };
     });
 
     const now = new Date();
@@ -2431,7 +2455,13 @@ function getOrderData() {
     const orderTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
     const orderId = 'SFC-' + Date.now().toString(36).toUpperCase();
 
-    return { name, phone, address, notes, items, subtotal, discount, couponCode, total, orderDate, orderTime, orderId, fulfillment };
+    return {
+        name: name || 'Valued Customer',
+        phone, email, address, notes, items,
+        subtotal, eligibleSubtotal, discount,
+        couponCode, couponDesc, couponValue, couponType,
+        total, orderDate, orderTime, orderId, fulfillment
+    };
 }
 
 function sendWhatsApp() {
@@ -2447,101 +2477,355 @@ function sendWhatsApp() {
     // Auto-trigger PDF download
     try { downloadPDF(); } catch(e) { console.warn(e); }
 
-    let msg = `🪔 *SIVAKASI FIRESTORM CRACKERS*
-✨ *DIWALI 2026 ORDER ESTIMATE*
-━━━━━━━━━━━━━━━━━━━━━
-📅 Date: ${order.orderDate} | ${order.orderTime}
-🆔 Order Ref: ${order.orderId}
+    let msg = `🪔 *SIVAKASI FIRESTORM CRACKERS*\n`;
+    msg += `✨ *DIWALI 2026 ORDER ESTIMATE*\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
+    msg += `📅 Date: ${order.orderDate} | ${order.orderTime}\n`;
+    msg += `🆔 Order Ref: ${order.orderId}\n\n`;
+    msg += `👤 *Customer Details:*\n`;
+    msg += `Name: ${order.name}\n`;
+    msg += `Phone: ${order.phone}\n`;
+    if (order.email) msg += `Email: ${order.email}\n`;
+    msg += `Fulfillment: ${order.address}\n\n`;
+    msg += `📦 *Ordered Items:*\n`;
+    msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
 
-👤 *Customer Details:*
-Name: ${order.name}
-Phone: ${order.phone}
-Fulfillment: ${order.address}
-
-📦 *Ordered Items:*
-━━━━━━━━━━━━━━━━━━━━━
-`;
+    const couponPct = (order.couponCode && order.couponType === 'percent' && order.discount > 0) ? order.couponValue : 0;
     order.items.forEach((item, i) => {
-        msg += `${i + 1}. ${item.name}
-   ${item.unit} × ${item.qty} = ₹${item.total.toLocaleString('en-IN')}
-`;
+        let addlDisc = (item.isEligible && couponPct > 0) ? Math.round(item.price * couponPct / 100) : 0;
+        let finalRate = Math.max(0, item.price - addlDisc);
+        let lineTotal = finalRate * item.qty;
+        msg += `${i + 1}. ${item.name}\n`;
+        msg += `   MRP: ₹${item.originalPrice} | Rate: ₹${item.price}`;
+        if (addlDisc > 0) msg += ` | After Coupon: ₹${finalRate}`;
+        msg += `\n   ${item.unit} × ${item.qty} = ₹${lineTotal.toLocaleString('en-IN')}\n`;
     });
 
-    msg += `━━━━━━━━━━━━━━━━━━━━━
-💰 Subtotal: ₹${order.subtotal.toLocaleString('en-IN')}
-`;
+    msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
+    msg += `💰 Wholesale Subtotal: ₹${order.subtotal.toLocaleString('en-IN')}\n`;
     if (order.discount > 0) {
-        msg += `🏷️ Coupon (${order.couponCode}): -₹${order.discount.toLocaleString('en-IN')}
-`;
+        msg += `🏷️ Coupon (${order.couponCode}): -₹${order.discount.toLocaleString('en-IN')}\n`;
     }
-    msg += `💵 *FINAL TOTAL: ₹${order.total.toLocaleString('en-IN')}*
-
-📍 *Stall:* Govt High School Ground, Sullurpeta
-Please confirm order and pickup/delivery schedule!`;
+    msg += `💵 *FINAL TOTAL: ₹${order.total.toLocaleString('en-IN')}*\n\n`;
+    if (order.notes) msg += `📝 Special Requests: ${order.notes}\n\n`;
+    msg += `📍 *Stall:* Govt High School Ground, Sullurpeta\n`;
+    msg += `Please confirm order and pickup/delivery schedule! 🪔✨`;
 
     const encoded = encodeURI(msg);
     window.open(`https://wa.me/919490042905?text=${encoded}`, '_blank');
 }
 
+function buildOrderQuotationPDF(order) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+    const pageWidth = 210;
+    const pageHeight = 297;
+    const marginX = 10;
+    const contentWidth = pageWidth - (marginX * 2); // 190mm
+
+    // Header Banner (Corporate Navy & Gold)
+    doc.setFillColor(15, 23, 42); // slate-900
+    doc.rect(0, 0, pageWidth, 42, 'F');
+
+    // Gold accent top bar
+    doc.setFillColor(245, 158, 11); // amber-500
+    doc.rect(0, 0, pageWidth, 3.5, 'F');
+
+    doc.setTextColor(255, 215, 64);
+    doc.setFontSize(18);
+    doc.setFont('helvetica', 'bold');
+    doc.text('SIVAKASI FIRESTORM CRACKERS', pageWidth / 2, 16, { align: 'center' });
+
+    doc.setFontSize(8.5);
+    doc.setTextColor(226, 232, 240);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Expert Wholesale & Retail Dealers • Govt High School Ground, Sullurpeta, AP', pageWidth / 2, 24, { align: 'center' });
+    doc.text('Helplines: +91 94900 42905  |  +91 79816 59594  •  Official UPI: 9490042905@ybl', pageWidth / 2, 30, { align: 'center' });
+
+    doc.setFontSize(10.5);
+    doc.setTextColor(254, 240, 138);
+    doc.setFont('helvetica', 'bold');
+    doc.text('OFFICIAL DIWALI 2026 ORDER ESTIMATE & QUOTATION', pageWidth / 2, 38, { align: 'center' });
+
+    let curY = 47;
+
+    // Customer & Order Info Box
+    doc.setFillColor(248, 250, 252);
+    doc.roundedRect(marginX, curY, contentWidth, 24, 2, 2, 'F');
+    doc.setDrawColor(226, 232, 240);
+    doc.roundedRect(marginX, curY, contentWidth, 24, 2, 2, 'D');
+
+    doc.setFontSize(8.5);
+    doc.setTextColor(15, 23, 42);
+    doc.setFont('helvetica', 'bold');
+    doc.text(`Customer: ${order.name}`, marginX + 4, curY + 6);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(71, 85, 105);
+    doc.text(`Mobile: ${order.phone || 'N/A'}${order.email ? `  |  Email: ${order.email}` : ''}`, marginX + 4, curY + 12);
+    doc.text(`Fulfillment: ${order.address}`, marginX + 4, curY + 18);
+
+    // Right side of customer info box
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(15, 23, 42);
+    doc.text(`Estimate Ref: ${order.orderId}`, pageWidth - marginX - 4, curY + 6, { align: 'right' });
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(71, 85, 105);
+    doc.text(`Date: ${order.orderDate}  ${order.orderTime}`, pageWidth - marginX - 4, curY + 12, { align: 'right' });
+
+    if (order.couponCode) {
+        doc.setFont('helvetica', 'bold');
+        if (order.discount > 0) {
+            doc.setTextColor(22, 101, 52); // green-700
+            doc.text(`Coupon Applied: ${order.couponCode} (${order.couponDesc || `${order.couponValue}% OFF`})`, pageWidth - marginX - 4, curY + 18, { align: 'right' });
+        } else {
+            doc.setTextColor(180, 83, 9); // amber-700
+            doc.text(`Coupon: ${order.couponCode} (Already at wholesale minimum price)`, pageWidth - marginX - 4, curY + 18, { align: 'right' });
+        }
+    } else {
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(100, 116, 139);
+        doc.text('No coupon applied', pageWidth - marginX - 4, curY + 18, { align: 'right' });
+    }
+
+    curY += 28;
+
+    // Process line items
+    const couponPct = (order.couponCode && order.couponType === 'percent' && order.discount > 0) ? order.couponValue : 0;
+
+    let calculatedSum = 0;
+    const processedItems = order.items.map((it) => {
+        const actualMRP = it.originalPrice || Math.round(it.price * 1.3);
+        const discountedPrice = it.price;
+        let addlDiscountPerUnit = 0;
+        if (it.isEligible && order.discount > 0 && order.eligibleSubtotal > 0) {
+            if (order.couponType === 'percent') {
+                addlDiscountPerUnit = Math.round(discountedPrice * (order.couponValue / 100));
+            } else {
+                addlDiscountPerUnit = Math.round(order.discount * (discountedPrice / order.eligibleSubtotal));
+            }
+        }
+        const priceAfterAddlDisc = Math.max(0, discountedPrice - addlDiscountPerUnit);
+        const lineTotal = priceAfterAddlDisc * it.qty;
+        calculatedSum += lineTotal;
+        return {
+            ...it,
+            actualMRP,
+            discountedPrice,
+            priceAfterAddlDisc,
+            lineTotal
+        };
+    });
+
+    // Exact reconciliation with order.total
+    const diff = order.total - calculatedSum;
+    if (diff !== 0 && processedItems.length > 0) {
+        const target = processedItems.find(it => it.isEligible) || processedItems[0];
+        target.lineTotal += diff;
+    }
+
+    const tableBody = processedItems.map((it, idx) => [
+        idx + 1,
+        it.name,
+        it.unit,
+        `Rs. ${it.actualMRP.toLocaleString('en-IN')}`,
+        `Rs. ${it.discountedPrice.toLocaleString('en-IN')}`,
+        `Rs. ${it.priceAfterAddlDisc.toLocaleString('en-IN')}`,
+        it.qty,
+        `Rs. ${it.lineTotal.toLocaleString('en-IN')}`
+    ]);
+
+    doc.autoTable({
+        startY: curY,
+        head: [[
+            '#',
+            'Cracker Item Description',
+            'Packing Unit',
+            'Actual Price (MRP)',
+            'Discounted Price',
+            'Price after Addl. Disc.',
+            'Qty',
+            'Total (Rs.)'
+        ]],
+        body: tableBody,
+        theme: 'grid',
+        headStyles: {
+            fillColor: [15, 23, 42],
+            textColor: [255, 215, 64],
+            fontStyle: 'bold',
+            fontSize: 8,
+            halign: 'center',
+            valign: 'middle',
+            cellPadding: 2.5
+        },
+        bodyStyles: {
+            fontSize: 7.5,
+            cellPadding: 2.2,
+            textColor: [30, 41, 59]
+        },
+        alternateRowStyles: {
+            fillColor: [248, 250, 252]
+        },
+        columnStyles: {
+            0: { cellWidth: 7, halign: 'center' },
+            1: { cellWidth: 49 },
+            2: { cellWidth: 24 },
+            3: { cellWidth: 23, halign: 'right' },
+            4: { cellWidth: 23, halign: 'right' },
+            5: { cellWidth: 28, halign: 'right' },
+            6: { cellWidth: 11, halign: 'center' },
+            7: { cellWidth: 25, halign: 'right' }
+        },
+        margin: { left: marginX, right: marginX, bottom: 25 }
+    });
+
+    let tableEndY = doc.lastAutoTable.finalY;
+
+    // Overflow check for summary + payment block
+    const summaryCardHeight = order.discount > 0 ? 38 : 28;
+    const paymentCardHeight = 18;
+    const totalBottomNeeded = summaryCardHeight + paymentCardHeight + 12;
+
+    if (tableEndY + totalBottomNeeded > 265) {
+        doc.addPage();
+        tableEndY = 20;
+    }
+
+    const summaryY = tableEndY + 6;
+
+    // Right side: Financial Breakdown Card
+    const summaryWidth = 98;
+    const summaryX = pageWidth - marginX - summaryWidth; // 102mm
+
+    doc.setFillColor(248, 250, 252);
+    doc.roundedRect(summaryX, summaryY, summaryWidth, summaryCardHeight, 2, 2, 'F');
+    doc.setDrawColor(203, 213, 225);
+    doc.roundedRect(summaryX, summaryY, summaryWidth, summaryCardHeight, 2, 2, 'D');
+
+    doc.setFontSize(8.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(71, 85, 105);
+    doc.text('Wholesale Subtotal:', summaryX + 4, summaryY + 7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(15, 23, 42);
+    doc.text(`Rs. ${order.subtotal.toLocaleString('en-IN')}`, summaryX + summaryWidth - 4, summaryY + 7, { align: 'right' });
+
+    let nextRowY = summaryY + 14;
+
+    if (order.discount > 0) {
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(22, 101, 52); // green-700
+        const couponLabel = `Coupon (${order.couponCode}${order.couponType === 'percent' ? ` - ${order.couponValue}%` : ''}):`;
+        doc.text(couponLabel, summaryX + 4, nextRowY);
+        doc.setFont('helvetica', 'bold');
+        doc.text(`-Rs. ${order.discount.toLocaleString('en-IN')}`, summaryX + summaryWidth - 4, nextRowY, { align: 'right' });
+        nextRowY += 7;
+    }
+
+    // Divider
+    doc.setDrawColor(226, 232, 240);
+    doc.line(summaryX + 3, nextRowY - 2, summaryX + summaryWidth - 3, nextRowY - 2);
+
+    // TOTAL AMOUNT
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(180, 83, 9); // amber gold
+    doc.text('TOTAL AMOUNT:', summaryX + 4, nextRowY + 5);
+    doc.setTextColor(22, 101, 52); // green
+    doc.text(`Rs. ${order.total.toLocaleString('en-IN')}`, summaryX + summaryWidth - 4, nextRowY + 5, { align: 'right' });
+
+    // Left side: Festive Savings Card
+    const totalMRP = order.items.reduce((sum, it) => sum + (it.originalPrice || Math.round(it.price * 1.3)) * it.qty, 0);
+    const totalSavings = Math.max(0, totalMRP - order.total);
+    const savingsPct = totalMRP > 0 ? Math.round((totalSavings / totalMRP) * 100) : 0;
+
+    const badgeWidth = 84;
+    doc.setFillColor(240, 253, 244); // green-50
+    doc.roundedRect(marginX, summaryY, badgeWidth, summaryCardHeight, 2, 2, 'F');
+    doc.setDrawColor(187, 247, 208); // green-200
+    doc.roundedRect(marginX, summaryY, badgeWidth, summaryCardHeight, 2, 2, 'D');
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(22, 101, 52);
+    doc.text('TOTAL DIWALI SAVINGS', marginX + 4, summaryY + 8);
+
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(21, 128, 61);
+    doc.text(`Rs. ${totalSavings.toLocaleString('en-IN')} (${savingsPct}% OFF)`, marginX + 4, summaryY + 18);
+
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(71, 85, 105);
+    doc.text(`Total Retail MRP: Rs. ${totalMRP.toLocaleString('en-IN')}`, marginX + 4, summaryY + 25);
+    if (order.couponCode && order.discount > 0) {
+        doc.text(`Includes Wholesale Savings + Coupon ${order.couponCode}!`, marginX + 4, summaryY + 30);
+    } else {
+        doc.text('Direct Sivakasi wholesale factory rates!', marginX + 4, summaryY + 30);
+    }
+
+    // Payment Instructions Card
+    let payY = summaryY + summaryCardHeight + 5;
+    if (payY + paymentCardHeight > 265) {
+        doc.addPage();
+        payY = 20;
+    }
+
+    doc.setFillColor(254, 252, 232); // amber-50
+    doc.roundedRect(marginX, payY, contentWidth, paymentCardHeight, 2, 2, 'F');
+    doc.setDrawColor(253, 230, 138); // amber-200
+    doc.roundedRect(marginX, payY, contentWidth, paymentCardHeight, 2, 2, 'D');
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(146, 64, 14); // amber-800
+    doc.text('Official Payment & Order Confirmation Instructions:', marginX + 4, payY + 5.5);
+
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(51, 65, 85);
+    doc.text('1. Scan QR / Send payment to Official UPI ID: 9490042905@ybl', marginX + 4, payY + 10.5);
+    doc.text('2. Send Payment Screenshot + Transaction / UTR No. to WhatsApp: +91 94900 42905 to confirm dispatch & delivery slot.', marginX + 4, payY + 14.5);
+
+    // Stamp Footers on ALL pages
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let p = 1; p <= totalPages; p++) {
+        doc.setPage(p);
+        doc.setFillColor(15, 23, 42); // slate-900
+        doc.rect(0, 276, pageWidth, 21, 'F');
+
+        doc.setFillColor(245, 158, 11); // amber gold line
+        doc.rect(0, 276, pageWidth, 1, 'F');
+
+        doc.setTextColor(226, 232, 240);
+        doc.setFontSize(7.5);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Sivakasi Firestorm Crackers • High School Ground, Sullurpeta • Helplines: +91 9490042905 | +91 7981659594', pageWidth / 2, 283, { align: 'center' });
+        doc.text('Wishing you and your family a safe, prosperous, and joyful Diwali celebration!', pageWidth / 2, 288, { align: 'center' });
+
+        doc.setFontSize(7);
+        doc.setTextColor(148, 163, 184);
+        doc.text(`Page ${p} of ${totalPages}`, pageWidth - marginX, 292, { align: 'right' });
+        doc.text(`Estimate Ref: ${order.orderId}`, marginX, 292);
+    }
+
+    return doc;
+}
+
 function downloadPDF() {
-    const order = getOrderData();
+    if (cart.length === 0) {
+        showToast('error', 'Your cart is empty! Add items first to download quotation.');
+        return;
+    }
     if (!window.jspdf) {
         alert('PDF library is loading, please try again in a moment.');
         return;
     }
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    // Header
-    doc.setFillColor(220, 38, 38);
-    doc.rect(0, 0, 210, 30, 'F');
-    doc.setTextColor(255, 255, 255);
-    doc.setFontSize(18);
-    doc.setFont('helvetica', 'bold');
-    doc.text('SIVAKASI FIRESTORM CRACKERS', 14, 15);
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    doc.text('High School Ground, Sullurpeta | Tel: +91 94900 42905', 14, 22);
-
-    // Order Info
-    doc.setTextColor(15, 23, 42);
-    doc.setFontSize(11);
-    doc.setFont('helvetica', 'bold');
-    doc.text(`Order Ref: ${order.orderId}`, 14, 40);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Customer: ${order.name} (${order.phone})`, 14, 46);
-    doc.text(`Fulfillment: ${order.address}`, 14, 52);
-
-    const tableData = order.items.map((it, idx) => [
-        idx + 1,
-        it.name,
-        it.unit,
-        `Rs. ${it.price}`,
-        it.qty,
-        `Rs. ${it.total}`
-    ]);
-
-    doc.autoTable({
-        startY: 58,
-        head: [['#', 'Item Description', 'Packing', 'Rate', 'Qty', 'Total']],
-        body: tableData,
-        theme: 'striped',
-        headStyles: { fillColor: [220, 38, 38], textColor: 255, fontStyle: 'bold' }
-    });
-
-    const finalY = doc.lastAutoTable.finalY + 10;
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'bold');
-    doc.text(`Subtotal: Rs. ${order.subtotal}`, 140, finalY);
-    if (order.discount > 0) {
-        doc.text(`Discount: -Rs. ${order.discount}`, 140, finalY + 6);
-        doc.text(`Final Total: Rs. ${order.total}`, 140, finalY + 12);
-    } else {
-        doc.text(`Final Total: Rs. ${order.total}`, 140, finalY + 6);
-    }
-
-    doc.save(`Firestorm_Crackers_${order.orderId}.pdf`);
+    const order = getOrderData();
+    const doc = buildOrderQuotationPDF(order);
+    doc.save(`Sivakasi_Firestorm_Quotation_${order.orderId}.pdf`);
+    showToast('success', '📄 Official PDF Quotation Downloaded!');
 }
 
 // ==================== TOAST MESSAGES ====================
