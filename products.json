@@ -1,5 +1,167 @@
 [
   {
+    "id": 111,
+    "name": "3k Kids/Girls/Night Combo",
+    "category": "Firestorm Special Assorted Combos",
+    "price": 3000,
+    "originalPrice": 4239,
+    "unit": "1 Safe Festive Box (29 Varieties / 31+ Pcs)",
+    "description": "Best suitable for kids, girls, and families who want a colourful and 100% safe Diwali night! Packed with 29 hand-picked visual varieties including electric & color sparklers (7cm to 50cm), Deluxe Colour Koti, spinning ground chakkars, butterfly novelties, peacock fountain, photo flash, twinkling stars, sky lantern, and glowing water LED diya. Zero heavy bombs — pure magical night sparkle! Total individual retail value is ₹4,239 at a special festival price of ₹3,000 (Save ₹1,239 / 29% OFF)!",
+    "image": "assets/products/prod-111-3k-kids-girls-night-combo.jpg",
+    "stock": 40,
+    "badge": "Kids & Girls Special ✨",
+    "noCoupon": true,
+    "couponPolicy": "Coupons are not allowed on this combo as it is already at the best possible price. Happy Diwali 🪔",
+    "comboItems": [
+      {
+        "name": "7cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 30
+      },
+      {
+        "name": "7cm Color Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 30
+      },
+      {
+        "name": "10cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 53
+      },
+      {
+        "name": "10cm Color Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 53
+      },
+      {
+        "name": "15cm Electrical Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "15cm Color Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "15cm Red Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "15cm Green Sparkler",
+        "unit": "1 Pkt (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "30cm Electrical Sparkler",
+        "unit": "1 Pkt (5 Pcs) × 1",
+        "price": 105
+      },
+      {
+        "name": "30cm Green Sparkler",
+        "unit": "1 Pkt (5 Pcs) × 1",
+        "price": 105
+      },
+      {
+        "name": "30cm Red Sparkler",
+        "unit": "1 Pkt (5 Pcs) × 1",
+        "price": 105
+      },
+      {
+        "name": "Flower Pot Small (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "Flower Pot Special (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 165
+      },
+      {
+        "name": "Colour Koti (Deluxe) (10 pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 599
+      },
+      {
+        "name": "Ground Chakkar Big (10 pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 90
+      },
+      {
+        "name": "Spinner Deluxe - XL (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 449
+      },
+      {
+        "name": "Butterfly (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 290
+      },
+      {
+        "name": "Photo Flash (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 270
+      },
+      {
+        "name": "Peacock Small",
+        "unit": "1 Piece × 1",
+        "price": 330
+      },
+      {
+        "name": "Kit Kat (Venna Muddalu)",
+        "unit": "1 Box × 1",
+        "price": 70
+      },
+      {
+        "name": "Twinkling Star 1.5\" Inches (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 65
+      },
+      {
+        "name": "4\" Inches Twinkling Star (10 Pcs)",
+        "unit": "1 Box (10 Pcs) × 1",
+        "price": 170
+      },
+      {
+        "name": "Snake Eggs (Paamu Billalu - Small) - (10 Tblts)",
+        "unit": "1 Box (10 Tablets) × 1",
+        "price": 15
+      },
+      {
+        "name": "Electric Stones (Venna Muddalu)",
+        "unit": "1 Pkt × 1",
+        "price": 45
+      },
+      {
+        "name": "Sky Lantern",
+        "unit": "1 Piece × 2",
+        "price": 140
+      },
+      {
+        "name": "Water LED Diya",
+        "unit": "1 Piece × 1",
+        "price": 70
+      },
+      {
+        "name": "15\" Inches Pencil (5 Pcs)",
+        "unit": "1 Box (5 Pcs) × 1",
+        "price": 180
+      },
+      {
+        "name": "Color Matches - (10 Pkts - Assorted)",
+        "unit": "1 Bundle (10 Pkts) × 1",
+        "price": 150
+      },
+      {
+        "name": "50cm Sparkler (Color)",
+        "unit": "1 Pkt (5 Pcs) × 1",
+        "price": 210
+      }
+    ],
+    "subtotal": 4239
+  },
+  {
     "id": 109,
     "name": "5k Family Combo",
     "category": "Firestorm Special Assorted Combos",
