@@ -249,13 +249,13 @@
         "price": 480
       },
       {
-        "name": "Purukose Bomb",
-        "unit": "1 Pkt × 10",
+        "name": "Purukose Bomb (10 Pcs)",
+        "unit": "1 Pkt (10 Pcs) × 1",
         "price": 380
       },
       {
-        "name": "Nellore Guns",
-        "unit": "1 Pkt × 10",
+        "name": "Nellore Guns (10 Pcs)",
+        "unit": "1 Pkt (10 Pcs) × 1",
         "price": 150
       },
       {
@@ -491,13 +491,13 @@
         "price": 450
       },
       {
-        "name": "Purukose Bomb",
-        "unit": "1 Pkt × 10",
+        "name": "Purukose Bomb (10 Pcs)",
+        "unit": "1 Pkt (10 Pcs) × 1",
         "price": 380
       },
       {
-        "name": "Nellore Guns",
-        "unit": "1 Pkt × 10",
+        "name": "Nellore Guns (10 Pcs)",
+        "unit": "1 Pkt (10 Pcs) × 1",
         "price": 150
       },
       {
@@ -952,24 +952,24 @@
   },
   {
     "id": 31,
-    "name": "Purukose Bomb",
+    "name": "Purukose Bomb (10 Pcs)",
     "category": "Bombs",
-    "price": 38,
-    "originalPrice": 50,
-    "unit": "1 Piece",
-    "description": "Traditional Sivakasi Purikosu string bomb with crisp snapping burst sound (1 piece).",
+    "price": 380,
+    "originalPrice": 500,
+    "unit": "1 Pkt (10 Pcs)",
+    "description": "Pack of 10 traditional Sivakasi Purikosu string bombs with crisp snapping burst sound.",
     "image": "",
     "stock": 50,
     "badge": ""
   },
   {
     "id": 32,
-    "name": "Nellore Guns",
+    "name": "Nellore Guns (10 Pcs)",
     "category": "Bombs",
-    "price": 15,
-    "originalPrice": 20,
-    "unit": "1 Piece",
-    "description": "Pocket-friendly Nellore Guns single piece producing quick, fun explosive pop for celebrations.",
+    "price": 150,
+    "originalPrice": 200,
+    "unit": "1 Pkt (10 Pcs)",
+    "description": "Pack of 10 pocket-friendly Nellore Guns producing quick, fun explosive pops for celebrations.",
     "image": "",
     "stock": 50,
     "badge": ""
