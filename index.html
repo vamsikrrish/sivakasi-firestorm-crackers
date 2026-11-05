@@ -2900,10 +2900,10 @@ input, select, textarea { font-family: var(--font-sans); }
         <div class="privilege-grid">
             <div class="privilege-card">
                 <div class="privilege-crest"><i class="fas fa-percent"></i></div>
-                <div class="privilege-savings">10% OFF</div>
+                <div class="privilege-savings">15% OFF</div>
                 <h3>Diwali Festival Discount</h3>
-                <p>Flat 10% discount on all crackers. Contact our WhatsApp helpdesk to get your coupon code.</p>
-                <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20the%20Diwali%20Special%2010%25%20Discount%20Coupon%20Code" target="_blank" class="btn-whatsapp-lux">
+                <p>Flat 15% discount on all crackers with code DIWALI2026. Use at checkout or message us on WhatsApp.</p>
+                <a href="https://wa.me/919490042905?text=Hi!%20Please%20share%20the%20Diwali%20Special%2015%25%20Discount%20Coupon%20Code" target="_blank" class="btn-whatsapp-lux">
                     <i class="fab fa-whatsapp"></i> Request Code on WhatsApp
                 </a>
             </div>
@@ -3296,10 +3296,69 @@ let filteredProducts = [...products];
 
 // ==================== COUPON REGISTRY ====================
 const COUPONS = {
-    'DIWALI2026': { type: 'percent', value: 10, minOrder: 0, desc: '10% OFF – Diwali Festival Special' },
-    'FIRE20':     { type: 'percent', value: 20, minOrder: 2000, desc: '20% OFF on Orders above ₹2,000' },
-    'FAMILY15':   { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF on Family Gift Boxes' },
-    'FIRST100':   { type: 'flat',    value: 100, minOrder: 500, desc: '₹100 OFF on Min. Order ₹500' },
+    // ==================== COMMON (15% OFF) ====================
+    'DIWALI2026': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Common Diwali Special' },
+    'FIRE20': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Common Festive Special' },
+
+    // ==================== 15% PERSONAL SAVINGS ====================
+    'VAMSISAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Vamsi Special Savings' },
+    'UJWALSAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Ujwal Special Savings' },
+    'MAHESSAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Mahes Special Savings' },
+    'SAMISAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Sami Special Savings' },
+    'AKASHSAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Akash Special Savings' },
+    'VINAYSAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Vinay Special Savings' },
+    'KOTISAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Koti Special Savings' },
+    'SRAVASAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Srava Special Savings' },
+    'CHAITSAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Chait Special Savings' },
+    'GIRISAVE15': { type: 'percent', value: 15, minOrder: 0, desc: '15% OFF – Giri Special Savings' },
+
+    // ==================== 20% PARTNER DEALS ====================
+    'VAMSIDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Vamsi Partner Deal' },
+    'UJWALDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Ujwal Partner Deal' },
+    'MAHESDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Mahes Partner Deal' },
+    'SAMIDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Sami Partner Deal' },
+    'AKASHDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Akash Partner Deal' },
+    'VINAYDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Vinay Partner Deal' },
+    'KOTIDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Koti Partner Deal' },
+    'SRAVADEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Srava Partner Deal' },
+    'CHAITDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Chait Partner Deal' },
+    'GIRIDEAL20': { type: 'percent', value: 20, minOrder: 0, desc: '20% OFF – Giri Partner Deal' },
+
+    // ==================== 25% FESTIVE BOOST ====================
+    'VAMSIBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Vamsi Festive Boost' },
+    'UJWALBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Ujwal Festive Boost' },
+    'MAHESBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Mahes Festive Boost' },
+    'SAMIBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Sami Festive Boost' },
+    'AKASHBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Akash Festive Boost' },
+    'VINAYBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Vinay Festive Boost' },
+    'KOTIBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Koti Festive Boost' },
+    'SRAVABOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Srava Festive Boost' },
+    'CHAITBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Chait Festive Boost' },
+    'GIRIBOOST25': { type: 'percent', value: 25, minOrder: 0, desc: '25% OFF – Giri Festive Boost' },
+
+    // ==================== 30% VIP PRIVILEGE ====================
+    'VAMSIVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Vamsi VIP Privilege' },
+    'UJWALVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Ujwal VIP Privilege' },
+    'MAHESVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Mahes VIP Privilege' },
+    'SAMIVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Sami VIP Privilege' },
+    'AKASHVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Akash VIP Privilege' },
+    'VINAYVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Vinay VIP Privilege' },
+    'KOTIVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Koti VIP Privilege' },
+    'SRAVAVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Srava VIP Privilege' },
+    'CHAITVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Chait VIP Privilege' },
+    'GIRIVIPX30': { type: 'percent', value: 30, minOrder: 0, desc: '30% OFF – Giri VIP Privilege' },
+
+    // ==================== 35% MEGA EXCLUSIVE ====================
+    'VAMSIX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Vamsi Special Mega Discount' },
+    'UJWALX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Ujwal Special Mega Discount' },
+    'MAHESX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Mahes Special Mega Discount' },
+    'SAMIX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Sami Special Mega Discount' },
+    'AKASHX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Akash Special Mega Discount' },
+    'VINAYX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Vinay Special Mega Discount' },
+    'KOTIX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Koti Special Mega Discount' },
+    'SRAVAX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Srava Special Mega Discount' },
+    'CHAITX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Chait Special Mega Discount' },
+    'GIRIX7Q935': { type: 'percent', value: 35, minOrder: 0, desc: '35% OFF – Giri Special Mega Discount' },
 };
 
 const CATEGORY_EMOJIS = {
