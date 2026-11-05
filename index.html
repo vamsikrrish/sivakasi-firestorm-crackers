@@ -79,7 +79,7 @@ html {
     font-size: 16px;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 body {
     font-family: var(--font-sans);
@@ -88,7 +88,7 @@ body {
     line-height: 1.6;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
     -webkit-font-smoothing: antialiased;
 }
@@ -827,9 +827,49 @@ input, select, textarea { font-family: var(--font-sans); }
     padding: 0.85rem 1.15rem;
     box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.04);
     margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 10;
+    position: sticky;
+    top: 60px;
+    z-index: 100;
     scroll-margin-top: 80px;
+    transition: padding 0.2s ease, border-radius 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, top 0.25s ease;
+}
+
+/* Stuck Mode on Desktop */
+.filter-console.is-stuck {
+    padding: 0.4rem 1.15rem;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(220, 38, 38, 0.15);
+}
+.filter-console.is-stuck .category-tags-row,
+.filter-console.is-stuck .filter-bottom-bar {
+    display: none !important;
+}
+.filter-console.is-stuck .filter-top-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+.filter-console.is-stuck .filter-search-box {
+    flex: 1.1;
+    min-width: 220px;
+}
+.filter-console.is-stuck .filter-selects-group {
+    flex: 1.8;
+}
+.filter-console.is-stuck .stuck-view-toggle {
+    display: inline-flex !important;
+    flex-shrink: 0;
+}
+.stuck-view-toggle {
+    display: none;
+}
+.mobile-sticky-bar {
+    display: none;
 }
 .filter-top-row {
     display: flex;
@@ -2085,6 +2125,213 @@ input, select, textarea { font-family: var(--font-sans); }
     padding: 1.5rem; box-shadow: 0 25px 50px rgba(0,0,0,0.2);
 }
 
+/* ==================== MOBILE FILTER & SORT BOTTOM SHEETS ==================== */
+.bottom-sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 4000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.bottom-sheet-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+.bottom-sheet-content {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 540px;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.22);
+    display: flex;
+    flex-direction: column;
+    max-height: 84vh;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bottom-sheet-overlay.open .bottom-sheet-content {
+    transform: translateY(0);
+}
+.bottom-sheet-drag-handle {
+    width: 42px;
+    height: 4px;
+    background: #CBD5E1;
+    border-radius: 2px;
+    margin: 10px auto 4px;
+}
+.bottom-sheet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.bottom-sheet-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+.sheet-count-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.2rem 0.55rem;
+    background: #FEF2F2;
+    color: var(--fire-red);
+    border-radius: var(--radius-pill);
+    border: 1px solid #FECACA;
+}
+.bottom-sheet-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.bottom-sheet-close:hover {
+    background: #FEE2E2;
+    color: var(--fire-red);
+}
+.bottom-sheet-body {
+    padding: 1rem 1.2rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+}
+.sheet-section {
+    margin-bottom: 1.25rem;
+}
+.sheet-section-title {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.65rem;
+}
+.sheet-chips-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+.sheet-chip {
+    padding: 0.45rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg-subtle);
+    border: 1.5px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.sheet-chip.active {
+    background: var(--fire-gradient);
+    border-color: var(--fire-red);
+    color: #FFFFFF;
+    box-shadow: 0 3px 8px rgba(220, 38, 38, 0.25);
+}
+.bottom-sheet-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.2rem;
+    border-top: 1px solid var(--border-subtle);
+    background: #FFFFFF;
+}
+.sheet-btn-reset {
+    flex: 1;
+    padding: 0.72rem;
+    border-radius: var(--radius-md);
+    background: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+.sheet-btn-reset:hover {
+    background: #E2E8F0;
+    color: var(--text-primary);
+}
+.sheet-btn-apply {
+    flex: 2;
+    padding: 0.72rem;
+    border-radius: var(--radius-md);
+    background: var(--fire-gradient);
+    border: none;
+    color: #FFFFFF;
+    font-size: 0.92rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+.sheet-btn-apply:hover {
+    background: var(--fire-gradient-hover);
+    transform: translateY(-1px);
+}
+
+/* Sort Options */
+.sort-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+.sort-option-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius-md);
+    background: var(--bg-subtle);
+    border: 1.5px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    text-align: left;
+}
+.sort-option-btn .checkmark-icon {
+    display: none;
+    color: var(--fire-red);
+    font-size: 0.95rem;
+}
+.sort-option-btn.active {
+    background: #FEF2F2;
+    border-color: #FECACA;
+    color: var(--fire-red-dark);
+}
+.sort-option-btn.active .checkmark-icon {
+    display: inline-block;
+}
+
 /* Responsive Rules */
 @media (max-width: 1024px) {
     .hero-wrapper { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
@@ -2175,18 +2422,187 @@ input, select, textarea { font-family: var(--font-sans); }
 
 
 
+    /* Headroom & Mobile Sticky Header Transition */
+    .navbar {
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    body.scroll-down .navbar {
+        transform: translateY(-100%);
+    }
+    body.scroll-down .filter-console.is-stuck {
+        top: 0px !important;
+    }
+    body.scroll-up .navbar {
+        transform: translateY(0);
+    }
+    body.scroll-up .filter-console.is-stuck {
+        top: 52px !important;
+    }
+
     /* Section & Product Catalog */
     .section { padding: 2.5rem 1rem; max-width: 100%; }
     #products-section { padding: 1.5rem 0.85rem 3rem; max-width: 100%; }
     .section-title { font-size: 1.85rem; }
     .section-subtitle { font-size: 0.92rem; }
     .filter-console {
+        position: sticky;
+        top: 52px;
+        z-index: 100;
         padding: 0.65rem 0.75rem;
         border-radius: var(--radius-md);
         margin-bottom: 1.2rem;
         width: 100%;
         box-sizing: border-box;
+        transition: top 0.25s ease, padding 0.2s ease, box-shadow 0.2s ease;
     }
+    .filter-console.is-stuck {
+        padding: 0.32rem 0.65rem;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(220, 38, 38, 0.2);
+    }
+    .filter-console.is-stuck .filter-top-row,
+    .filter-console.is-stuck .category-tags-row,
+    .filter-console.is-stuck .filter-bottom-bar {
+        display: none !important;
+    }
+    .filter-console.is-stuck .mobile-sticky-bar {
+        display: flex !important;
+    }
+
+    /* Mobile Sticky Bar Inside Filter Console */
+    .mobile-sticky-bar {
+        display: none;
+        align-items: center;
+        gap: 0.35rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .sticky-search-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+        background: var(--bg-subtle);
+        border: 1.5px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 0 0.5rem;
+        height: 36px;
+        box-sizing: border-box;
+        transition: all 0.2s ease;
+    }
+    .sticky-search-wrap:focus-within {
+        background: #FFFFFF;
+        border-color: var(--fire-red);
+        box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.12);
+    }
+    .sticky-search-wrap i {
+        color: var(--fire-red);
+        font-size: 0.8rem;
+        margin-right: 0.35rem;
+        flex-shrink: 0;
+    }
+    .sticky-search-wrap input {
+        width: 100%;
+        border: none;
+        background: transparent;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        outline: none;
+        padding: 0;
+        font-family: inherit;
+    }
+    .sticky-clear-btn {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #CBD5E1;
+        color: #475569;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.62rem;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    .sticky-action-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        height: 36px;
+        padding: 0 0.6rem;
+        background: var(--bg-subtle);
+        border: 1.5px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        font-size: 0.76rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        font-family: inherit;
+        flex-shrink: 0;
+        position: relative;
+    }
+    .sticky-action-btn:hover, .sticky-action-btn.active {
+        background: #FEF2F2;
+        border-color: #FECACA;
+        color: var(--fire-red-dark);
+    }
+    .sticky-filter-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: var(--fire-gradient);
+        color: #FFFFFF;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        font-size: 0.62rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(220, 38, 38, 0.4);
+        border: 1.5px solid #FFFFFF;
+    }
+    .sticky-cart-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        padding: 0 0.65rem;
+        background: var(--fire-gradient);
+        border: none;
+        border-radius: var(--radius-md);
+        color: #FFFFFF;
+        font-size: 0.85rem;
+        cursor: pointer;
+        flex-shrink: 0;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    }
+    .sticky-cart-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #000000;
+        color: #FFFFFF;
+        min-width: 17px;
+        height: 17px;
+        padding: 0 3px;
+        border-radius: var(--radius-pill);
+        font-size: 0.62rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1.5px solid #FFFFFF;
+    }
+
     .filter-top-row {
         flex-direction: column;
         gap: 0.45rem;
@@ -3052,8 +3468,12 @@ input, select, textarea { font-family: var(--font-sans); }
             </div>
         </div>
 
-        <!-- Static Catalog Filter Console -->
+        <!-- Sentinel for detecting when filter console sticks -->
+        <div id="filter-sentinel" style="position:relative; top:-65px; height:1px; pointer-events:none;"></div>
+
+        <!-- Sticky Floating Console -->
         <div class="filter-console" id="filter-console">
+            <!-- Normal desktop & resting mobile top row -->
             <div class="filter-top-row">
                 <div class="filter-search-box">
                     <i class="fas fa-search search-lead-icon"></i>
@@ -3090,7 +3510,39 @@ input, select, textarea { font-family: var(--font-sans); }
                         <i class="fas fa-undo-alt"></i> <span>Reset</span>
                     </button>
                 </div>
+                <!-- Compact view toggle shown only when stuck on desktop -->
+                <div class="view-toggle-wrap stuck-view-toggle">
+                    <button type="button" class="view-toggle-btn active" onclick="setViewMode('card')" title="Card Grid View">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button type="button" class="view-toggle-btn" onclick="setViewMode('list')" title="Compact List View">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
             </div>
+
+            <!-- Mobile Ultra-Compact Sticky Bar (Active only when .is-stuck on mobile) -->
+            <div class="mobile-sticky-bar" id="mobile-sticky-bar">
+                <div class="sticky-search-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="sticky-search-input" placeholder="Search 111+ crackers..." oninput="handleStickySearch(this.value)">
+                    <button type="button" class="sticky-clear-btn" id="sticky-clear-btn" onclick="clearSearchInput()" style="display:none;"><i class="fas fa-times"></i></button>
+                </div>
+                <button type="button" class="sticky-action-btn" id="sticky-filter-btn" onclick="openMobileFilterSheet()" title="Filter crackers">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Filter</span>
+                    <span class="sticky-filter-badge" id="sticky-filter-badge" style="display:none;">0</span>
+                </button>
+                <button type="button" class="sticky-action-btn" id="sticky-sort-btn" onclick="openMobileSortSheet()" title="Sort crackers">
+                    <i class="fas fa-sort-amount-down"></i>
+                    <span>Sort</span>
+                </button>
+                <button type="button" class="sticky-cart-btn" onclick="openCart()" title="View Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="sticky-cart-count" id="sticky-cart-count">0</span>
+                </button>
+            </div>
+
             <div class="category-tags-row" id="filter-tags"></div>
             <div class="filter-bottom-bar">
                 <div class="results-info-group">
@@ -3505,6 +3957,81 @@ input, select, textarea { font-family: var(--font-sans); }
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!-- Mobile Filter Bottom Sheet -->
+    <div class="bottom-sheet-overlay" id="mobile-filter-sheet" onclick="closeMobileFilterSheet(event)">
+        <div class="bottom-sheet-content" onclick="event.stopPropagation()">
+            <div class="bottom-sheet-drag-handle"></div>
+            <div class="bottom-sheet-header">
+                <div class="bottom-sheet-title">
+                    <i class="fas fa-sliders-h" style="color:var(--fire-red);"></i>
+                    <span>Filter Crackers</span>
+                    <span class="sheet-count-tag" id="sheet-active-tag" style="display:none;">0 active</span>
+                </div>
+                <button type="button" class="bottom-sheet-close" onclick="closeMobileFilterSheet()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="bottom-sheet-body">
+                <div class="sheet-section">
+                    <div class="sheet-section-title">Categories</div>
+                    <div class="sheet-chips-grid" id="sheet-category-chips"></div>
+                </div>
+                <div class="sheet-section">
+                    <div class="sheet-section-title">Price Range</div>
+                    <div class="sheet-chips-grid" id="sheet-price-chips">
+                        <button type="button" class="sheet-chip active" data-price="" onclick="setSheetPrice('')">All Prices</button>
+                        <button type="button" class="sheet-chip" data-price="0-50" onclick="setSheetPrice('0-50')">Under ₹50</button>
+                        <button type="button" class="sheet-chip" data-price="50-100" onclick="setSheetPrice('50-100')">₹50 – ₹100</button>
+                        <button type="button" class="sheet-chip" data-price="100-250" onclick="setSheetPrice('100-250')">₹100 – ₹250</button>
+                        <button type="button" class="sheet-chip" data-price="250-500" onclick="setSheetPrice('250-500')">₹250 – ₹500</button>
+                        <button type="button" class="sheet-chip" data-price="500-1000" onclick="setSheetPrice('500-1000')">₹500 – ₹1,000</button>
+                        <button type="button" class="sheet-chip" data-price="1000-99999" onclick="setSheetPrice('1000-99999')">₹1,000+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-sheet-footer">
+                <button type="button" class="sheet-btn-reset" onclick="resetAllFiltersFromSheet()">Reset All</button>
+                <button type="button" class="sheet-btn-apply" onclick="applyMobileFilterSheet()">Apply Filters (<span id="sheet-apply-count">111</span>)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sort Bottom Sheet -->
+    <div class="bottom-sheet-overlay" id="mobile-sort-sheet" onclick="closeMobileSortSheet(event)">
+        <div class="bottom-sheet-content" onclick="event.stopPropagation()">
+            <div class="bottom-sheet-drag-handle"></div>
+            <div class="bottom-sheet-header">
+                <div class="bottom-sheet-title">
+                    <i class="fas fa-sort-amount-down" style="color:var(--fire-red);"></i>
+                    <span>Sort Crackers</span>
+                </div>
+                <button type="button" class="bottom-sheet-close" onclick="closeMobileSortSheet()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="bottom-sheet-body" style="padding: 0.8rem 1.2rem 1.5rem;">
+                <div class="sort-options-list">
+                    <button type="button" class="sort-option-btn active" data-sort="" onclick="selectSortOption('')">
+                        <span>✨ Featured / Default</span>
+                        <i class="fas fa-check checkmark-icon"></i>
+                    </button>
+                    <button type="button" class="sort-option-btn" data-sort="price-asc" onclick="selectSortOption('price-asc')">
+                        <span>🏷️ Price: Low to High</span>
+                        <i class="fas fa-check checkmark-icon"></i>
+                    </button>
+                    <button type="button" class="sort-option-btn" data-sort="price-desc" onclick="selectSortOption('price-desc')">
+                        <span>💰 Price: High to Low</span>
+                        <i class="fas fa-check checkmark-icon"></i>
+                    </button>
+                    <button type="button" class="sort-option-btn" data-sort="name-asc" onclick="selectSortOption('name-asc')">
+                        <span>🔤 Name: A to Z</span>
+                        <i class="fas fa-check checkmark-icon"></i>
+                    </button>
+                    <button type="button" class="sort-option-btn" data-sort="name-desc" onclick="selectSortOption('name-desc')">
+                        <span>🔤 Name: Z to A</span>
+                        <i class="fas fa-check checkmark-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notifications -->
     <div class="toast-container" id="toast-container"></div>
 
@@ -3853,6 +4380,10 @@ function initApp() {
     try {
         setupNavbar();
     } catch(e) { console.warn("Navbar init:", e); }
+
+    try {
+        initStickyFilterConsole();
+    } catch(e) { console.warn("Sticky filter init:", e); }
 
     try {
         initVisitTracker();
@@ -4406,27 +4937,46 @@ function filterByCategory(cat) {
 }
 
 function handleSearchInputChange(val) {
+    const stickyInput = document.getElementById('sticky-search-input');
+    if (stickyInput) stickyInput.value = val;
     const clearBtn = document.getElementById('search-clear-btn');
     if (clearBtn) clearBtn.style.display = val && val.trim() ? 'flex' : 'none';
+    const stickyClearBtn = document.getElementById('sticky-clear-btn');
+    if (stickyClearBtn) stickyClearBtn.style.display = val && val.trim() ? 'flex' : 'none';
+    filterProducts();
+}
+
+function handleStickySearch(val) {
+    const mainInput = document.getElementById('search-input');
+    if (mainInput) mainInput.value = val;
+    const clearBtn = document.getElementById('search-clear-btn');
+    if (clearBtn) clearBtn.style.display = val && val.trim() ? 'flex' : 'none';
+    const stickyClearBtn = document.getElementById('sticky-clear-btn');
+    if (stickyClearBtn) stickyClearBtn.style.display = val && val.trim() ? 'flex' : 'none';
     filterProducts();
 }
 
 function clearSearchInput() {
     const input = document.getElementById('search-input');
-    if (input) {
-        input.value = '';
-        input.focus();
-    }
+    if (input) input.value = '';
+    const stickyInput = document.getElementById('sticky-search-input');
+    if (stickyInput) stickyInput.value = '';
     const clearBtn = document.getElementById('search-clear-btn');
     if (clearBtn) clearBtn.style.display = 'none';
+    const stickyClearBtn = document.getElementById('sticky-clear-btn');
+    if (stickyClearBtn) stickyClearBtn.style.display = 'none';
     filterProducts();
 }
 
 function resetAllFilters() {
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.value = '';
+    const stickyInput = document.getElementById('sticky-search-input');
+    if (stickyInput) stickyInput.value = '';
     const clearBtn = document.getElementById('search-clear-btn');
     if (clearBtn) clearBtn.style.display = 'none';
+    const stickyClearBtn = document.getElementById('sticky-clear-btn');
+    if (stickyClearBtn) stickyClearBtn.style.display = 'none';
 
     const catFilter = document.getElementById('category-filter');
     if (catFilter) catFilter.value = '';
@@ -4450,9 +5000,178 @@ function applySearchModalToCatalog(query) {
         const clearBtn = document.getElementById('search-clear-btn');
         if (clearBtn) clearBtn.style.display = 'flex';
     }
+    const stickyInput = document.getElementById('sticky-search-input');
+    if (stickyInput) {
+        stickyInput.value = query;
+        const stickyClearBtn = document.getElementById('sticky-clear-btn');
+        if (stickyClearBtn) stickyClearBtn.style.display = 'flex';
+    }
     filterProducts();
     const target = document.getElementById('products-section');
     if (target) target.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ==================== STICKY FILTER OBSERVER & HEADROOM ====================
+function initStickyFilterConsole() {
+    const sentinel = document.getElementById('filter-sentinel');
+    const filterConsole = document.getElementById('filter-console');
+
+    // 1. Intersection Observer for Stuck Mode
+    if (sentinel && filterConsole && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const isStuck = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+                filterConsole.classList.toggle('is-stuck', isStuck);
+            });
+        }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 });
+        observer.observe(sentinel);
+    }
+
+    // 2. Headroom Scroll Listener (Mobile scroll up/down navbar)
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScrollY = window.scrollY;
+                const scrollDiff = currentScrollY - lastScrollY;
+
+                // Reliable fallback check for sticky state
+                if (filterConsole) {
+                    const rect = filterConsole.getBoundingClientRect();
+                    const isMobile = window.innerWidth <= 768;
+                    const threshold = isMobile ? 55 : 65;
+                    const isStuck = rect.top <= threshold + 2;
+                    if (currentScrollY > 1200) {
+                        filterConsole.classList.toggle('is-stuck', isStuck);
+                    }
+                }
+
+                if (window.innerWidth <= 768) {
+                    if (scrollDiff > 8 && currentScrollY > 200) {
+                        // Scrolling DOWN -> tuck navbar, slide sticky bar to top: 0
+                        document.body.classList.add('scroll-down');
+                        document.body.classList.remove('scroll-up');
+                    } else if (scrollDiff < -6 || currentScrollY < 150) {
+                        // Scrolling UP -> reveal navbar
+                        document.body.classList.add('scroll-up');
+                        document.body.classList.remove('scroll-down');
+                    }
+                }
+
+                lastScrollY = Math.max(0, currentScrollY);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+// ==================== MOBILE FILTER & SORT BOTTOM SHEETS ====================
+function openMobileFilterSheet() {
+    renderSheetCategories();
+    renderSheetPrices();
+    updateSheetApplyCount();
+    const sheet = document.getElementById('mobile-filter-sheet');
+    if (sheet) sheet.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileFilterSheet(e) {
+    if (e && e.target !== e.currentTarget) return;
+    const sheet = document.getElementById('mobile-filter-sheet');
+    if (sheet) sheet.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function renderSheetCategories() {
+    const container = document.getElementById('sheet-category-chips');
+    if (!container) return;
+    const currentCat = document.getElementById('category-filter').value;
+    const cats = [...new Set(products.map(p => p.category))];
+
+    let html = `<button type="button" class="sheet-chip ${!currentCat ? 'active' : ''}" onclick="setSheetCategory('')">🎆 All Crackers (${products.length})</button>`;
+    cats.forEach(cat => {
+        const count = products.filter(p => p.category === cat).length;
+        const isActive = currentCat === cat;
+        html += `<button type="button" class="sheet-chip ${isActive ? 'active' : ''}" onclick="setSheetCategory('${cat}')">${CATEGORY_EMOJIS[cat] || '✨'} ${cat} (${count})</button>`;
+    });
+    container.innerHTML = html;
+}
+
+function renderSheetPrices() {
+    const currentPrice = document.getElementById('price-filter').value;
+    document.querySelectorAll('#sheet-price-chips .sheet-chip').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-price') === currentPrice);
+    });
+}
+
+function setSheetCategory(cat) {
+    const sel = document.getElementById('category-filter');
+    if (sel) sel.value = cat;
+    renderSheetCategories();
+    filterProducts();
+    updateSheetApplyCount();
+}
+
+function setSheetPrice(priceRange) {
+    const sel = document.getElementById('price-filter');
+    if (sel) sel.value = priceRange;
+    renderSheetPrices();
+    filterProducts();
+    updateSheetApplyCount();
+}
+
+function updateSheetApplyCount() {
+    const countEl = document.getElementById('sheet-apply-count');
+    if (countEl) countEl.textContent = filteredProducts.length;
+    const tagEl = document.getElementById('sheet-active-tag');
+    let activeCount = 0;
+    if (document.getElementById('category-filter').value) activeCount++;
+    if (document.getElementById('price-filter').value) activeCount++;
+    if (tagEl) {
+        tagEl.textContent = `${activeCount} applied`;
+        tagEl.style.display = activeCount > 0 ? 'inline-block' : 'none';
+    }
+}
+
+function applyMobileFilterSheet() {
+    closeMobileFilterSheet();
+    showToast('success', `Showing ${filteredProducts.length} matching crackers`);
+}
+
+function resetAllFiltersFromSheet() {
+    resetAllFilters();
+    renderSheetCategories();
+    renderSheetPrices();
+    updateSheetApplyCount();
+    closeMobileFilterSheet();
+}
+
+function openMobileSortSheet() {
+    const currentSort = document.getElementById('sort-filter').value;
+    document.querySelectorAll('.sort-option-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-sort') === currentSort);
+    });
+    const sheet = document.getElementById('mobile-sort-sheet');
+    if (sheet) sheet.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileSortSheet(e) {
+    if (e && e.target !== e.currentTarget) return;
+    const sheet = document.getElementById('mobile-sort-sheet');
+    if (sheet) sheet.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function selectSortOption(val) {
+    const sel = document.getElementById('sort-filter');
+    if (sel) sel.value = val;
+    filterProducts();
+    closeMobileSortSheet();
+    showToast('success', '✨ Sort applied');
 }
 
 // ==================== FILTERING & SORTING ====================
@@ -4469,6 +5188,21 @@ function filterProducts() {
     if (resetMobile) resetMobile.style.display = hasActiveFilters ? 'inline-flex' : 'none';
     const clearBtn = document.getElementById('search-clear-btn');
     if (clearBtn) clearBtn.style.display = search ? 'flex' : 'none';
+    const stickyClearBtn = document.getElementById('sticky-clear-btn');
+    if (stickyClearBtn) stickyClearBtn.style.display = search ? 'flex' : 'none';
+
+    let activeFilterCount = 0;
+    if (category) activeFilterCount++;
+    if (priceRange) activeFilterCount++;
+    const stickyFilterBadge = document.getElementById('sticky-filter-badge');
+    if (stickyFilterBadge) {
+        stickyFilterBadge.textContent = activeFilterCount;
+        stickyFilterBadge.style.display = activeFilterCount > 0 ? 'flex' : 'none';
+    }
+    const stickyFilterBtn = document.getElementById('sticky-filter-btn');
+    if (stickyFilterBtn) {
+        stickyFilterBtn.classList.toggle('active', activeFilterCount > 0);
+    }
 
     filteredProducts = products.filter(p => {
         const matchSearch = !search ||
@@ -4648,6 +5382,12 @@ function updateCart() {
         countEl.classList.remove('bump');
         void countEl.offsetWidth; // trigger reflow
         countEl.classList.add('bump');
+    }
+
+    const stickyCartEl = document.getElementById('sticky-cart-count');
+    if (stickyCartEl) {
+        stickyCartEl.textContent = totalItems;
+        stickyCartEl.style.display = totalItems > 0 ? 'flex' : 'none';
     }
 
     // Navbar cart button pulse animation
