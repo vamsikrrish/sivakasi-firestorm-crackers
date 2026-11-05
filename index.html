@@ -4693,8 +4693,105 @@ function getOrderData() {
     return { name, phone, email, address, notes, items, subtotal, discount, couponCode, total, orderDate, orderTime, orderId, fulfillment };
 }
 
-// ==================== PROFESSIONAL ORDER QUOTATION PDF BUILDER ====================
-function buildOrderPDFDoc(order) {
+// ==================== WHATSAPP DISPATCH ====================
+function sendWhatsApp() {
+    const name = document.getElementById('cust-name').value.trim();
+    const phone = document.getElementById('cust-phone').value.trim();
+    if (!name || !phone) {
+        showToast('error', 'Please enter your Name and Mobile Number.');
+        return;
+    }
+
+    const order = getOrderData();
+    let msg = `🪔 *SIVAKASI FIRESTORM CRACKERS*
+`;
+    msg += `✨ *DIWALI 2026 ORDER ESTIMATE*
+`;
+    msg += `━━━━━━━━━━━━━━━━━━━━━
+`;
+    msg += `📅 Date: ${order.orderDate} | ${order.orderTime}
+`;
+    msg += `🆔 Order Ref: ${order.orderId}
+
+`;
+    msg += `👤 *Customer Details:*
+`;
+    msg += `Name: ${order.name}
+`;
+    msg += `Phone: ${order.phone}
+`;
+    if (order.email) msg += `Email: ${order.email}
+`;
+    msg += `Fulfillment: ${order.address}
+`;
+    msg += `
+📦 *Ordered Items:*
+`;
+    msg += `━━━━━━━━━━━━━━━━━━━━━
+`;
+
+    order.items.forEach((item, i) => {
+        msg += `${i + 1}. ${item.name}
+`;
+        msg += `   ${item.unit} × ${item.qty} = ₹${item.total.toLocaleString('en-IN')}
+`;
+    });
+
+    msg += `━━━━━━━━━━━━━━━━━━━━━
+`;
+    msg += `💰 Subtotal: ₹${order.subtotal.toLocaleString('en-IN')}
+`;
+    if (order.discount > 0) {
+        msg += `🏷️ Discount Applied (${order.couponCode}): -₹${order.discount.toLocaleString('en-IN')}
+`;
+    }
+    msg += `✅ *TOTAL PAYABLE: ₹${order.total.toLocaleString('en-IN')}*
+
+`;
+    if (order.notes) msg += `📝 Special Requests: ${order.notes}
+
+`;
+
+    msg += `📸 *PAYMENT VERIFICATION:*
+Please send your UPI Payment Screenshot + UTR / Transaction No. to this WhatsApp chat to confirm dispatch.
+
+🚚 *DELIVERY / PICKUP POLICY:*
+• Home delivery is available strictly in Sullurpeta, AP (Commences 6th Nov 2026).
+• Store pickup available at Govt High School Ground stall (Shop No. coming soon!).
+• Product images are for reference; actual packaging & brand wrappers vary by fresh batch stock.
+
+⚠️ *SAFETY ADVISORY:*
+Beware of online fraud. Official payments accepted strictly to UPI ID: 9490042905@ybl. Helplines: 94900 42905 / 79816 59594.
+Wishing you & your family a Safe & Happy Diwali! 🪔✨`;
+
+    const encoded = encodeURIComponent(msg);
+    window.open(`https://wa.me/919490042905?text=${encoded}`, '_blank');
+
+    // Automatically trigger PDF quotation download upon sending order on WhatsApp
+    try {
+        generatePDF(false);
+    } catch(err) {
+        console.warn('Auto PDF download error:', err);
+    }
+
+    // Launch High Definition Diwali Fireworks Volley!
+    window.launchCelebrationVolley(5);
+    showOrderSuccess();
+}
+
+// ==================== 1-CLICK INSTANT CART QUOTATION PDF ====================
+function downloadCartQuotationPDF() {
+    if (cart.length === 0) {
+        showToast('error', 'Your cart is empty! Add items first to download quotation.');
+        return;
+    }
+    // Download PDF quotation directly without closing the cart or clearing items
+    generatePDF(false);
+}
+
+// ==================== PROFESSIONAL ORDER QUOTATION PDF ENGINE ====================
+function generatePDF(showSuccessModal = false) {
+    const order = getOrderData();
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -4823,150 +4920,9 @@ function buildOrderPDFDoc(order) {
     doc.text('Sivakasi Firestorm Crackers • High School Ground, Sullurpeta • Hotlines: +91 9490042905 | +91 7981659594', 105, 284, { align: 'center' });
     doc.text('Wishing you and your family a safe, prosperous, and joyful Diwali celebration!', 105, 290, { align: 'center' });
 
-    return doc;
-}
-
-// ==================== WHATSAPP DISPATCH (MOBILE PDF SHARE + DESKTOP TEXT) ====================
-async function sendWhatsApp() {
-    const name = document.getElementById('cust-name').value.trim();
-    const phone = document.getElementById('cust-phone').value.trim();
-    if (!name || !phone) {
-        showToast('error', 'Please enter your Name and Mobile Number.');
-        return;
-    }
-
-    const order = getOrderData();
-
-    // Check if on mobile device supporting native file-sharing
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-        || (window.innerWidth <= 768 && ('ontouchstart' in window || navigator.maxTouchPoints > 0));
-
-    if (isMobile && typeof navigator.canShare === 'function' && typeof File !== 'undefined' && window.jspdf) {
-        try {
-            const doc = buildOrderPDFDoc(order);
-            const pdfBlob = doc.output('blob');
-            const pdfFileName = `Sivakasi_Firestorm_Order_${order.orderId}.pdf`;
-            const pdfFile = new File([pdfBlob], pdfFileName, { type: 'application/pdf' });
-
-            if (navigator.canShare({ files: [pdfFile] })) {
-                const shareText = `🪔 *SIVAKASI FIRESTORM CRACKERS (Sullurpeta)*\n` +
-                    `✨ Order Ref: ${order.orderId}\n` +
-                    `👤 Customer: ${order.name} (${order.phone})\n` +
-                    `💰 Total Payable: ₹${order.total.toLocaleString('en-IN')}\n\n` +
-                    `📄 Official Diwali Order PDF bill attached above! Please confirm order dispatch and delivery.\n` +
-                    `📞 Store WhatsApp: 94900 42905 / 79816 59594`;
-
-                await navigator.share({
-                    files: [pdfFile],
-                    title: `Sivakasi Firestorm Order ${order.orderId}`,
-                    text: shareText
-                });
-
-                window.launchCelebrationVolley(5);
-                showToast('success', '📄 Order PDF shared successfully!');
-                showOrderSuccess();
-                return;
-            }
-        } catch (err) {
-            if (err.name === 'AbortError') {
-                return;
-            }
-            console.warn('Mobile PDF share fallback:', err);
-        }
-    }
-
-    // Desktop Users: Continue sending full structured order text to WhatsApp Web + auto-download PDF
-    let msg = `🪔 *SIVAKASI FIRESTORM CRACKERS*
-`;
-    msg += `✨ *DIWALI 2026 ORDER ESTIMATE*
-`;
-    msg += `━━━━━━━━━━━━━━━━━━━━━
-`;
-    msg += `📅 Date: ${order.orderDate} | ${order.orderTime}
-`;
-    msg += `🆔 Order Ref: ${order.orderId}
-
-`;
-    msg += `👤 *Customer Details:*
-`;
-    msg += `Name: ${order.name}
-`;
-    msg += `Phone: ${order.phone}
-`;
-    if (order.email) msg += `Email: ${order.email}
-`;
-    msg += `Fulfillment: ${order.address}
-`;
-    msg += `
-📦 *Ordered Items:*
-`;
-    msg += `━━━━━━━━━━━━━━━━━━━━━
-`;
-
-    order.items.forEach((item, i) => {
-        msg += `${i + 1}. ${item.name}
-`;
-        msg += `   ${item.unit} × ${item.qty} = ₹${item.total.toLocaleString('en-IN')}
-`;
-    });
-
-    msg += `━━━━━━━━━━━━━━━━━━━━━
-`;
-    msg += `💰 Subtotal: ₹${order.subtotal.toLocaleString('en-IN')}
-`;
-    if (order.discount > 0) {
-        msg += `🏷️ Discount Applied (${order.couponCode}): -₹${order.discount.toLocaleString('en-IN')}
-`;
-    }
-    msg += `✅ *TOTAL PAYABLE: ₹${order.total.toLocaleString('en-IN')}*
-
-`;
-    if (order.notes) msg += `📝 Special Requests: ${order.notes}
-
-`;
-
-    msg += `📸 *PAYMENT VERIFICATION:*
-Please send your UPI Payment Screenshot + UTR / Transaction No. to this WhatsApp chat to confirm dispatch.
-
-🚚 *DELIVERY / PICKUP POLICY:*
-• Home delivery is available strictly in Sullurpeta, AP (Commences 6th Nov 2026).
-• Store pickup available at Govt High School Ground stall (Shop No. coming soon!).
-• Product images are for reference; actual packaging & brand wrappers vary by fresh batch stock.
-
-⚠️ *SAFETY ADVISORY:*
-Beware of online fraud. Official payments accepted strictly to UPI ID: 9490042905@ybl. Helplines: 94900 42905 / 79816 59594.
-Wishing you & your family a Safe & Happy Diwali! 🪔✨`;
-
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/919490042905?text=${encoded}`, '_blank');
-
-    // Automatically trigger PDF quotation download for desktop users
-    try {
-        generatePDF(false);
-    } catch(err) {
-        console.warn('Auto PDF download error:', err);
-    }
-
-    // Launch High Definition Diwali Fireworks Volley!
-    window.launchCelebrationVolley(5);
-    showOrderSuccess();
-}
-
-// ==================== 1-CLICK INSTANT CART QUOTATION PDF ====================
-function downloadCartQuotationPDF() {
-    if (cart.length === 0) {
-        showToast('error', 'Your cart is empty! Add items first to download quotation.');
-        return;
-    }
-    generatePDF(false);
-}
-
-// ==================== PROFESSIONAL ORDER QUOTATION PDF ENGINE ====================
-function generatePDF(showSuccessModal = false) {
-    const order = getOrderData();
-    const doc = buildOrderPDFDoc(order);
     doc.save(`Sivakasi_Firestorm_Quotation_${order.orderId}.pdf`);
 
+    // Launch High Definition Diwali Fireworks Volley!
     window.launchCelebrationVolley(5);
     showToast('success', '📄 Official PDF Quotation Downloaded!');
     if (showSuccessModal) {
