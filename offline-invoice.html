@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Salesman Offline Billing &amp; POS | Sivakasi Firestorm Crackers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Salesman Offline Billing &amp; Fast POS | Sivakasi Firestorm Crackers</title>
     <link rel="icon" type="image/png" href="assets/brand/firestorm-logo-text.png">
     
     <!-- Fonts -->
@@ -32,6 +32,7 @@
             --text-muted: #64748B;
             --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --font-head: 'Outfit', sans-serif;
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
         }
 
         * {
@@ -41,89 +42,109 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: var(--font-main);
             background: #F1F5F9;
             color: var(--text-main);
-            line-height: 1.45;
-            padding-bottom: 120px;
+            line-height: 1.4;
+            padding-bottom: calc(85px + var(--safe-bottom));
         }
 
         /* Top Header */
         .pos-header {
             background: var(--bg-slate);
             color: #FFFFFF;
-            padding: 0.75rem 1.25rem;
+            padding: 0.5rem 0.75rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-bottom: 3px solid var(--amber-gold);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 900;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 100%;
         }
 
         .pos-brand {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             text-decoration: none;
             color: inherit;
+            min-width: 0;
         }
 
         .pos-logo {
-            height: 32px;
+            height: 26px;
             width: auto;
             border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .pos-title-block {
+            min-width: 0;
         }
 
         .pos-title-block h1 {
             font-family: var(--font-head);
-            font-size: 1.15rem;
+            font-size: 0.95rem;
             font-weight: 800;
-            letter-spacing: -0.3px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.35rem;
+            line-height: 1.1;
+            white-space: nowrap;
         }
 
         .pos-badge {
             background: var(--amber-gold);
             color: #000;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 800;
-            padding: 2px 7px;
+            padding: 2px 5px;
             border-radius: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            flex-shrink: 0;
         }
 
         .pos-title-block p {
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             color: #94A3B8;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .pos-header-actions {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.4rem;
+            flex-shrink: 0;
         }
 
         .btn-header-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 0.8rem;
+            gap: 0.3rem;
+            padding: 0.3rem 0.55rem;
             background: rgba(255, 255, 255, 0.1);
             color: #FFFFFF;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.72rem;
+            font-weight: 700;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .btn-header-link:hover {
@@ -136,187 +157,38 @@
             color: #FFF;
         }
 
-        .btn-reset-order:hover {
-            background: #DC2626;
+        /* Sticky Control Bar: Search + Collapsible Margin */
+        .pos-sticky-tools {
+            position: sticky;
+            top: 45px;
+            z-index: 850;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 100vw;
         }
 
-        /* Main Container */
-        .pos-container {
+        .search-margin-row {
+            padding: 0.4rem 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
             max-width: 1300px;
             margin: 0 auto;
-            padding: 1rem;
-        }
-
-        /* Control Panel Card */
-        .pos-control-card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            padding: 1rem 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Margin Controller Row */
-        .margin-controller-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding-bottom: 0.85rem;
-            border-bottom: 1px dashed var(--border-color);
-            margin-bottom: 0.85rem;
-        }
-
-        .margin-info {
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-        }
-
-        .margin-icon-box {
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            background: #FEF3C7;
-            color: #B45309;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .margin-info h3 {
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-
-        .margin-info p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .margin-input-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .margin-quick-presets {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            flex-wrap: wrap;
-        }
-
-        .preset-btn {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.35rem 0.65rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .preset-btn:hover {
-            border-color: var(--amber-gold);
-            color: var(--amber-gold);
-        }
-
-        .preset-btn.active {
-            background: #FEF3C7;
-            border-color: var(--amber-gold);
-            color: #92400E;
-            box-shadow: 0 0 0 1px var(--amber-gold);
-        }
-
-        .margin-custom-box {
-            display: flex;
-            align-items: center;
-            background: #F8FAFC;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 0 0.5rem;
-            height: 38px;
-            transition: border-color 0.2s;
-        }
-
-        .margin-custom-box:focus-within {
-            border-color: var(--fire-red);
-            background: #FFF;
-        }
-
-        .margin-custom-box label {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            margin-right: 0.35rem;
-        }
-
-        .margin-custom-input {
-            width: 70px;
-            border: none;
-            background: transparent;
-            font-family: var(--font-main);
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--text-main);
-            text-align: center;
-            outline: none;
-        }
-
-        .margin-tag-indicator {
-            font-size: 0.78rem;
-            font-weight: 800;
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .margin-tag-indicator.hike {
-            background: #FEF2F2;
-            color: #DC2626;
-            border: 1px solid #FECACA;
-        }
-
-        .margin-tag-indicator.discount {
-            background: #F0FDF4;
-            color: #16A34A;
-            border: 1px solid #BBF7D0;
-        }
-
-        .margin-tag-indicator.neutral {
-            background: #F1F5F9;
-            color: #475569;
-            border: 1px solid #E2E8F0;
-        }
-
-        /* Search and Filter Row */
-        .filter-tools-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
+            width: 100%;
         }
 
         .search-box-wrap {
-            flex: 1.5;
-            min-width: 240px;
+            flex: 1;
+            min-width: 0;
             display: flex;
             align-items: center;
             background: #F8FAFC;
             border: 1.5px solid var(--border-color);
             border-radius: 8px;
-            padding: 0 0.75rem;
-            height: 40px;
+            padding: 0 0.5rem;
+            height: 36px;
             transition: all 0.2s;
         }
 
@@ -328,92 +200,395 @@
 
         .search-box-wrap i {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
+            font-size: 0.8rem;
+            margin-right: 0.35rem;
+            flex-shrink: 0;
         }
 
         .search-input-field {
             border: none;
             background: transparent;
             width: 100%;
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: var(--text-main);
-            outline: none;
-        }
-
-        .category-select-wrap {
-            flex: 1;
-            min-width: 180px;
-        }
-
-        .pos-select {
-            width: 100%;
-            height: 40px;
-            background: #F8FAFC;
-            border: 1.5px solid var(--border-color);
-            border-radius: 8px;
-            padding: 0 0.75rem;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             color: var(--text-main);
             outline: none;
-            cursor: pointer;
+            min-width: 0;
         }
 
-        .pos-select:focus {
-            border-color: var(--fire-red);
+        .btn-clear-search {
+            background: transparent;
+            border: none;
+            color: #94A3B8;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 2px;
+            display: none;
+            flex-shrink: 0;
         }
 
-        .toggle-selected-btn {
-            height: 40px;
-            padding: 0 0.9rem;
-            background: #F8FAFC;
-            border: 1.5px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--text-main);
-            cursor: pointer;
+        .btn-toggle-margin {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            transition: all 0.2s;
-        }
-
-        .toggle-selected-btn:hover {
-            background: #E2E8F0;
-        }
-
-        .toggle-selected-btn.active {
-            background: #0F172A;
-            color: #FFFFFF;
-            border-color: #0F172A;
-        }
-
-        .toggle-selected-badge {
-            background: #DC2626;
-            color: #FFF;
-            font-size: 0.7rem;
+            gap: 0.3rem;
+            height: 36px;
+            padding: 0 0.55rem;
+            background: #FEF3C7;
+            border: 1.5px solid #F59E0B;
+            border-radius: 8px;
+            font-size: 0.72rem;
             font-weight: 800;
-            padding: 1px 6px;
+            color: #92400E;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .btn-toggle-margin.active {
+            background: #FDE68A;
+            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.3);
+        }
+
+        /* Collapsible Demand Margin Drawer */
+        .margin-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease-out, padding 0.25s ease;
+            background: #FFFBEB;
+            border-bottom: 1px solid #FDE68A;
+            width: 100%;
+        }
+
+        .margin-drawer.open {
+            max-height: 220px;
+            padding: 0.5rem 0.6rem;
+        }
+
+        .margin-drawer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .margin-desc {
+            font-size: 0.72rem;
+            color: #92400E;
+            font-weight: 600;
+        }
+
+        .margin-desc span {
+            font-weight: 800;
+            color: #B45309;
+        }
+
+        .margin-presets-group {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            background: #FFFFFF;
+            border: 1px solid #FCD34D;
+            color: #78350F;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.45rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .preset-btn:hover {
+            border-color: #F59E0B;
+            background: #FEF3C7;
+        }
+
+        .preset-btn.active {
+            background: #F59E0B;
+            border-color: #D97706;
+            color: #FFFFFF;
+            font-weight: 800;
+        }
+
+        .margin-custom-inline {
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 1.5px solid #F59E0B;
+            border-radius: 6px;
+            padding: 0 0.35rem;
+            height: 28px;
+        }
+
+        .margin-custom-input {
+            width: 40px;
+            border: none;
+            background: transparent;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #78350F;
+            text-align: center;
+            outline: none;
+        }
+
+        /* Sticky Horizontal Category Carousel */
+        .category-carousel-wrap {
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.35rem 0.6rem;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            box-sizing: border-box;
+        }
+
+        .category-carousel-wrap::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-carousel {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            width: max-content;
+            padding-right: 0.5rem;
+        }
+
+        .cat-pill {
+            background: #F1F5F9;
+            color: #475569;
+            border: 1px solid #E2E8F0;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.3rem 0.65rem;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: all 0.15s ease;
+        }
+
+        .cat-pill:hover {
+            background: #E2E8F0;
+            color: #0F172A;
+        }
+
+        .cat-pill.active {
+            background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+            color: #FFFFFF;
+            border-color: #DC2626;
+            box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
+        }
+
+        .cat-pill-count {
+            background: rgba(0, 0, 0, 0.12);
+            font-size: 0.62rem;
+            font-weight: 800;
+            padding: 1px 5px;
             border-radius: 10px;
         }
 
-        /* Products Table Layout */
-        .pos-table-card {
+        .cat-pill.active .cat-pill-count {
+            background: rgba(255, 255, 255, 0.3);
+            color: #FFF;
+        }
+
+        .cat-pill-selected {
+            background: #FEF3C7;
+            color: #92400E;
+            border-color: #FCD34D;
+        }
+
+        .cat-pill-selected.active {
+            background: #0F172A;
+            border-color: #0F172A;
+            color: #FFFFFF;
+        }
+
+        /* Main POS Container */
+        .pos-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        /* High-Density Mobile Cards List (Visible <= 768px) */
+        .mobile-cards-wrap {
+            display: none;
+            flex-direction: column;
+            gap: 0.4rem;
+            width: 100%;
+        }
+
+        .pos-mobile-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.5rem 0.65rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            transition: all 0.15s ease;
+            width: 100%;
+        }
+
+        .pos-mobile-card.has-qty {
+            background: #FEFCE8;
+            border-color: #F59E0B;
+            border-left: 4px solid #D97706;
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.1);
+        }
+
+        .mobile-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .mobile-card-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+
+        .mobile-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            margin-top: 2px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mobile-card-unit {
+            background: #F1F5F9;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-weight: 600;
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mobile-card-price {
+            font-size: 0.92rem;
+            font-weight: 900;
+            color: var(--fire-red);
+            white-space: nowrap;
+        }
+
+        .mobile-card-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        /* Touch-Friendly Stepper */
+        .mobile-stepper {
+            display: inline-flex;
+            align-items: center;
+            background: #FFFFFF;
+            border: 1.5px solid #CBD5E1;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .pos-mobile-card.has-qty .mobile-stepper {
+            border-color: #D97706;
+        }
+
+        .stepper-btn {
+            width: 32px;
+            height: 32px;
+            background: #F8FAFC;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.15s;
+            touch-action: manipulation;
+        }
+
+        .stepper-btn:active {
+            background: #E2E8F0;
+        }
+
+        .stepper-input {
+            width: 38px;
+            height: 32px;
+            border: none;
+            border-left: 1px solid #E2E8F0;
+            border-right: 1px solid #E2E8F0;
+            background: #FFFFFF;
+            text-align: center;
+            font-family: var(--font-main);
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--text-main);
+            outline: none;
+            -moz-appearance: textfield;
+            padding: 0;
+        }
+
+        .stepper-input::-webkit-outer-spin-button,
+        .stepper-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .btn-quick-add {
+            height: 32px;
+            padding: 0 0.45rem;
+            background: #F1F5F9;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: #334155;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .btn-quick-add:active {
+            background: #E2E8F0;
+            transform: scale(0.96);
+        }
+
+        /* Desktop Table View (Visible > 768px) */
+        .desktop-table-wrap {
+            display: block;
             background: #FFFFFF;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
             overflow: hidden;
             margin-bottom: 1.5rem;
-        }
-
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
         .pos-table {
@@ -426,18 +601,18 @@
         .pos-table thead th {
             background: #F8FAFC;
             color: #475569;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 0.75rem 1rem;
+            padding: 0.7rem 1rem;
             border-bottom: 2px solid var(--border-color);
             white-space: nowrap;
         }
 
         .pos-table tbody tr {
             border-bottom: 1px solid #EDF2F7;
-            transition: background 0.15s ease;
+            transition: background 0.15s;
         }
 
         .pos-table tbody tr:hover {
@@ -445,92 +620,62 @@
         }
 
         .pos-table tbody tr.has-qty {
-            background: #FEFCE8; /* warm golden tint for active rows */
+            background: #FEFCE8;
         }
 
-        .pos-table tbody td {
+        .pos-table td {
             padding: 0.65rem 1rem;
             vertical-align: middle;
         }
 
-        .pos-table tbody tr.hidden-row {
-            display: none !important;
-        }
-
-        .col-id {
-            width: 45px;
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-
-        .col-cat {
-            width: 160px;
-        }
+        .col-id { width: 55px; font-weight: 700; color: #94A3B8; font-size: 0.8rem; }
+        .col-cat { width: 140px; }
+        .col-name { min-width: 220px; }
+        .col-price { width: 110px; text-align: right; }
+        .col-qty { width: 190px; text-align: center; }
+        .col-total { width: 120px; text-align: right; font-weight: 800; font-size: 0.98rem; }
 
         .cat-chip {
-            display: inline-block;
-            font-size: 0.72rem;
-            font-weight: 700;
             background: #F1F5F9;
             color: #475569;
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 4px;
-            white-space: nowrap;
-        }
-
-        .col-name {
-            min-width: 220px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-block;
         }
 
         .product-name-txt {
-            font-weight: 700;
+            display: block;
+            font-weight: 800;
             color: var(--text-main);
             font-size: 0.92rem;
-            display: block;
         }
 
         .product-unit-txt {
+            display: block;
             font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        .col-price {
-            width: 110px;
-            text-align: right;
-        }
-
         .curr-price {
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             font-weight: 800;
             color: var(--text-main);
         }
 
-        .base-price-ref {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            text-decoration: line-through;
-            margin-right: 4px;
-        }
-
-        .col-qty {
-            width: 180px;
-            text-align: center;
-        }
-
-        .qty-control-box {
+        .desktop-stepper {
             display: inline-flex;
             align-items: center;
             background: #FFFFFF;
             border: 1.5px solid var(--border-color);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        .qty-btn {
-            width: 34px;
-            height: 34px;
+        .desktop-stepper button {
+            width: 32px;
+            height: 32px;
             background: #F8FAFC;
             border: none;
             color: var(--text-main);
@@ -540,302 +685,48 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.15s;
         }
 
-        .qty-btn:hover {
+        .desktop-stepper button:hover {
             background: #E2E8F0;
-            color: var(--fire-red);
         }
 
-        .qty-btn:active {
-            transform: scale(0.92);
-        }
-
-        .qty-num-input {
-            width: 50px;
-            height: 34px;
+        .desktop-stepper input {
+            width: 48px;
+            height: 32px;
             border: none;
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
             text-align: center;
-            font-family: var(--font-main);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 800;
             color: var(--text-main);
             outline: none;
-            -moz-appearance: textfield;
         }
 
-        .qty-num-input::-webkit-outer-spin-button,
-        .qty-num-input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        .qty-num-input:focus {
-            background: #FEF3C7;
-        }
-
-        .qty-reset-btn {
-            width: 28px;
-            height: 34px;
+        .btn-qty-reset {
+            width: 26px;
+            height: 32px;
             background: transparent;
             border: none;
             color: #94A3B8;
             font-size: 0.75rem;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: color 0.15s;
-            margin-left: 4px;
+            margin-left: 3px;
         }
 
-        .qty-reset-btn:hover {
+        .btn-qty-reset:hover {
             color: #EF4444;
         }
 
-        .col-total {
-            width: 120px;
-            text-align: right;
-            font-weight: 800;
-            font-size: 1rem;
-            color: var(--text-main);
+        .hidden-row {
+            display: none !important;
         }
 
-        .has-qty .col-total {
-            color: #16A34A;
-        }
-
-        /* Bottom Checkout / Customer Section */
-        .pos-billing-card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            border: 1.5px solid #CBD5E1;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .billing-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 900px) {
-            .billing-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .billing-col-title {
-            font-family: var(--font-head);
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .form-row {
-            margin-bottom: 0.85rem;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 0.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-        }
-
-        .form-input {
-            width: 100%;
-            height: 40px;
-            background: #F8FAFC;
-            border: 1.5px solid var(--border-color);
-            border-radius: 8px;
-            padding: 0 0.75rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--text-main);
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .form-input:focus {
-            border-color: var(--fire-red);
-            background: #FFF;
-        }
-
-        /* Invoice Financial Breakdown Box */
-        .calc-summary-box {
-            background: #F8FAFC;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 1.25rem;
-        }
-
-        .calc-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.65rem;
-            font-size: 0.88rem;
-        }
-
-        .calc-row-sub {
-            color: var(--text-muted);
-        }
-
-        .calc-row-val {
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .discount-input-row {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.85rem;
-            padding: 0.65rem 0.75rem;
-            background: #FFF;
-            border: 1.5px solid #FCD34D;
-            border-radius: 8px;
-        }
-
-        .discount-input-box {
-            display: flex;
-            align-items: center;
-            background: #FEF3C7;
-            border: 1px solid #F59E0B;
-            border-radius: 6px;
-            padding: 0 0.5rem;
-            height: 34px;
-        }
-
-        .disc-num-input {
-            width: 50px;
-            border: none;
-            background: transparent;
-            font-size: 0.95rem;
-            font-weight: 800;
+        .empty-filter-msg {
             text-align: center;
-            color: #92400E;
-            outline: none;
-        }
-
-        .calc-divider {
-            height: 1px;
-            background: #E2E8F0;
-            margin: 0.85rem 0;
-        }
-
-        .calc-net-total-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding-top: 0.35rem;
-        }
-
-        .net-total-label {
-            font-family: var(--font-head);
-            font-size: 1.15rem;
-            font-weight: 900;
-            color: var(--text-main);
-        }
-
-        .net-total-val {
-            font-family: var(--font-head);
-            font-size: 1.7rem;
-            font-weight: 900;
-            color: #16A34A;
-        }
-
-        /* Action Buttons */
-        .invoice-actions-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-invoice-pdf {
-            flex: 2;
-            min-width: 200px;
-            height: 48px;
-            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
-            color: #FFFFFF;
-            border: none;
-            border-radius: 8px;
-            font-family: var(--font-head);
-            font-size: 1.05rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35);
-            transition: all 0.2s ease;
-        }
-
-        .btn-invoice-pdf:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45);
-        }
-
-        .btn-invoice-print {
-            flex: 1;
-            min-width: 140px;
-            height: 48px;
-            background: #0F172A;
-            color: #FFFFFF;
-            border: none;
-            border-radius: 8px;
-            font-family: var(--font-head);
-            font-size: 0.95rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-        }
-
-        .btn-invoice-print:hover {
-            background: #1E293B;
-        }
-
-        .btn-invoice-wa {
-            flex: 1;
-            min-width: 150px;
-            height: 48px;
-            background: #16A34A;
-            color: #FFFFFF;
-            border: none;
-            border-radius: 8px;
-            font-family: var(--font-head);
-            font-size: 0.95rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-        }
-
-        .btn-invoice-wa:hover {
-            background: #15803D;
+            padding: 3rem 1rem;
+            color: var(--text-muted);
         }
 
         /* Fixed Bottom Quick Action Dock */
@@ -847,38 +738,41 @@
             background: #FFFFFF;
             border-top: 2px solid var(--border-color);
             box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.12);
-            padding: 0.75rem 1.5rem;
+            padding: 0.65rem 1rem calc(0.65rem + var(--safe-bottom));
             display: flex;
             align-items: center;
             justify-content: space-between;
-            z-index: 1000;
+            z-index: 950;
         }
 
         .dock-summary {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.9rem;
         }
 
         .dock-stat h4 {
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
+            line-height: 1;
         }
 
         .dock-stat span {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 900;
             color: var(--text-main);
+            line-height: 1.2;
         }
 
         .dock-total-val {
             color: #16A34A !important;
+            font-family: var(--font-head);
         }
 
-        .dock-jump-btn {
-            height: 42px;
+        .dock-open-sheet-btn {
+            height: 44px;
             padding: 0 1.25rem;
             background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
             color: #FFFFFF;
@@ -890,55 +784,399 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            gap: 0.45rem;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+            transition: all 0.15s;
+        }
+
+        .dock-open-sheet-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ==================== NATIVE BOTTOM SHEET CHECKOUT MODAL ==================== */
+        .sheet-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(3px);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .sheet-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .checkout-bottom-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 650px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.25);
+            z-index: 1010;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(105%);
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            padding-bottom: calc(0.75rem + var(--safe-bottom));
+        }
+
+        .checkout-bottom-sheet.active {
+            transform: translateY(0);
+        }
+
+        .sheet-drag-handle {
+            width: 44px;
+            height: 5px;
+            background: #CBD5E1;
+            border-radius: 3px;
+            margin: 8px auto 4px;
+        }
+
+        .sheet-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 1.25rem 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sheet-header h2 {
+            font-family: var(--font-head);
+            font-size: 1.15rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
             gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-            transition: all 0.2s;
+            color: var(--text-main);
         }
 
-        .dock-jump-btn:hover {
-            transform: translateY(-2px);
+        .btn-sheet-close {
+            background: #F1F5F9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: #64748B;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Empty state */
-        .empty-filter-msg {
+        .sheet-body {
+            overflow-y: auto;
+            padding: 0.85rem 1.25rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Sheet Selected Items Mini List */
+        .sheet-selected-list {
+            max-height: 150px;
+            overflow-y: auto;
+            background: #F8FAFC;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.4rem 0.6rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .sheet-mini-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.35rem 0;
+            border-bottom: 1px dashed #E2E8F0;
+            font-size: 0.78rem;
+        }
+
+        .sheet-mini-item:last-child {
+            border-bottom: none;
+        }
+
+        .sheet-mini-name {
+            font-weight: 700;
+            color: var(--text-main);
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .sheet-mini-qty {
+            font-weight: 800;
+            color: #B45309;
+            margin: 0 0.5rem;
+            white-space: nowrap;
+        }
+
+        .sheet-mini-price {
+            font-weight: 800;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        /* Financial Calculation Box in Sheet */
+        .sheet-calc-box {
+            background: #FFFBEB;
+            border: 1.5px solid #FCD34D;
+            border-radius: 10px;
+            padding: 0.85rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .sheet-calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .sheet-calc-row.muted {
+            color: #78350F;
+        }
+
+        .sheet-calc-row.bold {
+            font-weight: 800;
+            color: #78350F;
+        }
+
+        /* Customer Discount Preset Chips */
+        .sheet-discount-section {
+            background: #FFFFFF;
+            border: 1px solid #FCD34D;
+            border-radius: 8px;
+            padding: 0.5rem 0.65rem;
+            margin: 0.5rem 0;
+        }
+
+        .sheet-discount-chips {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.35rem;
+        }
+
+        .disc-chip {
+            background: #FEF3C7;
+            border: 1px solid #F59E0B;
+            color: #92400E;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.25rem 0.55rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .disc-chip.active {
+            background: #D97706;
+            color: #FFFFFF;
+            border-color: #B45309;
+        }
+
+        .disc-input-wrap {
+            display: flex;
+            align-items: center;
+            background: #F8FAFC;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            padding: 0 0.35rem;
+            height: 28px;
+            margin-left: auto;
+        }
+
+        .disc-input-wrap input {
+            width: 36px;
+            border: none;
+            background: transparent;
+            font-size: 0.85rem;
+            font-weight: 800;
             text-align: center;
-            padding: 3rem 1rem;
+            outline: none;
+        }
+
+        .sheet-net-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding-top: 0.5rem;
+            border-top: 1.5px dashed #FCD34D;
+            margin-top: 0.4rem;
+        }
+
+        .sheet-net-label {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            font-weight: 900;
+            color: #78350F;
+        }
+
+        .sheet-net-val {
+            font-family: var(--font-head);
+            font-size: 1.65rem;
+            font-weight: 900;
+            color: #16A34A;
+        }
+
+        /* Customer Inputs in Sheet */
+        .sheet-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-bottom: 0.85rem;
+        }
+
+        @media (max-width: 480px) {
+            .sheet-form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sheet-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .sheet-field label {
+            font-size: 0.7rem;
+            font-weight: 800;
             color: var(--text-muted);
+            text-transform: uppercase;
         }
 
-        /* Printable Sheet Styling (Print Media) */
-        @media print {
-            body {
-                background: #FFF;
-                padding: 0;
-            }
-            .pos-header, .pos-control-card, .pos-bottom-dock, .invoice-actions-row, .col-qty button, .qty-reset-btn {
-                display: none !important;
-            }
-            .pos-container {
-                max-width: 100%;
-                padding: 0;
-            }
-            .pos-table tr:not(.has-qty) {
-                display: none !important;
-            }
+        .sheet-input {
+            height: 38px;
+            background: #F8FAFC;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0 0.65rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            outline: none;
         }
 
+        .sheet-input:focus {
+            border-color: var(--fire-red);
+            background: #FFF;
+        }
+
+        /* Action Buttons in Sheet */
+        .sheet-actions-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .btn-sheet-pdf {
+            height: 46px;
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+        }
+
+        .btn-sheet-wa {
+            height: 46px;
+            background: #16A34A;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-head);
+            font-size: 0.95rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .sheet-secondary-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.6rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-sheet-print {
+            background: transparent;
+            border: none;
+            color: #475569;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .btn-sheet-reset {
+            background: transparent;
+            border: none;
+            color: #EF4444;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
+            .mobile-cards-wrap {
+                display: flex;
+            }
+            .desktop-table-wrap {
+                display: none;
+            }
             .pos-container {
-                padding: 0.65rem;
+                padding: 0.4rem;
+            }
+            .pos-header {
+                padding: 0.45rem 0.65rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pos-bottom-dock {
+                padding: 0.45rem 0.65rem calc(0.45rem + var(--safe-bottom));
             }
             .dock-summary {
-                gap: 0.85rem;
+                gap: 0.6rem;
             }
             .dock-stat span {
                 font-size: 1.05rem;
             }
-            .col-cat {
-                display: none;
-            }
-            .pos-table thead th:nth-child(2) {
-                display: none;
+            .dock-open-sheet-btn {
+                height: 38px;
+                padding: 0 0.75rem;
+                font-size: 0.85rem;
+                gap: 0.35rem;
             }
         }
     </style>
@@ -950,196 +1188,99 @@
         <a href="index.html" class="pos-brand" title="Back to Customer Catalog">
             <img src="assets/brand/firestorm-logo-text.png" alt="Firestorm" class="pos-logo">
             <div class="pos-title-block">
-                <h1>Firestorm POS <span class="pos-badge">Offline Billing</span></h1>
-                <p>Sullurpeta Diwali 2026 • Counter Stall Assistant</p>
+                <h1>Firestorm POS <span class="pos-badge">Fast Bill</span></h1>
+                <p>Sullurpeta Diwali 2026</p>
             </div>
         </a>
         <div class="pos-header-actions">
-            <a href="index.html" class="btn-header-link" title="Open Storefront"><i class="fas fa-store"></i> Customer Catalog</a>
-            <button type="button" class="btn-header-link btn-reset-order" onclick="resetEntireOrder()" title="Reset Order"><i class="fas fa-redo-alt"></i> New Bill</button>
+            <a href="index.html" class="btn-header-link" title="Customer Catalog"><i class="fas fa-store"></i> Store</a>
+            <button type="button" class="btn-header-link btn-reset-order" onclick="resetEntireOrder()" title="Reset Order"><i class="fas fa-redo-alt"></i> New</button>
         </div>
     </header>
+
+    <!-- Sticky Tools: Search + Collapsible Demand Margin -->
+    <div class="pos-sticky-tools">
+        
+        <div class="search-margin-row">
+            <!-- Fast Search Field -->
+            <div class="search-box-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="pos-search-input" class="search-input-field" placeholder="Search cracker or ID (e.g. sparkler, bomb, 3k)..." oninput="handleSearchInput(this.value)">
+                <button type="button" id="btn-clear-search" class="btn-clear-search" onclick="clearSearch()" title="Clear search"><i class="fas fa-times-circle"></i></button>
+            </div>
+
+            <!-- Margin Toggle Pill -->
+            <button type="button" id="btn-toggle-margin" class="btn-toggle-margin" onclick="toggleMarginDrawer()">
+                <i class="fas fa-bolt"></i>
+                <span id="margin-pill-txt">Margin: 0%</span>
+                <i class="fas fa-chevron-down" id="margin-chevron"></i>
+            </button>
+        </div>
+
+        <!-- Collapsible Margin Drawer -->
+        <div class="margin-drawer" id="margin-drawer">
+            <div class="margin-drawer-content">
+                <div class="margin-desc">
+                    <i class="fas fa-user-shield"></i> Demand Margin (Confidential): <span id="margin-live-indicator">0% Standard Base</span>
+                </div>
+                <div class="margin-presets-group">
+                    <button type="button" class="preset-btn" onclick="setMargin(-20)">-20%</button>
+                    <button type="button" class="preset-btn" onclick="setMargin(-10)">-10%</button>
+                    <button type="button" class="preset-btn active" id="preset-0" onclick="setMargin(0)">0%</button>
+                    <button type="button" class="preset-btn" onclick="setMargin(10)">+10%</button>
+                    <button type="button" class="preset-btn" onclick="setMargin(15)">+15%</button>
+                    <button type="button" class="preset-btn" onclick="setMargin(20)">+20%</button>
+                    <button type="button" class="preset-btn" onclick="setMargin(25)">+25%</button>
+
+                    <div class="margin-custom-inline">
+                        <label for="custom-margin-input" style="font-size:0.7rem; font-weight:800; color:#B45309;">%</label>
+                        <input type="number" id="custom-margin-input" class="margin-custom-input" value="0" step="1" oninput="handleCustomMarginChange(this.value)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Horizontal Category Carousel -->
+        <div class="category-carousel-wrap">
+            <div class="category-carousel" id="category-carousel">
+                <!-- Dynamically populated by JS -->
+            </div>
+        </div>
+
+    </div>
 
     <!-- Main Workspace -->
     <main class="pos-container">
 
-        <!-- Salesman Controls Panel -->
-        <section class="pos-control-card">
-            
-            <!-- Margin Controller -->
-            <div class="margin-controller-section">
-                <div class="margin-info">
-                    <div class="margin-icon-box">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div>
-                        <h3>Sales Margin Adjustment</h3>
-                        <p>Increase or decrease catalogue price based on current market demand</p>
-                    </div>
-                </div>
+        <!-- Mobile High-Density Cards View (<= 768px) -->
+        <div class="mobile-cards-wrap" id="pos-mobile-list">
+            <!-- Rendered by JS -->
+        </div>
 
-                <div class="margin-input-group">
-                    <!-- Preset pills -->
-                    <div class="margin-quick-presets">
-                        <button type="button" class="preset-btn" onclick="setMargin(-20)">-20%</button>
-                        <button type="button" class="preset-btn" onclick="setMargin(-10)">-10%</button>
-                        <button type="button" class="preset-btn active" id="preset-0" onclick="setMargin(0)">0% (Default)</button>
-                        <button type="button" class="preset-btn" onclick="setMargin(10)">+10%</button>
-                        <button type="button" class="preset-btn" onclick="setMargin(15)">+15%</button>
-                        <button type="button" class="preset-btn" onclick="setMargin(20)">+20%</button>
-                        <button type="button" class="preset-btn" onclick="setMargin(25)">+25%</button>
-                    </div>
-
-                    <!-- Custom input -->
-                    <div class="margin-custom-box">
-                        <label for="custom-margin-input">Margin %</label>
-                        <input type="number" id="custom-margin-input" class="margin-custom-input" value="0" step="1" oninput="handleCustomMarginChange(this.value)">
-                    </div>
-
-                    <!-- Live Indicator Tag -->
-                    <div id="margin-indicator" class="margin-tag-indicator neutral">
-                        <span>Standard Base Price</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Search, Category, and Selected Toggle Filter -->
-            <div class="filter-tools-row">
-                <div class="search-box-wrap">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="pos-search-input" class="search-input-field" placeholder="Search by cracker name or #ID (e.g. sparkler, bomb, 3k)..." oninput="filterTableRows()">
-                </div>
-
-                <div class="category-select-wrap">
-                    <select id="pos-category-select" class="pos-select" onchange="filterTableRows()">
-                        <option value="">All Categories (111 Products)</option>
-                    </select>
-                </div>
-
-                <button type="button" id="toggle-selected-btn" class="toggle-selected-btn" onclick="toggleSelectedOnly()">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Selected Only</span>
-                    <span id="selected-badge" class="toggle-selected-badge" style="display:none;">0</span>
-                </button>
-            </div>
+        <!-- Desktop Table View (> 768px) -->
+        <section class="desktop-table-wrap">
+            <table class="pos-table" id="pos-products-table">
+                <thead>
+                    <tr>
+                        <th class="col-id">#</th>
+                        <th class="col-cat">Category</th>
+                        <th class="col-name">Product Name &amp; Packing</th>
+                        <th class="col-price">Unit Price</th>
+                        <th class="col-qty">Quantity</th>
+                        <th class="col-total">Total (₹)</th>
+                    </tr>
+                </thead>
+                <tbody id="pos-table-body">
+                    <!-- Rendered by JS -->
+                </tbody>
+            </table>
         </section>
 
-        <!-- Products Table -->
-        <section class="pos-table-card">
-            <div class="table-responsive">
-                <table class="pos-table" id="pos-products-table">
-                    <thead>
-                        <tr>
-                            <th class="col-id">#</th>
-                            <th class="col-cat">Category</th>
-                            <th class="col-name">Product Name &amp; Packing</th>
-                            <th class="col-price">Unit Price</th>
-                            <th class="col-qty">Quantity</th>
-                            <th class="col-total">Total (₹)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pos-table-body">
-                        <!-- Rendered by JS -->
-                    </tbody>
-                </table>
-                <div id="pos-empty-view" class="empty-filter-msg" style="display:none;">
-                    <i class="fas fa-box-open" style="font-size:2rem; margin-bottom:0.5rem; opacity:0.4;"></i>
-                    <p>No crackers match your search criteria.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final Billing & Customer Details Section -->
-        <section class="pos-billing-card" id="pos-checkout-section">
-            <div class="billing-grid">
-                
-                <!-- Customer & Salesperson Info -->
-                <div>
-                    <h3 class="billing-col-title"><i class="fas fa-user-edit" style="color:var(--fire-red);"></i> Customer &amp; Sale Info</h3>
-                    <div class="form-row">
-                        <label class="form-label" for="cust-name">Customer Name</label>
-                        <input type="text" id="cust-name" class="form-input" placeholder="e.g. Rajesh Kumar" value="Walk-in Customer">
-                    </div>
-                    <div class="form-row">
-                        <label class="form-label" for="cust-phone">Mobile / WhatsApp Number</label>
-                        <input type="tel" id="cust-phone" class="form-input" placeholder="10-digit mobile number">
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
-                        <div class="form-row">
-                            <label class="form-label" for="salesman-name">Salesperson</label>
-                            <input type="text" id="salesman-name" class="form-input" value="Firestorm Staff">
-                        </div>
-                        <div class="form-row">
-                            <label class="form-label" for="payment-mode">Payment Mode</label>
-                            <select id="payment-mode" class="form-input">
-                                <option value="Cash">Cash</option>
-                                <option value="UPI (PhonePe / GPay / Paytm)">UPI (PhonePe / GPay)</option>
-                                <option value="Card">Debit / Credit Card</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Financial Calculation & Final Invoice Output -->
-                <div>
-                    <h3 class="billing-col-title"><i class="fas fa-receipt" style="color:var(--fire-red);"></i> Bill Summary &amp; Discount</h3>
-                    
-                    <div class="calc-summary-box">
-                        <div class="calc-row">
-                            <span class="calc-row-sub">Total Varieties Selected:</span>
-                            <span class="calc-row-val" id="summary-varieties">0 items</span>
-                        </div>
-                        <div class="calc-row">
-                            <span class="calc-row-sub">Total Cracker Units (Pcs/Boxes):</span>
-                            <span class="calc-row-val" id="summary-units">0 units</span>
-                        </div>
-                        <div class="calc-row">
-                            <span class="calc-row-sub">Gross Subtotal:</span>
-                            <span class="calc-row-val" id="summary-subtotal">₹0</span>
-                        </div>
-
-                        <!-- Customer Discount Input -->
-                        <div class="discount-input-row">
-                            <div style="flex:1;">
-                                <strong style="font-size:0.85rem; color:#92400E; display:block;">Customer Discount (%):</strong>
-                                <span style="font-size:0.72rem; color:#B45309;">Enter extra discount integer for customer</span>
-                            </div>
-                            <div class="discount-input-box">
-                                <input type="number" id="cust-discount-input" class="disc-num-input" value="0" min="0" max="100" step="1" oninput="handleCustomerDiscountChange(this.value)">
-                                <span style="font-size:0.85rem; font-weight:800; color:#92400E;">%</span>
-                            </div>
-                        </div>
-
-                        <div class="calc-row" id="discount-amount-row" style="display:none; color:#16A34A;">
-                            <span>Customer Discount Amount:</span>
-                            <span class="calc-row-val" id="summary-discount">-₹0</span>
-                        </div>
-
-                        <div class="calc-divider"></div>
-
-                        <!-- Final Net Amount Payable -->
-                        <div class="calc-net-total-row">
-                            <span class="net-total-label">NET PAYABLE:</span>
-                            <span class="net-total-val" id="summary-net-total">₹0</span>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="invoice-actions-row">
-                        <button type="button" class="btn-invoice-pdf" onclick="generateInvoicePDF()">
-                            <i class="fas fa-file-pdf"></i> Download Invoice PDF
-                        </button>
-                        <button type="button" class="btn-invoice-print" onclick="printReceipt()">
-                            <i class="fas fa-print"></i> Print
-                        </button>
-                        <button type="button" class="btn-invoice-wa" onclick="sendInvoiceWhatsApp()">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </section>
+        <!-- Empty Filter State -->
+        <div id="pos-empty-view" class="empty-filter-msg" style="display:none;">
+            <i class="fas fa-box-open" style="font-size:2.2rem; margin-bottom:0.6rem; opacity:0.4;"></i>
+            <p>No crackers found for this search or category filter.</p>
+        </div>
 
     </main>
 
@@ -1155,13 +1296,112 @@
                 <span id="dock-units">0</span>
             </div>
             <div class="dock-stat">
-                <h4>Total Amount</h4>
+                <h4>Net Bill</h4>
                 <span class="dock-total-val" id="dock-total">₹0</span>
             </div>
         </div>
-        <button type="button" class="dock-jump-btn" onclick="scrollToCheckout()">
-            <i class="fas fa-file-invoice-dollar"></i> Generate Bill <i class="fas fa-arrow-down"></i>
+        <button type="button" class="dock-open-sheet-btn" onclick="openCheckoutSheet()">
+            <i class="fas fa-file-invoice-dollar"></i> Bill &amp; PDF <i class="fas fa-arrow-up"></i>
         </button>
+    </div>
+
+    <!-- NATIVE BOTTOM SHEET CHECKOUT MODAL -->
+    <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeCheckoutSheet()"></div>
+    <div class="checkout-bottom-sheet" id="checkout-sheet">
+        <div class="sheet-drag-handle"></div>
+        <div class="sheet-header">
+            <h2><i class="fas fa-receipt" style="color:var(--fire-red);"></i> Order Checkout</h2>
+            <button type="button" class="btn-sheet-close" onclick="closeCheckoutSheet()"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="sheet-body">
+            
+            <!-- Selected Items Mini Summary -->
+            <div class="sheet-selected-list" id="sheet-selected-items">
+                <div style="text-align:center; padding:1rem; color:#94A3B8; font-size:0.8rem;">
+                    No crackers selected yet. Add quantities to generate a bill.
+                </div>
+            </div>
+
+            <!-- Customer Discount & Financial Summary -->
+            <div class="sheet-calc-box">
+                <div class="sheet-calc-row muted">
+                    <span>Gross Subtotal:</span>
+                    <span id="sheet-gross-subtotal" style="font-weight:700;">₹0</span>
+                </div>
+
+                <!-- Customer Discount Chips -->
+                <div class="sheet-discount-section">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-size:0.75rem; font-weight:800; color:#92400E;">Extra Customer Discount:</span>
+                        <div class="disc-input-wrap">
+                            <input type="number" id="cust-discount-input" value="0" min="0" max="100" step="1" oninput="handleCustomerDiscountChange(this.value)">
+                            <span style="font-size:0.75rem; font-weight:800; color:#B45309;">%</span>
+                        </div>
+                    </div>
+                    <div class="sheet-discount-chips">
+                        <button type="button" class="disc-chip active" id="chip-disc-0" onclick="setCustomerDiscount(0)">0%</button>
+                        <button type="button" class="disc-chip" id="chip-disc-5" onclick="setCustomerDiscount(5)">5%</button>
+                        <button type="button" class="disc-chip" id="chip-disc-10" onclick="setCustomerDiscount(10)">10%</button>
+                        <button type="button" class="disc-chip" id="chip-disc-15" onclick="setCustomerDiscount(15)">15%</button>
+                    </div>
+                </div>
+
+                <div class="sheet-calc-row" id="sheet-discount-row" style="display:none; color:#16A34A; font-weight:700;">
+                    <span>Discount Deducted:</span>
+                    <span id="sheet-discount-amt">-₹0</span>
+                </div>
+
+                <div class="sheet-net-row">
+                    <span class="sheet-net-label">NET PAYABLE:</span>
+                    <span class="sheet-net-val" id="sheet-net-total">₹0</span>
+                </div>
+            </div>
+
+            <!-- Customer & Sale Form Fields -->
+            <div class="sheet-form-grid">
+                <div class="sheet-field">
+                    <label for="cust-name">Customer Name</label>
+                    <input type="text" id="cust-name" class="sheet-input" placeholder="e.g. Rajesh Kumar" value="Walk-in Customer">
+                </div>
+                <div class="sheet-field">
+                    <label for="cust-phone">WhatsApp / Mobile</label>
+                    <input type="tel" id="cust-phone" class="sheet-input" placeholder="10-digit mobile number">
+                </div>
+                <div class="sheet-field">
+                    <label for="salesman-name">Sales Executive</label>
+                    <input type="text" id="salesman-name" class="sheet-input" value="Firestorm Staff">
+                </div>
+                <div class="sheet-field">
+                    <label for="payment-mode">Payment Mode</label>
+                    <select id="payment-mode" class="sheet-input">
+                        <option value="Cash">Cash</option>
+                        <option value="UPI (PhonePe / GPay)">UPI (PhonePe / GPay)</option>
+                        <option value="Debit / Credit Card">Debit / Credit Card</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="sheet-actions-grid">
+                <button type="button" class="btn-sheet-pdf" onclick="generateInvoicePDF()">
+                    <i class="fas fa-file-pdf"></i> Download PDF
+                </button>
+                <button type="button" class="btn-sheet-wa" onclick="sendInvoiceWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Bill
+                </button>
+            </div>
+
+            <div class="sheet-secondary-actions">
+                <button type="button" class="btn-sheet-print" onclick="printReceipt()">
+                    <i class="fas fa-print"></i> Print Memo
+                </button>
+                <button type="button" class="btn-sheet-reset" onclick="resetEntireOrder()">
+                    <i class="fas fa-trash-alt"></i> Clear &amp; New Bill
+                </button>
+            </div>
+
+        </div>
     </div>
 
     <!-- Script Application -->
@@ -1169,39 +1409,235 @@
     // ==================== PRE-BUNDLED CATALOG ====================
     const DEFAULT_PRODUCTS = [{"id": 111, "name": "3k Kids/Girls/Night Combo", "category": "Firestorm Special Assorted Combos", "price": 3000, "originalPrice": 4239, "unit": "1 Safe Festive Box (29 Varieties / 31+ Pcs)", "description": "Best suitable for kids, girls, and families who want a colourful and 100% safe Diwali night! Packed with 29 hand-picked visual varieties including electric & color sparklers (7cm to 50cm), Deluxe Colour Koti, spinning ground chakkars, butterfly novelties, peacock fountain, photo flash, twinkling stars, sky lantern, and glowing water LED diya. Zero heavy bombs — pure magical night sparkle! Total individual retail value is ₹4,239 at a special festival price of ₹3,000 (Save ₹1,239 / 29% OFF)!", "image": "assets/products/prod-111-3k-kids-girls-night-combo.jpg", "stock": 40, "badge": "Kids & Girls Special ✨", "noCoupon": true, "couponPolicy": "Coupons are not allowed on this combo as it is already at the best possible price. Happy Diwali 🪔", "comboItems": [{"name": "7cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 30}, {"name": "7cm Color Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 30}, {"name": "10cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 53}, {"name": "10cm Color Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 53}, {"name": "15cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 90}, {"name": "15cm Color Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 90}, {"name": "15cm Red Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 90}, {"name": "15cm Green Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 90}, {"name": "30cm Electrical Sparkler", "unit": "1 Pkt (5 Pcs) × 1", "price": 105}, {"name": "30cm Green Sparkler", "unit": "1 Pkt (5 Pcs) × 1", "price": 105}, {"name": "30cm Red Sparkler", "unit": "1 Pkt (5 Pcs) × 1", "price": 105}, {"name": "Flower Pot Small (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 90}, {"name": "Flower Pot Special (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 165}, {"name": "Colour Koti (Deluxe) (10 pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 599}, {"name": "Ground Chakkar Big (10 pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 90}, {"name": "Spinner Deluxe - XL (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 449}, {"name": "Butterfly (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 290}, {"name": "Photo Flash (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 270}, {"name": "Peacock Small", "unit": "1 Piece × 1", "price": 330}, {"name": "Kit Kat (Venna Muddalu)", "unit": "1 Box × 1", "price": 70}, {"name": "Twinkling Star 1.5\" Inches (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 65}, {"name": "4\" Inches Twinkling Star (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 170}, {"name": "Snake Eggs (Paamu Billalu - Small) - (10 Tblts)", "unit": "1 Box (10 Tablets) × 1", "price": 15}, {"name": "Electric Stones (Venna Muddalu)", "unit": "1 Pkt × 1", "price": 45}, {"name": "Sky Lantern", "unit": "1 Piece × 2", "price": 140}, {"name": "Water LED Diya", "unit": "1 Piece × 1", "price": 70}, {"name": "15\" Inches Pencil (5 Pcs)", "unit": "1 Box (5 Pcs) × 1", "price": 180}, {"name": "Color Matches - (10 Pkts - Assorted)", "unit": "1 Bundle (10 Pkts) × 1", "price": 150}, {"name": "50cm Sparkler (Color)", "unit": "1 Pkt (5 Pcs) × 1", "price": 210}], "subtotal": 4239}, {"id": 109, "name": "5k Family Combo", "category": "Firestorm Special Assorted Combos", "price": 5000, "originalPrice": 7241, "unit": "1 Mega Box (40 Varieties / 58+ Pcs)", "description": "Firestorm Special Assorted Diwali Hamper! 40 hand-picked varieties loaded with electric sparklers, color pots, ground chakkars, Lakshmi crackers, 1K wala garland, and 30-shot multi-color sky shots. Total individual retail value is ₹7,241 — yours at a smart buy festival price of ₹5,000 (Save ₹2,241 / 31% OFF)!", "image": "assets/products/prod-109-5k-family-combo.jpg", "stock": 35, "badge": "Smart Buy ⭐", "comboItems": [{"name": "7cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 30}, {"name": "7cm Color Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 30}, {"name": "10cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 53}, {"name": "10cm Color Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 53}, {"name": "15cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 90}, {"name": "15cm Red Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 90}, {"name": "15cm Green Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 90}, {"name": "Chilaka Tapas", "unit": "1 Pkt (10 Pcs) × 1", "price": 30}, {"name": "3.5\" Inches Lakshmi", "unit": "1 Pkt (8 Ply) × 1", "price": 45}, {"name": "4\" Inches Gold Lakshmi", "unit": "1 Pkt (10 Ply) × 1", "price": 90}, {"name": "5\" Inches Elephant", "unit": "1 Pkt × 1", "price": 120}, {"name": "2 Sound Bomb", "unit": "1 Box (5 Pcs) × 1", "price": 90}, {"name": "3 Sound Bomb", "unit": "1 Box (5 Pcs) × 1", "price": 120}, {"name": "Hydro Bomb", "unit": "1 Box (10 Pcs) × 1", "price": 165}, {"name": "Jumbo Bomb", "unit": "1 Box (10 Pcs) × 1", "price": 480}, {"name": "Purukose Bomb (10 Pcs)", "unit": "1 Pkt (10 Pcs) × 1", "price": 380}, {"name": "Nellore Guns (10 Pcs)", "unit": "1 Pkt (10 Pcs) × 1", "price": 150}, {"name": "1 kg Paper Bomb", "unit": "1 Pc (1kg) × 1", "price": 450}, {"name": "Mirapakay Tapas (Red Bijili 50 pcs)", "unit": "1 Pkt (50 Pcs) × 1", "price": 45}, {"name": "Mirapakay Tapas (Red Bijili 100 pcs)", "unit": "1 Pkt (100 Pcs) × 1", "price": 75}, {"name": "200 Wala", "unit": "1 Piece × 1", "price": 150}, {"name": "100 Wala", "unit": "1 Piece × 2", "price": 150}, {"name": "50 Deluxe Crackers", "unit": "1 Piece × 1", "price": 160}, {"name": "1K Wala", "unit": "1 Box (1000 Pcs) × 1", "price": 300}, {"name": "Flower Pot Special (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 165}, {"name": "Flower Pot Ashoka (5 Pcs)", "unit": "1 Box (5 Pcs) × 1", "price": 240}, {"name": "Colour Koti (Standard) (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 390}, {"name": "Ground Chakkar Big (10 pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 90}, {"name": "Ground Chakkar Special (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 180}, {"name": "Musical Chakkar (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 375}, {"name": "Rocket Bomb Small (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 90}, {"name": "Rocket Bomb Big (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 150}, {"name": "30 Shot Multi Colour", "unit": "1 Box (30 Shots) × 1", "price": 825}, {"name": "4\" Inches Twinkling Star (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 170}, {"name": "Twinkling Star 1.5\" Inches (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 65}, {"name": "Snake Eggs (Paamu Billalu - Small) - (10 Tblts)", "unit": "1 Box (10 Tablets) × 1", "price": 15}, {"name": "Pop Pop - (50 Pkts)", "unit": "1 Box (50 Pkts) × 1", "price": 500}, {"name": "Color Matches - (10 Pkts - Assorted)", "unit": "1 Bundle (10 Pkts) × 1", "price": 150}, {"name": "Kit Kat (Venna Muddalu)", "unit": "1 Box × 1", "price": 70}, {"name": "Peacock Small", "unit": "1 Piece × 1", "price": 330}], "subtotal": 7241, "noCoupon": true, "couponPolicy": "Coupons are not allowed on this combo as it is already at the best possible price. Happy Diwali 🪔"}, {"id": 110, "name": "6k Salaar Combo", "category": "Firestorm Special Assorted Combos", "price": 6000, "originalPrice": 8619, "unit": "1 Monster Box (39 Heavy Varieties)", "description": "Inspired by Prabhas blockbuster Salaar! High-decibel, power-packed combo loaded with heavy sound bombs (Hydro, Jumbo, Jurassic, Classic Green, Paper Bombs), 5K Wala Garland, 30 Shot Multi-Colour, and thunderous crackers. Total individual retail value is ₹8,619 — blockbuster offer price of ₹6,000 (Save ₹2,619 / 30% OFF)!", "image": "assets/products/prod-110-6k-salaar-combo.jpg", "stock": 25, "badge": "Blockbuster Salaar 💥", "comboItems": [{"name": "7cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 2", "price": 60}, {"name": "7cm Color Sparkler", "unit": "1 Pkt (10 Pcs) × 2", "price": 60}, {"name": "10cm Electrical Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 53}, {"name": "10cm Color Sparkler", "unit": "1 Pkt (10 Pcs) × 1", "price": 53}, {"name": "30cm Electrical Sparkler", "unit": "1 Pkt (5 Pcs) × 1", "price": 105}, {"name": "30cm Red Sparkler", "unit": "1 Pkt (5 Pcs) × 1", "price": 105}, {"name": "3.5\" Inches Lakshmi", "unit": "1 Pkt (8 Ply) × 1", "price": 45}, {"name": "4\" Inches Lakshmi", "unit": "1 Pkt (7 Ply) × 1", "price": 60}, {"name": "4\" Inches Gold Lakshmi", "unit": "1 Pkt (10 Ply) × 1", "price": 90}, {"name": "5\" Inches Elephant", "unit": "1 Pkt × 1", "price": 120}, {"name": "5\" Inches HULK", "unit": "1 Pkt (20 Ply) × 1", "price": 195}, {"name": "6\" Inches Lakshmi/ Superman/figher", "unit": "1 Pkt × 1", "price": 165}, {"name": "5\" Inches Gold Lakshmi (10 Ply)", "unit": "1 Pkt (10 Ply) × 1", "price": 150}, {"name": "6\" Inches Lakshmi (12 Ply)", "unit": "1 Pkt (12 Ply) × 1", "price": 180}, {"name": "2 Sound Bomb", "unit": "1 Box (5 Pcs) × 1", "price": 90}, {"name": "3 Sound Bomb", "unit": "1 Box (5 Pcs) × 1", "price": 120}, {"name": "Hydro Bomb", "unit": "1 Box (10 Pcs) × 1", "price": 165}, {"name": "Classic Green Bomb", "unit": "1 Box (10 Pcs) × 1", "price": 255}, {"name": "Jumbo Bomb", "unit": "1 Box (10 Pcs) × 1", "price": 480}, {"name": "Jussaric Bomb", "unit": "1 Box (10 Pcs) × 1", "price": 450}, {"name": "Purukose Bomb (10 Pcs)", "unit": "1 Pkt (10 Pcs) × 1", "price": 380}, {"name": "Nellore Guns (10 Pcs)", "unit": "1 Pkt (10 Pcs) × 1", "price": 150}, {"name": "1/4 kg Premium Paper Bomb", "unit": "1 Pc (250g) × 1", "price": 120}, {"name": "1 kg Paper Bomb", "unit": "1 Pc (1kg) × 1", "price": 450}, {"name": "Mirapakay Tapas (Red Bijili 50 pcs)", "unit": "1 Pkt (50 Pcs) × 1", "price": 45}, {"name": "50 Deluxe Crackers", "unit": "1 Piece × 1", "price": 160}, {"name": "Rocket Bomb Big (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 150}, {"name": "Lunik Express (10 Pcs)", "unit": "1 Box (10 Pcs) × 1", "price": 329}, {"name": "7 Shots (5 Pcs)", "unit": "1 Box (5 Pcs) × 1", "price": 349}, {"name": "12 Shot Blaster", "unit": "1 Box (12 Shots) × 1", "price": 300}, {"name": "30 Shot Multi Colour", "unit": "1 Box (30 Shots) × 1", "price": 825}, {"name": "Beedi Pataaka - (10 Pkts)", "unit": "1 Box (10 Pkts) × 1", "price": 200}, {"name": "Chilaka Tapas", "unit": "1 Pkt (10 Pcs) × 1", "price": 30}, {"name": "4\" Inches Roster/Ganesh", "unit": "1 Pkt × 1", "price": 150}, {"name": "Mirapakay Tapas (Red Bijili 100 pcs)", "unit": "1 Pkt (100 Pcs) × 1", "price": 75}, {"name": "200 Wala", "unit": "1 Piece × 1", "price": 150}, {"name": "100 Wala", "unit": "1 Piece × 1", "price": 75}, {"name": "5K Wala", "unit": "1 Box (5000 Pcs) × 1", "price": 1350}, {"name": "100 Deluxe", "unit": "1 Piece × 1", "price": 330}], "subtotal": 8619, "noCoupon": true, "couponPolicy": "Coupons are not allowed on this combo as it is already at the best possible price. Happy Diwali 🪔"}, {"id": 1, "name": "7cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 22, "originalPrice": 40, "unit": "1 Pkt (10 Pcs)", "description": "Classic 7cm electrical sparklers with dazzling white sparks. Safe & fun for children and family celebrations.", "image": "assets/products/prod-1-7cm-electrical-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 2, "name": "7cm Color Sparkler", "category": "Sparklers (Kakarothulu)", "price": 22, "originalPrice": 40, "unit": "1 Pkt (10 Pcs)", "description": "Vibrant 7cm color sparklers radiating vivid multi-hued sparks. Perfect starter sparkler for kids.", "image": "assets/products/prod-2-7cm-color-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 3, "name": "10cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 40, "originalPrice": 70, "unit": "1 Pkt (10 Pcs)", "description": "Popular 10cm electrical sparklers offering bright silver-white crackling sparks with steady burn.", "image": "assets/products/prod-3-10cm-electrical-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 4, "name": "10cm Color Sparkler", "category": "Sparklers (Kakarothulu)", "price": 40, "originalPrice": 70, "unit": "1 Pkt (10 Pcs)", "description": "Bright 10cm multi-color sparklers creating sparkling rainbow rays for festive evenings.", "image": "assets/products/prod-4-10cm-color-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 5, "name": "15cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 68, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "15cm long electrical sparklers with extended burning duration and crisp radiant sparks.", "image": "assets/products/prod-5-15cm-electrical-sparkler.jpg", "stock": 50, "badge": "Popular"}, {"id": 6, "name": "15cm Color Sparkler", "category": "Sparklers (Kakarothulu)", "price": 68, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "15cm brilliant color sparklers showering vibrant festive sparkles across the night sky.", "image": "assets/products/prod-6-15cm-color-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 7, "name": "15cm Red Sparkler", "category": "Sparklers (Kakarothulu)", "price": 68, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "Special 15cm crimson red sparklers with intense ruby-red glow and crackling glitter.", "image": "assets/products/prod-7-15cm-red-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 8, "name": "15cm Green Sparkler", "category": "Sparklers (Kakarothulu)", "price": 68, "originalPrice": 120, "unit": "1 Pkt (10 Pcs)", "description": "Rich 15cm emerald green sparklers illuminating celebrations with glowing green lights.", "image": "assets/products/prod-8-15cm-green-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 9, "name": "30cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 79, "originalPrice": 140, "unit": "1 Pkt (5 Pcs)", "description": "Mega 30cm electrical sparklers with massive long-lasting silver spark showers. Great crowd pleaser!", "image": "assets/products/prod-9-30cm-electrical-sparkler.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 10, "name": "30cm Green Sparkler", "category": "Sparklers (Kakarothulu)", "price": 79, "originalPrice": 140, "unit": "1 Pkt (5 Pcs)", "description": "30cm deep green sparklers offering an extended duration of intense vibrant emerald sparks.", "image": "assets/products/prod-10-30cm-green-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 11, "name": "30cm Red Sparkler", "category": "Sparklers (Kakarothulu)", "price": 79, "originalPrice": 140, "unit": "1 Pkt (5 Pcs)", "description": "30cm fiery red sparklers creating a majestic crimson glow with sustained burn time.", "image": "assets/products/prod-11-30cm-red-sparkler.jpg", "stock": 50, "badge": ""}, {"id": 12, "name": "50cm Sparkler (Electric)", "category": "Sparklers (Kakarothulu)", "price": 158, "originalPrice": 280, "unit": "1 Pkt (5 Pcs)", "description": "Super-long 50cm electrical sparklers. Massive burning time with spectacular golden-silver showers.", "image": "assets/products/prod-12-50cm-sparkler-electric.jpg", "stock": 50, "badge": "Special"}, {"id": 13, "name": "50cm Sparkler (Color)", "category": "Sparklers (Kakarothulu)", "price": 158, "originalPrice": 280, "unit": "1 Pkt (5 Pcs)", "description": "Giant 50cm multicolor sparklers with changing colored sparks. A grand visual feast for festivals.", "image": "assets/products/prod-13-50cm-sparkler-color.jpg", "stock": 50, "badge": "Special"}, {"id": 14, "name": "75cm Electrical Sparkler", "category": "Sparklers (Kakarothulu)", "price": 394, "originalPrice": 700, "unit": "1 Pkt (5 Pcs)", "description": "The giant 75cm mega sparkler! Longest burning sparkler in Sivakasi with continuous crackling fireworks.", "image": "", "stock": 50, "badge": "Special"}, {"id": 15, "name": "Chilaka Tapas", "category": "Bombs", "price": 22, "originalPrice": 40, "unit": "1 Pkt (10 Pcs)", "description": "Traditional Sivakasi Chilaka Tapas / Kuruvi crackers with sharp, crisp cracking sound.", "image": "assets/products/prod-15-chilaka-tapas-kuruvi.jpg", "stock": 50, "badge": ""}, {"id": 16, "name": "3.5\" Inches Lakshmi", "category": "Bombs", "price": 34, "originalPrice": 60, "unit": "1 Pkt (8 Ply)", "description": "Compact 3.5 inch Lakshmi sound crackers with 8-ply paper wrap delivering a solid loud blast.", "image": "assets/products/prod-16-3-5-lakshmi-8-ply.jpg", "stock": 50, "badge": ""}, {"id": 17, "name": "4\" Inches Lakshmi", "category": "Bombs", "price": 45, "originalPrice": 80, "unit": "1 Pkt (7 Ply)", "description": "Classic 4-inch Lakshmi bomb with traditional 7-ply wrapping for an authentic festive bang.", "image": "assets/products/prod-17-4-lakshmi-7-ply.jpg", "stock": 50, "badge": ""}, {"id": 18, "name": "4\" Inches Gold Lakshmi", "category": "Bombs", "price": 68, "originalPrice": 120, "unit": "1 Pkt (10 Ply)", "description": "Premium Gold Lakshmi cracker with heavy 10-ply layering for an extra powerful loud blast.", "image": "assets/products/prod-18-4-gold-lakshmi-10-ply.jpg", "stock": 50, "badge": "Popular"}, {"id": 19, "name": "4\" Inches Roster/Ganesh", "category": "Bombs", "price": 112, "originalPrice": 200, "unit": "1 Pkt", "description": "High-decibel Roster / Ganesh branded heavy sound crackers with intense acoustic impact.", "image": "assets/products/prod-19-4-roster-ganesh-cracker.jpg", "stock": 50, "badge": ""}, {"id": 20, "name": "5\" Inches Elephant", "category": "Bombs", "price": 90, "originalPrice": 160, "unit": "1 Pkt", "description": "Mighty 5-inch Elephant brand cracker producing an echoing thunderous roar across the street.", "image": "assets/products/prod-20-5-elephant-cracker.jpg", "stock": 50, "badge": "Popular"}, {"id": 21, "name": "5\" Inches HULK", "category": "Bombs", "price": 146, "originalPrice": 260, "unit": "1 Pkt (20 Ply)", "description": "Ultra heavy-duty 5-inch HULK mega cracker with 20-ply reinforcement for maximum explosive sound.", "image": "", "stock": 50, "badge": "Hot"}, {"id": 22, "name": "6\" Inches Lakshmi/ Superman/figher", "category": "Bombs", "price": 124, "originalPrice": 220, "unit": "1 Pkt", "description": "Big 6-inch Lakshmi / Superman / Fighter crackers delivering a deep, booming festival blast.", "image": "", "stock": 50, "badge": ""}, {"id": 23, "name": "6\" Inches Lakshmi (12 Ply)", "category": "Bombs", "price": 135, "originalPrice": 240, "unit": "1 Pkt (12 Ply)", "description": "Grand 6-inch Lakshmi bomb crafted with thick 12-ply paper casing for resounding ground explosion.", "image": "assets/products/prod-23-6-lakshmi-12-ply.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 24, "name": "5\" Inches Gold Lakshmi (10 Ply)", "category": "Bombs", "price": 112, "originalPrice": 200, "unit": "1 Pkt (10 Ply)", "description": "Gold edition 5-inch Lakshmi crackers with 10-ply shell providing a clean, thunderous sound.", "image": "assets/products/prod-24-5-gold-lakshmi-10-ply.jpg", "stock": 50, "badge": ""}, {"id": 25, "name": "2 Sound Bomb", "category": "Bombs", "price": 68, "originalPrice": 120, "unit": "1 Box (5 Pcs)", "description": "Exciting double-blast sound bomb that explodes with two consecutive loud bangs.", "image": "assets/products/prod-25-2-sound-bomb.jpg", "stock": 50, "badge": "Popular"}, {"id": 26, "name": "3 Sound Bomb", "category": "Bombs", "price": 90, "originalPrice": 160, "unit": "1 Box (5 Pcs)", "description": "Thrilling triple-blast sound bomb producing three rhythmic, powerful explosions.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 27, "name": "Hydro Bomb", "category": "Bombs", "price": 124, "originalPrice": 220, "unit": "1 Box (10 Pcs)", "description": "High-intensity Sivakasi Hydro Bomb renowned for supreme decibel output and shocking blast power.", "image": "assets/products/prod-49-hydro-bomb-bs.jpg", "stock": 50, "badge": "Hot"}, {"id": 28, "name": "Classic Green Bomb", "category": "Bombs", "price": 191, "originalPrice": 340, "unit": "1 Box (10 Pcs)", "description": "Legendary Classic Green Bomb with intense green casing and earth-shaking blast report.", "image": "assets/products/prod-51-classic-green-bomb.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 29, "name": "Jumbo Bomb", "category": "Bombs", "price": 360, "originalPrice": 640, "unit": "1 Box (10 Pcs)", "description": "Colossal Jumbo Bomb built for crackers enthusiasts craving the loudest thunder in Sullurpeta.", "image": "assets/products/prod-52-jumbo-bomb.jpg", "stock": 50, "badge": "Special"}, {"id": 30, "name": "Jussaric Bomb", "category": "Bombs", "price": 338, "originalPrice": 600, "unit": "1 Box (10 Pcs)", "description": "Prehistoric roar! Jurassic Bomb packed with heavy pyro-charge for maximum shockwave sound.", "image": "assets/products/prod-53-jurassic-bomb.jpg", "stock": 50, "badge": "Hot"}, {"id": 31, "name": "Purukose Bomb (10 Pcs)", "category": "Bombs", "price": 285, "originalPrice": 500, "unit": "1 Pkt (10 Pcs)", "description": "Pack of 10 traditional Sivakasi Purikosu string bombs with crisp snapping burst sound.", "image": "", "stock": 50, "badge": ""}, {"id": 32, "name": "Nellore Guns (10 Pcs)", "category": "Bombs", "price": 112, "originalPrice": 200, "unit": "1 Pkt (10 Pcs)", "description": "Pack of 10 pocket-friendly Nellore Guns producing quick, fun explosive pops for celebrations.", "image": "", "stock": 50, "badge": ""}, {"id": 33, "name": "1/4 kg Premium Paper Bomb", "category": "Bombs", "price": 90, "originalPrice": 160, "unit": "1 Pc (250g)", "description": "Premium quarter-kilogram paper bomb with densely packed craft paper for a deep resonant blast.", "image": "assets/products/prod-60-1-4-kg-paper-bomb.jpg", "stock": 50, "badge": "Premium"}, {"id": 34, "name": "1 kg Paper Bomb", "category": "Bombs", "price": 338, "originalPrice": 550, "unit": "1 Pc (1kg)", "description": "Massive 1 kg mega paper bomb. Heavyweight festive explosion that shakes the ground!", "image": "assets/products/prod-61-1-kg-paper-bomb.jpg", "stock": 50, "badge": "Special"}, {"id": 35, "name": "Mirapakay Tapas (Red Bijili 50 pcs)", "category": "Bombs", "price": 34, "originalPrice": 60, "unit": "1 Pkt (50 Pcs)", "description": "Fiery red Mirapakay Tapas / Bijili crackers with rapid-fire sharp cracking pops (50 pieces).", "image": "assets/products/prod-35-bijili-red-bijili-50-pcs.jpg", "stock": 50, "badge": ""}, {"id": 36, "name": "Mirapakay Tapas (Red Bijili 100 pcs)", "category": "Bombs", "price": 56, "originalPrice": 100, "unit": "1 Pkt (100 Pcs)", "description": "Jumbo pack of 100 Mirapakay Tapas / Red Bijili crackers for continuous festive crackle.", "image": "assets/products/prod-36-bijili-red-bijili-100-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 37, "name": "28 Wala", "category": "Walas / Ladis / Saralu", "price": 28, "originalPrice": 50, "unit": "1 Piece", "description": "Traditional 28 Wala cracker garland. Quick burst of continuous festive crackles.", "image": "assets/products/prod-27-28-wala-28-chorsa.jpg", "stock": 50, "badge": ""}, {"id": 38, "name": "24 Deluxe", "category": "Walas / Ladis / Saralu", "price": 56, "originalPrice": 100, "unit": "1 Piece", "description": "24 Deluxe cracker garland with louder, punchier bursts than standard mini walas.", "image": "assets/products/prod-28-24-deluxe.jpg", "stock": 50, "badge": ""}, {"id": 39, "name": "50 Deluxe", "category": "Walas / Ladis / Saralu", "price": 120, "originalPrice": 240, "unit": "1 Piece", "description": "50 Deluxe cracker garland providing prolonged, rhythmic celebration bursts.", "image": "assets/products/prod-29-50-deluxe.jpg", "stock": 50, "badge": ""}, {"id": 40, "name": "100 Deluxe", "category": "Walas / Ladis / Saralu", "price": 248, "originalPrice": 440, "unit": "1 Piece", "description": "100 Deluxe cracker garland with superior explosive power and continuous celebration noise.", "image": "assets/products/prod-30-100-deluxe.jpg", "stock": 50, "badge": "Popular"}, {"id": 41, "name": "200 Wala", "category": "Walas / Ladis / Saralu", "price": 112, "originalPrice": 220, "unit": "1 Piece", "description": "Popular 200 Wala cracker garland. Great balance of length, continuous pops, and festive value.", "image": "assets/products/prod-31-200-wala.jpg", "stock": 50, "badge": ""}, {"id": 42, "name": "100 Wala", "category": "Walas / Ladis / Saralu", "price": 56, "originalPrice": 100, "unit": "1 Piece", "description": "Standard 100 Wala garland delivering non-stop rhythmic cracking sounds.", "image": "assets/products/prod-32-100-wala.jpg", "stock": 50, "badge": ""}, {"id": 43, "name": "8 Wala Chorsa", "category": "Walas / Ladis / Saralu", "price": 5, "originalPrice": 10, "unit": "1 Piece", "description": "Pocket-friendly 8 Wala Chorsa mini garland for quick festive bursts.", "image": "", "stock": 50, "badge": ""}, {"id": 44, "name": "50 Deluxe Crackers", "category": "Walas / Ladis / Saralu", "price": 120, "originalPrice": 240, "unit": "1 Piece", "description": "Premium 50 Deluxe cracker ladi with thick craft fuses for seamless firing.", "image": "assets/products/prod-34-50-deluxe-crackers.jpg", "stock": 50, "badge": ""}, {"id": 45, "name": "28 Giant", "category": "Walas / Ladis / Saralu", "price": 45, "originalPrice": 80, "unit": "1 Piece", "description": "28 Giant heavy wala with bigger cracker shells for louder reverberating sounds.", "image": "assets/products/prod-37-28-giant.jpg", "stock": 50, "badge": ""}, {"id": 46, "name": "1K Wala", "category": "Walas / Ladis / Saralu", "price": 225, "originalPrice": 400, "unit": "1 Box (1000 Pcs)", "description": "Grand 1,000 Wala festive garland! Creates a spectacular non-stop red carpet sound spectacle.", "image": "assets/products/prod-63-1k-wala-garland.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 47, "name": "2K Wala", "category": "Walas / Ladis / Saralu", "price": 450, "originalPrice": 800, "unit": "1 Box (2000 Pcs)", "description": "Massive 2,000 Wala continuous cracker garland. Fills the neighborhood with celebration energy.", "image": "assets/products/prod-64-2k-wala-garland.jpg", "stock": 50, "badge": "Special"}, {"id": 48, "name": "5K Wala", "category": "Walas / Ladis / Saralu", "price": 1012, "originalPrice": 1800, "unit": "1 Box (5000 Pcs)", "description": "The ultimate 5,000 Wala mega garland! Spectacular non-stop high-energy Diwali celebration.", "image": "assets/products/prod-65-5k-wala-garland.jpg", "stock": 50, "badge": "Special"}, {"id": 49, "name": "Flower Pot Small (10 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 68, "originalPrice": 120, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 classic small flower pots with bright golden fountain sprays. Safe for family enjoyment.", "image": "assets/products/prod-38-flower-pot-small.jpg", "stock": 50, "badge": ""}, {"id": 50, "name": "Flower Pot Special (10 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 124, "originalPrice": 220, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 special flower pots generating taller, richer golden and silver fountain showers.", "image": "assets/products/prod-39-flower-pot-special.jpg", "stock": 50, "badge": "Popular"}, {"id": 51, "name": "Flower Pot Ashoka (5 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 180, "originalPrice": 320, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 giant Ashoka flower pots shooting majestic multi-colored sparks up to 15 feet high.", "image": "assets/products/prod-40-flower-pot-ashoka-5-pcs.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 52, "name": "Colour Koti (Standard) (10 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 292, "originalPrice": 520, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 standard Colour Koti pots bursting with vivid multi-colored fountain sprays.", "image": "assets/products/prod-41-colour-koti-standard.jpg", "stock": 50, "badge": ""}, {"id": 53, "name": "Colour Koti (Deluxe) (10 pcs)", "category": "Flower Pots (Chichubuddi)", "price": 449, "originalPrice": 800, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 deluxe Colour Koti pots with extra dense sparkling effects and long burning time.", "image": "assets/products/prod-42-colour-koti-deluxe.jpg", "stock": 50, "badge": "Special"}, {"id": 54, "name": "Tri Color Fountain (5 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 449, "originalPrice": 900, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 spectacular tri-color fountains with triple layer transitions (Red, Green, Gold).", "image": "assets/products/prod-80-tri-color-fountain.jpg", "stock": 50, "badge": "Special"}, {"id": 55, "name": "5 Color Fountain (5 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 299, "originalPrice": 600, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 five-color shifting fountains offering vibrant dancing colors in sequence.", "image": "assets/products/prod-81-5-color-fountain.jpg", "stock": 50, "badge": "Popular"}, {"id": 56, "name": "Little Star (Small Fountain) (1 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 90, "originalPrice": 160, "unit": "1 Piece", "description": "Compact Little Star novelty fountain with bright starry crackles and colorful flame sparks.", "image": "assets/products/prod-92-little-star-small-fountain.jpg", "stock": 50, "badge": ""}, {"id": 57, "name": "Bada Star (Big Fountain) (1 Pcs)", "category": "Flower Pots (Chichubuddi)", "price": 248, "originalPrice": 440, "unit": "1 Piece", "description": "Giant Bada Star fountain cone producing a massive volcano fountain of golden crackles.", "image": "assets/products/prod-93-bada-star-big-fountain.jpg", "stock": 50, "badge": "Popular"}, {"id": 58, "name": "Ground Chakkar Big (10 pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 68, "originalPrice": 120, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 big ground chakkars spinning with steady fiery circles of golden sparks.", "image": "assets/products/prod-43-ground-chakkar-big-10-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 59, "name": "Ground Chakkar Special (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 135, "originalPrice": 240, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 special ground chakkars with faster rotational speed and wider radiant spark rings.", "image": "assets/products/prod-44-ground-chakkar-special.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 60, "name": "Musical Chakkar (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 281, "originalPrice": 500, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 musical ground chakkars that whistle and sing melodiously while spinning rapidly.", "image": "", "stock": 50, "badge": "Special"}, {"id": 61, "name": "Spinner Deluxe - XL (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 337, "originalPrice": 640, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 XL Spinner Deluxe wheels with prolonged spin time and giant brilliant spark circumference.", "image": "assets/products/prod-46-spinner-deluxe.jpg", "stock": 50, "badge": "Special"}, {"id": 62, "name": "Spinner Special (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 262, "originalPrice": 500, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 special spinner wheels throwing glittering sparks with smooth, stable spins.", "image": "assets/products/prod-47-spinner-special.jpg", "stock": 50, "badge": ""}, {"id": 63, "name": "Ground Chakkar Deluxe - XL (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 224, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 XL Deluxe ground chakkars with extra heavy pyro filling for dazzling golden rings.", "image": "assets/products/prod-48-ground-chakkar-deluxe.jpg", "stock": 50, "badge": "Popular"}, {"id": 64, "name": "Disco Wheel (10 Pcs)", "category": "Ground Chakkars (Bhu Chakaram)", "price": 112, "originalPrice": 200, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 Disco Wheels spinning with dynamic multicolor strobe flash and glitter effects.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 65, "name": "3 Sound Rocket (10 Pcs)", "category": "Rockets", "price": 225, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 high-flying 3-Sound Rockets that screech into the night sky and burst with 3 loud bangs.", "image": "assets/products/prod-57-3-sound-rocket.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 66, "name": "Rocket Bomb Small (10 Pcs)", "category": "Rockets", "price": 68, "originalPrice": 120, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 baby rocket bombs with rapid liftoff and sharp celebratory aerial report.", "image": "assets/products/prod-58-rocket-bomb-small-baby-rocket.jpg", "stock": 50, "badge": ""}, {"id": 67, "name": "Rocket Bomb Big (10 Pcs)", "category": "Rockets", "price": 112, "originalPrice": 200, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 big rocket bombs soaring high above treetops before exploding with a booming blast.", "image": "assets/products/prod-59-rocket-bomb-big.jpg", "stock": 50, "badge": "Popular"}, {"id": 68, "name": "Whistle Rocket (10 Pcs)", "category": "Rockets", "price": 262, "originalPrice": 480, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 whistle rockets emitting a piercing acoustic whistle followed by a glittering sky burst.", "image": "assets/products/prod-54-whistle-rocket.jpg", "stock": 50, "badge": "Hot"}, {"id": 69, "name": "Lunik Express (10 Pcs)", "category": "Rockets", "price": 247, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 supersonic Lunik Express rockets with ultra-high altitude trajectory and brilliant flash.", "image": "", "stock": 50, "badge": "Special"}, {"id": 70, "name": "7 Shots (5 Pcs)", "category": "Sky Shots", "price": 262, "originalPrice": 500, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 multi-shot tubes firing 7 sequential aerial bursts of colorful stars into the sky.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 71, "name": "12 Shot Blaster", "category": "Sky Shots", "price": 225, "originalPrice": 400, "unit": "1 Box (12 Shots)", "description": "High-action 12-shot aerial repeater cake launching 12 consecutive multicolor bursts with crackling tails.", "image": "assets/products/prod-67-12-shot-blaster.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 72, "name": "12 Shot Blaster (Premium)", "category": "Sky Shots", "price": 338, "originalPrice": 520, "unit": "1 Box (12 Shots)", "description": "Premium 12-shot cake with extra-large aerial breaks, palm brocade effects, and intense strobe glitter.", "image": "assets/products/prod-68-12-shot-blaster-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 73, "name": "30 Shot Multi Colour", "category": "Sky Shots", "price": 619, "originalPrice": 1100, "unit": "1 Box (30 Shots)", "description": "Spectacular 30-shot aerial cake painting the night sky with vibrant red, green, gold, and blue bouquets.", "image": "assets/products/prod-70-30-shot-multi-colour-bs.jpg", "stock": 50, "badge": "Popular"}, {"id": 74, "name": "30 Shot Multi Colour (Premium)", "category": "Sky Shots", "price": 712, "originalPrice": 1300, "unit": "1 Box (30 Shots)", "description": "Premium 30-shot grand sky cake featuring golden willow cascades, crackling chrysanthemums, and loud reports.", "image": "assets/products/prod-69-30-shot-multi-colour-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 75, "name": "60 Shot Multi Colour", "category": "Sky Shots", "price": 1049, "originalPrice": 1900, "unit": "1 Box (60 Shots)", "description": "Epic 60-shot professional celebration cake firing continuous barrages of dazzling multi-hued aerial shells.", "image": "assets/products/prod-72-60-shot-multi-colour-bs.jpg", "stock": 50, "badge": "Special"}, {"id": 76, "name": "60 Shot Multi Colour (Premium)", "category": "Sky Shots", "price": 1124, "originalPrice": 2200, "unit": "1 Box (60 Shots)", "description": "Premium 60-shot deluxe fireworks cake with intense tempo, shimmering brocade crowns, and finale salvo.", "image": "assets/products/prod-71-60-shot-multi-colour-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 77, "name": "120 Shot Multi Colour", "category": "Sky Shots", "price": 1800, "originalPrice": 3200, "unit": "1 Box (120 Shots)", "description": "The pinnacle of Diwali celebrations! 120 rapid-fire aerial shots illuminating the whole sky in grand style.", "image": "assets/products/prod-73-120-shot-multi-colour.jpg", "stock": 50, "badge": "Special"}, {"id": 78, "name": "Butterfly (10 Pcs)", "category": "Fancy Items", "price": 218, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 color-changing butterfly novelties that flutter upwards into the air with radiant wings.", "image": "assets/products/prod-74-butterfly-colour-changing.jpg", "stock": 50, "badge": "Popular"}, {"id": 79, "name": "Drone (10 Pcs)", "category": "Fancy Items", "price": 214, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 drone fireworks with dual propellers spinning straight up into the air with bright LEDs.", "image": "assets/products/prod-75-drone-10-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 80, "name": "Helicopter (10 Pcs)", "category": "Fancy Items", "price": 210, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 helicopter fireworks whirring up into the night with high-speed rotation and spark ring.", "image": "assets/products/prod-76-helicopter-10-pcs.jpg", "stock": 50, "badge": ""}, {"id": 81, "name": "Photo Flash (10 Pcs)", "category": "Fancy Items", "price": 202, "originalPrice": 360, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 photo flash novelties producing blinding stadium-bright white flashes like camera strobes.", "image": "assets/products/prod-77-photo-flash.jpg", "stock": 50, "badge": ""}, {"id": 82, "name": "Magic Boom (10 Pcs)", "category": "Fancy Items", "price": 225, "originalPrice": 400, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 Magic Boom novelty items with sudden surprising sparkles and crackling bursts.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 83, "name": "Peacock Small", "category": "Fancy Items", "price": 248, "originalPrice": 440, "unit": "1 Piece", "description": "Graceful Peacock firework spreading its radiant glowing plumage in vibrant colored fountain feathers.", "image": "assets/products/prod-82-peacock-small-colour.jpg", "stock": 50, "badge": "Popular"}, {"id": 84, "name": "Peacock Big", "category": "Fancy Items", "price": 562, "originalPrice": 1000, "unit": "1 Piece", "description": "Giant Dragon Peacock firework delivering a magnificent 5-color fanned plumage fountain spectacle.", "image": "assets/products/prod-83-peacock-big-dragon-peacock.jpg", "stock": 50, "badge": "Special"}, {"id": 85, "name": "Kit Kat (Venna Muddalu)", "category": "Fancy Items", "price": 52, "originalPrice": 100, "unit": "1 Box", "description": "Classic Kit Kat / Venna Muddalu novelty crackers with fun crackling and popping sounds.", "image": "", "stock": 50, "badge": ""}, {"id": 86, "name": "Twinkling Star 1.5\" Inches (10 Pcs)", "category": "Fancy Items", "price": 49, "originalPrice": 100, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 mini 1.5 inch twinkling star sticks with dancing rhythmic glitter sparks.", "image": "assets/products/prod-85-twinkling-star-1-5.jpg", "stock": 50, "badge": ""}, {"id": 87, "name": "4\" Inches Twinkling Star (10 Pcs)", "category": "Fancy Items", "price": 128, "originalPrice": 240, "unit": "1 Box (10 Pcs)", "description": "Pack of 10 large 4 inch twinkling stars with intense strobing silver flashes and crackles.", "image": "assets/products/prod-86-4-twinkling-star.jpg", "stock": 50, "badge": "Popular"}, {"id": 88, "name": "Anaconda (Paamu Billalu - Big) - (10 Tblts)", "category": "Fancy Items", "price": 105, "originalPrice": 200, "unit": "1 Box (10 Tablets)", "description": "Pack of 10 giant Anaconda snake tablets expanding into massive twisting black serpents with sparks.", "image": "assets/products/prod-87-anaconda.jpg", "stock": 50, "badge": "Popular"}, {"id": 89, "name": "Snake Eggs (Paamu Billalu - Small) - (10 Tblts)", "category": "Fancy Items", "price": 11, "originalPrice": 20, "unit": "1 Box (10 Tablets)", "description": "Pack of 10 small snake egg tablets. Classic traditional favorite loved by children for generations.", "image": "assets/products/prod-88-snake-eggs.jpg", "stock": 50, "badge": ""}, {"id": 90, "name": "Gadha", "category": "Fancy Items", "price": 382, "originalPrice": 800, "unit": "1 Piece", "description": "Lord Hanuman Gadha novelty firework with multi-stage fountain sprays, whizzing whistles, and crackles.", "image": "", "stock": 50, "badge": "Special"}, {"id": 91, "name": "Sword", "category": "Fancy Items", "price": 300, "originalPrice": 600, "unit": "1 Piece", "description": "Warrior Sword novelty firework emitting sparkling blade fountains with glorious glowing showers.", "image": "", "stock": 50, "badge": "Special"}, {"id": 92, "name": "Gas Cylinder", "category": "Fancy Items", "price": 300, "originalPrice": 600, "unit": "1 Piece", "description": "Novelty LPG Cylinder replica bursting into roaring multi-stage fountain flames and crackling sparks.", "image": "", "stock": 50, "badge": ""}, {"id": 93, "name": "Electric Stones (Venna Muddalu)", "category": "Fancy Items", "price": 34, "originalPrice": 60, "unit": "1 Pkt", "description": "Snapping electric stones that spark upon impact when rubbed together. Safe tactile fun for all ages.", "image": "", "stock": 50, "badge": ""}, {"id": 94, "name": "18\" Inches Pencil (5 Pcs)", "category": "Fancy Items", "price": 169, "originalPrice": 300, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 giant 18-inch handheld fountain pencils shooting elegant multi-color sparkling plumes.", "image": "assets/products/prod-95-18-pencil.jpg", "stock": 50, "badge": "Popular"}, {"id": 95, "name": "15\" Inches Pencil (5 Pcs)", "category": "Fancy Items", "price": 135, "originalPrice": 240, "unit": "1 Box (5 Pcs)", "description": "Pack of 5 long 15-inch fountain pencils displaying steady, vibrant colored sparks.", "image": "assets/products/prod-96-15-pencil.jpg", "stock": 50, "badge": ""}, {"id": 96, "name": "Sky Lantern", "category": "Fancy Items", "price": 52, "originalPrice": 100, "unit": "1 Piece", "description": "Traditional eco-friendly Hot Air Sky Lantern soaring peacefully into the night sky with warm diya light.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 97, "name": "Water LED Diya", "category": "Fancy Items", "price": 52, "originalPrice": 100, "unit": "1 Piece", "description": "Magical flameless Water Sensor LED Diya. Lights up instantly upon pouring water for safe home decor.", "image": "", "stock": 50, "badge": "Popular"}, {"id": 98, "name": "Golden Star Pencil (3 Pcs)", "category": "Fancy Items", "price": 248, "originalPrice": 440, "unit": "1 Box (3 Pcs)", "description": "Pack of 3 premium Golden Star fountain pencils casting radiant showers of pure gold sparks.", "image": "assets/products/prod-97-golden-star-pencil-3-pcs.jpg", "stock": 50, "badge": "Popular"}, {"id": 99, "name": "21 Item Family Box", "category": "Family Gift Boxes", "price": 450, "originalPrice": 800, "unit": "1 Box (21 Items)", "description": "Comprehensive starter family gift box containing 21 assorted crackers, sparklers, chakkars, and flower pots.", "image": "assets/products/prod-98-21-item-family-box.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 100, "name": "30 Item Family Box", "category": "Family Gift Boxes", "price": 619, "originalPrice": 1100, "unit": "1 Box (30 Items)", "description": "Standard festive family box loaded with 30 assorted items offering complete variety for family celebrations.", "image": "assets/products/prod-99-30-item-family-box.jpg", "stock": 50, "badge": "Popular"}, {"id": 101, "name": "50 Item Family Box", "category": "Family Gift Boxes", "price": 1118, "originalPrice": 1900, "unit": "1 Box (50 Items)", "description": "Super value 50-item grand family assortment packed with sparklers, pots, bombs, chakkars, and novelties.", "image": "assets/products/prod-101-50-item-family-box-bs.jpg", "stock": 50, "badge": "Bestseller"}, {"id": 102, "name": "50 Item Family Box (Premium)", "category": "Family Gift Boxes", "price": 1350, "originalPrice": 2400, "unit": "1 Box (50 Items)", "description": "Premium edition 50-item VIP gift box featuring top-tier Sivakasi factories, bigger pots, and aerial shots.", "image": "assets/products/prod-100-50-item-family-box-gs.jpg", "stock": 50, "badge": "Premium"}, {"id": 103, "name": "60 Item Family Box", "category": "Family Gift Boxes", "price": 1462, "originalPrice": 2800, "unit": "1 Box (60 Items)", "description": "Royal 60-item mega celebration box designed for grand family gatherings and neighborhood celebrations.", "image": "assets/products/prod-102-60-item-family-box-gs.jpg", "stock": 50, "badge": "Special"}, {"id": 104, "name": "70 Item Family Box", "category": "Family Gift Boxes", "price": 1688, "originalPrice": 3000, "unit": "1 Box (70 Items)", "description": "The ultimate 70-item festival hamper! Massive collection of premium fireworks for complete Diwali joy.", "image": "assets/products/prod-103-70-item-family-box.jpg", "stock": 50, "badge": "Special"}, {"id": 105, "name": "Wonder Throw - (10 Pkts)", "category": "Kids Items", "price": 150, "originalPrice": 240, "unit": "1 Box (10 Pkts)", "description": "Pack of 10 packets of Wonder Throw snap crackers. Simply throw against hard surface for harmless pops!", "image": "assets/products/prod-104-wonder-throw.jpg", "stock": 50, "badge": "Popular"}, {"id": 106, "name": "Beedi Pataaka - (10 Pkts)", "category": "Kids Items", "price": 150, "originalPrice": 300, "unit": "1 Box (10 Pkts)", "description": "Pack of 10 packets of classic Beedi Pataaka / Corsair crackers with sharp, fun snaps.", "image": "", "stock": 50, "badge": ""}, {"id": 107, "name": "Pop Pop - (50 Pkts)", "category": "Kids Items", "price": 375, "originalPrice": 800, "unit": "1 Box (50 Pkts)", "description": "Mega value box containing 50 packets of Pop Pop crackers. Safe, zero-burn fun that kids adore!", "image": "", "stock": 50, "badge": "Bestseller"}, {"id": 108, "name": "Color Matches - (10 Pkts - Assorted)", "category": "Kids Items", "price": 112, "originalPrice": 200, "unit": "1 Bundle (10 Pkts)", "description": "Bundle of 10 assorted packets of sparkling Color Matches glowing with colorful flames upon lighting.", "image": "", "stock": 50, "badge": "Popular"}];
 
-    // App State
+    // Category Emoji Mapping
+    const CATEGORY_ICONS = {
+        'Firestorm Special Assorted Combos': '🔥 Combos',
+        'Sparklers (Kakarothulu)': '✨ Sparklers',
+        'Bombs': '💥 Bombs',
+        'Walas / Ladis / Saralu': '🧨 Walas',
+        'Flower Pots (Chichubuddi)': '🌸 Pots',
+        'Ground Chakkars (Bhu Chakaram)': '🌀 Chakkars',
+        'Rockets': '🚀 Rockets',
+        'Sky Shots': '✨ Sky Shots',
+        'Fancy Items': '🎭 Fancy',
+        'Gift Boxes': '🎁 Boxes',
+        'Kids Special & Guns': '🧒 Kids'
+    };
+
     let products = [...DEFAULT_PRODUCTS];
-    let orderQuantities = {}; // { [productId]: quantity }
-    let currentMargin = 0; // % margin (+20 or -20)
-    let customerDiscount = 0; // % discount for customer (e.g. 5, 10, 15)
+    let orderQuantities = {};
+    let currentMargin = 0;       // Confidential Demand Margin % (+/- integer)
+    let customerDiscount = 0;    // Customer Extra Discount % (integer)
+    let activeCategory = '';     // Empty string = All
     let selectedOnlyMode = false;
+    let searchQuery = '';
 
-    // Initialize quantities to 0
-    products.forEach(p => {
-        orderQuantities[p.id] = 0;
-    });
-
-    // Populate Category Dropdown
-    function initCategoryFilter() {
-        const catSelect = document.getElementById('pos-category-select');
-        const categories = [...new Set(products.map(p => p.category))];
-        categories.forEach(cat => {
-            const opt = document.createElement('option');
-            opt.value = cat;
-            opt.textContent = `${cat} (${products.filter(p => p.category === cat).length})`;
-            catSelect.appendChild(opt);
-        });
-    }
-
-    // Calculate dynamically adjusted unit price based on margin
+    // Calculate effective unit price with salesperson's demand margin
     function getAdjustedUnitPrice(product) {
-        if (currentMargin === 0) return product.price;
-        const multiplier = (100 + currentMargin) / 100;
+        if (!currentMargin || currentMargin === 0) return product.price;
+        const multiplier = 1 + (currentMargin / 100);
         return Math.max(1, Math.round(product.price * multiplier));
     }
 
-    // Render Table Rows
-    function renderTable() {
+    // Initialize Category Carousel Chips
+    function initCategoryCarousel() {
+        const carousel = document.getElementById('category-carousel');
+        carousel.innerHTML = '';
+
+        // Extract categories and counts
+        const catCounts = {};
+        products.forEach(p => {
+            catCounts[p.category] = (catCounts[p.category] || 0) + 1;
+        });
+
+        // 1. "All" Pill
+        const allBtn = document.createElement('button');
+        allBtn.type = 'button';
+        allBtn.className = `cat-pill ${activeCategory === '' && !selectedOnlyMode ? 'active' : ''}`;
+        allBtn.id = 'cat-pill-all';
+        allBtn.onclick = () => selectCategory('');
+        allBtn.innerHTML = `🎆 All <span class="cat-pill-count">${products.length}</span>`;
+        carousel.appendChild(allBtn);
+
+        // 2. "Selected" Pill
+        const selBtn = document.createElement('button');
+        selBtn.type = 'button';
+        selBtn.className = `cat-pill cat-pill-selected ${selectedOnlyMode ? 'active' : ''}`;
+        selBtn.id = 'cat-pill-selected';
+        selBtn.onclick = () => toggleSelectedMode();
+        selBtn.innerHTML = `🛒 Selected <span class="cat-pill-count" id="pill-selected-count">0</span>`;
+        carousel.appendChild(selBtn);
+
+        // 3. Category Pills
+        const categories = Object.keys(catCounts);
+        categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            const shortName = CATEGORY_ICONS[cat] || cat;
+            btn.className = `cat-pill ${activeCategory === cat && !selectedOnlyMode ? 'active' : ''}`;
+            btn.setAttribute('data-category', cat);
+            btn.onclick = () => selectCategory(cat);
+            btn.innerHTML = `${shortName} <span class="cat-pill-count">${catCounts[cat]}</span>`;
+            carousel.appendChild(btn);
+        });
+    }
+
+    function selectCategory(cat) {
+        selectedOnlyMode = false;
+        activeCategory = cat;
+        updateCarouselActiveStyle();
+        filterItems();
+    }
+
+    function toggleSelectedMode() {
+        selectedOnlyMode = !selectedOnlyMode;
+        if (selectedOnlyMode) {
+            activeCategory = '';
+        }
+        updateCarouselActiveStyle();
+        filterItems();
+    }
+
+    function updateCarouselActiveStyle() {
+        document.querySelectorAll('.cat-pill').forEach(btn => {
+            if (btn.id === 'cat-pill-selected') {
+                btn.classList.toggle('active', selectedOnlyMode);
+            } else if (btn.id === 'cat-pill-all') {
+                btn.classList.toggle('active', !selectedOnlyMode && activeCategory === '');
+            } else {
+                const cat = btn.getAttribute('data-category');
+                btn.classList.toggle('active', !selectedOnlyMode && activeCategory === cat);
+            }
+        });
+    }
+
+    // Toggle Margin Drawer
+    function toggleMarginDrawer() {
+        const drawer = document.getElementById('margin-drawer');
+        const btn = document.getElementById('btn-toggle-margin');
+        const chevron = document.getElementById('margin-chevron');
+        const isOpen = drawer.classList.contains('open');
+
+        if (isOpen) {
+            drawer.classList.remove('open');
+            btn.classList.remove('active');
+            chevron.className = 'fas fa-chevron-down';
+        } else {
+            drawer.classList.add('open');
+            btn.classList.add('active');
+            chevron.className = 'fas fa-chevron-up';
+        }
+    }
+
+    // Margin Controller logic
+    function setMargin(marginVal) {
+        currentMargin = parseInt(marginVal, 10) || 0;
+        document.getElementById('custom-margin-input').value = currentMargin;
+        
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            const btnVal = parseInt(btn.textContent.replace('%', ''), 10);
+            btn.classList.toggle('active', btnVal === currentMargin);
+        });
+
+        updateMarginPill();
+        updateAllPrices();
+        updateCalculations();
+    }
+
+    function handleCustomMarginChange(val) {
+        const parsed = parseInt(val, 10);
+        currentMargin = isNaN(parsed) ? 0 : parsed;
+
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            const btnVal = parseInt(btn.textContent.replace('%', ''), 10);
+            btn.classList.toggle('active', btnVal === currentMargin);
+        });
+
+        updateMarginPill();
+        updateAllPrices();
+        updateCalculations();
+    }
+
+    function updateMarginPill() {
+        const pillTxt = document.getElementById('margin-pill-txt');
+        const liveInd = document.getElementById('margin-live-indicator');
+        
+        if (currentMargin > 0) {
+            pillTxt.textContent = `Margin: +${currentMargin}%`;
+            liveInd.textContent = `+${currentMargin}% Demand Hike`;
+            liveInd.style.color = '#DC2626';
+        } else if (currentMargin < 0) {
+            pillTxt.textContent = `Margin: ${currentMargin}%`;
+            liveInd.textContent = `${currentMargin}% Demand Discount`;
+            liveInd.style.color = '#16A34A';
+        } else {
+            pillTxt.textContent = `Margin: 0%`;
+            liveInd.textContent = `0% Standard Base`;
+            liveInd.style.color = '#B45309';
+        }
+    }
+
+    // Search Handling
+    function handleSearchInput(val) {
+        searchQuery = (val || '').toLowerCase().trim();
+        const clearBtn = document.getElementById('btn-clear-search');
+        clearBtn.style.display = searchQuery ? 'block' : 'none';
+        filterItems();
+    }
+
+    function clearSearch() {
+        const input = document.getElementById('pos-search-input');
+        input.value = '';
+        handleSearchInput('');
+        input.focus();
+    }
+
+    // Render Full Product List (Mobile Cards + Desktop Table)
+    function renderProductViews() {
+        renderMobileCards();
+        renderDesktopTable();
+        filterItems();
+        updateCalculations();
+    }
+
+    // 1. High-Density Mobile Cards (<= 768px)
+    function renderMobileCards() {
+        const container = document.getElementById('pos-mobile-list');
+        container.innerHTML = '';
+
+        products.forEach(p => {
+            const qty = orderQuantities[p.id] || 0;
+            const adjPrice = getAdjustedUnitPrice(p);
+            const card = document.createElement('div');
+            card.id = `m-card-${p.id}`;
+            card.className = `pos-mobile-card ${qty > 0 ? 'has-qty' : ''}`;
+            card.setAttribute('data-id', p.id);
+            card.setAttribute('data-category', p.category);
+            card.setAttribute('data-name', p.name.toLowerCase());
+
+            card.innerHTML = `
+                <div class="mobile-card-info">
+                    <div class="mobile-card-title">${p.name}</div>
+                    <div class="mobile-card-meta">
+                        <span class="mobile-card-unit">${p.unit}</span>
+                        <span class="mobile-card-price" id="m-price-${p.id}">₹${adjPrice.toLocaleString('en-IN')}</span>
+                    </div>
+                </div>
+                <div class="mobile-card-actions">
+                    <div class="mobile-stepper">
+                        <button type="button" class="stepper-btn" onclick="stepQty(${p.id}, -1)">-</button>
+                        <input type="number" id="m-qty-${p.id}" class="stepper-input" min="0" value="${qty}" oninput="setRowQty(${p.id}, this.value)" onfocus="this.select()">
+                        <button type="button" class="stepper-btn" onclick="stepQty(${p.id}, 1)">+</button>
+                    </div>
+                    <button type="button" class="btn-quick-add" onclick="stepQty(${p.id}, 5)" title="Add 5 units">+5</button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // 2. Desktop Table Rows (> 768px)
+    function renderDesktopTable() {
         const tbody = document.getElementById('pos-table-body');
         tbody.innerHTML = '';
 
@@ -1225,35 +1661,31 @@
                     <span class="product-unit-txt">${p.unit}</span>
                 </td>
                 <td class="col-price">
-                    <span class="curr-price" id="price-val-${p.id}">₹${adjPrice.toLocaleString('en-IN')}</span>
+                    <span class="curr-price" id="d-price-${p.id}">₹${adjPrice.toLocaleString('en-IN')}</span>
                 </td>
                 <td class="col-qty">
-                    <div class="qty-control-box">
-                        <button type="button" class="qty-btn" onclick="stepQty(${p.id}, -1)" title="Decrease">-</button>
-                        <input type="number" id="qty-input-${p.id}" class="qty-num-input" min="0" value="${qty}" oninput="setRowQty(${p.id}, this.value)" onfocus="this.select()">
-                        <button type="button" class="qty-btn" onclick="stepQty(${p.id}, 1)" title="Increase">+</button>
+                    <div class="desktop-stepper">
+                        <button type="button" onclick="stepQty(${p.id}, -1)">-</button>
+                        <input type="number" id="d-qty-${p.id}" min="0" value="${qty}" oninput="setRowQty(${p.id}, this.value)" onfocus="this.select()">
+                        <button type="button" onclick="stepQty(${p.id}, 1)">+</button>
                     </div>
-                    <button type="button" class="qty-reset-btn" onclick="resetRowQty(${p.id})" title="Reset to 0"><i class="fas fa-times"></i></button>
+                    <button type="button" class="btn-quick-add" style="height:32px; margin-left:4px;" onclick="stepQty(${p.id}, 5)">+5</button>
+                    <button type="button" class="btn-qty-reset" onclick="resetRowQty(${p.id})" title="Reset to 0"><i class="fas fa-times"></i></button>
                 </td>
-                <td class="col-total" id="total-val-${p.id}">₹${lineTotal.toLocaleString('en-IN')}</td>
+                <td class="col-total" id="d-total-${p.id}">₹${lineTotal.toLocaleString('en-IN')}</td>
             `;
             tbody.appendChild(tr);
         });
-
-        filterTableRows();
-        updateCalculations();
     }
 
-    // Step quantity (+1 / -1)
+    // Step quantity (+1 / -1 / +5)
     function stepQty(productId, delta) {
         const cur = orderQuantities[productId] || 0;
         const next = Math.max(0, cur + delta);
         orderQuantities[productId] = next;
         
-        const input = document.getElementById(`qty-input-${productId}`);
-        if (input) input.value = next;
-        
-        updateRowVisuals(productId);
+        syncQtyInputs(productId, next);
+        updateItemVisuals(productId);
         updateCalculations();
     }
 
@@ -1263,121 +1695,105 @@
         const qty = isNaN(parsed) || parsed < 0 ? 0 : parsed;
         orderQuantities[productId] = qty;
         
-        updateRowVisuals(productId);
+        syncQtyInputs(productId, qty);
+        updateItemVisuals(productId);
         updateCalculations();
     }
 
-    // Reset single row to 0
     function resetRowQty(productId) {
         orderQuantities[productId] = 0;
-        const input = document.getElementById(`qty-input-${productId}`);
-        if (input) input.value = 0;
-        
-        updateRowVisuals(productId);
+        syncQtyInputs(productId, 0);
+        updateItemVisuals(productId);
         updateCalculations();
     }
 
-    // Update single row visuals & total without full table re-render
-    function updateRowVisuals(productId) {
+    function syncQtyInputs(productId, qty) {
+        const mInput = document.getElementById(`m-qty-${productId}`);
+        const dInput = document.getElementById(`d-qty-${productId}`);
+        if (mInput) mInput.value = qty;
+        if (dInput) dInput.value = qty;
+    }
+
+    // Update single item visual state (active yellow highlight, line totals)
+    function updateItemVisuals(productId) {
         const p = products.find(prod => prod.id === productId);
         if (!p) return;
 
         const qty = orderQuantities[productId] || 0;
-        const row = document.getElementById(`row-${productId}`);
-        const totalCell = document.getElementById(`total-val-${productId}`);
-        const priceCell = document.getElementById(`price-val-${productId}`);
-
         const adjPrice = getAdjustedUnitPrice(p);
         const lineTotal = adjPrice * qty;
 
-        if (priceCell) priceCell.textContent = `₹${adjPrice.toLocaleString('en-IN')}`;
-        if (totalCell) totalCell.textContent = `₹${lineTotal.toLocaleString('en-IN')}`;
-
-        if (row) {
-            row.classList.toggle('has-qty', qty > 0);
+        // Mobile Card
+        const mCard = document.getElementById(`m-card-${productId}`);
+        if (mCard) {
+            mCard.classList.toggle('has-qty', qty > 0);
             if (selectedOnlyMode && qty === 0) {
-                row.classList.add('hidden-row');
+                mCard.classList.add('hidden-row');
+            }
+        }
+
+        // Desktop Row
+        const dRow = document.getElementById(`row-${productId}`);
+        const dTotal = document.getElementById(`d-total-${productId}`);
+        if (dTotal) dTotal.textContent = `₹${lineTotal.toLocaleString('en-IN')}`;
+        if (dRow) {
+            dRow.classList.toggle('has-qty', qty > 0);
+            if (selectedOnlyMode && qty === 0) {
+                dRow.classList.add('hidden-row');
             }
         }
     }
 
-    // Margin Controller logic
-    function setMargin(marginVal) {
-        currentMargin = parseInt(marginVal, 10) || 0;
-        document.getElementById('custom-margin-input').value = currentMargin;
-        
-        // Update presets active style
-        document.querySelectorAll('.preset-btn').forEach(btn => {
-            const btnVal = parseInt(btn.textContent.replace('%', ''), 10);
-            btn.classList.toggle('active', btnVal === currentMargin);
-        });
-
-        updateMarginIndicator();
-        renderTablePrices();
-        updateCalculations();
-    }
-
-    function handleCustomMarginChange(val) {
-        const parsed = parseInt(val, 10);
-        currentMargin = isNaN(parsed) ? 0 : parsed;
-
-        document.querySelectorAll('.preset-btn').forEach(btn => {
-            const btnVal = parseInt(btn.textContent.replace('%', ''), 10);
-            btn.classList.toggle('active', btnVal === currentMargin);
-        });
-
-        updateMarginIndicator();
-        renderTablePrices();
-        updateCalculations();
-    }
-
-    function updateMarginIndicator() {
-        const ind = document.getElementById('margin-indicator');
-        if (currentMargin > 0) {
-            ind.className = 'margin-tag-indicator hike';
-            ind.innerHTML = `<i class="fas fa-arrow-up"></i> +${currentMargin}% Demand Hike`;
-        } else if (currentMargin < 0) {
-            ind.className = 'margin-tag-indicator discount';
-            ind.innerHTML = `<i class="fas fa-arrow-down"></i> ${currentMargin}% Demand Discount`;
-        } else {
-            ind.className = 'margin-tag-indicator neutral';
-            ind.innerHTML = `Standard Base Price (0%)`;
-        }
-    }
-
-    function renderTablePrices() {
+    // Update all prices across both views when margin changes
+    function updateAllPrices() {
         products.forEach(p => {
-            updateRowVisuals(p.id);
+            const adjPrice = getAdjustedUnitPrice(p);
+            const qty = orderQuantities[p.id] || 0;
+            const lineTotal = adjPrice * qty;
+
+            const mPrice = document.getElementById(`m-price-${p.id}`);
+            if (mPrice) mPrice.textContent = `₹${adjPrice.toLocaleString('en-IN')}`;
+
+            const dPrice = document.getElementById(`d-price-${p.id}`);
+            if (dPrice) dPrice.textContent = `₹${adjPrice.toLocaleString('en-IN')}`;
+
+            const dTotal = document.getElementById(`d-total-${p.id}`);
+            if (dTotal) dTotal.textContent = `₹${lineTotal.toLocaleString('en-IN')}`;
         });
     }
 
-    // Customer Discount logic
-    function handleCustomerDiscountChange(val) {
-        const parsed = parseInt(val, 10);
-        customerDiscount = isNaN(parsed) || parsed < 0 ? 0 : Math.min(100, parsed);
-        updateCalculations();
-    }
-
-    // Filter table by search, category, or selected-only
-    function filterTableRows() {
-        const search = document.getElementById('pos-search-input').value.toLowerCase().trim();
-        const selectedCat = document.getElementById('pos-category-select').value;
-        const rows = document.querySelectorAll('#pos-table-body tr');
+    // Filter Items by active category, search query, or selected-only mode
+    function filterItems() {
+        const mCards = document.querySelectorAll('.pos-mobile-card');
+        const dRows = document.querySelectorAll('#pos-table-body tr');
         let visibleCount = 0;
 
-        rows.forEach(tr => {
+        const checkMatch = (pid, cat, name) => {
+            const qty = orderQuantities[pid] || 0;
+            const matchSearch = !searchQuery || name.includes(searchQuery) || pid.includes(searchQuery) || cat.toLowerCase().includes(searchQuery);
+            const matchCat = !activeCategory || cat === activeCategory;
+            const matchSelected = !selectedOnlyMode || qty > 0;
+            return matchSearch && matchCat && matchSelected;
+        };
+
+        mCards.forEach(card => {
+            const pid = card.getAttribute('data-id');
+            const cat = card.getAttribute('data-category');
+            const name = card.getAttribute('data-name');
+            if (checkMatch(pid, cat, name)) {
+                card.classList.remove('hidden-row');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden-row');
+            }
+        });
+
+        dRows.forEach(tr => {
             const pid = tr.getAttribute('data-id');
             const cat = tr.getAttribute('data-category');
             const name = tr.getAttribute('data-name');
-            const qty = orderQuantities[pid] || 0;
-
-            const matchSearch = !search || name.includes(search) || pid.includes(search) || cat.toLowerCase().includes(search);
-            const matchCat = !selectedCat || cat === selectedCat;
-            const matchSelected = !selectedOnlyMode || qty > 0;
-
-            if (matchSearch && matchCat && matchSelected) {
+            if (checkMatch(pid, cat, name)) {
                 tr.classList.remove('hidden-row');
-                visibleCount++;
             } else {
                 tr.classList.add('hidden-row');
             }
@@ -1387,18 +1803,34 @@
         if (emptyView) emptyView.style.display = visibleCount === 0 ? 'block' : 'none';
     }
 
-    function toggleSelectedOnly() {
-        selectedOnlyMode = !selectedOnlyMode;
-        const btn = document.getElementById('toggle-selected-btn');
-        btn.classList.toggle('active', selectedOnlyMode);
-        filterTableRows();
+    // Customer Discount Handlers
+    function setCustomerDiscount(discVal) {
+        customerDiscount = parseInt(discVal, 10) || 0;
+        document.getElementById('cust-discount-input').value = customerDiscount;
+        updateDiscountChips();
+        updateCalculations();
     }
 
-    // Update overall calculations (subtotal, customer discount, net total, dock)
+    function handleCustomerDiscountChange(val) {
+        const parsed = parseInt(val, 10);
+        customerDiscount = isNaN(parsed) || parsed < 0 ? 0 : Math.min(100, parsed);
+        updateDiscountChips();
+        updateCalculations();
+    }
+
+    function updateDiscountChips() {
+        document.querySelectorAll('.disc-chip').forEach(btn => {
+            const val = parseInt(btn.textContent.replace('%', ''), 10);
+            btn.classList.toggle('active', val === customerDiscount);
+        });
+    }
+
+    // Overall Calculations & Reactive Bottom Dock / Bottom Sheet Update
     function updateCalculations() {
         let activeVarieties = 0;
         let totalUnits = 0;
         let grossSubtotal = 0;
+        const selectedProducts = [];
 
         products.forEach(p => {
             const qty = orderQuantities[p.id] || 0;
@@ -1406,57 +1838,95 @@
                 activeVarieties++;
                 totalUnits += qty;
                 const adjPrice = getAdjustedUnitPrice(p);
-                grossSubtotal += adjPrice * qty;
+                const lineTotal = adjPrice * qty;
+                grossSubtotal += lineTotal;
+                selectedProducts.push({ ...p, qty, adjPrice, lineTotal });
             }
         });
 
-        // Customer discount calculation
         const discountAmount = Math.round(grossSubtotal * (customerDiscount / 100));
         const netTotal = Math.max(0, grossSubtotal - discountAmount);
-
-        // Update Summary Card
-        document.getElementById('summary-varieties').textContent = `${activeVarieties} varieties`;
-        document.getElementById('summary-units').textContent = `${totalUnits} units`;
-        document.getElementById('summary-subtotal').textContent = `₹${grossSubtotal.toLocaleString('en-IN')}`;
-        
-        const discRow = document.getElementById('discount-amount-row');
-        if (customerDiscount > 0) {
-            discRow.style.display = 'flex';
-            document.getElementById('summary-discount').textContent = `-₹${discountAmount.toLocaleString('en-IN')} (${customerDiscount}%)`;
-        } else {
-            discRow.style.display = 'none';
-        }
-
-        document.getElementById('summary-net-total').textContent = `₹${netTotal.toLocaleString('en-IN')}`;
 
         // Update Bottom Dock
         document.getElementById('dock-items').textContent = activeVarieties;
         document.getElementById('dock-units').textContent = totalUnits;
         document.getElementById('dock-total').textContent = `₹${netTotal.toLocaleString('en-IN')}`;
 
-        // Update Selected Badge
-        const badge = document.getElementById('selected-badge');
-        badge.textContent = activeVarieties;
-        badge.style.display = activeVarieties > 0 ? 'inline-block' : 'none';
+        // Update Category Carousel "Selected (N)" count
+        const selCountBadge = document.getElementById('pill-selected-count');
+        if (selCountBadge) selCountBadge.textContent = activeVarieties;
+
+        // Update Bottom Sheet Financials
+        document.getElementById('sheet-gross-subtotal').textContent = `₹${grossSubtotal.toLocaleString('en-IN')}`;
+        
+        const discRow = document.getElementById('sheet-discount-row');
+        if (customerDiscount > 0) {
+            discRow.style.display = 'flex';
+            document.getElementById('sheet-discount-amt').textContent = `-₹${discountAmount.toLocaleString('en-IN')} (${customerDiscount}%)`;
+        } else {
+            discRow.style.display = 'none';
+        }
+
+        document.getElementById('sheet-net-total').textContent = `₹${netTotal.toLocaleString('en-IN')}`;
+
+        // Render Bottom Sheet Mini Selected Items List
+        renderSheetSelectedItems(selectedProducts);
     }
 
-    // Scroll to Checkout Card
-    function scrollToCheckout() {
-        const el = document.getElementById('pos-checkout-section');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    function renderSheetSelectedItems(selectedProducts) {
+        const container = document.getElementById('sheet-selected-items');
+        if (!container) return;
+
+        if (selectedProducts.length === 0) {
+            container.innerHTML = `
+                <div style="text-align:center; padding:0.8rem; color:#94A3B8; font-size:0.8rem;">
+                    No crackers selected yet. Tap [+] to add items.
+                </div>
+            `;
+            return;
+        }
+
+        let html = '';
+        selectedProducts.forEach(p => {
+            html += `
+                <div class="sheet-mini-item">
+                    <div class="sheet-mini-name">${p.name}</div>
+                    <div class="sheet-mini-qty">${p.qty} × ₹${p.adjPrice.toLocaleString('en-IN')}</div>
+                    <div class="sheet-mini-price">₹${p.lineTotal.toLocaleString('en-IN')}</div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    // Bottom Sheet Open / Close Controls
+    function openCheckoutSheet() {
+        document.getElementById('sheet-backdrop').classList.add('active');
+        document.getElementById('checkout-sheet').classList.add('active');
+    }
+
+    function closeCheckoutSheet() {
+        document.getElementById('sheet-backdrop').classList.remove('active');
+        document.getElementById('checkout-sheet').classList.remove('active');
     }
 
     // Reset Entire Order for New Customer
     function resetEntireOrder() {
-        if (!confirm('Start a new invoice? This will reset all quantities to 0.')) return;
+        if (!confirm('Start a new invoice? This will reset all selected cracker quantities.')) return;
         products.forEach(p => {
             orderQuantities[p.id] = 0;
+            syncQtyInputs(p.id, 0);
+            updateItemVisuals(p.id);
         });
         customerDiscount = 0;
-        document.getElementById('cust-discount-input').value = 0;
+        setCustomerDiscount(0);
         document.getElementById('cust-name').value = 'Walk-in Customer';
         document.getElementById('cust-phone').value = '';
-        renderTable();
+        closeCheckoutSheet();
+        updateCalculations();
+        if (selectedOnlyMode) {
+            selectCategory('');
+        }
     }
 
     // Print Receipt via Browser
@@ -1464,12 +1934,12 @@
         window.print();
     }
 
-    // Send WhatsApp Bill Breakdown
+    // ==================== WHATSAPP INVOICE ====================
     function sendInvoiceWhatsApp() {
         const custName = document.getElementById('cust-name').value.trim() || 'Valued Customer';
         const custPhone = document.getElementById('cust-phone').value.trim();
         const paymentMode = document.getElementById('payment-mode').value;
-        const salesman = document.getElementById('salesman-name').value.trim();
+        const salesman = document.getElementById('salesman-name').value.trim() || 'Staff';
 
         const selectedItems = products.filter(p => (orderQuantities[p.id] || 0) > 0);
         if (selectedItems.length === 0) {
@@ -1523,7 +1993,7 @@
         window.open(targetUrl, '_blank');
     }
 
-    // ==================== PROFESSIONAL INVOICE PDF GENERATION ====================
+    // ==================== PROFESSIONAL PDF GENERATION ====================
     function generateInvoicePDF() {
         const selectedItems = products.filter(p => (orderQuantities[p.id] || 0) > 0);
         if (selectedItems.length === 0) {
@@ -1536,7 +2006,7 @@
         const pageWidth = 210;
         const pageHeight = 297;
         const marginX = 10;
-        const contentWidth = pageWidth - (marginX * 2); // 190mm
+        const contentWidth = pageWidth - (marginX * 2);
 
         // Header Background Banner
         doc.setFillColor(15, 23, 42); // slate-900
@@ -1755,8 +2225,8 @@
 
     // Initialize Page
     document.addEventListener('DOMContentLoaded', () => {
-        initCategoryFilter();
-        renderTable();
+        initCategoryCarousel();
+        renderProductViews();
     });
     </script>
 </body>
