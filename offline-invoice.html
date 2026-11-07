@@ -1094,7 +1094,7 @@
                             <span class="calc-row-val" id="summary-units">0 units</span>
                         </div>
                         <div class="calc-row">
-                            <span class="calc-row-sub">Gross Subtotal (after demand margin):</span>
+                            <span class="calc-row-sub">Gross Subtotal:</span>
                             <span class="calc-row-val" id="summary-subtotal">₹0</span>
                         </div>
 
@@ -1225,7 +1225,6 @@
                     <span class="product-unit-txt">${p.unit}</span>
                 </td>
                 <td class="col-price">
-                    ${currentMargin !== 0 ? `<span class="base-price-ref">₹${p.price}</span>` : ''}
                     <span class="curr-price" id="price-val-${p.id}">₹${adjPrice.toLocaleString('en-IN')}</span>
                 </td>
                 <td class="col-qty">
@@ -1508,9 +1507,6 @@
         msg += `-----------------------------------------\n`;
         msg += `*Total Varieties:* ${selectedItems.length}\n`;
         msg += `*Gross Subtotal:* ₹${grossSubtotal.toLocaleString('en-IN')}\n`;
-        if (currentMargin !== 0) {
-            msg += `*Demand Margin:* ${currentMargin > 0 ? `+${currentMargin}%` : `${currentMargin}%`}\n`;
-        }
         if (customerDiscount > 0) {
             msg += `*Customer Discount (${customerDiscount}%):* -₹${discountAmount.toLocaleString('en-IN')}\n`;
         }
@@ -1738,12 +1734,6 @@
         doc.setFont('helvetica', 'normal');
         doc.text(`Varieties Selected: ${selectedItems.length} items`, marginX + 4, summaryY + 13);
         doc.text(`Total Package Units: ${totalQtySum} units`, marginX + 4, summaryY + 19);
-
-        if (currentMargin !== 0) {
-            doc.setFont('helvetica', 'bold');
-            doc.setTextColor(currentMargin > 0 ? 180 : 22, currentMargin > 0 ? 83 : 101, currentMargin > 0 ? 9 : 52);
-            doc.text(`Demand Rate Adjustment: ${currentMargin > 0 ? `+${currentMargin}%` : `${currentMargin}%`}`, marginX + 4, summaryY + 25);
-        }
 
         // Terms and Footer
         const footerY = summaryY + summaryCardHeight + 8;
