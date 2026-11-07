@@ -26,6 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent
 PRODUCTS_JSON = BASE_DIR / "products.json"
 INDEX_HTML = BASE_DIR / "index.html"
 PRODUCT_HTML = BASE_DIR / "product.html"
+OFFLINE_INVOICE_HTML = BASE_DIR / "offline-invoice.html"
 
 COMBO_CATEGORY = "Firestorm Special Assorted Combos"
 
@@ -64,6 +65,18 @@ def sync_html_files(products):
             print("✓ Synchronized product.html (const DEFAULT_PRODUCTS updated)")
         else:
             print("⚠ Warning: const DEFAULT_PRODUCTS pattern not found in product.html")
+
+    # Sync offline-invoice.html
+    if OFFLINE_INVOICE_HTML.exists():
+        with open(OFFLINE_INVOICE_HTML, "r", encoding="utf-8") as f:
+            pos = f.read()
+        new_pos, count = re.subn(r'const DEFAULT_PRODUCTS = (\[.*?\]);', f'const DEFAULT_PRODUCTS = {json_compact};', pos)
+        if count:
+            with open(OFFLINE_INVOICE_HTML, "w", encoding="utf-8") as f:
+                f.write(new_pos)
+            print("✓ Synchronized offline-invoice.html (const DEFAULT_PRODUCTS updated)")
+        else:
+            print("⚠ Warning: const DEFAULT_PRODUCTS pattern not found in offline-invoice.html")
 
 def display_summary(products):
     print("=" * 70)
